@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, shrink-to-fit=no">
+  <title>منصة Pen | تعليم ذكي مع شات بوت</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #0f172a;
+      color: #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* الشريط العلوي */
+    .top-bar {
+      background: #1e293b;
+      color: #f1f5f9;
+      padding: 0.7rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.5);
+      border-bottom: 1px solid #334155;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-icon {
+      font-size: 2.2rem;
+      color: #fbbf24;
+      transform: rotate(-15deg);
+      text-shadow: 0 0 10px rgba(251,191,36,0.5);
+    }
+
+    .logo-text {
+      font-size: 1.8rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 0.5rem 0.9rem;
+      border-radius: 10px;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a i {
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover {
+      background: #334155;
+      color: white;
+    }
+
+    .active-link {
+      background: #fbbf24 !important;
+      color: #0f172a !important;
+      font-weight: bold;
+    }
+
+    /* شريط الاختيار */
+    .selector-panel {
+      background: #1e293b;
+      margin: 1.2rem 1.5rem;
+      padding: 1rem 1.8rem;
+      border-radius: 20px;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.4);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: 1rem;
+      justify-content: center;
+      border: 1px solid #334155;
+    }
+
+    .select-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+      min-width: 130px;
+    }
+
+    .select-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #94a3b8;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    select {
+      padding: 0.65rem 0.8rem;
+      border-radius: 10px;
+      border: 1px solid #475569;
+      background: #0f172a;
+      color: #e2e8f0;
+      font-weight: 500;
+      cursor: pointer;
+      outline: none;
+      font-size: 0.9rem;
+    }
+
+    select:focus {
+      border-color: #fbbf24;
+      box-shadow: 0 0 0 3px rgba(251,191,36,0.3);
+    }
+
+    .search-btn {
+      background: #fbbf24;
+      color: #0f172a;
+      border: none;
+      padding: 0.65rem 1.8rem;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.2s;
+      margin-bottom: 0.2rem;
+    }
+
+    .search-btn:hover {
+      background: #f59e0b;
+    }
+
+    .dynamic-message {
+      background: #1e293b;
+      border-radius: 12px;
+      padding: 0.7rem 1.5rem;
+      margin: 0 1.5rem 0.8rem;
+      color: #cbd5e1;
+      font-weight: 500;
+      text-align: center;
+      border: 1px dashed #475569;
+    }
+
+    /* التخطيط الرئيسي - الشات أكبر بكثير */
+    .main-layout {
+      display: flex;
+      flex: 1;
+      margin: 0 1.5rem 1.5rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      align-items: stretch;
+    }
+
+    .content-area {
+      flex: 0.4;
+      min-width: 220px;
+      max-width: 300px;
+      background: #1e293b;
+      border-radius: 24px;
+      padding: 1.2rem;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      border: 1px solid #334155;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .card-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+      margin-top: 0.8rem;
+      overflow-y: auto;
+    }
+
+    .feature-card {
+      background: #0f172a;
+      border-radius: 14px;
+      padding: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      transition: 0.2s;
+      border: 1px solid #334155;
+    }
+
+    .feature-card i {
+      font-size: 1.3rem;
+      color: #fbbf24;
+    }
+
+    .feature-card h4 {
+      color: #f1f5f9;
+      margin-bottom: 0.1rem;
+      font-size: 0.9rem;
+    }
+
+    .feature-card p {
+      color: #94a3b8;
+      font-size: 0.75rem;
+    }
+
+    .feature-card:hover {
+      background: #1e293b;
+      border-color: #fbbf24;
+    }
+
+    .ministry-box {
+      background: #0f172a;
+      border-radius: 14px;
+      padding: 0.8rem;
+      margin-top: 0.8rem;
+      border: 1px solid #fbbf24;
+      color: #fbbf24;
+      font-size: 0.85rem;
+    }
+
+    /* الشات بوت - كبير جداً */
+    .chatbot-section {
+      flex: 3;
+      min-width: 500px;
+      background: #1e293b;
+      border-radius: 24px;
+      box-shadow: 0 8px 28px rgba(0,0,0,0.6);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid #334155;
+    }
+
+    .chat-header {
+      background: #0f172a;
+      color: #fbbf24;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-weight: bold;
+      font-size: 1.3rem;
+      border-bottom: 1px solid #334155;
+    }
+
+    .chat-header-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .chat-header-left i {
+      font-size: 1.6rem;
+    }
+
+    /* أزرار التفاعل السريع في الهيدر */
+    .header-quick-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      align-items: center;
+    }
+
+    .header-quick-btn {
+      background: #1e293b;
+      color: #fbbf24;
+      border: 1px solid #fbbf24;
+      padding: 0.4rem 0.8rem;
+      border-radius: 18px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: 0.2s;
+      white-space: nowrap;
+      font-weight: 500;
+    }
+
+    .header-quick-btn:hover {
+      background: #fbbf24;
+      color: #0f172a;
+      font-weight: bold;
+      transform: scale(1.05);
+    }
+
+    .header-category-label {
+      color: #94a3b8;
+      font-size: 0.7rem;
+      font-weight: bold;
+      margin: 0 0.2rem;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 1.5rem;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      background: #0b1120;
+      min-height: 500px;
+      max-height: 75vh;
+    }
+
+    .message {
+      display: flex;
+      gap: 10px;
+    }
+
+    .bot-msg {
+      align-self: flex-start;
+    }
+
+    .user-msg {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+    }
+
+    .msg-bubble {
+      padding: 0.9rem 1.3rem;
+      border-radius: 20px;
+      max-width: 80%;
+      background: #334155;
+      color: #e2e8f0;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+
+    .user-msg .msg-bubble {
+      background: #fbbf24;
+      color: #0f172a;
+      font-weight: 500;
+    }
+
+    .chat-input-area {
+      display: flex;
+      padding: 1rem;
+      border-top: 1px solid #334155;
+      background: #1e293b;
+      gap: 10px;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      padding: 0.9rem 1.2rem;
+      border-radius: 30px;
+      border: 1px solid #475569;
+      background: #0f172a;
+      color: #e2e8f0;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    .chat-input-area input::placeholder {
+      color: #64748b;
+      font-size: 0.95rem;
+    }
+
+    .chat-input-area button {
+      background: #fbbf24;
+      color: #0f172a;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-input-area button:hover {
+      background: #f59e0b;
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      color: #64748b;
+      margin: 0.5rem 0 1rem;
+      font-size: 0.8rem;
+    }
+
+    @media (max-width: 900px) {
+      .main-layout {
+        flex-direction: column;
+      }
+      .content-area {
+        max-width: 100%;
+        flex: 1;
+      }
+      .chatbot-section {
+        min-width: auto;
+        flex: 3;
+      }
+      .chat-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="logo-area">
+      <i class="fas fa-pen-fancy logo-icon"></i>
+      <span class="logo-text">Pen</span>
+    </div>
+    <div class="nav-links">
+      <a href="#" id="navCourses"><i class="fas fa-book-open"></i> الكورسات</a>
+      <a href="#" id="navMinistry"><i class="fas fa-university"></i> وزارة التربية والتعليم</a>
+    </div>
+  </header>
+
+  <!-- شريط اختيار الصف والفصل والمادة -->
+  <div class="selector-panel" id="selectorPanel">
+    <div class="select-group">
+      <label><i class="fas fa-layer-group"></i> الصف الدراسي</label>
+      <select id="gradeSelect">
+        <option value="">-- اختر الصف --</option>
+        <option value="1">الصف الأول</option>
+        <option value="2">الصف الثاني</option>
+        <option value="3">الصف الثالث</option>
+        <option value="4">الصف الرابع</option>
+        <option value="5">الصف الخامس</option>
+        <option value="6">الصف السادس</option>
+        <option value="7">الصف السابع</option>
+        <option value="8">الصف الثامن</option>
+        <option value="9">الصف التاسع</option>
+        <option value="10">الصف العاشر</option>
+        <option value="11">الصف الحادي عشر</option>
+        <option value="12">الصف الثاني عشر</option>
+      </select>
+    </div>
+    <div class="select-group">
+      <label><i class="fas fa-door-open"></i> الفصل الدراسي</label>
+      <select id="semesterSelect">
+        <option value="">-- اختر الفصل --</option>
+        <option value="first">الفصل الأول</option>
+        <option value="second">الفصل الثاني</option>
+      </select>
+    </div>
+    <div class="select-group">
+      <label><i class="fas fa-atom"></i> المادة</label>
+      <select id="subjectSelect">
+        <option value="">-- اختر المادة --</option>
+        <option value="math">رياضيات</option>
+        <option value="science">علوم</option>
+        <option value="arabic">لغة عربية</option>
+        <option value="english">لغة إنجليزية</option>
+        <option value="history">تاريخ</option>
+        <option value="geography">جغرافيا</option>
+        <option value="physics">فيزياء</option>
+        <option value="chemistry">كيمياء</option>
+      </select>
+    </div>
+    <button class="search-btn" id="applySelection"><i class="fas fa-search"></i> عرض</button>
+  </div>
+
+  <div class="dynamic-message" id="selectionMessage">
+    📘 اضغط على الكورسات لمشاهدة قائمة الكورسات، أو وزارة التربية لاختيار الصف.
+  </div>
+
+  <div class="main-layout">
+    <!-- منطقة المحتوى الجانبية صغيرة -->
+    <section class="content-area" id="contentDisplay">
+      <h3 style="color:#fbbf24; margin-bottom:0.8rem; font-size:1rem;"><i class="fas fa-star"></i> المحتوى</h3>
+      <div id="dynamicCards" class="card-grid">
+        <p style="color:#94a3b8; font-size:0.85rem;">اختر قسم من الأعلى</p>
+      </div>
+      <div id="ministryExtra" style="display: none;"></div>
+    </section>
+
+    <!-- الشات بوت كبير جداً -->
+    <div class="chatbot-section">
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <i class="fas fa-robot"></i>
+          <span>المساعد Pen</span>
+        </div>
+        <div class="header-quick-buttons" id="headerQuickButtons">
+          <span class="header-category-label">📝</span>
+          <button class="header-quick-btn" data-action="exam_important">أهم الأسئلة</button>
+          <button class="header-quick-btn" data-action="exam_easy">سهل</button>
+          <button class="header-quick-btn" data-action="exam_medium">متوسط</button>
+          <button class="header-quick-btn" data-action="exam_hard">صعب</button>
+          
+          <span class="header-category-label">🎯</span>
+          <button class="header-quick-btn" data-action="quiz_me">اختبرني</button>
+          <button class="header-quick-btn" data-action="quiz_balagha">البلاغة</button>
+          
+          <span class="header-category-label">📊</span>
+          <button class="header-quick-btn" data-action="focus_plan">خطة التركيز</button>
+          <button class="header-quick-btn" data-action="my_level">مستوايا</button>
+          
+          <span class="header-category-label">📚</span>
+          <button class="header-quick-btn" data-action="explain">شرح</button>
+          
+          <span class="header-category-label">💡</span>
+          <button class="header-quick-btn" data-action="explain_more">اشرحلي</button>
+          <button class="header-quick-btn" data-action="interpret">فسر</button>
+          <button class="header-quick-btn" data-action="compare">قارن</button>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot-msg">
+          <div class="msg-bubble">👋 مرحباً! أنا مساعدك الذكي في منصة Pen. اختر من الأزرار في الأعلى أو اكتب سؤالك مباشرة.</div>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="اكتب سؤالك هنا ..." />
+        <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+  <footer>© 2025 منصة Pen - جميع الحقوق محفوظة</footer>
+
+  <script>
+    (function() {
+      const gradeSelect = document.getElementById('gradeSelect');
+      const semesterSelect = document.getElementById('semesterSelect');
+      const subjectSelect = document.getElementById('subjectSelect');
+      const applyBtn = document.getElementById('applySelection');
+      const selectionMessage = document.getElementById('selectionMessage');
+      const dynamicCards = document.getElementById('dynamicCards');
+      const ministryExtra = document.getElementById('ministryExtra');
+      const chatMessages = document.getElementById('chatMessages');
+      const userInput = document.getElementById('userInput');
+      const sendBtn = document.getElementById('sendBtn');
+      const selectorPanel = document.getElementById('selectorPanel');
+
+      const navCourses = document.getElementById('navCourses');
+      const navMinistry = document.getElementById('navMinistry');
+
+      let currentMode = 'courses';
+      let currentSelection = { grade: '', semester: '', subject: '' };
+
+      function updateUIBasedOnMode() {
+        if (currentMode === 'courses') {
+          selectorPanel.style.display = 'none';
+          selectionMessage.innerHTML = '📘 <strong>قسم الكورسات:</strong> كورسات متاحة لجميع المراحل.';
+          showCoursesList();
+        } else if (currentMode === 'ministry') {
+          selectorPanel.style.display = 'flex';
+          selectionMessage.innerHTML = '🏛️ <strong>وزارة التربية:</strong> اختر الصف والفصل والمادة للمناهج الرسمية.';
+          if (currentSelection.grade && currentSelection.semester && currentSelection.subject) {
+            showMinistryContent();
+          } else {
+            dynamicCards.innerHTML = '<p style="color:#94a3b8; font-size:0.85rem;">حدد الصف والفصل والمادة لعرض روابط الوزارة.</p>';
+          }
+        }
+        ministryExtra.style.display = 'none';
+      }
+
+      function showCoursesList() {
+        const courses = [
+          { title: 'أساسيات البرمجة', desc: 'كورس بايثون للمبتدئين' },
+          { title: 'الرياضيات المتقدمة', desc: 'تفاضل وتكامل' },
+          { title: 'اللغة الإنجليزية', desc: 'محادثة وقواعد' },
+          { title: 'الفيزياء الحديثة', desc: 'الكهرباء والمغناطيسية' },
+          { title: 'التاريخ العالمي', desc: 'الحضارات القديمة' }
+        ];
+        dynamicCards.innerHTML = courses.map(c => `
+          <div class="feature-card">
+            <i class="fas fa-laptop-code"></i>
+            <div><h4>${c.title}</h4><p>${c.desc}</p></div>
+          </div>
+        `).join('');
+      }
+
+      function showMinistryContent() {
+        const subText = subjectSelect.options[subjectSelect.selectedIndex]?.text || 'المادة';
+        dynamicCards.innerHTML = `
+          <div class="feature-card"><i class="fas fa-file-pdf"></i><div><h4>الكتاب الرسمي</h4><p>${subText} - وزارة التربية</p></div></div>
+          <div class="feature-card"><i class="fas fa-external-link-alt"></i><div><h4>منصة التعليم</h4><p>الصف ${currentSelection.grade}</p></div></div>
+        `;
+        ministryExtra.style.display = 'block';
+        ministryExtra.innerHTML = '<div class="ministry-box"><i class="fas fa-external-link-alt"></i> بوابة التعليم الإلكتروني الرسمية</div>';
+      }
+
+      function applySelectionFromPanel() {
+        currentSelection.grade = gradeSelect.value;
+        currentSelection.semester = semesterSelect.value;
+        currentSelection.subject = subjectSelect.value;
+        if (currentMode === 'ministry') showMinistryContent();
+      }
+
+      function setActiveNav(mode) {
+        [navCourses, navMinistry].forEach(l => l.classList.remove('active-link'));
+        if (mode === 'courses') navCourses.classList.add('active-link');
+        else if (mode === 'ministry') navMinistry.classList.add('active-link');
+        currentMode = mode;
+        updateUIBasedOnMode();
+      }
+
+      navCourses.addEventListener('click', (e) => {
+        e.preventDefault();
+        setActiveNav('courses');
+      });
+
+      navMinistry.addEventListener('click', (e) => {
+        e.preventDefault();
+        setActiveNav('ministry');
+      });
+
+      applyBtn.addEventListener('click', applySelectionFromPanel);
+
+      // شات بوت
+      function addMessage(text, isUser = false) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${isUser ? 'user-msg' : 'bot-msg'}`;
+        msgDiv.innerHTML = `<div class="msg-bubble">${text}</div>`;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function handleQuickAction(action) {
+        let response = '';
+        switch(action) {
+          case 'exam_important':
+            response = '📝 <strong>إليك أهم الأسئلة المتوقعة في الامتحان:</strong>\n\n1. سؤال عن المفاهيم الأساسية\n2. سؤال تطبيقي\n3. سؤال تحليلي\n\nهل تريد البدء في حل هذه الأسئلة؟';
+            break;
+          case 'exam_easy':
+            response = '📝 <strong>امتحان سهل:</strong>\n\n1. ما هو تعريف ...؟\n2. أكمل الفراغ\n3. اختر الإجابة الصحيحة\n\nمستوى الأسئلة بسيط ومناسب للمراجعة السريعة.';
+            break;
+          case 'exam_medium':
+            response = '📝 <strong>امتحان متوسط:</strong>\n\n1. قارن بين ...\n2. اشرح مع الأمثلة\n3. حلل العبارة التالية\n\nأسئلة متوسطة الصعوبة لاختبار الفهم.';
+            break;
+          case 'exam_hard':
+            response = '📝 <strong>امتحان صعب:</strong>\n\n1. ناقش بالتفصيل\n2. استنتج العلاقة بين\n3. حل المسألة المعقدة\n\nأسئلة متقدمة للطلاب المتميزين.';
+            break;
+          case 'quiz_me':
+            response = '🎯 <strong>امتحان تفاعلي MCQ:</strong>\n\nس1: ما هي عاصمة فرنسا؟\nأ) لندن\nب) باريس\nج) برلين\nد) روما\n\nاختر الإجابة الصحيحة!';
+            break;
+          case 'quiz_balagha':
+            response = '🎯 <strong>اختبار البلاغة:</strong>\n\nس1: "العلم نور" هذا التعبير:\nأ) تشبيه\nب) استعارة\nج) كناية\nد) مجاز مرسل';
+            break;
+          case 'focus_plan':
+            response = '📊 <strong>خطة التركيز - أهم الموضوعات:</strong>\n\n1. المفاهيم الأساسية (30%)\n2. التطبيقات العملية (25%)\n3. التحليل والاستنتاج (20%)\n4. المسائل الحسابية (15%)\n5. المراجعة النهائية (10%)';
+            break;
+          case 'my_level':
+            response = '📊 <strong>تحليل مستواك 📈:</strong>\n\nبناءً على أدائك:\n- الفهم: 85% ✅\n- التطبيق: 70% ⚠️\n- التحليل: 60% 🔄\n\nنوصي بالتركيز على تمارين التحليل.';
+            break;
+          case 'explain':
+            response = '📚 <strong>شرح الدرس:</strong>\n\nما هو الدرس الذي تريد شرحه؟ يمكنك كتابة اسم الدرس أو الموضوع.';
+            break;
+          case 'explain_more':
+            response = '💡 <strong>سأشرح لك بالتفصيل.</strong> ما الموضوع الذي تريد شرحاً موسعاً فيه؟';
+            break;
+          case 'interpret':
+            response = '💡 <strong>سأفسر لك.</strong> ما النص أو المعلومة التي تريد تفسيرها؟';
+            break;
+          case 'compare':
+            response = '💡 <strong>سأقارن لك.</strong> ما العنصران أو المفهومان اللذان تريد المقارنة بينهما؟';
+            break;
+          default:
+            response = 'كيف يمكنني مساعدتك؟';
+        }
+        addMessage(response, false);
+      }
+
+      function botReply(userMsg) {
+        const msg = userMsg.toLowerCase();
+        if (msg.includes('كورس')) return 'الكورسات المتاحة: برمجة، رياضيات، إنجليزي، فيزياء. اضغط على قسم الكورسات.';
+        if (msg.includes('وزارة')) return 'معلومات الوزارة تظهر بعد اختيار الصف والمادة.';
+        if (msg.includes('pen')) return 'منصة Pen هي منصتك التعليمية الذكية!';
+        if (msg.includes('شرح')) return 'ما الدرس الذي تريد شرحه؟';
+        if (msg.includes('امتحان')) return 'اختر نوع الامتحان من الأزرار في الأعلى 📝';
+        return 'أنا هنا لمساعدتك. استخدم الأزرار في الأعلى أو اكتب سؤالك.';
+      }
+
+      function handleChatSend() {
+        const text = userInput.value.trim();
+        if (!text) return;
+        addMessage(text, true);
+        userInput.value = '';
+        setTimeout(() => {
+          const reply = botReply(text);
+          addMessage(reply, false);
+        }, 400);
+      }
+
+      sendBtn.addEventListener('click', handleChatSend);
+      userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleChatSend();
+      });
+
+      // تفعيل أزرار الهيدر
+      const headerButtons = document.getElementById('headerQuickButtons');
+      if (headerButtons) {
+        headerButtons.querySelectorAll('.header-quick-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const action = this.dataset.action;
+            handleQuickAction(action);
+          });
+        });
+      }
+
+      // البدء بوضع الكورسات
+      setActiveNav('courses');
+    })();
+  </script>
+</body>
+</html>
