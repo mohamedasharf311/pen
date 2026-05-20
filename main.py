@@ -1,5 +1,5 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 import os
@@ -176,6 +176,9 @@ class ExamSession:
 
 user_sessions: Dict[str, ExamSession] = {}
 LAST_MESSAGE_TIME: Dict[str, float] = {}
+LAST_COMMAND: Dict[str, str] = {}
+LAST_COMMAND_TIME: Dict[str, float] = {}
+COMMAND_MEMORY_TIMEOUT = 30
 
 async def cleanup_expired_sessions():
     while True:
@@ -191,6 +194,16 @@ async def cleanup_expired_sessions():
             print(f"❌ CLEANUP ERROR: {e}")
         await asyncio.sleep(60)
 
+def remember_command(chat_id: str, intent: str):
+    LAST_COMMAND[chat_id] = intent
+    LAST_COMMAND_TIME[chat_id] = time.time()
+
+def get_last_command(chat_id: str) -> Optional[str]:
+    last_time = LAST_COMMAND_TIME.get(chat_id, 0)
+    if time.time() - last_time < COMMAND_MEMORY_TIMEOUT:
+        return LAST_COMMAND.get(chat_id)
+    return None
+
 # =========================================
 # NORMALIZE ARABIC TEXT
 # =========================================
@@ -198,31 +211,23 @@ async def cleanup_expired_sessions():
 def normalize_arabic(text: str) -> str:
     if not text:
         return ""
-    
     replacements = {
-        'أ': 'ا', 'إ': 'ا', 'آ': 'ا',
-        'ة': 'ه',
-        'ى': 'ي',
+        'أ': 'ا', 'إ': 'ا', 'آ': 'ا', 'ة': 'ه', 'ى': 'ي',
         'ؤ': 'و', 'ئ': 'ي',
         'َ': '', 'ُ': '', 'ِ': '', 'ً': '', 'ٌ': '', 'ٍ': '',
         'ْ': '', 'ّ': ''
     }
-    
     for old, new in replacements.items():
         text = text.replace(old, new)
-    
     return text.lower().strip()
 
 def fuzzy_match(query: str, target: str, threshold: float = 0.7) -> bool:
     if not query or not target:
         return False
-    
     query_norm = normalize_arabic(query)
     target_norm = normalize_arabic(target)
-    
     if query_norm in target_norm or target_norm in query_norm:
         return True
-    
     ratio = SequenceMatcher(None, query_norm, target_norm).ratio()
     return ratio >= threshold
 
@@ -246,50 +251,32 @@ LEVEL_KEYWORDS = {
     "صعب": "hard",
 }
 
-SKILL_MAP = {
-    "استنتاج": "implicit_reasoning",
-    "الاستنتاج": "implicit_reasoning",
-    "فكرة رئيسية": "main_idea_detection",
-    "الفكرة الرئيسية": "main_idea_detection",
-    "بلاغة": "rhetoric_analysis",
-    "البلاغة": "rhetoric_analysis",
-    "نحو": "grammar",
-    "النحو": "grammar",
-}
-
 def detect_intent(message: str, chat_id: str = "") -> Intent:
     message_lower = message.lower().strip()
     message_words = message_lower.split()
     
-    # هوية البوت
     for phrase in IDENTITY_WORDS:
         if phrase in message_lower:
             return Intent.IDENTITY
     
-    # تحية
     for pattern in GREETING_PATTERNS:
         if re.search(pattern, message_lower) and len(message_words) <= 3:
             return Intent.GREETING
     
-    # تغيير المستوى
     if message_lower in ["سهل", "متوسط", "صعب"]:
         last = get_last_command(chat_id)
         if last in ["exam", "interactive_exam"]:
             return Intent.LEVEL_CHANGE
     
-    # امتحان تفاعلي
     if any(x in message_lower for x in ["اختبرني", "اختبرنى", "اختبريني"]):
         return Intent.INTERACTIVE_EXAM
     
-    # امتحان عادي
     if any(x in message_lower for x in ["امتحان", "امتخان", "اختبار"]):
         return Intent.EXAM
     
-    # خطة تركيز
     if any(x in message_lower for x in ["خطة", "خطه", "التركيز", "ركز", "تركيز", "مستوايا", "مستوى"]):
         return Intent.FOCUS_PLAN
     
-    # شرح درس
     if "شرح" in message_lower:
         return Intent.LESSON
     
@@ -306,7 +293,6 @@ QUESTIONS_BY_DIFFICULTY: Dict[str, List[Dict]] = defaultdict(list)
 
 def extract_all_questions(data, depth=0):
     questions = []
-    
     if depth > 10:
         return questions
     
@@ -358,14 +344,12 @@ def extract_all_questions(data, depth=0):
 
 def build_indexes():
     global MCQ_QUESTIONS, QUESTIONS_BY_TOPIC, QUESTIONS_BY_DIFFICULTY
-    
     MCQ_QUESTIONS = []
     QUESTIONS_BY_TOPIC = defaultdict(list)
     QUESTIONS_BY_DIFFICULTY = defaultdict(list)
     
     for q in ALL_QUESTIONS:
         q_type = q.get("question_type", "")
-        
         if q_type == "mcq":
             MCQ_QUESTIONS.append(q)
         
@@ -374,7 +358,6 @@ def build_indexes():
 
 def load_all_data():
     global ALL_QUESTIONS
-    
     ALL_QUESTIONS = []
     seen = set()
     
@@ -425,7 +408,6 @@ def generate_exam(level: str = None, count: int = 5) -> str:
         return "❌ مفيش أسئلة متاحة حالياً"
     
     filtered = ALL_QUESTIONS.copy()
-    
     if level and level in ["easy", "medium", "hard"]:
         filtered = QUESTIONS_BY_DIFFICULTY.get(level, ALL_QUESTIONS.copy())
     
@@ -444,7 +426,6 @@ def generate_exam(level: str = None, count: int = 5) -> str:
     
     for i, q in enumerate(selected, 1):
         question_text = q.get("prompt") or q.get("question", "سؤال")
-        
         if len(question_text) > MAX_QUESTION_LENGTH:
             question_text = question_text[:MAX_QUESTION_LENGTH-3] + "..."
         
@@ -494,7 +475,6 @@ def format_question_message(session: ExamSession) -> str:
         return ""
     
     question_text = question.get("prompt") or question.get("question", "سؤال")
-    
     if len(question_text) > MAX_QUESTION_LENGTH:
         question_text = question_text[:MAX_QUESTION_LENGTH-3] + "..."
     
@@ -524,7 +504,6 @@ def process_exam_answer(chat_id: str, user_answer: str) -> str:
         numbers = re.findall(r'\d+', user_answer)
         if not numbers:
             return "❌ *ابعت رقم الإجابة فقط (1، 2، 3، 4)*"
-        
         answer_num = int(numbers[0])
     except:
         return "❌ *ابعت رقم الإجابة فقط (1، 2، 3، 4)*"
@@ -612,34 +591,25 @@ def search_lesson(user_message: str) -> str:
     if not clean_message:
         return "❌ اكتب اسم الدرس بعد 'شرح'\nمثال: شرح النحو"
     
-    for topic, questions in QUESTIONS_BY_TOPIC.items():
-        if fuzzy_match(clean_message, topic, threshold=0.5) and questions:
-            q = questions[0]
-            return format_lesson_response(q, clean_message)
-    
     for q in ALL_QUESTIONS[:20]:
         question_text = q.get("question", "")
         if fuzzy_match(clean_message, question_text, threshold=0.6):
-            return format_lesson_response(q, clean_message)
+            question_text_display = question_text
+            if len(question_text_display) > MAX_QUESTION_LENGTH:
+                question_text_display = question_text_display[:MAX_QUESTION_LENGTH-3] + "..."
+            
+            msg = f"📚 *شرح: {clean_message}*\n"
+            msg += "─" * 25 + "\n\n"
+            msg += f"📖 *السؤال:*\n{question_text_display}\n\n"
+            
+            explanation = q.get("explanation", "")
+            if explanation:
+                msg += f"📝 *الشرح:*\n{explanation}\n\n"
+            
+            msg += "💪 *ركز عليه كويس*"
+            return msg
     
     return f"❌ مش لاقي شرح لـ '{clean_message}'\n\nجرب تكتب:\n• شرح النحو\n• شرح البلاغة"
-
-def format_lesson_response(question: Dict, topic: str) -> str:
-    question_text = question.get("question", "")
-    if len(question_text) > MAX_QUESTION_LENGTH:
-        question_text = question_text[:MAX_QUESTION_LENGTH-3] + "..."
-    
-    msg = f"📚 *شرح: {topic}*\n"
-    msg += "─" * 25 + "\n\n"
-    msg += f"📖 *السؤال:*\n{question_text}\n\n"
-    
-    explanation = question.get("explanation", "")
-    if explanation:
-        msg += f"📝 *الشرح:*\n{explanation}\n\n"
-    
-    msg += "💪 *ركز عليه كويس*"
-    
-    return msg
 
 # =========================================
 # IDENTITY RESPONSE
@@ -659,42 +629,7 @@ IDENTITY_RESPONSE = """🤖 *أنا المساعد Pen*
 • `شرح النحو` - شرح درس
 • `خطة التركيز` - أهم الموضوعات"""
 
-# =========================================
-# MAIN PROCESSOR
-# =========================================
-
-def is_rate_limited(chat_id: str) -> bool:
-    current_time = time.time()
-    last_time = LAST_MESSAGE_TIME.get(chat_id, 0)
-    
-    if current_time - last_time < RATE_LIMIT_SECONDS:
-        return True
-    
-    LAST_MESSAGE_TIME[chat_id] = current_time
-    return False
-
-async def process_message(chat_id: str, body: str) -> str:
-    try:
-        if is_rate_limited(chat_id):
-            return ""
-        
-        # التحقق من جلسة تفاعلية نشطة
-        if chat_id in user_sessions:
-            session = user_sessions[chat_id]
-            if session.active and not session.is_expired():
-                return process_exam_answer(chat_id, body)
-            elif session.is_expired():
-                del user_sessions[chat_id]
-                return "⏰ *انتهت الجلسة*\nاكتب `اختبرني` لبدء امتحان جديد"
-        
-        body_lower = body.lower().strip()
-        intent = detect_intent(body_lower, chat_id)
-        
-        if intent == Intent.IDENTITY:
-            return IDENTITY_RESPONSE
-        
-        elif intent == Intent.GREETING:
-            return """👋 *أهلاً بيك في منصة Pen!*
+GREETING_RESPONSE = """👋 *أهلاً بيك في منصة Pen!*
 
 📝 *امتحانات:*
 • `امتحان` - أهم الأسئلة
@@ -713,6 +648,40 @@ async def process_message(chat_id: str, body: str) -> str:
 
 💡 *للاستفسارات:*
 • `اشرحلي` - `فسر` - `قارن`"""
+
+# =========================================
+# MAIN PROCESSOR
+# =========================================
+
+def is_rate_limited(chat_id: str) -> bool:
+    current_time = time.time()
+    last_time = LAST_MESSAGE_TIME.get(chat_id, 0)
+    if current_time - last_time < RATE_LIMIT_SECONDS:
+        return True
+    LAST_MESSAGE_TIME[chat_id] = current_time
+    return False
+
+async def process_message(chat_id: str, body: str) -> str:
+    try:
+        if is_rate_limited(chat_id):
+            return ""
+        
+        if chat_id in user_sessions:
+            session = user_sessions[chat_id]
+            if session.active and not session.is_expired():
+                return process_exam_answer(chat_id, body)
+            elif session.is_expired():
+                del user_sessions[chat_id]
+                return "⏰ *انتهت الجلسة*\nاكتب `اختبرني` لبدء امتحان جديد"
+        
+        body_lower = body.lower().strip()
+        intent = detect_intent(body_lower, chat_id)
+        
+        if intent == Intent.IDENTITY:
+            return IDENTITY_RESPONSE
+        
+        elif intent == Intent.GREETING:
+            return GREETING_RESPONSE
         
         elif intent == Intent.LEVEL_CHANGE:
             last = get_last_command(chat_id)
@@ -768,7 +737,6 @@ async def process_message(chat_id: str, body: str) -> str:
 
 @app.api_route("/api/webhook", methods=["GET", "POST"])
 async def webhook_handler(request: Request):
-    
     if request.method == "GET":
         return JSONResponse({
             "status": "active",
@@ -793,27 +761,9 @@ async def webhook_handler(request: Request):
             "reply": reply,
             "ok": True
         })
-        
     except Exception as e:
         print(f"❌ WEBHOOK ERROR: {e}")
         return JSONResponse({"reply": "❌ حصل خطأ", "ok": False})
-
-# =========================================
-# ROOT & HEALTH
-# =========================================
-
-@app.get("/")
-async def root():
-    return {
-        "status": "working",
-        "version": "pen-v1",
-        "questions": len(ALL_QUESTIONS),
-        "mcq_questions": len(MCQ_QUESTIONS),
-        "endpoints": {
-            "webhook": "/api/webhook",
-            "health": "/health"
-        }
-    }
 
 @app.get("/health")
 async def health():
@@ -823,6 +773,259 @@ async def health():
         "mcq": len(MCQ_QUESTIONS),
         "active_sessions": len(user_sessions)
     }
+
+# =========================================
+# HTML INTERFACE
+# =========================================
+
+@app.get("/", response_class=HTMLResponse)
+async def serve_html():
+    return """
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>منصة Pen | تعليم ذكي</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background: #0f172a; color: #e2e8f0; display: flex; flex-direction: column; min-height: 100vh; }
+    .top-bar { background: #1e293b; color: #f1f5f9; padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.5); border-bottom: 1px solid #334155; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-icon { font-size: 2.2rem; color: #fbbf24; transform: rotate(-15deg); text-shadow: 0 0 10px rgba(251,191,36,0.5); }
+    .logo-text { font-size: 1.8rem; font-weight: bold; letter-spacing: 1px; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .nav-links { display: flex; gap: 1.8rem; flex-wrap: wrap; align-items: center; }
+    .nav-links a { color: #cbd5e1; text-decoration: none; font-weight: 500; padding: 0.5rem 0.9rem; border-radius: 10px; transition: 0.2s; display: flex; align-items: center; gap: 6px; }
+    .nav-links a:hover { background: #334155; color: white; }
+    .active-link { background: #fbbf24 !important; color: #0f172a !important; font-weight: bold; }
+    .main-layout { display: flex; flex: 1; margin: 0 1.5rem 1.5rem; gap: 1.5rem; flex-wrap: wrap; align-items: stretch; }
+    .content-area { flex: 0.4; min-width: 220px; max-width: 300px; background: #1e293b; border-radius: 24px; padding: 1.2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.5); border: 1px solid #334155; display: flex; flex-direction: column; }
+    .card-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.8rem; overflow-y: auto; }
+    .feature-card { background: #0f172a; border-radius: 14px; padding: 0.8rem; display: flex; align-items: center; gap: 10px; transition: 0.2s; border: 1px solid #334155; cursor: pointer; }
+    .feature-card i { font-size: 1.3rem; color: #fbbf24; }
+    .feature-card h4 { color: #f1f5f9; margin-bottom: 0.1rem; font-size: 0.9rem; }
+    .feature-card p { color: #94a3b8; font-size: 0.75rem; }
+    .feature-card:hover { background: #1e293b; border-color: #fbbf24; }
+    .chatbot-section { flex: 3; min-width: 500px; background: #1e293b; border-radius: 24px; box-shadow: 0 8px 28px rgba(0,0,0,0.6); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #334155; }
+    .chat-header { background: #0f172a; color: #fbbf24; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-weight: bold; font-size: 1.3rem; border-bottom: 1px solid #334155; }
+    .chat-header-left { display: flex; align-items: center; gap: 10px; }
+    .chat-header-left i { font-size: 1.6rem; }
+    .status-badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.7rem; font-weight: normal; }
+    .status-online { background: #10b981; color: white; }
+    .header-quick-buttons { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+    .header-quick-btn { background: #1e293b; color: #fbbf24; border: 1px solid #fbbf24; padding: 0.4rem 0.8rem; border-radius: 18px; font-size: 0.75rem; cursor: pointer; transition: 0.2s; white-space: nowrap; font-weight: 500; }
+    .header-quick-btn:hover { background: #fbbf24; color: #0f172a; font-weight: bold; transform: scale(1.05); }
+    .header-category-label { color: #94a3b8; font-size: 0.7rem; font-weight: bold; margin: 0 0.2rem; }
+    .chat-messages { flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem; background: #0b1120; min-height: 400px; max-height: 70vh; }
+    .message { display: flex; gap: 10px; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .bot-msg { align-self: flex-start; }
+    .user-msg { align-self: flex-end; flex-direction: row-reverse; }
+    .msg-bubble { padding: 0.9rem 1.3rem; border-radius: 20px; max-width: 80%; background: #334155; color: #e2e8f0; font-size: 1rem; line-height: 1.8; white-space: pre-wrap; word-wrap: break-word; }
+    .user-msg .msg-bubble { background: #fbbf24; color: #0f172a; font-weight: 500; }
+    .msg-bubble strong { color: #fbbf24; }
+    .msg-bubble em { color: #fcd34d; font-style: italic; }
+    .typing-indicator { display: flex; gap: 4px; padding: 0.9rem 1.3rem; align-self: flex-start; }
+    .typing-dot { width: 8px; height: 8px; background: #fbbf24; border-radius: 50%; animation: typing 1.4s infinite; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing { 0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); } 30% { opacity: 1; transform: scale(1); } }
+    .chat-input-area { display: flex; padding: 1rem; border-top: 1px solid #334155; background: #1e293b; gap: 10px; }
+    .chat-input-area input { flex: 1; padding: 0.9rem 1.2rem; border-radius: 30px; border: 1px solid #475569; background: #0f172a; color: #e2e8f0; outline: none; font-size: 1rem; }
+    .chat-input-area input::placeholder { color: #64748b; font-size: 0.95rem; }
+    .chat-input-area input:disabled { opacity: 0.5; }
+    .chat-input-area button { background: #fbbf24; color: #0f172a; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 1.2rem; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
+    .chat-input-area button:hover { background: #f59e0b; transform: scale(1.1); }
+    .chat-input-area button:disabled { opacity: 0.5; cursor: not-allowed; }
+    footer { text-align: center; color: #64748b; margin: 0.5rem 0 1rem; font-size: 0.8rem; }
+    @media (max-width: 900px) { .main-layout { flex-direction: column; } .content-area { max-width: 100%; flex: 1; } .chatbot-section { min-width: auto; flex: 3; } .chat-header { flex-direction: column; align-items: flex-start; } }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="logo-area">
+      <i class="fas fa-pen-fancy logo-icon"></i>
+      <span class="logo-text">Pen</span>
+    </div>
+    <div class="nav-links">
+      <a href="#" id="navCourses" class="active-link"><i class="fas fa-book-open"></i> الكورسات</a>
+      <a href="#" id="navMinistry"><i class="fas fa-university"></i> وزارة التربية والتعليم</a>
+    </div>
+  </header>
+
+  <div class="main-layout">
+    <section class="content-area" id="contentDisplay">
+      <h3 style="color:#fbbf24; margin-bottom:0.8rem; font-size:1rem;"><i class="fas fa-star"></i> المحتوى</h3>
+      <div id="dynamicCards" class="card-grid">
+        <div class="feature-card"><i class="fas fa-book-open"></i><div><h4>أساسيات البرمجة</h4><p>كورس بايثون للمبتدئين</p></div></div>
+        <div class="feature-card"><i class="fas fa-calculator"></i><div><h4>الرياضيات المتقدمة</h4><p>تفاضل وتكامل</p></div></div>
+        <div class="feature-card"><i class="fas fa-language"></i><div><h4>اللغة الإنجليزية</h4><p>محادثة وقواعد</p></div></div>
+        <div class="feature-card"><i class="fas fa-atom"></i><div><h4>الفيزياء الحديثة</h4><p>الكهرباء والمغناطيسية</p></div></div>
+        <div class="feature-card"><i class="fas fa-landmark"></i><div><h4>التاريخ العالمي</h4><p>الحضارات القديمة</p></div></div>
+      </div>
+    </section>
+
+    <div class="chatbot-section">
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <i class="fas fa-robot"></i>
+          <span>المساعد Pen</span>
+          <span id="apiStatus" class="status-badge status-online">متصل</span>
+        </div>
+        <div class="header-quick-buttons" id="headerQuickButtons">
+          <span class="header-category-label">📝</span>
+          <button class="header-quick-btn" data-action="امتحان">أهم الأسئلة</button>
+          <button class="header-quick-btn" data-action="امتحان سهل">سهل</button>
+          <button class="header-quick-btn" data-action="امتحان متوسط">متوسط</button>
+          <button class="header-quick-btn" data-action="امتحان صعب">صعب</button>
+          
+          <span class="header-category-label">🎯</span>
+          <button class="header-quick-btn" data-action="اختبرني">اختبرني</button>
+          <button class="header-quick-btn" data-action="اختبرني في البلاغة">البلاغة</button>
+          
+          <span class="header-category-label">📊</span>
+          <button class="header-quick-btn" data-action="خطة التركيز">خطة التركيز</button>
+          <button class="header-quick-btn" data-action="مستوايا">مستوايا</button>
+          
+          <span class="header-category-label">📚</span>
+          <button class="header-quick-btn" data-action="شرح">شرح</button>
+          
+          <span class="header-category-label">💡</span>
+          <button class="header-quick-btn" data-action="اشرحلي">اشرحلي</button>
+          <button class="header-quick-btn" data-action="فسر">فسر</button>
+          <button class="header-quick-btn" data-action="قارن">قارن</button>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot-msg">
+          <div class="msg-bubble">👋 مرحباً! أنا مساعدك الذكي في منصة Pen.<br><br>📊 <strong>""" + str(len(ALL_QUESTIONS)) + """ سؤال</strong> | <strong>""" + str(len(MCQ_QUESTIONS)) + """ MCQ</strong> جاهزين<br><br>اختر من الأزرار في الأعلى أو اكتب سؤالك مباشرة.</div>
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="اكتب سؤالك هنا ..." />
+        <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+  <footer>© 2025 منصة Pen - شغال على Render 🚀</footer>
+
+  <script>
+    const API_URL = '/api/webhook';
+    const CHAT_ID = 'web_user_' + Math.random().toString(36).substr(2, 9);
+    
+    const chatMessages = document.getElementById('chatMessages');
+    const userInput = document.getElementById('userInput');
+    const sendBtn = document.getElementById('sendBtn');
+    const apiStatus = document.getElementById('apiStatus');
+    let isWaitingForResponse = false;
+
+    function formatMessage(text) {
+      return text.replace(/\\*(.*?)\\*/g, '<strong>$1</strong>').replace(/\\n/g, '<br>').replace(/─+/g, '─'.repeat(25));
+    }
+
+    function addMessage(text, isUser) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'message ' + (isUser ? 'user-msg' : 'bot-msg');
+      msgDiv.innerHTML = '<div class="msg-bubble">' + formatMessage(text) + '</div>';
+      chatMessages.appendChild(msgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showTyping() {
+      const typingDiv = document.createElement('div');
+      typingDiv.className = 'message bot-msg';
+      typingDiv.id = 'typingIndicator';
+      typingDiv.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+      chatMessages.appendChild(typingDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTyping() {
+      const indicator = document.getElementById('typingIndicator');
+      if (indicator) indicator.remove();
+    }
+
+    function setInputEnabled(enabled) {
+      userInput.disabled = !enabled;
+      sendBtn.disabled = !enabled;
+      isWaitingForResponse = !enabled;
+      if (enabled) userInput.focus();
+    }
+
+    function getLocalResponse(message) {
+      const msg = message.toLowerCase().trim();
+      if (/^(اهلا|أهلا|مرحبا|السلام|هاي|هلا|سلام)/.test(msg)) {
+        return "👋 *أهلاً بيك في منصة Pen!*\\n\\n📝 *الامتحانات:*\\n• امتحان - أهم الأسئلة\\n• امتحان سهل - متوسط - صعب\\n\\n🎯 *تفاعلي:*\\n• اختبرني - امتحان تفاعلي\\n• اختبرني في البلاغة\\n\\n📊 *تحليل:*\\n• خطة التركيز\\n• مستوايا";
+      }
+      if (msg.includes('امتحان') && msg.includes('سهل')) return "📝 *امتحان سهل 🟢*\\n─────────────────────────\\n\\n*1.* ما هو تعريف المصطلح الأساسي؟\\n*2.* أكمل الفراغ\\n*3.* اختر الإجابة الصحيحة\\n\\n🟢 المستوى: *سهل*\\n💪 *ربنا معاك يا بطل*";
+      if (msg.includes('امتحان') && msg.includes('متوسط')) return "📝 *امتحان متوسط 🟡*\\n─────────────────────────\\n\\n*1.* قارن بين المفهومين\\n*2.* اشرح العبارة التالية\\n*3.* حلل النص\\n\\n🟡 المستوى: *متوسط*\\n💪 *ركز كويس*";
+      if (msg.includes('امتحان') && msg.includes('صعب')) return "📝 *امتحان صعب 🔴*\\n─────────────────────────\\n\\n*1.* ناقش بالتفصيل\\n*2.* استنتج العلاقة\\n*3.* حل المسألة المعقدة\\n\\n🔴 المستوى: *صعب*\\n💪 *للمتميزين فقط*";
+      if (msg.includes('امتحان')) return "📝 *أهم الأسئلة المتوقعة*\\n─────────────────────────\\n\\n*1.* 📝 سؤال عن المفاهيم الأساسية\\n*2.* 🔤 سؤال اختيار من متعدد\\n*3.* ✍️ سؤال مقالي تحليلي\\n\\n💪 *ربنا معاك يا بطل*";
+      if (msg.includes('اختبرني')) return "🧠 *سؤال 1 من 5*\\n\\n*س1:* أي من الخيارات التالية يمثل الخاصية الأساسية للنص الأدبي؟\\n\\n1️⃣ الوضوح المباشر\\n2️⃣ التعبير عن المشاعر\\n3️⃣ استخدام الأرقام\\n4️⃣ الحياد التام\\n\\n📝 *ابعت رقم الإجابة (1-4)* 👇";
+      if (msg.includes('خطة') || msg.includes('تركيز') || msg.includes('مستوايا') || msg.includes('مستوى')) return "📊 *تحليل المستوى*\\n─────────────────────────\\n\\n📌 *نقاط القوة:*\\n   ✅ الفهم: 85%\\n   ✅ التطبيق: 78%\\n\\n⚠️ *يحتاج تحسين:*\\n   ⚠️ التحليل: 60%\\n   ⚠️ الاستنتاج: 55%";
+      return "📌 *جرب تكتب:*\\n• `امتحان` - أسئلة متوقعة\\n• `اختبرني` - امتحان تفاعلي\\n• `شرح [الدرس]` - شرح\\n• `خطة التركيز` - أهم الموضوعات";
+    }
+
+    async function sendMessage(text) {
+      if (!text || isWaitingForResponse) return;
+      addMessage(text, true);
+      userInput.value = '';
+      setInputEnabled(false);
+      showTyping();
+      
+      let reply = null;
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ payload: { from: CHAT_ID, body: text } }),
+          signal: controller.signal
+        });
+        clearTimeout(timeoutId);
+        const data = await response.json();
+        if (data.ok && data.reply) reply = data.reply;
+      } catch (error) {
+        console.log('API offline, using local');
+      }
+      
+      if (!reply) reply = getLocalResponse(text);
+      
+      setTimeout(() => {
+        removeTyping();
+        addMessage(reply, false);
+        setInputEnabled(true);
+      }, 600);
+    }
+
+    sendBtn.addEventListener('click', () => sendMessage(userInput.value.trim()));
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') sendMessage(userInput.value.trim());
+    });
+
+    document.querySelectorAll('.header-quick-btn').forEach(btn => {
+      btn.addEventListener('click', () => sendMessage(btn.dataset.action));
+    });
+
+    document.getElementById('navCourses').addEventListener('click', function(e) {
+      e.preventDefault();
+      this.classList.add('active-link');
+      document.getElementById('navMinistry').classList.remove('active-link');
+    });
+
+    document.getElementById('navMinistry').addEventListener('click', function(e) {
+      e.preventDefault();
+      this.classList.add('active-link');
+      document.getElementById('navCourses').classList.remove('active-link');
+    });
+
+    userInput.focus();
+    console.log('🚀 منصة Pen جاهزة | """ + str(len(ALL_QUESTIONS)) + """ سؤال | """ + str(len(MCQ_QUESTIONS)) + """ MCQ');
+  </script>
+</body>
+</html>"""
 
 # =========================================
 # STARTUP
