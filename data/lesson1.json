@@ -1,0 +1,116 @@
+[
+  {
+    "section_id": "arabic_guidance_model_1_section_1",
+    "section_type": "reading_comprehension",
+    "title": "اقرأ ثم أجب (السرقات العلمية)",
+    "order": 1,
+    "passage": {
+      "passage_id": "reading_passage_scientific_plagiarism",
+      "title": "السرقات العلمية",
+      "genre": "informational_article",
+      "domain": "research_ethics",
+      "source_type": "scientific_informational_text",
+      "text": "السرقة العلمية حسب تعريف المكتب الأمريكي للنزاهة البحثية هي الاستيلاء على أفكار شخص آخر، أو إجراءاته، أو نتائجه، أو كلماته دون نسبتها إليه بشكل سليم، وتشير دراسة نُشرت في عام 2015 إلى أن 1.7% من العلماء أقروا بإقدامهم على السرقة العلمية، وأن 30% منهم يعرفون زملاء لهم ارتكبوا هذا الجُرم البحثي. ويرى بعض الباحثين أن من أبرز أسباب الوقوع في هذه الجريمة ضعف الوازع الأخلاقي، والرغبة في تحقيق سبق علمي سريع، مع غياب الأمانة العلمية، وهو ما يؤدي إلى تقويض الثقة في نتائج البحث العلمي، ويُضعف من قيمة الجهد العلمي الحقيقي.",
+      "main_idea": "توضيح مفهوم السرقات العلمية وأسبابها وآثارها السلبية على البحث العلمي.",
+      "sub_ideas": [
+        "تعريف السرقات العلمية",
+        "صور السرقات العلمية",
+        "أسباب وقوع الباحثين فيها",
+        "آثارها على النزاهة والبحث العلمي"
+      ],
+      "keywords": [
+        "السرقة العلمية",
+        "النزاهة البحثية",
+        "الأمانة العلمية",
+        "الاستيلاء",
+        "البحث العلمي",
+        "الوازع الأخلاقي"
+      ],
+      "reading_skills": [
+        "contextual_vocabulary",
+        "definition_extraction",
+        "main_idea_detection",
+        "implicit_reasoning",
+        "cause_effect_analysis",
+        "critical_reading"
+      ]
+    },
+    "questions": [
+      {
+        "question_id": "arabic_guidance_model_1_q1",
+        "question_number": 1,
+        "type": "mcq",
+        "skill": "contextual_vocabulary",
+        "prompt": "ما معنى كلمة (النزاهة) في سياق الفقرة الأولى؟",
+        "choices": [
+          { "choice_id": "a", "text": "التجمل" },
+          { "choice_id": "b", "text": "الدقة" },
+          { "choice_id": "c", "text": "الأمانة" },
+          { "choice_id": "d", "text": "الثقة" }
+        ],
+        "answer_key": "c",
+        "explanation": "النزاهة في السياق تعني الأمانة والصدق في البحث والنقل العلمي.",
+        "difficulty": "easy",
+        "question_pattern": "direct_contextual_vocabulary",
+        "exam_signal": {
+          "high_frequency": true,
+          "priority_weight": 0.97,
+          "likely_to_repeat": true
+        }
+      }
+    ],
+    "section_signals": {
+      "section_weight": 0.96,
+      "difficulty_curve": "easy_to_medium",
+      "examiner_pattern": "starts_with_direct_comprehension_then_moves_to_inference",
+      "student_priority": "critical"
+    }
+  },
+  {
+    "section_id": "arabic_guidance_model_1_section_2",
+    "section_type": "reading_comprehension",
+    "title": "اقرأ ثم أجب (مما كتبه أحمد أمين)",
+    "order": 2,
+    "passage": {
+      "passage_id": "reading_passage_ahmed_amin_alhara",
+      "title": "الحارة",
+      "genre": "literary_memoir",
+      "domain": "social_studies",
+      "source_type": "literary_narrative_text",
+      "text": "كانت حارتنا تشمل ثلاث طبقات، فالغني من الطبقة العليا كان شيخًا معممًا هو نائب المحكمة العليا الشرعية وسيد الحارة...",
+      "main_idea": "وصف الكاتب للطبقات الاجتماعية في حارته والعلاقات والعادات السائدة فيها.",
+      "sub_ideas": [
+        "وصف الطبقة العليا وسيطرتها",
+        "وصف الطبقة الوسطى وأعمالها",
+        "وصف الطبقة الدنيا ومعاناتها",
+        "العلاقة الديمقراطية بين الأطفال",
+        "العلاقة العكسية بين الفقر وكثرة المواليد والوفيات",
+        "أساليب التداوي الشعبية وأثرها الصحي",
+        "تأثير الحارة في تكوين شخصية الكاتب"
+      ],
+      "keywords": [
+        "الحارة",
+        "الطبقات الاجتماعية",
+        "الفقر",
+        "الثقافة الشعبية",
+        "العدوى",
+        "الموت",
+        "الطفولة"
+      ],
+      "reading_skills": [
+        "implicit_reasoning",
+        "understanding_relationships",
+        "author_purpose_analysis",
+        "character_trait_analysis",
+        "contextual_vocabulary"
+      ]
+    },
+    "questions": [],
+    "section_signals": {
+      "section_weight": 0.96,
+      "difficulty_curve": "easy_to_medium",
+      "examiner_pattern": "moves_from_explicit_retrieval_to_implicit_analysis_and_comparison",
+      "student_priority": "critical"
+    }
+  }
+]
