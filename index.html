@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, shrink-to-fit=no">
-  <title>منصة Pen | تعليم ذكي مع شات بوت</title>
+  <title>منصة Pen | تعليم ذكي</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -21,7 +21,6 @@
       min-height: 100vh;
     }
 
-    /* الشريط العلوي */
     .top-bar {
       background: #1e293b;
       color: #f1f5f9;
@@ -91,7 +90,6 @@
       font-weight: bold;
     }
 
-    /* شريط الاختيار */
     .selector-panel {
       background: #1e293b;
       margin: 1.2rem 1.5rem;
@@ -169,7 +167,6 @@
       border: 1px dashed #475569;
     }
 
-    /* التخطيط الرئيسي - الشات أكبر بكثير */
     .main-layout {
       display: flex;
       flex: 1;
@@ -242,7 +239,6 @@
       font-size: 0.85rem;
     }
 
-    /* الشات بوت - كبير جداً */
     .chatbot-section {
       flex: 3;
       min-width: 500px;
@@ -279,7 +275,24 @@
       font-size: 1.6rem;
     }
 
-    /* أزرار التفاعل السريع في الهيدر */
+    .status-badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: normal;
+    }
+
+    .status-online {
+      background: #10b981;
+      color: white;
+    }
+
+    .status-offline {
+      background: #ef4444;
+      color: white;
+    }
+
     .header-quick-buttons {
       display: flex;
       flex-wrap: wrap;
@@ -329,6 +342,12 @@
     .message {
       display: flex;
       gap: 10px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     .bot-msg {
@@ -347,13 +366,38 @@
       background: #334155;
       color: #e2e8f0;
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.8;
+      white-space: pre-wrap;
+      word-wrap: break-word;
     }
 
     .user-msg .msg-bubble {
       background: #fbbf24;
       color: #0f172a;
       font-weight: 500;
+    }
+
+    .typing-indicator {
+      display: flex;
+      gap: 4px;
+      padding: 0.9rem 1.3rem;
+      align-self: flex-start;
+    }
+
+    .typing-dot {
+      width: 8px;
+      height: 8px;
+      background: #fbbf24;
+      border-radius: 50%;
+      animation: typing 1.4s infinite;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing {
+      0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+      30% { opacity: 1; transform: scale(1); }
     }
 
     .chat-input-area {
@@ -380,6 +424,10 @@
       font-size: 0.95rem;
     }
 
+    .chat-input-area input:disabled {
+      opacity: 0.5;
+    }
+
     .chat-input-area button {
       background: #fbbf24;
       color: #0f172a;
@@ -398,6 +446,11 @@
     .chat-input-area button:hover {
       background: #f59e0b;
       transform: scale(1.1);
+    }
+
+    .chat-input-area button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
     }
 
     footer {
@@ -438,7 +491,6 @@
     </div>
   </header>
 
-  <!-- شريط اختيار الصف والفصل والمادة -->
   <div class="selector-panel" id="selectorPanel">
     <div class="select-group">
       <label><i class="fas fa-layer-group"></i> الصف الدراسي</label>
@@ -488,7 +540,6 @@
   </div>
 
   <div class="main-layout">
-    <!-- منطقة المحتوى الجانبية صغيرة -->
     <section class="content-area" id="contentDisplay">
       <h3 style="color:#fbbf24; margin-bottom:0.8rem; font-size:1rem;"><i class="fas fa-star"></i> المحتوى</h3>
       <div id="dynamicCards" class="card-grid">
@@ -497,40 +548,44 @@
       <div id="ministryExtra" style="display: none;"></div>
     </section>
 
-    <!-- الشات بوت كبير جداً -->
     <div class="chatbot-section">
       <div class="chat-header">
         <div class="chat-header-left">
           <i class="fas fa-robot"></i>
           <span>المساعد Pen</span>
+          <span id="apiStatus" class="status-badge status-offline">محلي</span>
         </div>
         <div class="header-quick-buttons" id="headerQuickButtons">
           <span class="header-category-label">📝</span>
-          <button class="header-quick-btn" data-action="exam_important">أهم الأسئلة</button>
-          <button class="header-quick-btn" data-action="exam_easy">سهل</button>
-          <button class="header-quick-btn" data-action="exam_medium">متوسط</button>
-          <button class="header-quick-btn" data-action="exam_hard">صعب</button>
+          <button class="header-quick-btn" data-action="امتحان">أهم الأسئلة</button>
+          <button class="header-quick-btn" data-action="امتحان سهل">سهل</button>
+          <button class="header-quick-btn" data-action="امتحان متوسط">متوسط</button>
+          <button class="header-quick-btn" data-action="امتحان صعب">صعب</button>
           
           <span class="header-category-label">🎯</span>
-          <button class="header-quick-btn" data-action="quiz_me">اختبرني</button>
-          <button class="header-quick-btn" data-action="quiz_balagha">البلاغة</button>
+          <button class="header-quick-btn" data-action="اختبرني">اختبرني</button>
+          <button class="header-quick-btn" data-action="اختبرني في البلاغة">البلاغة</button>
           
           <span class="header-category-label">📊</span>
-          <button class="header-quick-btn" data-action="focus_plan">خطة التركيز</button>
-          <button class="header-quick-btn" data-action="my_level">مستوايا</button>
+          <button class="header-quick-btn" data-action="خطة التركيز">خطة التركيز</button>
+          <button class="header-quick-btn" data-action="مستوايا">مستوايا</button>
           
           <span class="header-category-label">📚</span>
-          <button class="header-quick-btn" data-action="explain">شرح</button>
+          <button class="header-quick-btn" data-action="شرح">شرح</button>
           
           <span class="header-category-label">💡</span>
-          <button class="header-quick-btn" data-action="explain_more">اشرحلي</button>
-          <button class="header-quick-btn" data-action="interpret">فسر</button>
-          <button class="header-quick-btn" data-action="compare">قارن</button>
+          <button class="header-quick-btn" data-action="اشرحلي">اشرحلي</button>
+          <button class="header-quick-btn" data-action="فسر">فسر</button>
+          <button class="header-quick-btn" data-action="قارن">قارن</button>
         </div>
       </div>
       <div class="chat-messages" id="chatMessages">
         <div class="message bot-msg">
-          <div class="msg-bubble">👋 مرحباً! أنا مساعدك الذكي في منصة Pen. اختر من الأزرار في الأعلى أو اكتب سؤالك مباشرة.</div>
+          <div class="msg-bubble">👋 مرحباً! أنا مساعدك الذكي في منصة Pen.
+
+📊 *الإحصائيات:* 489 سؤال | 454 MCQ
+
+اختر من الأزرار في الأعلى أو اكتب سؤالك مباشرة.</div>
         </div>
       </div>
       <div class="chat-input-area">
@@ -539,10 +594,15 @@
       </div>
     </div>
   </div>
-  <footer>© 2025 منصة Pen - جميع الحقوق محفوظة</footer>
+  <footer>© 2025 منصة Pen - متصل بـ API على Render 🚀</footer>
 
   <script>
     (function() {
+      // ============ CONFIG ============
+      const API_URL = 'https://pen-ot9f.onrender.com/api/webhook';
+      const CHAT_ID = 'web_user_' + Math.random().toString(36).substr(2, 9);
+      
+      // ============ DOM ELEMENTS ============
       const gradeSelect = document.getElementById('gradeSelect');
       const semesterSelect = document.getElementById('semesterSelect');
       const subjectSelect = document.getElementById('subjectSelect');
@@ -554,13 +614,48 @@
       const userInput = document.getElementById('userInput');
       const sendBtn = document.getElementById('sendBtn');
       const selectorPanel = document.getElementById('selectorPanel');
-
       const navCourses = document.getElementById('navCourses');
       const navMinistry = document.getElementById('navMinistry');
+      const apiStatus = document.getElementById('apiStatus');
 
       let currentMode = 'courses';
       let currentSelection = { grade: '', semester: '', subject: '' };
+      let isWaitingForResponse = false;
+      let isApiOnline = false;
 
+      // ============ CHECK API STATUS ============
+      async function checkApiStatus() {
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 3000);
+          
+          const response = await fetch(API_URL.replace('/webhook', '/health'), {
+            signal: controller.signal
+          });
+          clearTimeout(timeoutId);
+          
+          if (response.ok) {
+            const data = await response.json();
+            isApiOnline = true;
+            apiStatus.textContent = `متصل (${data.questions} سؤال)`;
+            apiStatus.className = 'status-badge status-online';
+            console.log('✅ API Connected:', data);
+          } else {
+            throw new Error('API not healthy');
+          }
+        } catch (error) {
+          isApiOnline = false;
+          apiStatus.textContent = 'محلي';
+          apiStatus.className = 'status-badge status-offline';
+          console.log('⚠️ Using local responses');
+        }
+      }
+
+      // فحص حالة API
+      checkApiStatus();
+      setInterval(checkApiStatus, 30000);
+
+      // ============ UI FUNCTIONS ============
       function updateUIBasedOnMode() {
         if (currentMode === 'courses') {
           selectorPanel.style.display = 'none';
@@ -619,6 +714,187 @@
         updateUIBasedOnMode();
       }
 
+      // ============ CHAT FUNCTIONS ============
+      function formatMessage(text) {
+        return text
+          .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
+          .replace(/\n/g, '<br>')
+          .replace(/─+/g, '─'.repeat(25));
+      }
+
+      function addMessage(text, isUser = false) {
+        const msgDiv = document.createElement('div');
+        msgDiv.className = `message ${isUser ? 'user-msg' : 'bot-msg'}`;
+        msgDiv.innerHTML = `<div class="msg-bubble">${formatMessage(text)}</div>`;
+        chatMessages.appendChild(msgDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return msgDiv;
+      }
+
+      function showTypingIndicator() {
+        const typingDiv = document.createElement('div');
+        typingDiv.className = 'message bot-msg';
+        typingDiv.id = 'typingIndicator';
+        typingDiv.innerHTML = `
+          <div class="typing-indicator">
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+          </div>
+        `;
+        chatMessages.appendChild(typingDiv);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function removeTypingIndicator() {
+        const indicator = document.getElementById('typingIndicator');
+        if (indicator) indicator.remove();
+      }
+
+      function setInputEnabled(enabled) {
+        userInput.disabled = !enabled;
+        sendBtn.disabled = !enabled;
+        isWaitingForResponse = !enabled;
+        if (enabled) userInput.focus();
+      }
+
+      // ============ API CALL ============
+      async function sendToAPI(message) {
+        if (!isApiOnline) return null;
+        
+        try {
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 10000);
+          
+          const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              payload: {
+                from: CHAT_ID,
+                body: message
+              }
+            }),
+            signal: controller.signal
+          });
+          
+          clearTimeout(timeoutId);
+          
+          const data = await response.json();
+          console.log('📩 API Response:', data);
+          
+          if (data.ok && data.reply) {
+            return data.reply;
+          }
+          
+          return null;
+        } catch (error) {
+          console.log('⚠️ API Error:', error.message);
+          isApiOnline = false;
+          apiStatus.textContent = 'محلي';
+          apiStatus.className = 'status-badge status-offline';
+          return null;
+        }
+      }
+
+      // ============ LOCAL FALLBACK ============
+      function getLocalResponse(message) {
+        const msg = message.toLowerCase().trim();
+        
+        if (/^(اهلا|أهلا|مرحبا|السلام|هاي|هلا|سلام)/.test(msg)) {
+          return `👋 *أهلاً بيك في منصة Pen!*\n\n📝 *الامتحانات:*\n• امتحان - أهم الأسئلة\n• امتحان سهل - متوسط - صعب\n\n🎯 *تفاعلي:*\n• اختبرني - امتحان تفاعلي\n• اختبرني في البلاغة\n\n📊 *تحليل:*\n• خطة التركيز\n• مستوايا`;
+        }
+        
+        if (msg.includes('امتحان') && msg.includes('سهل')) {
+          return `📝 *امتحان سهل 🟢*\n─────────────────────────\n\n*1.* ما هو تعريف المصطلح الأساسي؟\n*2.* أكمل الفراغ\n*3.* اختر الإجابة الصحيحة\n\n🟢 المستوى: *سهل*\n💪 *ربنا معاك يا بطل*`;
+        }
+        
+        if (msg.includes('امتحان') && msg.includes('متوسط')) {
+          return `📝 *امتحان متوسط 🟡*\n─────────────────────────\n\n*1.* قارن بين المفهومين\n*2.* اشرح العبارة التالية\n*3.* حلل النص\n\n🟡 المستوى: *متوسط*\n💪 *ركز كويس*`;
+        }
+        
+        if (msg.includes('امتحان') && msg.includes('صعب')) {
+          return `📝 *امتحان صعب 🔴*\n─────────────────────────\n\n*1.* ناقش بالتفصيل\n*2.* استنتج العلاقة\n*3.* حل المسألة المعقدة\n\n🔴 المستوى: *صعب*\n💪 *للمتميزين فقط*`;
+        }
+        
+        if (msg.includes('امتحان')) {
+          return `📝 *أهم الأسئلة المتوقعة*\n─────────────────────────\n\n*1.* 📝 سؤال عن المفاهيم الأساسية\n*2.* 🔤 سؤال اختيار من متعدد\n*3.* ✍️ سؤال مقالي تحليلي\n\n💪 *ربنا معاك يا بطل*`;
+        }
+        
+        if (msg.includes('اختبرني')) {
+          return `🧠 *سؤال 1 من 5*\n\n*س1:* أي من الخيارات التالية يمثل الخاصية الأساسية للنص الأدبي؟\n\n1️⃣ الوضوح المباشر\n2️⃣ التعبير عن المشاعر\n3️⃣ استخدام الأرقام\n4️⃣ الحياد التام\n\n📝 *ابعت رقم الإجابة (1-4)* 👇`;
+        }
+        
+        if (msg.includes('خطة') || msg.includes('تركيز') || msg.includes('مستوايا') || msg.includes('مستوى')) {
+          return `📊 *تحليل المستوى*\n─────────────────────────\n\n📌 *نقاط القوة:*\n   ✅ الفهم: 85%\n   ✅ التطبيق: 78%\n\n⚠️ *يحتاج تحسين:*\n   ⚠️ التحليل: 60%\n   ⚠️ الاستنتاج: 55%`;
+        }
+        
+        return `📌 *جرب تكتب:*\n• \`امتحان\` - أسئلة متوقعة\n• \`اختبرني\` - امتحان تفاعلي\n• \`شرح [الدرس]\` - شرح\n• \`خطة التركيز\` - أهم الموضوعات`;
+      }
+
+      // ============ SEND MESSAGE ============
+      async function handleChatSend() {
+        const text = userInput.value.trim();
+        if (!text || isWaitingForResponse) return;
+        
+        addMessage(text, true);
+        userInput.value = '';
+        
+        setInputEnabled(false);
+        showTypingIndicator();
+        
+        let reply = null;
+        
+        // نجرب API الأول
+        if (isApiOnline) {
+          reply = await sendToAPI(text);
+        }
+        
+        // لو API مش شغال، نستخدم المحلي
+        if (!reply) {
+          reply = getLocalResponse(text);
+        }
+        
+        setTimeout(() => {
+          removeTypingIndicator();
+          if (reply) addMessage(reply, false);
+          setInputEnabled(true);
+        }, 600);
+      }
+
+      // ============ QUICK ACTIONS ============
+      async function handleQuickAction(action) {
+        if (isWaitingForResponse) return;
+        
+        addMessage(action, true);
+        setInputEnabled(false);
+        showTypingIndicator();
+        
+        let reply = null;
+        
+        if (isApiOnline) {
+          reply = await sendToAPI(action);
+        }
+        
+        if (!reply) {
+          reply = getLocalResponse(action);
+        }
+        
+        setTimeout(() => {
+          removeTypingIndicator();
+          if (reply) addMessage(reply, false);
+          setInputEnabled(true);
+        }, 600);
+      }
+
+      // ============ EVENT LISTENERS ============
+      sendBtn.addEventListener('click', handleChatSend);
+      userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') handleChatSend();
+      });
+
       navCourses.addEventListener('click', (e) => {
         e.preventDefault();
         setActiveNav('courses');
@@ -631,99 +907,21 @@
 
       applyBtn.addEventListener('click', applySelectionFromPanel);
 
-      // شات بوت
-      function addMessage(text, isUser = false) {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${isUser ? 'user-msg' : 'bot-msg'}`;
-        msgDiv.innerHTML = `<div class="msg-bubble">${text}</div>`;
-        chatMessages.appendChild(msgDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }
-
-      function handleQuickAction(action) {
-        let response = '';
-        switch(action) {
-          case 'exam_important':
-            response = '📝 <strong>إليك أهم الأسئلة المتوقعة في الامتحان:</strong>\n\n1. سؤال عن المفاهيم الأساسية\n2. سؤال تطبيقي\n3. سؤال تحليلي\n\nهل تريد البدء في حل هذه الأسئلة؟';
-            break;
-          case 'exam_easy':
-            response = '📝 <strong>امتحان سهل:</strong>\n\n1. ما هو تعريف ...؟\n2. أكمل الفراغ\n3. اختر الإجابة الصحيحة\n\nمستوى الأسئلة بسيط ومناسب للمراجعة السريعة.';
-            break;
-          case 'exam_medium':
-            response = '📝 <strong>امتحان متوسط:</strong>\n\n1. قارن بين ...\n2. اشرح مع الأمثلة\n3. حلل العبارة التالية\n\nأسئلة متوسطة الصعوبة لاختبار الفهم.';
-            break;
-          case 'exam_hard':
-            response = '📝 <strong>امتحان صعب:</strong>\n\n1. ناقش بالتفصيل\n2. استنتج العلاقة بين\n3. حل المسألة المعقدة\n\nأسئلة متقدمة للطلاب المتميزين.';
-            break;
-          case 'quiz_me':
-            response = '🎯 <strong>امتحان تفاعلي MCQ:</strong>\n\nس1: ما هي عاصمة فرنسا؟\nأ) لندن\nب) باريس\nج) برلين\nد) روما\n\nاختر الإجابة الصحيحة!';
-            break;
-          case 'quiz_balagha':
-            response = '🎯 <strong>اختبار البلاغة:</strong>\n\nس1: "العلم نور" هذا التعبير:\nأ) تشبيه\nب) استعارة\nج) كناية\nد) مجاز مرسل';
-            break;
-          case 'focus_plan':
-            response = '📊 <strong>خطة التركيز - أهم الموضوعات:</strong>\n\n1. المفاهيم الأساسية (30%)\n2. التطبيقات العملية (25%)\n3. التحليل والاستنتاج (20%)\n4. المسائل الحسابية (15%)\n5. المراجعة النهائية (10%)';
-            break;
-          case 'my_level':
-            response = '📊 <strong>تحليل مستواك 📈:</strong>\n\nبناءً على أدائك:\n- الفهم: 85% ✅\n- التطبيق: 70% ⚠️\n- التحليل: 60% 🔄\n\nنوصي بالتركيز على تمارين التحليل.';
-            break;
-          case 'explain':
-            response = '📚 <strong>شرح الدرس:</strong>\n\nما هو الدرس الذي تريد شرحه؟ يمكنك كتابة اسم الدرس أو الموضوع.';
-            break;
-          case 'explain_more':
-            response = '💡 <strong>سأشرح لك بالتفصيل.</strong> ما الموضوع الذي تريد شرحاً موسعاً فيه؟';
-            break;
-          case 'interpret':
-            response = '💡 <strong>سأفسر لك.</strong> ما النص أو المعلومة التي تريد تفسيرها؟';
-            break;
-          case 'compare':
-            response = '💡 <strong>سأقارن لك.</strong> ما العنصران أو المفهومان اللذان تريد المقارنة بينهما؟';
-            break;
-          default:
-            response = 'كيف يمكنني مساعدتك؟';
-        }
-        addMessage(response, false);
-      }
-
-      function botReply(userMsg) {
-        const msg = userMsg.toLowerCase();
-        if (msg.includes('كورس')) return 'الكورسات المتاحة: برمجة، رياضيات، إنجليزي، فيزياء. اضغط على قسم الكورسات.';
-        if (msg.includes('وزارة')) return 'معلومات الوزارة تظهر بعد اختيار الصف والمادة.';
-        if (msg.includes('pen')) return 'منصة Pen هي منصتك التعليمية الذكية!';
-        if (msg.includes('شرح')) return 'ما الدرس الذي تريد شرحه؟';
-        if (msg.includes('امتحان')) return 'اختر نوع الامتحان من الأزرار في الأعلى 📝';
-        return 'أنا هنا لمساعدتك. استخدم الأزرار في الأعلى أو اكتب سؤالك.';
-      }
-
-      function handleChatSend() {
-        const text = userInput.value.trim();
-        if (!text) return;
-        addMessage(text, true);
-        userInput.value = '';
-        setTimeout(() => {
-          const reply = botReply(text);
-          addMessage(reply, false);
-        }, 400);
-      }
-
-      sendBtn.addEventListener('click', handleChatSend);
-      userInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') handleChatSend();
-      });
-
-      // تفعيل أزرار الهيدر
       const headerButtons = document.getElementById('headerQuickButtons');
       if (headerButtons) {
         headerButtons.querySelectorAll('.header-quick-btn').forEach(btn => {
           btn.addEventListener('click', function() {
-            const action = this.dataset.action;
-            handleQuickAction(action);
+            handleQuickAction(this.dataset.action);
           });
         });
       }
 
-      // البدء بوضع الكورسات
+      // ============ INIT ============
       setActiveNav('courses');
+      userInput.focus();
+      
+      console.log('🚀 منصة Pen جاهزة | API:', API_URL);
+      console.log('📊 489 سؤال | 454 MCQ محملين من 10 ملفات');
     })();
   </script>
 </body>
