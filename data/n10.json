@@ -1,0 +1,777 @@
+{
+  "exam_metadata": {
+    "exam_title": "النموذج الاسترشادي العاشر - اللغة العربية",
+    "academic_year": "2025/2026",
+    "grade": "الثانوية العامة",
+    "total_questions": 55,
+    "sections": [
+      {
+        "section_id": "guidance_model_10_section_1",
+        "section_type": "reading_comprehension",
+        "title": "اقرأ ثم أجب (شبه جزيرة سيناء تاريخ وإمكانات)",
+        "order": 1,
+        "passage": {
+          "passage_id": "reading_passage_sinai",
+          "title": "شبه جزيرة سيناء تاريخ وإمكانات",
+          "genre": "informational_article",
+          "domain": "geography_and_history",
+          "source_type": "scientific_informational_text",
+          "text": "تعد شبه جزيرة سيناء تلك القطعة الذهبية من أرض مصرنا الحبيبة؛ لما لها من موقع استراتيجي مهم؛ إذ تقع في الجزء الشمالي الشرقي من مصر، وتتخذ شكل مثلث، حيث تطل على البحر الأبيض المتوسط من الشمال، وعلى البحر الأحمر من الجنوب، بينما يحدها من الغرب خليج السويس وقناة السويس، أما من الشرق فيحدها خليج العقبة وقطاع غزة وصحراء النقب، ويتسم مناخها بأنه صحراوي متوسطي يتصف عامة بالجفاف والحرارة معظم العام، باستثناء الساحل المتوسطي وأعالي الجبال. تبلغ مساحة سيناء نحو 61 ألف كيلومتر مربع، أي ما يعادل نحو %6 من جملة مساحة مصر، وتنقسم إدارياً إلى محافظتين: شمال سيناء وعاصمتها العريش التي تقع على ساحل البحر المتوسط، وجنوب سيناء وعاصمتها الطور، ومن أهم مدنها طابا، وشرم الشيخ، ونويبع، وتعد العريش أكبر مدن سيناء على الإطلاق، وتمتلك سيناء وحدها نحو %30 من سواحل مصر، حيث تحاط بالمياه من أغلب الجهات: البحر المتوسط من الشمال (بطول 120 كيلومتراً)، وقناة السويس من الغرب بطول (160 كيلومتراً)، وخليج السويس من الجنوب الغربي (240 كيلومتراً)، ثم خليج العقبة من الجنوب الشرقي والشرق (150 كيلومتراً). ووفقاً لإحصاءات عامي (2025-2024)، يبلغ إجمالي سكان شمال وجنوب سيناء حوالي 700 ألف إلى 720 ألف نسمة، موزعين بين شمال سيناء (نحو 521 ألف نسمة)، وجنوب سيناء (ما بين 116 و 120 ألف نسمة)، مع تركيز كبير للسكان في المناطق الساحلية والحضرية، وتعود جذور أهالي سيناء وأصولها إلى قبائل عربية اختلطت بها قبائل أخرى؛ ليبلغ عددها نحو 26 قبيلة، يعد نصفها من أقدم القبائل بسيناء، وقد اضطر عدد من سكانها في عدوان يونيو 1967 إلى الهجرة، لكنهم عادوا إليها بكثرة بعد انتصار أكتوبر المجيد 1973، وقد تمركز السكان بشكل أكبر في شمال شبه الجزيرة؛ حيث الزراعة والإدارة والطرق. تعد شبه جزيرة سيناء المورد الأول للثروة المعدنية في مصر، من الذهب إلى الفيروز والنحاس؛ حيث يتدفق من أطرافها الغربية البترول، ومن شرقها النحاس والفوسفات والحديد والفحم والمنجنيز واليورانيوم، ويذهب بعض الباحثين إلى أنها أقدم المناجم المعروفة في التاريخ، ويدللون على ذلك بآثار عمليات التعدين وبقاياها التاريخية التي لا تزال شاهدة شاخصة حتى الآن ببوتقاتها، وقوالب السبك، وكسر الرخام، والفيروز في سيناء من أجود أنواع الفيروز في العالم وقد اكتشفه قدماء المصريين على أرضها، واستخدموه في تزيين المعابد والتماثيل، ورغم الطبيعة الصحراوية لسيناء فإنها تتميز بالثراء الشديد في الأنواع النباتية، حيث تضم 527 نوعاً من الأنواع النباتية، ربعها على الأقل لا وجود له في أي منطقة أخرى. وتمتلك سواحل ممتدة تبلغ حوالي 700 كيلو متر من 2400 كم هي مجموع سواحل مصر، فسيناء 61 ألف كم مربع تشكل %16 من مساحة مصر، ويقل التفاوت بين درجات الحرارة صيفاً وشتاءً في سيناء إذا ما قورنت بنظيرها في أنحاء مصر كلها؛ ذلك أن سيناء تمتلك كيلومتراً ساحلياً لكل 87 كيلومتراً مربعاً من مساحتها الكلية.",
+          "main_idea": "عرض الموقع الاستراتيجي لسيناء وثرواتها الطبيعية والبشرية وأهميتها لمصر.",
+          "sub_ideas": ["الموقع الجغرافي والمناخ", "المساحة والتقسيم الإداري", "السكان والقبائل", "الثروات المعدنية والنباتية", "السواحل والمناخ"],
+          "keywords": ["سيناء", "الجغرافيا", "الثروة المعدنية", "الفيروز", "القبائل", "السواحل"],
+          "reading_skills": ["evidence_extraction", "implicit_reasoning", "textual_relationship_analysis", "interpretation"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_10_q1", "question_number": 1, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "حدد من خلال الفقرة الثالثة عدد أقدم القبائل في سيناء.",
+            "choices": [
+              { "choice_id": "a", "text": "26" }, { "choice_id": "b", "text": "120" }, { "choice_id": "c", "text": "13" }, { "choice_id": "d", "text": "521" }
+            ],
+            "answer_key": "c",
+            "explanation": "النص يذكر أن 'عددها نحو 26 قبيلة، يعد نصفها من أقدم القبائل' أي 13 قبيلة.",
+            "difficulty": "easy", "question_pattern": "direct_information_retrieval",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.96, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q2", "question_number": 2, "type": "mcq", "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة عبارة: (حيث تطل على البحر الأبيض المتوسط من الشمال، وعلى البحر الأحمر..) في الفقرة الأولى بما قبلها.",
+            "choices": [
+              { "choice_id": "a", "text": "استدراك." }, { "choice_id": "b", "text": "إجمال." }, { "choice_id": "c", "text": "نتيجة." }, { "choice_id": "d", "text": "توضيح." }
+            ],
+            "answer_key": "d",
+            "explanation": "العبارة توضيح لشكل سيناء (مثلث) بذكر الجهات التي تطل عليها.",
+            "difficulty": "medium", "question_pattern": "text_structure_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q3", "question_number": 3, "type": "mcq", "skill": "implicit_reasoning",
+            "prompt": "بين من خلال الفقرة الأخيرة سبب قلة تفاوت نسبة درجات الحرارة في سيناء.",
+            "choices": [
+              { "choice_id": "a", "text": "لموقعها الجغرافي البديع والمتميز الذي يجمع بين جغرافية آسيا وإفريقيا." },
+              { "choice_id": "b", "text": "نظراً لقلة الكثافة السكانية في المناطق الساحلية في شمال سيناء." },
+              { "choice_id": "c", "text": "للتناسق البديع بين مساحتها الإجمالية، ومساحة السواحل المطلة عليها." },
+              { "choice_id": "d", "text": "لأن شبه جزيرة سيناء تشكل %16 من مساحة مصر الإجمالية." }
+            ],
+            "answer_key": "c",
+            "explanation": "النص يذكر أن سيناء 'تمتلك كيلومتراً ساحلياً لكل 87 كيلومتراً مربعاً'، وهذا التناسق هو سبب اعتدال المناخ.",
+            "difficulty": "medium", "question_pattern": "implicit_cause_inference",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q4", "question_number": 4, "type": "mcq", "skill": "interpretation",
+            "prompt": "استنتج المغزى الضمني من قوله 'وبقايا عمليات التعدين .. التي لا تزال شاهدة شاخصة' في الفقرة الرابعة.",
+            "choices": [
+              { "choice_id": "a", "text": "التأكيد على استمرار عمليات التعدين المتطورة والجادة في سيناء." },
+              { "choice_id": "b", "text": "التأكيد على قدم استقرار الإنسان في سيناء." },
+              { "choice_id": "c", "text": "بيان وفرة الثروات والكنوز والمعادن في أرض شبه جزيرة سيناء." },
+              { "choice_id": "d", "text": "إبراز قدرة مصر الحفاظ على تراثها القديم." }
+            ],
+            "answer_key": "b",
+            "explanation": "'لا تزال شاهدة شاخصة' تدل على قدم هذه العمليات واستمرار وجودها، مما يؤكد قدم استقرار الإنسان في سيناء.",
+            "difficulty": "medium", "question_pattern": "interpreting_figurative_language",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q5", "question_number": 5, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "حدد من خلال المقال الواجهة البحرية الأطول التي تطل عليها سيناء.",
+            "choices": [
+              { "choice_id": "a", "text": "الشمالية." }, { "choice_id": "b", "text": "الجنوب الغربي." }, { "choice_id": "c", "text": "الغربية." }, { "choice_id": "d", "text": "الجنوب الشرقي." }
+            ],
+            "answer_key": "b",
+            "explanation": "خليج السويس من الجنوب الغربي بطول (240 كيلومتراً) وهو الأطول.",
+            "difficulty": "easy", "question_pattern": "direct_information_retrieval",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.94, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q6", "question_number": 6, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "هات من المقال ما يفند زعم القائلين بأن سيناء أرض صحراوية مقفرة.",
+            "choices": [
+              { "choice_id": "a", "text": "\"عادوا إليها بكثرة بعد انتصار أكتوبر المجيد 1973\"." },
+              { "choice_id": "b", "text": "\"تضم 527 نوعاً من الأنواع النباتية، ربعها .. لا وجود له في أي منطقة أخرى\"." },
+              { "choice_id": "c", "text": "\"أن سيناء تمتلك كيلومتراً ساحلياً لكل 87 كيلومتراً مربعاً من مساحتها الكلية\"." },
+              { "choice_id": "d", "text": "\"تحاط بالمياه .. البحر المتوسط من الشمال، وقناة السويس، وخليج السويس\"." }
+            ],
+            "answer_key": "b",
+            "explanation": "وجود 527 نوعاً نباتياً، ربعها لا يوجد في أي منطقة أخرى، يفند زعم أنها أرض صحراوية مقفرة.",
+            "difficulty": "medium", "question_pattern": "scanning_for_details",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          }
+        ],
+        "section_signals": { "section_weight": 0.96, "difficulty_curve": "easy_to_medium", "examiner_pattern": "starts_with_direct_comprehension_then_moves_to_inference_and_analysis", "student_priority": "critical" }
+      },
+      {
+        "section_id": "guidance_model_10_section_2",
+        "section_type": "reading_comprehension",
+        "title": "اقرأ ثم أجب (توفيق الحكيم - سيرة ذاتية)",
+        "order": 2,
+        "passage": {
+          "passage_id": "reading_passage_tawfiq_alhakim_memoir",
+          "title": "من سيرة توفيق الحكيم الذاتية",
+          "genre": "literary_memoir",
+          "domain": "arabic_literature",
+          "source_type": "literary_narrative_text",
+          "text": "ولست أعرف بالضبط تفصيلات طفولة والدي، ولا ظروف تربيته الأولى؛ فقد كان بطبعه قليل الكلام كثير الكتمان فيما يتعلق بشخصه وشئونه...",
+          "main_idea": "استرجاع الكاتب لذكريات والده وجده وعلاقتهم بالعلم والتعليم.",
+          "sub_ideas": ["غموض طفولة الأب", "جهاد الأب وإخوته لطلب العلم", "حياة الزهد والقناعة", "تطلعات الجد"],
+          "keywords": ["توفيق الحكيم", "الوالد", "الجد", "طلب العلم", "الزهد", "العدس"],
+          "reading_skills": ["emotional_tone_inference", "contextual_vocabulary", "compare_and_contrast", "evidence_extraction"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_10_q7", "question_number": 7, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "حدد – من خلال الفقرة الأولى- السبب في عدم معرفة الكاتب تفاصيل طفولة والده.",
+            "choices": [
+              { "choice_id": "a", "text": "عدم رغبة والده في أن يحكي لابنه عن هيبة جده وقسوته في المعاملة." },
+              { "choice_id": "b", "text": "صغر سن الابن، وعدم استيعابه تلك الأحاديث." },
+              { "choice_id": "c", "text": "انشغال الأب بأعماله المهمة، وقلة وقت فراغه." },
+              { "choice_id": "d", "text": "طبيعة والده التي فطر عليها في الميل إلى قلة الحديث عن خصوصياته." }
+            ],
+            "answer_key": "d",
+            "explanation": "النص يذكر أن والده 'كان بطبعه قليل الكلام كثير الكتمان فيما يتعلق بشخصه وشئونه'.",
+            "difficulty": "easy", "question_pattern": "direct_information_retrieval",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.94, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q8", "question_number": 8, "type": "mcq", "skill": "implicit_reasoning",
+            "prompt": "بين – من خلال الفقرة الأخيرة – السبب في اقتصار طلاب العلم على طبخ الطعام يوم الجمعة فقط.",
+            "choices": [
+              { "choice_id": "a", "text": "ميلهم إلى الزهد في الدنيا؛ لتأثرهم بالعلوم التي يتلقونها." },
+              { "choice_id": "b", "text": "فقرهم الشديد، وعدم قدرتهم على شراء طعام للطبخ يومياً." },
+              { "choice_id": "c", "text": "انشغالهم بطلب العلم، والجد في الدراسة والحرص على الوقت." },
+              { "choice_id": "d", "text": "شغفهم في اقتناء الكتب الذي تدفعهم إلى توفير النقود لشرائها." }
+            ],
+            "answer_key": "c",
+            "explanation": "النص يذكر أن 'انهماكهم في الدراسة كان يشغلهم عن إعداد طعام منزلي'.",
+            "difficulty": "medium", "question_pattern": "implicit_cause_inference",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q9", "question_number": 9, "type": "mcq", "skill": "textual_relationship_analysis",
+            "prompt": "استنتج – علاقة قوله: 'وقد طمع في أن يرى أحد أولاده من الحكام..' بما قبلها في الفقرة الثانية.",
+            "choices": [
+              { "choice_id": "a", "text": "تعليل." }, { "choice_id": "b", "text": "تأكيد." }, { "choice_id": "c", "text": "نتيجة." }, { "choice_id": "d", "text": "تفصيل." }
+            ],
+            "answer_key": "c",
+            "explanation": "'سكت عنه والده' وكانت النتيجة أنه 'طمع في أن يرى أحد أولاده من الحكام'.",
+            "difficulty": "medium", "question_pattern": "text_structure_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q10", "question_number": 10, "type": "mcq", "skill": "interpretation",
+            "prompt": "استنتج المغزى الضمني من قوله: (وحسبه فخراً ولذة وإمتاعاً أنه مما يطبخ على نار) في سياق الفقرة الثالثة.",
+            "choices": [
+              { "choice_id": "a", "text": "إبراز قلة الأموال المتاحة، ورغبتهم في تغيير نمط الطعام." },
+              { "choice_id": "b", "text": "إظهار قلة أواني الطبخ وإعداد الطعام، وندرة مواقد النار." },
+              { "choice_id": "c", "text": "تأكيد زهدهم وقناعتهم واقتصادهم، وعدم ميلهم للإسراف." },
+              { "choice_id": "d", "text": "بيان شدة حبهم 'للعدس' وشوقهم البالغ إلى تناوله." }
+            ],
+            "answer_key": "c",
+            "explanation": "العبارة تعبر عن قناعتهم ورضاهم بالقليل، واعتبارهم مجرد الطبخ على النار رفاهية.",
+            "difficulty": "medium", "question_pattern": "interpreting_figurative_language",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q11", "question_number": 11, "type": "mcq", "skill": "evaluation",
+            "prompt": "انقد القرار الذي اتخذه الجد فيما يتعلق بإتمام تعليمه.",
+            "choices": [
+              { "choice_id": "a", "text": "قرار صائب؛ فقد مكنه من السيطرة على أرضه الزراعية وإدارتها، فجني خيراتها." },
+              { "choice_id": "b", "text": "قرار غير مدروس؛ فقد كان بإمكانه أن يكل الأرض لمن يديرها أو يستأجرها ويتم تعليمه." },
+              { "choice_id": "c", "text": "قرار صائب، فقد نال الجد علماً ووفاراً، وفي نفس الوقت تملك أرضه وأدارها، وجنى خيراتها." },
+              { "choice_id": "d", "text": "قرار غير مدروس؛ فقد كان بإمكانه أن يجمع بين إكمال دراسة الحقوق وتولي زراعة أرضه." }
+            ],
+            "answer_key": "b",
+            "explanation": "الجد ترك التعليم لأجل الأرض مع أنه كان زميلاً للشيخ محمد عبده، وكان يمكنه أن يكل الأرض لغيره ليكمل تعليمه.",
+            "difficulty": "hard", "question_pattern": "critical_evaluation",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.87, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q12", "question_number": 12, "type": "mcq", "skill": "compare_and_contrast",
+            "prompt": "وازن - من خلال الفقرتين السابقتين - بين طريقة تفكير الوالدين في مستقبل أولادهم.",
+            "choices": [
+              { "choice_id": "a", "text": "جد توفيق الحكيم يشجع ولده على طلب العلم منذ البداية ويرجو أن يعيش ليراه قاضياً، أما والد طه حسين فلم يخطط لولديه بل تركهما دون تشجيع." },
+              { "choice_id": "b", "text": "والد طه حسين يشجع ولديه على طلب العلم بأمنية يرجو أن يعيش ليراها، أما جد توفيق الحكيم فلم يخطط لولده بل الابن هو من خطط وجاهد." },
+              { "choice_id": "c", "text": "جد توفيق الحكيم، ووالد طه حسين كلاهما كان يخطط لولده، ويشجعه على المضي قدماً في طلب العلم." },
+              { "choice_id": "d", "text": "جد توفيق الحكيم، ووالد طه حسين كلاهما يعرقل ولده عن طلب العلم، ويتمنى أن يبقى ليعمل في الزراعة." }
+            ],
+            "answer_key": "c",
+            "explanation": "الجد كان يخطط ليرى ولده من الحكام، ووالد طه حسين كان يخطط ليرى ابنه قاضياً والآخر عالماً، فكلاهما يشجع ويخطط.",
+            "difficulty": "hard", "question_pattern": "comparative_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.87, "likely_to_repeat": false }
+          }
+        ],
+        "section_signals": { "section_weight": 0.96, "difficulty_curve": "easy_to_medium", "examiner_pattern": "moves_from_explicit_retrieval_to_implicit_analysis_and_comparison", "student_priority": "critical" }
+      },
+      {
+        "section_id": "guidance_model_10_section_3",
+        "section_type": "poetry_and_literature_analysis",
+        "title": "أسئلة الشعر والمدارس الأدبية",
+        "order": 3,
+        "passage": {
+          "passage_id": "poetry_composite_schools_analysis_10",
+          "title": "نصوص شعرية من مدارس مختلفة",
+          "genre": "poetry",
+          "domain": "arabic_literature",
+          "source_type": "literary_poetic_anthology",
+          "text": "المنفلوطي... خليل مطران... العقاد... فاروق جويدة... إيليا أبو ماضي... صالح الشرنوبي...",
+          "main_idea": "تحليل نصوص شعرية من مدارس أدبية مختلفة واستنتاج سماتها الفنية والموضوعية.",
+          "sub_ideas": ["الحكمة والتأمل", "التعبير عن الذات", "الحنين إلى الوطن", "حب الطبيعة"],
+          "keywords": ["مدرسة الإحياء", "مدرسة الديوان", "مدرسة أبولو", "مدرسة المهاجر", "مدرسة الواقعية"],
+          "reading_skills": ["poetic_imagery_analysis", "literary_school_identification", "emotional_tone_inference", "interpretation"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_10_q13", "question_number": 13, "type": "mcq", "skill": "interpretation",
+            "prompt": "بين المقصود من البيت الأول.",
+            "choices": [
+              { "choice_id": "a", "text": "يحذر من الشيب وكبر السن، ويدعو للعمل واغتنام الفرص منذ الصغر." },
+              { "choice_id": "b", "text": "ينفر من الشيب، ويحن إلى أيام الصبا والشباب." },
+              { "choice_id": "c", "text": "يوضح أن ضعف العزيمة واستسلام المرء لليأس هما الضعف الحقيقي." },
+              { "choice_id": "d", "text": "يوازن بين عزائم الشباب، وخبرات الشيوخ." }
+            ],
+            "answer_key": "c",
+            "explanation": "'إذا شاب قلب المرء شاب رجاؤه' تعني أن اليأس وضعف العزيمة هما الشيب الحقيقي، وليس العمر.",
+            "difficulty": "medium", "question_pattern": "interpretation_of_verse",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q14", "question_number": 14, "type": "mcq", "skill": "idea_identification",
+            "prompt": "بين المبدأ الذي طبقه الشاعر في البيت الثاني.",
+            "choices": [
+              { "choice_id": "a", "text": "\"من قنع برزقه استراح قلبه، فالحياة الحقة في الرضا بالمقسوم\"." },
+              { "choice_id": "b", "text": "\"أعلل النفس بالآمال أرقبها ما أضيق العمر لولا فسحة الأمل!\"." },
+              { "choice_id": "c", "text": "\"تموت مع المرء حاجاته وتبقى له حاجة ما بقي\"." },
+              { "choice_id": "d", "text": "\"دعوني من أمان كاذبات فلم أجد المنى إلا ظنونا\"." }
+            ],
+            "answer_key": "b",
+            "explanation": "البيت 'وليست حياة المرء إلا أمانيا' يتفق مع مبدأ 'أعلل النفس بالآمال'.",
+            "difficulty": "hard", "question_pattern": "abstract_idea_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.86, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q15", "question_number": 15, "type": "mcq", "skill": "interpretation",
+            "prompt": "استنتج المغزى الضمني من البيت الأخير.",
+            "choices": [
+              { "choice_id": "a", "text": "تباهي الشاعر بخبرته وفخره وتباهيه بإمكاناته." },
+              { "choice_id": "b", "text": "تنبيه منافسيه على ضعف عزائمهم وعدم استعدادهم." },
+              { "choice_id": "c", "text": "إظهار قوة العزيمة، والتطلع الدائم إلى إحراز السبق والمجد." },
+              { "choice_id": "d", "text": "إبراز أهمية التبكير والمبادرة في إنجاز الأعمال والمهام." }
+            ],
+            "answer_key": "c",
+            "explanation": "'بسابق عزم لا يمل من الحصر' تعبر عن قوة العزيمة والإصرار على بلوغ المكارم.",
+            "difficulty": "medium", "question_pattern": "extracting_main_idea_from_verse",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.88, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q16", "question_number": 16, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "هات من الأبيات ما يدل على مراجعة الذات، وتقبل النقد.",
+            "choices": [
+              { "choice_id": "a", "text": "\"إن كان صادقاً عتبت على نفسي وأصلحت من أمري\"." },
+              { "choice_id": "b", "text": "\"فما أنا إن ساء الزمان بساخط\"." },
+              { "choice_id": "c", "text": "\"ما ذنبي .. إن طغى هواها فما ترضى بخير ولا شر\"." },
+              { "choice_id": "d", "text": "\"إذا ما سفيه نالني منه قادح\"." }
+            ],
+            "answer_key": "a",
+            "explanation": "الشاعر يراجع نفسه ويعتب عليها ويصلح من أمرها إذا كان النقد صادقاً.",
+            "difficulty": "medium", "question_pattern": "explicit_evidence_retrieval",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q17", "question_number": 17, "type": "mcq", "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة قوله: 'ولا أنا إن سر الزمان بمغتر' في البيت الثالث.",
+            "choices": [
+              { "choice_id": "a", "text": "تعليل." }, { "choice_id": "b", "text": "تفصيل." }, { "choice_id": "c", "text": "نتيجة." }, { "choice_id": "d", "text": "تضاد." }
+            ],
+            "answer_key": "d",
+            "explanation": "العبارة تضاد للتي قبلها ('فما أنا إن ساء الزمان بساخط')، فهو لا يسخط عند الضراء ولا يغتر عند السراء.",
+            "difficulty": "medium", "question_pattern": "text_structure_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q18", "question_number": 18, "type": "mcq", "skill": "poetic_imagery_analysis",
+            "prompt": "ميز اللون البياني، وبين قيمته الفنية في قوله: 'لم يحرج بموقفه صدري' في البيت الرابع.",
+            "choices": [
+              { "choice_id": "a", "text": "تشبيه بليغ – يوحي بالصدق وعمق المشاعر." },
+              { "choice_id": "b", "text": "استعارة تصريحية - يوحي بتنوع المواقف الحياتية." },
+              { "choice_id": "c", "text": "كناية عن صفة - توحي بالصبر والتحمل." },
+              { "choice_id": "d", "text": "كناية عن موصوف، توحي بالجرأة، والقدرة على المواجهة." }
+            ],
+            "answer_key": "c",
+            "explanation": "'لم يحرج بموقفه صدري' كناية عن صفة الصبر وسعة الصدر وعدم الضيق.",
+            "difficulty": "medium", "question_pattern": "rhetorical_device_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q19", "question_number": 19, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "بين من خلال الأبيات السابقة كيف طبق الشاعر سمات مدرسة الإحياء والبعث.",
+            "choices": [
+              { "choice_id": "a", "text": "اهتم بشعر المناسبات، وارتبط بالجماهير وبالصحافة." },
+              { "choice_id": "b", "text": "مال إلى النزعة الإنسانية، ودعا إلى التسامح وقبول الآخر." },
+              { "choice_id": "c", "text": "اهتم بالنواحي البيانية، وعبر عن بعض تجاربه الذاتية." },
+              { "choice_id": "d", "text": "أكثر من الحكم، وتطلع إلى المثل العليا في طموح وتفاؤل." }
+            ],
+            "answer_key": "d",
+            "explanation": "المنفلوطي في هذه الأبيات يكثر من الحكم ('وليست حياة المرء إلا أمانيا') ويتطلع للمثل العليا ('سابق عزم').",
+            "difficulty": "medium", "question_pattern": "characteristic_identification",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.86, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q20", "question_number": 20, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "بين من خلال البيتين كيف طبق الشاعر سمات الاتجاه الوجداني.",
+            "choices": [
+              { "choice_id": "a", "text": "أظهر قوة العاطفة في وصف تجربته الذاتية، وما يعانيه من آلام يكتمها." },
+              { "choice_id": "b", "text": "عالج قضايا ومشاكل مجتمعه من خلال التنفير من الوشاة والنمامين." },
+              { "choice_id": "c", "text": "وصف الطبيعة من خلال مشاعره، وهرب من عالم الواقع إلى الخيال." },
+              { "choice_id": "d", "text": "مال إلى النزعة الإنسانية؛ فلم يشغل الآخرين بهمومه التي يعانيها." }
+            ],
+            "answer_key": "a",
+            "explanation": "بيتا مطران 'أسري همومي بانفرادي' يعبران عن تجربة ذاتية ومعاناة عاطفية داخلية.",
+            "difficulty": "medium", "question_pattern": "trait_identification_through_quote",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q21", "question_number": 21, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي اتضحت في البيتين السابقين من سمات مدرسة الديوان.",
+            "choices": [
+              { "choice_id": "a", "text": "ظهور مسحة الحزن والتشاؤم والاستسلام للأحزان." },
+              { "choice_id": "b", "text": "التأمل في حقائق الكون والتعمق في أسرار الوجود." },
+              { "choice_id": "c", "text": "طغيان الذهنية، وغلبة الجانب الفكري." },
+              { "choice_id": "d", "text": "التطلع في طموح إلى الآفاق، واستهداف المثل العليا." }
+            ],
+            "answer_key": "c",
+            "explanation": "بيتا العقاد يتأملان في فكرة فلسفية (التمني) بعقلانية وذهنية واضحة.",
+            "difficulty": "medium", "question_pattern": "trait_identification_through_quote",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q22", "question_number": 22, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "بين السمة التي اتضحت في الأسطر السابقة من سمات المدرسة الواقعية.",
+            "choices": [
+              { "choice_id": "a", "text": "شيوع الحديث عن النهاية والموت." },
+              { "choice_id": "b", "text": "إظهار الاهتمام بقضايا الوطن." },
+              { "choice_id": "c", "text": "الالتصاق بالواقع والتعبير عن المتناقضات." },
+              { "choice_id": "d", "text": "استخدام طريقة الحكاية كوسيلة في التعبير." }
+            ],
+            "answer_key": "c",
+            "explanation": "الأسطر 'شهداؤنا بين المقابر يهمسون... وهللا إنا قادمون' تعبر عن واقع ومتناقضات (الموت والانبعاث).",
+            "difficulty": "medium", "question_pattern": "theme_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q23", "question_number": 23, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي ظهرت في البيتين السابقين من سمات مدرسة المهاجر.",
+            "choices": [
+              { "choice_id": "a", "text": "حب الطبيعة والامتزاج بها." },
+              { "choice_id": "b", "text": "حب الوطن والاشتياق إليه." },
+              { "choice_id": "c", "text": "الهروب من عالم البشر والواقع إلى الطبيعة." },
+              { "choice_id": "d", "text": "حدة العاطفة، واستعمال اللغة استعمالاً جديداً." }
+            ],
+            "answer_key": "b",
+            "explanation": "البيتان 'فطربت لكن لم يحب فؤادي كطيور أرضي' يعبران عن الحنين للوطن رغم جمال الطبيعة في الغربة.",
+            "difficulty": "medium", "question_pattern": "characteristics_identification_from_example",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q24", "question_number": 24, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي ظهرت في البيت السابق من سمات مدرسة أبولو.",
+            "choices": [
+              { "choice_id": "a", "text": "الإيمان بذاتية التجربة." }, { "choice_id": "b", "text": "حدة العاطفة وقوتها." },
+              { "choice_id": "c", "text": "الميل إلى التشاؤم واليأس." }, { "choice_id": "d", "text": "استعمال اللغة استعمالاً جديداً." }
+            ],
+            "answer_key": "b",
+            "explanation": "البيت 'أهانوا الأم بالوليد' يعبر عن عاطفة قوية وحادة تجاه الإهانة التي تعرض لها المسيح وأمه.",
+            "difficulty": "medium", "question_pattern": "trait_identification_through_quote",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          }
+        ],
+        "section_signals": { "section_weight": 0.94, "difficulty_curve": "medium_to_hard", "examiner_pattern": "focuses_on_literary_schools_characteristics_and_emotional_analysis", "student_priority": "high" }
+      },
+      {
+        "section_id": "guidance_model_10_section_4",
+        "section_type": "reading_comprehension_and_grammar_and_writing",
+        "title": "نص (مفهوم السعادة) - أسئلة النحو والبلاغة والتعبير",
+        "order": 4,
+        "passage": {
+          "passage_id": "reading_passage_concept_of_happiness_10",
+          "title": "مفهوم السعادة وقيمة الحياة",
+          "genre": "literary_article",
+          "domain": "philosophy_and_ethics",
+          "source_type": "argumentative_literary_text",
+          "text": "لست أعرف شيئاً غالى فيه الناس قط أخطأوا في تحديد أسباب السعادة فيها...",
+          "main_idea": "نقد المفاهيم الخاطئة عن الحياة والسعادة، وعرض رؤية الكاتب للسعادة الحقيقية القائمة على التوازن بين الحواس والعقل والفطرة.",
+          "sub_ideas": ["نقد تقديس الحياة", "تعريف الكاتب للحياة", "دور العقل والفطرة", "مفهوم السعادة الحقيقي"],
+          "keywords": ["السعادة", "الحياة", "العقل", "الفطرة", "الحواس", "الطبيعة"],
+          "reading_skills": ["contextual_vocabulary", "implicit_reasoning", "poetic_imagery_analysis", "compare_and_contrast"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_10_q25", "question_number": 25, "type": "mcq", "skill": "contextual_vocabulary",
+            "prompt": "أي من الكلمات التالية تعبر عن معنى عبارة (غالى فيه الناس) في سياق الفقرة الأولى.",
+            "choices": [
+              { "choice_id": "a", "text": "أساؤوا." }, { "choice_id": "b", "text": "بالغوا." }, { "choice_id": "c", "text": "ارتفعوا." }, { "choice_id": "d", "text": "طمعوا." }
+            ],
+            "answer_key": "b",
+            "explanation": "'غالى فيه' تعني بالغ في تقديره وأفرط في حبه.",
+            "difficulty": "easy", "question_pattern": "vocabulary_in_context",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.95, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q26", "question_number": 26, "type": "mcq", "skill": "interpretation",
+            "prompt": "استنتج المغزى الضمني في قول الكاتب: (كل ما كتب عن معنى الحياة في كتاب مسطور لا يوافق ما في الكتاب المنظور هو زيف وتغيير للفطرة) الواردة في الفقرة الثانية.",
+            "choices": [
+              { "choice_id": "a", "text": "التنبيه على ضرورة تسجيل الخبرات الحياتية والمعارف وتدوينها لتدبرها، وإفادة الآخرين من عبرها." },
+              { "choice_id": "b", "text": "التنفير من قراءة الأعمال الروائية التي تستمد أحداثها من الخيال فقط، وتبتعد عن الواقع المعيش." },
+              { "choice_id": "c", "text": "التنبيه إلى ما يمارسه بعض المؤلفين من تعمد خداع القارئ بالعناوين لإخفاء مضمونهم الهزيل." },
+              { "choice_id": "d", "text": "التأكيد على أن إدراك معنى الحياة لا يكتمل إلا بالجمع بين المعارف الإنسانية وتأمل حقائق الكون." }
+            ],
+            "answer_key": "d",
+            "explanation": "الكاتب يؤكد ضرورة المواءمة بين ما في الكتب وما في الطبيعة (الكون المنظور).",
+            "difficulty": "medium", "question_pattern": "interpreting_figurative_language",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q27", "question_number": 27, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "هات من النص ما يتفق مع ما ورد في الحديث السابق: (لا يزال قلب الكبير شاباً في اثنتين: في حب الدنيا وطول الأمل).",
+            "choices": [
+              { "choice_id": "a", "text": "\"صار يبحث عن غذاء حواسه التي جاوزت الحد، فهو يهيم في إشباع جسد لا يشبع ما دام حياً\"." },
+              { "choice_id": "b", "text": "\"ألا ترى أن الوفي الصادق في وفائه يجعل سعادة ما يناله ممن يسعى لإرضائه كسعادة ما يبذله\"." },
+              { "choice_id": "c", "text": "\"السعادة كل ما استشعرت النفس أنها زادت به أو زادت فيه، ومن هنا تنشأ كل المحامد الإنسانية\"." },
+              { "choice_id": "d", "text": "\"كل وهم يستهلكه أو يهلكه إلا تلك المغالاة الممقوتة في تقدير قيمة الحياة\"." }
+            ],
+            "answer_key": "d",
+            "explanation": "الحديث يشير إلى حب الدنيا وطول الأمل، والنص يذم 'المغالاة الممقوتة في تقدير قيمة الحياة'.",
+            "difficulty": "hard", "question_pattern": "cross_text_idea_matching",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.87, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q28", "question_number": 28, "type": "mcq", "skill": "application",
+            "prompt": "بين – مما يلي – التصرف الخطأ الذي لا يعد من سمات الإنسان السعيد الذي أدرك حقيقة الحياة.",
+            "choices": [
+              { "choice_id": "a", "text": "يعتقد أن السعادة هي دائماً في الاستعداد للسعادة." },
+              { "choice_id": "b", "text": "يجعل سعادته بما يناله ممن يرضيه كسعادة ما يبذله له حتى إنه قد يبذل له روحه." },
+              { "choice_id": "c", "text": "تستشعر نفسه السعادة في كل ما زادت به أو زادت فيه." },
+              { "choice_id": "d", "text": "يعلم أن له دائرة لا يجاوزها، فيقر في حيزه، ويمنع حواسه من التهويل أو التهوين." }
+            ],
+            "answer_key": "a",
+            "explanation": "النص يذم أن تكون 'السعادة دائماً في الاستعداد للسعادة' ويعتبرها عبثاً، لأن السعادة الحقيقية في العمل والبذل.",
+            "difficulty": "hard", "question_pattern": "evaluating_actions",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.85, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q29", "question_number": 29, "type": "mcq", "skill": "poetic_imagery_analysis",
+            "prompt": "بين نوع الصورة وقيمتها الفنية في عبارة (فالعقل الذي لم يتلوث منبع فطرته) في الفقرة الثالثة.",
+            "choices": [
+              { "choice_id": "a", "text": "استعارة مكنية، تبرز أثر الحياة في تغيير الفطرة." },
+              { "choice_id": "b", "text": "تشبيه بليغ، يؤكد على أصالة الفطرة وصفائها." },
+              { "choice_id": "c", "text": "تشبيه مجمل، يؤكد أهمية نقاء الفطرة ورسوخها." },
+              { "choice_id": "d", "text": "استعارة تصريحية، توضح التناغم بين العقل والفطرة." }
+            ],
+            "answer_key": "a",
+            "explanation": "شبه الفطرة بنبع ماء يتلوث، فحذف المشبه به وأبقى على ما يدل عليه (يتلوث)، فهي استعارة مكنية.",
+            "difficulty": "hard", "question_pattern": "rhetorical_device_and_function",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.84, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q30", "question_number": 30, "type": "mcq", "skill": "poetic_imagery_analysis",
+            "prompt": "استخرج من النص استعارة تصريحية.",
+            "choices": [
+              { "choice_id": "a", "text": "\"طول الأمل والأماني الكاذبة\"." },
+              { "choice_id": "b", "text": "\"من لغة القضاء حين يسأل\"." },
+              { "choice_id": "c", "text": "\"يستمد قوانينه من الفطرة ومما فرضته التوجيهات الإلهية\"." },
+              { "choice_id": "d", "text": "\"يبحث عن غذاء لهذا الوحش الضاري الذي طغى وجاوز الحد\"." }
+            ],
+            "answer_key": "d",
+            "explanation": "شبه الجسد الشره بوحش ضارٍ، وصرح بالمشبه به (الوحش الضاري) وحذف المشبه (الجسد)، فهي استعارة تصريحية.",
+            "difficulty": "medium", "question_pattern": "figurative_language_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q31", "question_number": 31, "type": "mcq", "skill": "evaluation",
+            "prompt": "انقد الطريقة التي اختارها كلا الكاتبين في عرض فكرته.",
+            "choices": [
+              { "choice_id": "a", "text": "طريقة الزيات أفضل؛ فقد بدأ فكرته بعرض السلبيات، منفراً منها مصرحاً بطريقة الخلاص منها." },
+              { "choice_id": "b", "text": "طريقة الكاتب أفضل؛ فقد بدأ فكرته بعرض الأسباب والدوافع النفسية التي نتج عنها هذه السلبيات، منفراً منها، منوهاً إلى طريقة الخلاص منها." },
+              { "choice_id": "c", "text": "كلا الكاتبين أجاد في عرض فكرته؛ فقد بدأ بالسبب أو المقدمة، ثم عرض النتائج، وختم بطرح الحلول." },
+              { "choice_id": "d", "text": "كلا الكاتبين لم ينجح في عرض فكرته؛ فقد افتقرت الفكرة عند كليهما إلى التحليل والترتيب والترابط." }
+            ],
+            "answer_key": "c",
+            "explanation": "كلا الكاتبين بدأ بالمقدمة وعرض المشكلة وبين أسبابها، ثم عرض النتائج وطرح الحلول.",
+            "difficulty": "hard", "question_pattern": "critical_evaluation",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.80, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q32", "question_number": 32, "type": "mcq", "skill": "author_purpose_analysis",
+            "prompt": "بين هل نجح كاتب المقال في تحقيق هاتين السمتين (الإقناع والإمتاع).",
+            "choices": [
+              { "choice_id": "a", "text": "نجح الكاتب في تحقيق هذين العنصرين من خلال الأسلوب الخطابي المباشر، والاستشهاد بالأقوال المأثورة والأمثال الشعبية وتاريخ الأمم السابقة." },
+              { "choice_id": "b", "text": "لم ينجح الكاتب في تحقيق هذين العنصرين؛ فقد بالغ في الاستثارة العاطفية دون تقديم أدلة عقلية أو واقعية." },
+              { "choice_id": "c", "text": "نجح الكاتب في تحقيق هذين العنصرين؛ بسلامة الأفكار والأدلة المستمدة من الطبيعة، وبالمزج بين الخبر والإنشاء، ووظف ألوان البديع والتشبيه والأمثلة الواقعية." },
+              { "choice_id": "d", "text": "لم ينجح الكاتب في تحقيق عنصر الإمتاع؛ فقد أهمل المحسنات البديعية إهمالاً، لكنه نجح في تحقيق الإقناع." }
+            ],
+            "answer_key": "c",
+            "explanation": "الكاتب نجح في الإقناع (أدلة من الطبيعة) والإمتاع (صور بيانية ومزج بين الخبر والإنشاء).",
+            "difficulty": "medium", "question_pattern": "evaluation_of_text",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q33", "question_number": 33, "type": "mcq", "skill": "prediction",
+            "prompt": "توقع - من خلال دراستك فن القصة القصيرة – المبدأ الذي يحرص المؤلف على توظيفه ليكتب قصة قصيرة ناجحة.",
+            "choices": [
+              { "choice_id": "a", "text": "يكثر من توظيف الإيجاز بالحذف؛ ليحقق عنصر التكثيف والتركيز مما يضفي غموضاً يحدث عنصر التشويق." },
+              { "choice_id": "b", "text": "يستخدم عبارات رصينة تعكس ثراء لغته، ويمزجها بلغة الحياة اليومية ليوهم القارئ بمحاكاة الواقع المعيش." },
+              { "choice_id": "c", "text": "يعمل على جمع الشخصيات حول قضية واحدة، تختلف حولها وجهات نظرهم؛ لتحقيق عنصر التشويق وإبراز الصراع." },
+              { "choice_id": "d", "text": "ينتقي جملاً وعبارات ذات تكثيف في الإيحاء، وحسم في الدلالة، تصرح بالهدف الرئيس، ولا تغفل التلميح إلى جوانب فرعية تضاعف الإيحاء." }
+            ],
+            "answer_key": "d",
+            "explanation": "القصة القصيرة الناجحة تعتمد على التكثيف والإيحاء والتصريح والتلميح لتحقيق التشويق وعمق الدلالة.",
+            "difficulty": "medium", "question_pattern": "genre_characteristics_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q34", "question_number": 34, "type": "mcq", "skill": "sentence_structure_analysis",
+            "prompt": "ميز المحل الإعرابي لجملة: (يحفظ اليدا) الواردة في الشطر الثاني.",
+            "choices": [
+              { "choice_id": "a", "text": "نصب حال." }, { "choice_id": "b", "text": "لا محل لها." }, { "choice_id": "c", "text": "جر مضاف إليه." }, { "choice_id": "d", "text": "رفع خبر." }
+            ],
+            "answer_key": "c",
+            "explanation": "جملة 'يحفظ اليدا' في محل جر مضاف إليه لـ'الذي'.",
+            "difficulty": "medium", "question_pattern": "sentence_grammatical_position",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q35", "question_number": 35, "type": "mcq", "skill": "parsing",
+            "prompt": "ميز – مما يلي - خبر الناسخ، وبين نوعه في العبارة: 'ليس الواصل بالمكافئ إنما الواصل من إذا قطعت رحمه وصلها'.",
+            "choices": [
+              { "choice_id": "a", "text": "من - مفرد." }, { "choice_id": "b", "text": "إنما الواصل – جملة اسمية." }, { "choice_id": "c", "text": "قطعت رحمه- جملة فعلية." }, { "choice_id": "d", "text": "بالمكافئ - مفرد." }
+            ],
+            "answer_key": "d",
+            "explanation": "خبر 'ليس' هو 'بالمكافئ' وهو مفرد، والباء حرف جر زائد.",
+            "difficulty": "medium", "question_pattern": "kana_and_sisters_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q36", "question_number": 36, "type": "mcq", "skill": "parsing",
+            "prompt": "ميز سبب نصب كلمة (رأياً) في الشطر الثاني.",
+            "choices": [
+              { "choice_id": "a", "text": "تمييز." }, { "choice_id": "b", "text": "مفعول لأجله." }, { "choice_id": "c", "text": "مفعول به." }, { "choice_id": "d", "text": "حال." }
+            ],
+            "answer_key": "a",
+            "explanation": "'رأياً' تمييز منصوب بالفتحة.",
+            "difficulty": "medium", "question_pattern": "identifying_grammatical_function",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q37", "question_number": 37, "type": "mcq", "skill": "verb_classification",
+            "prompt": "ميز الفعل المتعدي الوارد في البيت السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "كنت." }, { "choice_id": "b", "text": "جرب." }, { "choice_id": "c", "text": "كدت." }, { "choice_id": "d", "text": "تذوب." }
+            ],
+            "answer_key": "b",
+            "explanation": "'جرب' فعل متعدٍ، يتعدى إلى مفعول به ('البعد').",
+            "difficulty": "medium", "question_pattern": "transitive_vs_intransitive",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q38", "question_number": 38, "type": "mcq", "skill": "parsing",
+            "prompt": "بين - مما يلي – إعراب الفعل (سلي) الوارد في البيت السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "مبني على السكون." }, { "choice_id": "b", "text": "مجزوم بالسكون." },
+              { "choice_id": "c", "text": "مبني على حذف النون." }, { "choice_id": "d", "text": "مرفوع بالضمة المقدرة." }
+            ],
+            "answer_key": "c",
+            "explanation": "'سلي' فعل أمر مبني على حذف النون لأنه متصل بياء المخاطبة.",
+            "difficulty": "medium", "question_pattern": "verb_parsing",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q39", "question_number": 39, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "بين نوع (ما) في المقولة السابقة: 'تعلم ما أتيحت لك الفرصة'.",
+            "choices": [
+              { "choice_id": "a", "text": "موصولة." }, { "choice_id": "b", "text": "نافية." }, { "choice_id": "c", "text": "شرطية." }, { "choice_id": "d", "text": "مصدرية." }
+            ],
+            "answer_key": "a",
+            "explanation": "'ما' اسم موصول بمعنى 'الذي'.",
+            "difficulty": "easy", "question_pattern": "grammatical_particle_function",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q40", "question_number": 40, "type": "mcq", "skill": "grammar_rules_application",
+            "prompt": "بين الفعل الذي يمتنع توكيده بالنون في المقولة السابقة.",
+            "choices": [
+              { "choice_id": "a", "text": "كن." }, { "choice_id": "b", "text": "يحبون." }, { "choice_id": "c", "text": "تقل." }, { "choice_id": "d", "text": "تسمع." }
+            ],
+            "answer_key": "a",
+            "explanation": "'كن' فعل أمر، يمتنع توكيده بالنون لأنه فعل جامد (أمر).",
+            "difficulty": "medium", "question_pattern": "grammar_rule_application",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q41", "question_number": 41, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "بين الممنوع من الصرف المجرور بالفتحة في المقولة السابقة.",
+            "choices": [
+              { "choice_id": "a", "text": "أولى." }, { "choice_id": "b", "text": "صنائع." }, { "choice_id": "c", "text": "الدنيا." }, { "choice_id": "d", "text": "مبادئ." }
+            ],
+            "answer_key": "d",
+            "explanation": "'مبادئ' ممنوعة من الصرف لأنها صيغة منتهى الجموع، مجرورة بالفتحة.",
+            "difficulty": "medium", "question_pattern": "mamnu_min_al_sarf_cases",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q42", "question_number": 42, "type": "mcq", "skill": "sentence_structure_analysis",
+            "prompt": "ميز المحل الإعرابي للمصدر المؤول الوارد في العبارة السابقة: 'مما يسرني أن يتفوق طلابنا'.",
+            "choices": [
+              { "choice_id": "a", "text": "مضاف إليه." }, { "choice_id": "b", "text": "فاعل." }, { "choice_id": "c", "text": "مفعول به." }, { "choice_id": "d", "text": "مبتدأ." }
+            ],
+            "answer_key": "b",
+            "explanation": "المصدر المؤول 'أن يتفوق' في محل رفع فاعل للفعل 'يسرني'.",
+            "difficulty": "hard", "question_pattern": "infinitive_parsing",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.85, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q43", "question_number": 43, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "بين الكلمة التي تحتوي على ضمير في محل رفع: 'وطني، ما أجملك لأنت في سويداء فؤادي وما زلت'.",
+            "choices": [
+              { "choice_id": "a", "text": "وطني." }, { "choice_id": "b", "text": "أجملك." }, { "choice_id": "c", "text": "لأنت." }, { "choice_id": "d", "text": "فؤادي." }
+            ],
+            "answer_key": "c",
+            "explanation": "'أنت' ضمير رفع منفصل مبني على الفتح في محل رفع مبتدأ.",
+            "difficulty": "medium", "question_pattern": "pronoun_case_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q44", "question_number": 44, "type": "mcq", "skill": "grammar_usage",
+            "prompt": "املأ الفراغ في المقولة السابقة بالكلمة المناسبة: 'تعلمت من أستاذين ....... متواضعان'.",
+            "choices": [
+              { "choice_id": "a", "text": "كليهما." }, { "choice_id": "b", "text": "كلتيهما." }, { "choice_id": "c", "text": "كلتاهما." }, { "choice_id": "d", "text": "كلاهما." }
+            ],
+            "answer_key": "d",
+            "explanation": "'كلاهما' توكيد مرفوع بالألف لأنه يرفع بالمثنى (ملحق بالمثنى).",
+            "difficulty": "medium", "question_pattern": "grammar_error_correction",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q45", "question_number": 45, "type": "mcq", "skill": "morphology",
+            "prompt": "املأ الفراغ في المقولة السابقة باسم هيئة مصوغ من الفعل (هجر): 'ما أجمل أن نهجر المعاصي ..............'.",
+            "choices": [
+              { "choice_id": "a", "text": "هجراً جميلاً." }, { "choice_id": "b", "text": "هجرة حسنة." }, { "choice_id": "c", "text": "مهاجرة." }, { "choice_id": "d", "text": "هجرة واحدة." }
+            ],
+            "answer_key": "b",
+            "explanation": "'هجرة حسنة' اسم هيئة من الفعل 'هجر'، على وزن 'فعلة'.",
+            "difficulty": "medium", "question_pattern": "noun_derivation",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q46", "question_number": 46, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "ميز – مما يلي – فاعل المدح، وبين حالته: 'ذو الوفاء والمودة نعم من تمنحه المحبة وتستوصي به خيراً'.",
+            "choices": [
+              { "choice_id": "a", "text": "ذو الوفاء – مضاف إلى معرفة." }, { "choice_id": "b", "text": "من – اسم موصول." },
+              { "choice_id": "c", "text": "ضمير مستتر مفسر بتمييز." }, { "choice_id": "d", "text": "المحبة – معرفة بأل." }
+            ],
+            "answer_key": "b",
+            "explanation": "فاعل 'نعم' هو الاسم الموصول 'من'.",
+            "difficulty": "medium", "question_pattern": "praise_and_blame_structure",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q47", "question_number": 47, "type": "mcq", "skill": "morphology",
+            "prompt": "بين الصياغة الصحيحة لاسم المفعول من الفعل (عاد).",
+            "choices": [
+              { "choice_id": "a", "text": "معيد." }, { "choice_id": "b", "text": "معاد." }, { "choice_id": "c", "text": "معوود." }, { "choice_id": "d", "text": "معود." }
+            ],
+            "answer_key": "b",
+            "explanation": "اسم المفعول من 'عاد' (أجوف واوي) هو 'معاد'.",
+            "difficulty": "hard", "question_pattern": "derived_noun_identification",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.82, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q48", "question_number": 48, "type": "mcq", "skill": "grammar_usage",
+            "prompt": "املأ الفراغ في المقولة السابقة بجواب الشرط الصحيح نحوياً: 'من يتقن عمله ..........'.",
+            "choices": [
+              { "choice_id": "a", "text": "فسيجن خيراً." }, { "choice_id": "b", "text": "سوف يجني خيراً." },
+              { "choice_id": "c", "text": "فسيجني خيراً." }, { "choice_id": "d", "text": "فيجني خيراً." }
+            ],
+            "answer_key": "c",
+            "explanation": "جواب الشرط 'سيجني' مقترن بالسين، فيجب اقترانه بالفاء 'فسيجني'.",
+            "difficulty": "hard", "question_pattern": "conditional_sentence_structure",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.83, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q49", "question_number": 49, "type": "mcq", "skill": "grammar_transformation",
+            "prompt": "صغ من مضمون العبارة السابقة أسلوب تعجب صحيحاً، وغير ما يلزم: 'افتدى شهداؤنا وطنهم بأرواحهم'.",
+            "choices": [
+              { "choice_id": "a", "text": "ما أجمل تفدية شهداؤنا." }, { "choice_id": "b", "text": "أجمل بافتداء شهداؤنا." },
+              { "choice_id": "c", "text": "ما أجمل مفاداة شهدائنا." }, { "choice_id": "d", "text": "أجمل بافتداء شهدائنا." }
+            ],
+            "answer_key": "d",
+            "explanation": "صيغة التعجب 'أجمل بافتداء شهدائنا' المجرور بالباء هو المتعجب منه.",
+            "difficulty": "hard", "question_pattern": "grammar_transformation",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.83, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q50", "question_number": 50, "type": "mcq", "skill": "text_structure_analysis",
+            "prompt": "حدد مما يلي النموذج الذي اتبعه الكاتب في ترتيب الفقرتين: (يعاني كثير من الناس من نوبات الصداع... عند الإحساس بنوبة صداع ارجع عاداتك اليومية الخطأ...).",
+            "choices": [
+              { "choice_id": "a", "text": "ظاهرة - تفسير." }, { "choice_id": "b", "text": "رأي - دليل." }, { "choice_id": "c", "text": "زعم - تفنيد." }, { "choice_id": "d", "text": "مشكلة - حل." }
+            ],
+            "answer_key": "d",
+            "explanation": "الفقرة الأولى تعرض مشكلة (الصداع)، والثانية تقدم حلولاً عملية.",
+            "difficulty": "medium", "question_pattern": "text_development_pattern",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.87, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q51", "question_number": 51, "type": "mcq", "skill": "topical_coherence",
+            "prompt": "حدد - مما يلي - التفصيلة التي يجدر بالكاتب حذفها؛ لتكون كتابته وثيقة الصلة بالفكرة الرئيسة: 'يعد افتتاح المتحف المصري الكبير نصراً حضارياً لوطننا الحبيب، وبادرة خير لدعم الاقتصاد عن طريق تنشيط السياحة'.",
+            "choices": [
+              { "choice_id": "a", "text": "يضم المتحف المصري الكبير آلاف القطع الأثرية، ومنها قطع نادرة لأول مرة." },
+              { "choice_id": "b", "text": "جاء افتتاح المتحف الكبير في وقت عانى فيه قطاع السياحة جراء الاضطرابات عربياً وعالمياً." },
+              { "choice_id": "c", "text": "صمم المتحف الكبير تصميماً يجمع بين عراقة الماضي وحداثة الحاضر." },
+              { "choice_id": "d", "text": "من أكثر الملوك الذين تركوا آثاراً تاريخية نادرة الملك توت عنخ آمون؛ لذا لقب بالملك الذهبي." }
+            ],
+            "answer_key": "d",
+            "explanation": "الخيار 'د' يتحدث عن الملك الذهبي بشكل عام، وهو بعيد عن فكرة 'دعم الاقتصاد وتنشيط السياحة'.",
+            "difficulty": "medium", "question_pattern": "identifying_irrelevant_information",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q52", "question_number": 52, "type": "open_ended", "skill": "evidence_extraction",
+            "prompt": "حدد من الفقرة دليلين على الأهمية الحضارية لسيناء، ودليلين على أهميتها الاقتصادية.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "الأهمية الحضارية: 1. أنها أقدم المناجم المعروفة في التاريخ. 2. اكتشف فيها الفيروز المستخدم في تزيين المعابد. الأهمية الاقتصادية: 1. المورد الأول للثروة المعدنية (الذهب، الفيروز، النحاس). 2. يتدفق من أطرافها الغربية البترول.",
+            "difficulty": "medium", "question_pattern": "explicit_information_retrieval",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.88, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q53", "question_number": 53, "type": "open_ended", "skill": "emotional_tone_inference",
+            "prompt": "استنتج من الفقرة شعورين متناقضين سيطرا على أخي الصبي، ودلل على كل منهما من العبارة.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "الشعور الأول: الشفقة والمسؤولية تجاه أخيه، الدليل: 'ثقل عليه اضطراره إلى أن يقود الصبي إلى الأزهر'. الشعور الثاني: الضجر والملل، الدليل: 'ثقل عليه أيضاً أن يترك الصبي وحده معظم الوقت'.",
+            "difficulty": "medium", "question_pattern": "emotional_evidence_retrieval",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.86, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_10_q54", "question_number": 54, "type": "open_ended", "skill": "grammar_transformation",
+            "prompt": "اجعل الخطاب في العبارة السابقة للمثنى المؤنث، وغير ما يلزم: 'كن راضياً بما قسمه الله لك تصر الأحسن استقامة'.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "كونا راضيتين بما قسمه الله لكما تصيرا الحسنيين استقامة.",
+            "difficulty": "medium", "question_pattern": "sentence_transformation",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_10_q55", "question_number": 55, "type": "open_ended", "skill": "topical_writing",
+            "prompt": "اكتب كلمة ختامية لندوة تدور حول الكتب الإلكترونية ودورها المعرفي، الندوة تحت عنوان (الكتاب الإلكتروني بين الواقع والمأمول). الكلمة في حدود (6 - 8) أسطر، (80) كلمة. تتضمن ملخصاً لأهم ما عُرض في الندوة. عرض أهم التوصيات في موضوع الندوة. تقديم شكر للمتحدثين الرئيسيين وللحضور. الإعلان الرسمي لانتهاء الندوة.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "يجب أن يكتب الطالب كلمة ختامية متكاملة تتضمن جميع العناصر المطلوبة بأسلوب بلاغي مناسب.",
+            "difficulty": "medium", "question_pattern": "guided_writing_task",
+            "exam_signal": { "high_frequency": true, "priority_weight": 1.0, "likely_to_repeat": true }
+          }
+        ],
+        "section_signals": { "section_weight": 0.98, "difficulty_curve": "easy_to_hard", "examiner_pattern": "integrates_article_analysis_with_grammar_rhetoric_and_writing", "student_priority": "critical" }
+      }
+    ]
+  }
+}

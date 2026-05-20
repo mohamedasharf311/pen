@@ -1,0 +1,807 @@
+{
+  "exam_metadata": {
+    "exam_title": "النموذج الاسترشادي الثامن - اللغة العربية",
+    "academic_year": "2025/2026",
+    "grade": "الثانوية العامة",
+    "total_questions": 55,
+    "sections": [
+      {
+        "section_id": "guidance_model_8_section_1",
+        "section_type": "reading_comprehension",
+        "title": "اقرأ ثم أجب (المتحف المصري الكبير)",
+        "order": 1,
+        "passage": {
+          "passage_id": "reading_passage_grand_egyptian_museum",
+          "title": "المتحف المصري الكبير",
+          "genre": "informational_article",
+          "domain": "culture_and_tourism",
+          "source_type": "scientific_informational_text",
+          "text": "في عام 1992 بدأت أولى خطوات تحقيق حلم مصر الكبير، عندما تم تخصيص مساحة تبلغ 117 فداناً (500000 متر) بالقرب من أهرام الجيزة؛ لتصبح موطناً لأحد أكبر المتاحف في العالم؛ المتحف المصري الكبير. وفي عام 2002م وضع حجر الأساس؛ ليعلن بداية رحلة طويلة وحافلة بالتحديات والطموحات تتوج الحلم بالافتتاح الأسطوري في الأول من نوفمبر 2025م، وبحضور عالمي فريد من (89) دولة صديقة كانت على موعد مع أرض السلام مصر الحضارة، ليستقبلهم السيد رئيس الجمهورية معلناً افتتاح المتحف المصري الكبير. تم تأسيس المتحف المصري الكبير؛ ليعكس التراث الحضاري المصري، وليكون رائداً عالمياً في مجالات الاستدامة البيئية والاجتماعية والثقافية والمالية في إطار رؤية مصر الشاملة 2030، فجاء التصميم على شكل مستلهم من التقاء أشعة الشمس بالأهرامات الثلاثة وقت الغروب، إضافة إلى ذلك فكرة 'الوحدة من التعدد' بحيث تشبه في دقتها الطريقة التي بنيت بها مقابر الفراعنة من كتل حجرية مكررة، وقد حرص التصميم على أن يرى من المتحف الأهرامات وتمثال أبي الهول؛ ليتعانق الإبداع الحضاري المعاصر مع عبق التاريخ المصري الفريد. وقد صمم شعار المتحف باللون البرتقالي الدافئ الذي يعكس اللون الذي تضفيه الشمس على هضبة الأهرام ساعة المغيب، وقد كتب الشعار بخط عربي انسيابي مستلهم من الكثبان والتلال الرملية للبيئة المحيطة بالمتحف، مما يعكس الهوية الثقافية المصرية. يبدأ الصرح المعماري العظيم من ميدان المسلة المعلقة التي تعد الأولى من نوعها في العالم، وهي أول قطعة أثرية تستقبل الزوار، وتوجههم إلى القاعة الرئيسة المعروفة باسم البهو العظيم، تغمرها الإضاءة الطبيعية من سقف زجاجي بارتفاع 35 متراً، فيرحب بالزائرين تمثال الملك رمسيس الثاني، ومن هذا المكان يبدأ الزوار رحلتهم لاستكشاف كنوز الحضارة المصرية التي تضم (100 ألف) قطعة أثرية نادرة الوجود، منها (5951) قطعة للفرعون الذهبي توت عنخ آمون، منها (4500) قطعة تعرض لأول مرة، كما تتميز مرافق المتحف بأنظمة تحكم بيئية ذكية، تدير الإضاءة والتدفئة والتبريد وجودة الهواء الداخلي، مما يخلق بيئة مستدامة، كما تشمل الخدمات قاعات مؤتمرات، ومسارح، وسينما رباعية الأبعاد، ومطاعم، ومساحات خضراء، وممرات مفتوحة تدعم التواصل مع البيئة، مما يسهم في خلق تجربة متكاملة. إن الرؤية التي انطلقت منها فكرة المتحف تهدف إلى الحفاظ على التراث المصري الفريد، وصونه للأجيال القادمة مع تقديمه في صورة عصرية تجمع بين الأصالة والابتكار، والاستدامة، والاستدامة هنا لا تقتصر على حماية القطع الأثرية فحسب، بل تمتد لتشمل: الحفاظ على التراث والهوية، والتعليم ونقل المعرفة عبر برامج بحثية وتعليمية تفاعلية، والمشاركة المجتمعية من كل فئات المجتمع المحلي والدولي لتبادل الرؤى وحوار الحضارات، وبهذا فإن المتحف لا يقدم الماضي في صورته التقليدية فحسب، بل يربط بين التاريخ والحاضر والمستقبل؛ ليكون منصة حية تضمن استمرار التراث المصري كمصدر إلهام ونبع معرفة يفيض ولا يغيض على مر الأجيال.",
+          "main_idea": "عرض رحلة إنشاء المتحف المصري الكبير وأهدافه في الحفاظ على التراث المصري وتعزيز الاستدامة.",
+          "sub_ideas": [
+            "تأسيس المتحف وتصميمه المعماري",
+            "رمزية الشعار والهوية البصرية",
+            "مكونات المتحف وخدماته",
+            "رؤية المتحف في الاستدامة والحفاظ على التراث"
+          ],
+          "keywords": ["المتحف المصري الكبير", "التراث", "الاستدامة", "الأهرامات", "توت عنخ آمون", "الهوية المصرية"],
+          "reading_skills": ["contextual_vocabulary", "definition_extraction", "main_idea_detection", "implicit_reasoning", "evidence_extraction", "prediction"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_8_q1", "question_number": 1, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "حدد – مما يلي – عدد القطع الأثرية التي يضمها المتحف الكبير المصري للفرعون الذهبي.",
+            "choices": [
+              { "choice_id": "a", "text": "100000" }, { "choice_id": "b", "text": "5951" }, { "choice_id": "c", "text": "500000" }, { "choice_id": "d", "text": "4500" }
+            ],
+            "answer_key": "b",
+            "explanation": "النص ينص على أن 'منها (5951) قطعة للفرعون الذهبي توت عنخ آمون'.",
+            "difficulty": "easy", "question_pattern": "direct_information_retrieval",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.96, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q2", "question_number": 2, "type": "mcq", "skill": "implicit_reasoning",
+            "prompt": "بين من خلال الفقرة الثانية السبب في مجيء شعار المتحف بلونه البرتقالي وبخطه العربي الانسيابي.",
+            "choices": [
+              { "choice_id": "a", "text": "إثباتاً للتاريخ العريق للحضارة المصرية التي تمتد لسبعة آلاف سنة من المجد الفرعوني." },
+              { "choice_id": "b", "text": "ترويجاً لجمال الحضارة المصرية التي أبهرت العالم على مر الزمن بكنوزها الفريدة." },
+              { "choice_id": "c", "text": "إبقاء على طبيعة الماضي الذي اعتمد على الألوان الطبيعية الزاهية في أسراره." },
+              { "choice_id": "d", "text": "تأكيداً للهوية المصرية، واستلهاماً لعبقرية الزمان والمكان، وألوان الطبيعة." }
+            ],
+            "answer_key": "d",
+            "explanation": "اللون البرتقالي مستلهم من لون شمس الغروب على الأهرامات، والخط العربي مستلهم من الكثبان الرملية، مما يعكس الهوية المصرية.",
+            "difficulty": "medium", "question_pattern": "implicit_cause_inference",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q3", "question_number": 3, "type": "mcq", "skill": "implicit_reasoning",
+            "prompt": "استنتج - من خلال فهمك الفقرة الثالثة- الهدف من عرض المجموعة الكاملة للفرعون الذهبي توت عنخ آمون.",
+            "choices": [
+              { "choice_id": "a", "text": "تأكيداً على أن مصر تفتح الباب أمام الجميع لنقل الخبرات الفنية للدول الصديقة." },
+              { "choice_id": "b", "text": "إظهاراً للسبق المصري للحضارات العالمية في الفن والإبداع والقوة الناعمة." },
+              { "choice_id": "c", "text": "إبرازاً لمكانة هذا الملك الذي شغل العالم، وقبل ذلك لندرة معظم هذه القطع؛ فهي تعرض لأول مرة." },
+              { "choice_id": "d", "text": "لبيان الدور المهم الذي لعبه هذا الملك لصالح مصر في الحفاظ على الثروة المعدنية وخصوصاً الذهب." }
+            ],
+            "answer_key": "c",
+            "explanation": "النص يذكر أن '4500 قطعة تعرض لأول مرة'، مما يدل على الندرة وأهمية الحدث.",
+            "difficulty": "medium", "question_pattern": "implicit_cause_inference",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q4", "question_number": 4, "type": "mcq", "skill": "interpretation",
+            "prompt": "استنتج المغزى من عبارة 'حضور عالمي فريد من (89) دولة صديقة' الواردة في سياق الفقرة الأولى.",
+            "choices": [
+              { "choice_id": "a", "text": "تأكيد شغف معظم دول العالم بالسياحة والرحلات الترفيهية." },
+              { "choice_id": "b", "text": "إظهار نجاح مصر في الترويج لهذا الحدث العظيم، واستحقاقه هذا الاهتمام." },
+              { "choice_id": "c", "text": "إبراز تباهي مصر وافتخارها بعلاقات الصداقة مع معظم دول العالم." },
+              { "choice_id": "d", "text": "عقد موازنة بين مصر وغيرها من الدول التي فشلت في إقامة فعاليات مشابهة." }
+            ],
+            "answer_key": "b",
+            "explanation": "الحضور العالمي الفريد يدل على نجاح مصر في الترويج للحدث وأهميته العالمية.",
+            "difficulty": "medium", "question_pattern": "interpreting_figurative_language",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q5", "question_number": 5, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "استنتج من المقال ما يدل على أن المتحف المصري جمع بين الأصالة والمعاصرة.",
+            "choices": [
+              { "choice_id": "a", "text": "يعبر المتحف عن ماض مصري شكلته أياد عرفت كيف تسجل تراث أمتها حفاظاً عليه من الضياع أو السرقة." },
+              { "choice_id": "b", "text": "يؤكد المتحف من خلال التصميم المعماري على الهوية التاريخية لاختراع فن التحنيط وإخراج أسرار المومياوات." },
+              { "choice_id": "c", "text": "يحتوي المتحف تراثاً عريقاً لا مثيل له، مع التزام بمعايير الجودة في الحداثة المعمارية والعلمية والاستدامة." },
+              { "choice_id": "d", "text": "يتبنى المتحف فكرة حفظ التراث والهوية المصرية بعيداً عن العولمة وموجة التغريب التي تعيشها بعض الدول." }
+            ],
+            "answer_key": "c",
+            "explanation": "الجمع بين التراث العريق ومعايير الجودة الحديثة والاستدامة يعكس الأصالة والمعاصرة.",
+            "difficulty": "medium", "question_pattern": "scanning_for_details",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q6", "question_number": 6, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "هات من المقال ما يؤكد على أن افتتاح المتحف الكبير غير في مفهوم الاستدامة.",
+            "choices": [
+              { "choice_id": "a", "text": "\"تتوج الحلم بالافتتاح الأسطوري في الأول من نوفمبر 2025م، وبحضور عالمي فريد من (89) دولة صديقة\"" },
+              { "choice_id": "b", "text": "\"يرى من المتحف الأهرامات وتمثال أبي الهول؛ ليتعانق الإبداع الحضاري المعاصر مع عبق التاريخ المصري\"" },
+              { "choice_id": "c", "text": "\"جاء التصميم على شكل مستلهم من التقاء أشعة الشمس بالأهرامات الثلاثة وقت الغروب\"" },
+              { "choice_id": "d", "text": "\"تتميز المرافق بأنظمة تحكم بيئية، تشمل مساحات خضراء، وممرات مفتوحة تدعم التواصل\"" }
+            ],
+            "answer_key": "d",
+            "explanation": "النص يوضح أن الاستدامة لا تقتصر على حماية القطع الأثرية، بل تمتد لتشمل أنظمة بيئية ومساحات خضراء.",
+            "difficulty": "medium", "question_pattern": "scanning_for_details",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          }
+        ],
+        "section_signals": { "section_weight": 0.96, "difficulty_curve": "easy_to_medium", "examiner_pattern": "starts_with_direct_comprehension_then_moves_to_inference_and_analysis", "student_priority": "critical" }
+      },
+      {
+        "section_id": "guidance_model_8_section_2",
+        "section_type": "reading_comprehension",
+        "title": "اقرأ ثم أجب (عثمان أحمد عثمان - سيرة ذاتية)",
+        "order": 2,
+        "passage": {
+          "passage_id": "reading_passage_osman_ahmed_osman_memoir",
+          "title": "من سيرة عثمان أحمد عثمان الذاتية",
+          "genre": "literary_memoir",
+          "domain": "arabic_literature",
+          "source_type": "literary_narrative_text",
+          "text": "يحلو لي بين الحين والآخر... أن أرجع بذكرياتي إلى الوراء لأرى بداية طريق مشوار الستين عاماً التي خلت من عمري... أعود بتلك الذكريات القديمة إلى بيتنا الذي ولدت فيه في يوم 6 أبريل سنة 1917... كان يتكون من طابق واحد، مبني بالدبش والطين، وكان سقفه عبارة عن 'تعريشة' من الخشب والعروق والجريد، ولا يزيد عدد حجراته على حجرتين.. حجرة لخزين البيت، كما هي العادة في بيوت البسطاء من أبناء شعبنا الطيب، وحجرة للنوم، لتحضننا جدرانها، أنا وأمي وإخوتي، فوق حصير، كنا ننام عليه جميعاً فوق الأرض.. فلم يكن عندنا دولاب، أو سرير... وكان يوجد في أحد أركان البيت 'عشة' الطيور، وفي ركن آخر تعريشة الفرن، التي كانت تعد لنا أمي فيها الخبز مرة كل أسبوع... إنني أعود بذاكرتي إلى طبق 'الفول المدمس'، الذي كنا نلتف حوله جميعاً كل صباح في أحد أركان البيت، ونتنافس أنا وأشقائي على التهامه.. ولكن كانت هناك وجبة أخرى.. هي أشهى وجبات حياتي... كانت أمي تخبز كل يوم خميس، وكنت أنتظر هذا اليوم على أحر من الجمر، وبمجرد أن يدق جرس المدرسة معلناً انتهاء اليوم الدراسي، كنت أطلق العنان لساقي حتى لا يفوتني موعد كل خميس، أو كل خبيز. كان هذا الموعد الأسبوعي مع رغيف خارج لتوه من الفرن، ساخن، طازج...",
+          "main_idea": "استرجاع الكاتب لذكريات طفولته البسيطة في بيت العائلة ودفء الأسرة.",
+          "sub_ideas": ["وصف بيت الطفولة", "ذكريات الطعام والأسرة", "العلاقة الحميمة مع الأم"],
+          "keywords": ["الطفولة", "الذكريات", "الفقر", "الأم", "البيت", "الريف"],
+          "reading_skills": ["emotional_tone_inference", "character_trait_analysis", "contextual_vocabulary", "compare_and_contrast"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_8_q7", "question_number": 7, "type": "mcq", "skill": "implicit_reasoning",
+            "prompt": "ما أحب الذكريات إلى الكاتب التي اختار روايتها في رحلة الستين عاماً؟",
+            "choices": [
+              { "choice_id": "a", "text": "مدرسته التي تلقى فيها دراسته الأولى، وجرسها الذي يعلن انتهاء اليوم الدراسي." },
+              { "choice_id": "b", "text": "تعريشة الخشب والعروق والجريد، وحجرة لخزين البيت." },
+              { "choice_id": "c", "text": "بيته القديم المليء بالدفء الأسري على الرغم من الفقر وضيق ذات اليد." },
+              { "choice_id": "d", "text": "حياة الريف الخالية من الزحام وما فيها من حرية وحيوية." }
+            ],
+            "answer_key": "c",
+            "explanation": "الكاتب يسترجع ذكريات البيت القديم بدفئه الأسري رغم بساطته وفقره.",
+            "difficulty": "easy", "question_pattern": "main_idea_detection",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.94, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q8", "question_number": 8, "type": "mcq", "skill": "contextual_vocabulary",
+            "prompt": "استنتج دلالة عبارة: 'كنت أطلق العنان لساقي حتى لا يفوتني موعد كل خميس'.",
+            "choices": [
+              { "choice_id": "a", "text": "إظهار حب الكاتب لممارسة الرياضة وخصوصاً رياضة الجري." },
+              { "choice_id": "b", "text": "إبراز ما يتسم به الريف من أجواء تمكن الأطفال من الحيوية والانطلاق." },
+              { "choice_id": "c", "text": "بيان ابتهاج الكاتب بخروجه من المدرسة بعد يوم دراسي شاق." },
+              { "choice_id": "d", "text": "تأكيد اشتياق الكاتب وحرصه على ألا يفوته الطعام الذي تعده أمه في هذا اليوم." }
+            ],
+            "answer_key": "d",
+            "explanation": "العبارة تعبر عن شدة شوقه للطعام الذي تعده أمه يوم الخميس.",
+            "difficulty": "medium", "question_pattern": "idiom_interpretation",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q9", "question_number": 9, "type": "mcq", "skill": "author_purpose_analysis",
+            "prompt": "بين رأيك في الطريقة التي عرض بها الكاتب سيرته في النص السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "اتسم عرض الكاتب لسيرته بالموضوعية والحياد، فلم يتردد في وصف فقره وقلة ذات يده، وحبه للطعام." },
+              { "choice_id": "b", "text": "اتسم عرض الكاتب لسيرته بالتحيز؛ فلم يستفض في ذكر أحد من إخوته، واكتفى بوصف ما يخصه." },
+              { "choice_id": "c", "text": "اتسم عرض الكاتب لسيرته بالتحيز فقد ألمح إلى دراسته، وأسرته، وأغفل الخلفية الزمانية والمكانية." },
+              { "choice_id": "d", "text": "اتسم عرض الكاتب بالموضوعية، فقد ذكر حقائق، وأكدها بأدلة وشواهد وضرب لها أمثلة." }
+            ],
+            "answer_key": "a",
+            "explanation": "الكاتب عرض سيرته بصدق وموضوعية، واصفاً فقره وحبه للطعام دون تكلف.",
+            "difficulty": "medium", "question_pattern": "narrative_technique_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q10", "question_number": 10, "type": "mcq", "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة قول الكاتب: '.. ولكن كانت هناك وجبة أخرى' في نهاية الفقرة الثانية.",
+            "choices": [
+              { "choice_id": "a", "text": "نتيجة." }, { "choice_id": "b", "text": "تأكيد." }, { "choice_id": "c", "text": "تعليل." }, { "choice_id": "d", "text": "استدراك." }
+            ],
+            "answer_key": "d",
+            "explanation": "'ولكن' تفيد الاستدراك، فبعد الحديث عن طبق الفول اليومي، يستدرك بذكر وجبة الخميس المميزة.",
+            "difficulty": "medium", "question_pattern": "text_structure_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q11", "question_number": 11, "type": "mcq", "skill": "emotional_tone_inference",
+            "prompt": "استنتج المغزى من قول الكاتب: 'ما زلت أتذكرها، وأتوق إليها' في سياق المقال السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "شدة ضيقه وشكواه من الحاضر، وما يعانيه فيه من فقر وحرمان." },
+              { "choice_id": "b", "text": "شدة شوقه وحنينه إلى تلك الأيام التي أحس فيها بدفء المشاعر." },
+              { "choice_id": "c", "text": "رغبته الشديدة في اعتزال الناس، وتفضيل حياة الوحدة والاغتراب." },
+              { "choice_id": "d", "text": "يأسه من الحصول على هذا الطعام لأن أمه فقط من تجيد صنعه." }
+            ],
+            "answer_key": "b",
+            "explanation": "العبارة تعبر عن الحنين إلى الماضي ودفء المشاعر الأسرية.",
+            "difficulty": "medium", "question_pattern": "interpreting_figurative_language",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q12", "question_number": 12, "type": "mcq", "skill": "compare_and_contrast",
+            "prompt": "وازن بين الكاتب وطه حسين من حيث الشعور المسيطر على كل منهما.",
+            "choices": [
+              { "choice_id": "a", "text": "الكاتب يشعر بالضيق والضجر لضيق الحجرة، بينما يسيطر على طه شعور بالارتياح لنومه بمفرده." },
+              { "choice_id": "b", "text": "الكاتب يشعر بالأمان، بينما يسيطر على طه شعور بالقلق والخوف." },
+              { "choice_id": "c", "text": "الكاتب يشعر بالقلق والخوف، بينما يسيطر على طه شعور بالأمان والأنس." },
+              { "choice_id": "d", "text": "الكاتب يشعر بالأنس الذي تتبعه رغبة في الانفراد، بينما طه يشعر بأنس يتبعه شعور بالوحدة." }
+            ],
+            "answer_key": "b",
+            "explanation": "الكاتب يشعر بالأمان والدفء الأسري رغم الفقر، بينما طه حسين يشعر بالقلق والخوف من الوحدة.",
+            "difficulty": "hard", "question_pattern": "comparative_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.87, "likely_to_repeat": false }
+          }
+        ],
+        "section_signals": { "section_weight": 0.96, "difficulty_curve": "easy_to_medium", "examiner_pattern": "moves_from_explicit_retrieval_to_implicit_analysis_and_comparison", "student_priority": "critical" }
+      },
+      {
+        "section_id": "guidance_model_8_section_3",
+        "section_type": "poetry_and_literature_analysis",
+        "title": "أسئلة الشعر والمدارس الأدبية",
+        "order": 3,
+        "passage": {
+          "passage_id": "poetry_composite_schools_analysis_8",
+          "title": "نصوص شعرية من مدارس مختلفة",
+          "genre": "poetry",
+          "domain": "arabic_literature",
+          "source_type": "literary_poetic_anthology",
+          "text": "قصيدة علي محمود طه: فديتك مصر... أحمد شوقي: قاهر العصر... عبد الرحمن شكري... صالح عبد الصبور...",
+          "main_idea": "تحليل نصوص شعرية من مدارس أدبية مختلفة واستنتاج سماتها الفنية والموضوعية.",
+          "sub_ideas": ["حب الوطن والتضحية", "الفخر والاعتزاز", "اليأس والتشاؤم", "استخدام اللغة الحية"],
+          "keywords": ["مدرسة أبولو", "مدرسة الإحياء", "مدرسة الديوان", "مدرسة المهاجر", "مدرسة الواقعية"],
+          "reading_skills": ["poetic_imagery_analysis", "literary_school_identification", "emotional_tone_inference", "interpretation"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_8_q13", "question_number": 13, "type": "mcq", "skill": "interpretation",
+            "prompt": "ما الذي يؤكده الشاعر في البيت الأول؟",
+            "choices": [
+              { "choice_id": "a", "text": "ترك الراحة، والاندفاع بنشاط إلى ساحات العمل." },
+              { "choice_id": "b", "text": "العدل بين الشباب والشيوخ في تولي المهام." },
+              { "choice_id": "c", "text": "حب مصر، والشوق إليها، والتضحية من أجلها." },
+              { "choice_id": "d", "text": "احترام الشيوخ، وإجلالهم لما بذلوه من أجل الوطن." }
+            ],
+            "answer_key": "c",
+            "explanation": "البيت 'فديتك مصر' يعبر عن حب الوطن والاستعداد للتضحية من أجله.",
+            "difficulty": "medium", "question_pattern": "interpretation_of_verse",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q14", "question_number": 14, "type": "mcq", "skill": "interpretation",
+            "prompt": "استنتج المغزى الضمني من البيت الثاني.",
+            "choices": [
+              { "choice_id": "a", "text": "التأكيد على نفاذ بصيرته وفراسته في تعرف الشخصيات." },
+              { "choice_id": "b", "text": "إظهار توحد المصريين وتأهبهم للدفاع عن وطنهم." },
+              { "choice_id": "c", "text": "إبراز سعة مصر، وما تمتلكه من خيرات وموارد." },
+              { "choice_id": "d", "text": "بيان ترقب الشاعر، وشدة اشتياقه للتضحية والفداء." }
+            ],
+            "answer_key": "b",
+            "explanation": "'أينما تول وجهي أرى مهجة لوجهك' تعبر عن استعداد المصريين للتضحية في كل مكان.",
+            "difficulty": "medium", "question_pattern": "interpreting_poetic_expression",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q15", "question_number": 15, "type": "mcq", "skill": "interpretation",
+            "prompt": "بين المقصود من قول الشاعر: 'ووقتك الليالي وهي حرب' في البيت الرابع.",
+            "choices": [
+              { "choice_id": "a", "text": "التحذير ممن يدبر المكائد للوطن ويسعى لاستنزاف خيراته." },
+              { "choice_id": "b", "text": "إظهار حرص المصريين على حماية وطنهم واستنفارهم الدائم." },
+              { "choice_id": "c", "text": "التنفير من الحروب، وما تجره على الجميع من ويلات ودمار." },
+              { "choice_id": "d", "text": "التأكيد على عظمة مصر، وكثرة الحروب التي خاضتها." }
+            ],
+            "answer_key": "b",
+            "explanation": "البيت يعبر عن استعداد المصريين الدائم للدفاع عن وطنهم في كل وقت.",
+            "difficulty": "medium", "question_pattern": "interpretation_of_verse",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q16", "question_number": 16, "type": "mcq", "skill": "idea_identification",
+            "prompt": "بين المبدأ الذي طبقه الشاعر في البيت الأخير.",
+            "choices": [
+              { "choice_id": "a", "text": "\"كن ليناً بغير عنف، وشديداً بغير ضعف\"." },
+              { "choice_id": "b", "text": "\"ونحن أناس لا توسط عندنا لنا الصدر دون العالمين أو القبر\"." },
+              { "choice_id": "c", "text": "\"إن التعاون قوة علوية تبني الرجال، وتبدع الأشياء\"." },
+              { "choice_id": "d", "text": "\"خير من حظي بالنصر والتمكين شعب متحد قوي أمين\"." }
+            ],
+            "answer_key": "d",
+            "explanation": "البيت 'توحد في الزعامة فهو شعب' يؤكد على قوة الشعب المتحد.",
+            "difficulty": "hard", "question_pattern": "abstract_idea_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.86, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q17", "question_number": 17, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "هات من الأبيات ما يدل على شدة عشق الوطن والإخلاص في التضحية من أجله.",
+            "choices": [
+              { "choice_id": "a", "text": "\"لها فوق الضفاف خطى ووثب\"." },
+              { "choice_id": "b", "text": "\"لقد بعثت من الأحقاب مصر\"." },
+              { "choice_id": "c", "text": "\"أرى مهجاً لوجهك تشرئب\"." },
+              { "choice_id": "d", "text": "\"وأفرد بالأمانة فهو صلب\"." }
+            ],
+            "answer_key": "c",
+            "explanation": "'أرى مهجاً لوجهك تشرئب' تعبر عن شدة الحب والاستعداد للتضحية.",
+            "difficulty": "medium", "question_pattern": "explicit_evidence_retrieval",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q18", "question_number": 18, "type": "mcq", "skill": "emotional_tone_inference",
+            "prompt": "استنتج العاطفة المسيطرة على الشاعر في الأبيات.",
+            "choices": [
+              { "choice_id": "a", "text": "الشوق والحنين." }, { "choice_id": "b", "text": "التفاؤل والأمل." },
+              { "choice_id": "c", "text": "الفخر والتباهي." }, { "choice_id": "d", "text": "الانتماء والتضحية." }
+            ],
+            "answer_key": "d",
+            "explanation": "القصيدة تعبر عن الانتماء العميق للوطن والاستعداد للتضحية من أجله.",
+            "difficulty": "medium", "question_pattern": "identifying_dominant_emotion",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.94, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q19", "question_number": 19, "type": "mcq", "skill": "poetic_imagery_analysis",
+            "prompt": "ميز نوع الصورة البيانية في قول الشاعر: 'فهو لظى ووبالنس قد هي حصى وحصب' في البيت الخامس.",
+            "choices": [
+              { "choice_id": "a", "text": "استعارة تصريحية." }, { "choice_id": "b", "text": "تشبيه بليغ." },
+              { "choice_id": "c", "text": "تشبيه مجمل." }, { "choice_id": "d", "text": "استعارة مكنية." }
+            ],
+            "answer_key": "b",
+            "explanation": "'فهو لظى' تشبيه بليغ، شبه النهر باللظى في الاشتعال والثورة.",
+            "difficulty": "medium", "question_pattern": "rhetorical_device_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q20", "question_number": 20, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "استنتج في ضوء فهمك الأبيات السابقة سمة من سمات مدرسة أبولو.",
+            "choices": [
+              { "choice_id": "a", "text": "ذاتية التجربة والحنين لمواطن الذكريات." },
+              { "choice_id": "b", "text": "حدة العاطفة تجاه الوطن وقضاياه." },
+              { "choice_id": "c", "text": "الاهتمام بقضايا العصر ومشكلاته." },
+              { "choice_id": "d", "text": "المبالغة والاهتمام بالنواحي البيانية." }
+            ],
+            "answer_key": "b",
+            "explanation": "القصيدة تعبر عن عاطفة جياشة تجاه الوطن، وهي سمة أبولوية بارزة.",
+            "difficulty": "medium", "question_pattern": "characteristic_identification",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.86, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q21", "question_number": 21, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "بين من خلال البيتين السابقين كيف طبق شوقي سمات مدرسة الإحياء والبعث.",
+            "choices": [
+              { "choice_id": "a", "text": "رصد مشكلات المجتمع كالطيش والتكبر، واهتم بجوانب الإصلاح." },
+              { "choice_id": "b", "text": "أفسح المجال للتجربة الذاتية فعبر عن إعجابه بالقائد نابليون." },
+              { "choice_id": "c", "text": "التفت إلى التاريخ؛ لينشر الوعي بتراث الأجداد ويعمق النضال الوطني." },
+              { "choice_id": "d", "text": "اهتم بالنزعة البيانية، وجلال الصياغة، وروعة الأسلوب، وحلاوة الموسيقا." }
+            ],
+            "answer_key": "d",
+            "explanation": "الأبيات تهتم بالصياغة والبيان والموسيقا الشعرية، وهي سمة مدرسة الإحياء.",
+            "difficulty": "medium", "question_pattern": "trait_identification_through_quote",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q22", "question_number": 22, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي ظهرت في هذين البيتين من سمات شعراء الديوان.",
+            "choices": [
+              { "choice_id": "a", "text": "التأمل في الكون والطبيعة والتعمق في أسرار الوجود." },
+              { "choice_id": "b", "text": "الطموح والتطلع إلى الآفاق واستهداف المثل العليا." },
+              { "choice_id": "c", "text": "استبطان النفس الإنسانية بتأمل الشاعر ذاته." },
+              { "choice_id": "d", "text": "التعبير عن الذات الإنسانية وظهور مسحة الحزن." }
+            ],
+            "answer_key": "d",
+            "explanation": "بيتا عبد الرحمن شكري يعبران عن حزن الشاعر ووحدته الداخلية.",
+            "difficulty": "medium", "question_pattern": "trait_identification_through_quote",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q23", "question_number": 23, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي اتضحت في الأسطر السابقة من سمات المدرسة الواقعية الجديدة من حيث الشكل.",
+            "choices": [
+              { "choice_id": "a", "text": "التعبير عن النفس الإنسانية وما يشغلها." },
+              { "choice_id": "b", "text": "الاعتماد على الرمز، واستخدام اللغة الحية." },
+              { "choice_id": "c", "text": "ظهور مسحة التشاؤم والاستسلام للأحزان." },
+              { "choice_id": "d", "text": "الاعتماد على السطر والتفعيلة، وتنوع القافية." }
+            ],
+            "answer_key": "d",
+            "explanation": "الأسطر تعتمد على التفعيلة والسطر الشعري دون التزام بقافية موحدة، وهي سمة شكلية للواقعية.",
+            "difficulty": "medium", "question_pattern": "structural_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q24", "question_number": 24, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "بين - مما يلي – كيف طبق الشاعر سمات مدرسة المهاجر.",
+            "choices": [
+              { "choice_id": "a", "text": "أكد الشاعر تطلعه للمثل العليا، فهاجر من أجل الثراء والغنى." },
+              { "choice_id": "b", "text": "أظهر الشاعر قلقه بسبب موازنته بين القيم الروحية والمادية." },
+              { "choice_id": "c", "text": "نزع الشاعر إلى التأمل في حقائق الكون، وأسرار الوجود واستبطان النفس فمال إلى الإكثار من الحكم." },
+              { "choice_id": "d", "text": "مال إلى النزعة الروحية من قناعته من خلال التأكيد على عدم وصوله للكمال عن طريق المال أو المجد." }
+            ],
+            "answer_key": "c",
+            "explanation": "الشاعر يتأمل في حقائق الحياة والنفس الإنسانية، وهي سمة من سمات شعراء المهاجر.",
+            "difficulty": "medium", "question_pattern": "characteristics_identification_from_example",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": false }
+          }
+        ],
+        "section_signals": { "section_weight": 0.94, "difficulty_curve": "medium_to_hard", "examiner_pattern": "focuses_on_literary_schools_characteristics_and_emotional_analysis", "student_priority": "high" }
+      },
+      {
+        "section_id": "guidance_model_8_section_4",
+        "section_type": "reading_comprehension_and_grammar_and_writing",
+        "title": "نص أحمد أمين (الضمير) - أسئلة النحو والبلاغة والتعبير",
+        "order": 4,
+        "passage": {
+          "passage_id": "reading_passage_ahmed_amin_conscience",
+          "title": "الضمير",
+          "genre": "literary_article",
+          "domain": "ethics_and_psychology",
+          "source_type": "argumentative_literary_text",
+          "text": "الضمير الحي شعور به كأنه صوت ينبعث من أعماق صدورنا...",
+          "main_idea": "بيان أهمية الضمير الحي وطرق تنميته وأسباب ضعفه.",
+          "sub_ideas": ["مفهوم الضمير", "مؤثرات الضمير", "أهمية الإرادة", "كيفية إحياء الضمير"],
+          "keywords": ["الضمير", "الأخلاق", "العلم", "الإرادة", "التربية"],
+          "reading_skills": ["contextual_vocabulary", "implicit_reasoning", "poetic_imagery_analysis", "compare_and_contrast"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_8_q25", "question_number": 25, "type": "mcq", "skill": "contextual_vocabulary",
+            "prompt": "ما الكلمة التي تؤدي معنى 'يتخدر الضمير' الواردة في سياق الفقرة الرابعة؟",
+            "choices": [
+              { "choice_id": "a", "text": "يتفاوت ويتدرج." }, { "choice_id": "b", "text": "يضطرب ويهتز." },
+              { "choice_id": "c", "text": "يضعف ويتبلد." }, { "choice_id": "d", "text": "يتوارى ويختفي." }
+            ],
+            "answer_key": "c",
+            "explanation": "'يتخدر' يعني يفقد الإحساس ويتبلد ويضعف.",
+            "difficulty": "easy", "question_pattern": "vocabulary_in_context",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.95, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q26", "question_number": 26, "type": "mcq", "skill": "implicit_reasoning",
+            "prompt": "بين – من خلال فهمك الفقرة الثانية- المعيار الأقوى تأثيراً في إصلاح الضمير وإحيائه.",
+            "choices": [
+              { "choice_id": "a", "text": "ترقية الحياة الاقتصادية للأمم والأفراد، ضماناً لعيش الجميع في ثراء ورفاهية." },
+              { "choice_id": "b", "text": "مقاومة العادات والتقاليد الخاطئة التي تربت عليها بعض الأمم ونشأ عليها الأفراد." },
+              { "choice_id": "c", "text": "مداومة القراءة، وكثرة الاطلاع، واتساع المعرفة والاهتمام بالجانب النظري للعلم." },
+              { "choice_id": "d", "text": "المواءمة بين تثقيف العقل، وتعديل السلوك وفق المعارف والخبرات الجديدة النافعة." }
+            ],
+            "answer_key": "d",
+            "explanation": "الفقرة تؤكد أن العلم النظري لا قيمة له ما لم يتحول إلى سلوك عملي.",
+            "difficulty": "medium", "question_pattern": "implicit_cause_inference",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q27", "question_number": 27, "type": "mcq", "skill": "interpretation",
+            "prompt": "استنتج المغزى من قول الكاتب: 'يحس بلذع شديد جراء عصيانه' في سياق الفقرة الرابعة.",
+            "choices": [
+              { "choice_id": "a", "text": "التخويف من شدة الألم الناتج عن مخالفة العادات، وعدم الاكتراث بقوانين المجتمع." },
+              { "choice_id": "b", "text": "التأكيد على أن الضمير قواه الفطرية مركوزة في نفوسنا، تتأثر بما يبقيها أو يفنيها." },
+              { "choice_id": "c", "text": "التحذير من الانسياق وراء شهوات النفس وغرائزها." },
+              { "choice_id": "d", "text": "التنفير من التجاوزات التي يرتكبها فاسدو الأخلاق." }
+            ],
+            "answer_key": "b",
+            "explanation": "المغزى أن الضمير فطري في الإنسان، يتألم عند مخالفته، ويتأثر بالتربية والإهمال.",
+            "difficulty": "medium", "question_pattern": "interpreting_figurative_language",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q28", "question_number": 28, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "هات من النص السابق ما يؤيد مضمون البيت السابق: 'كم عالم مد العلوم حبائل لوقيعة وقطيعة وفراق'.",
+            "choices": [
+              { "choice_id": "a", "text": "\"وكلما تكرر اللذع، ولم يعدل السلوك ازداد الضمير وهناً على وهن\"." },
+              { "choice_id": "b", "text": "\"فإذا أهمل في قراءة الأدب واشتغل بالرياضة ضعف ذوقه الأدبي\"." },
+              { "choice_id": "c", "text": "\"ستصادف أحياناً كائناً منظم العقل ثري الثقافة لكنه قد يكون حاقد القلب، أو جشع النفس\"." },
+              { "choice_id": "d", "text": "\"يتحدث عن الشر حديث المستحسن فيتخدر الضمير ويخمد صوته\"." }
+            ],
+            "answer_key": "c",
+            "explanation": "البيت يشير إلى العلماء الذين يستخدمون علمهم للشر، والنص يؤكد وجود كائنات مثقفة بلا ضمير.",
+            "difficulty": "hard", "question_pattern": "cross_text_idea_matching",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.87, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q29", "question_number": 29, "type": "mcq", "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة عبارة: 'حتى نرى صاحبه يخلق المعاذير' في الفقرة الرابعة بما قبلها.",
+            "choices": [
+              { "choice_id": "a", "text": "تعليل." }, { "choice_id": "b", "text": "نتيجة." }, { "choice_id": "c", "text": "استدراك." }, { "choice_id": "d", "text": "توضيح." }
+            ],
+            "answer_key": "b",
+            "explanation": "نتيجة لتكرار اللذع وعدم تعديل السلوك، يبدأ صاحبه بخلق الأعذار وتبرير الأخطاء.",
+            "difficulty": "medium", "question_pattern": "text_structure_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q30", "question_number": 30, "type": "mcq", "skill": "poetic_imagery_analysis",
+            "prompt": "ميز نوع الصورة، وبين سر جمالها وقيمتها الفنية في قوله: 'الضمير .. ينمو بالتربية، ويضعف بالإهمال'.",
+            "choices": [
+              { "choice_id": "a", "text": "تشبيه بليغ، توضيح، ويوحي بالأثر الإيجابي لتربية الضمير على الخصال الحميدة." },
+              { "choice_id": "b", "text": "تشبيه تمثيلي، توضيح، ويوحي بالأثر السيئ لمخالفة الضمير وعدم الاستجابة له." },
+              { "choice_id": "c", "text": "تشبيه ضمني، تجسيم ويوحي بأهمية الالتزام بقيم المجتمع وعدم مخالفتها." },
+              { "choice_id": "d", "text": "استعارة مكنية، تجسيم، وتوحي بضرورة تزكية الضمير، والعمل على تنشيطه." }
+            ],
+            "answer_key": "d",
+            "explanation": "شبه الضمير بنبات ينمو ويضعف، فحذف المشبه به، فهي استعارة مكنية توحي بضرورة العناية به.",
+            "difficulty": "hard", "question_pattern": "rhetorical_device_and_function",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.84, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q31", "question_number": 31, "type": "mcq", "skill": "compare_and_contrast",
+            "prompt": "وازن بين العبارتين من حيث وسائل الإقناع التي اعتمد عليها.",
+            "choices": [
+              { "choice_id": "a", "text": "اعتمد الكاتب على وسائل التوكيد كالإطناب والترادف، وضرب المثل، والاستشهاد بالأقوال المأثورة، بينما اعتمد الزيات على وسائل التوكيد كالترادف، واللجوء إلى الإحصاء." },
+              { "choice_id": "b", "text": "كلا الكاتبين اعتمد على الإحصاء بالإضافة إلى الاستعانة بوسائل أخرى كالترادف والاعتراض." },
+              { "choice_id": "c", "text": "كلا الكاتبين لم يدعم فكرته بوسائل تقنع القارئ بها." },
+              { "choice_id": "d", "text": "اعتمد الزيات على وسائل التوكيد كالإطناب والترادف، وضرب المثل، والاستشهاد بالأقوال المأثورة، بينما اعتمد الكاتب على وسائل التوكيد كالإطناب، واللجوء إلى الإحصاء." }
+            ],
+            "answer_key": "a",
+            "explanation": "أحمد أمين استخدم الإطناب والمثل ('فمن شب على شيء شاب عليه')، بينما الزيات استخدم الإحصاء ('آي الزكاة تربو على الخمسين').",
+            "difficulty": "hard", "question_pattern": "stylistic_comparison",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.80, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q32", "question_number": 32, "type": "mcq", "skill": "author_purpose_analysis",
+            "prompt": "بين – من خلال المقال السابق - كيف نجح الكاتب في تحقيق مبدأ 'التكوين الفني'.",
+            "choices": [
+              { "choice_id": "a", "text": "بدأ بالنتائج والمسببات، وبعدهما المقدمات، ليحقق عنصر التشويق والإمتاع." },
+              { "choice_id": "b", "text": "بدأ بتهيئة للموضوع، ثم انتقل إلى التفاصيل، التي عبر منها إلى الخاتمة، ولم يغفل عنصر التشويق." },
+              { "choice_id": "c", "text": "عرض في بداية مقاله زعماً خطأ يدعيه بعض الناس، ثم أخذ يفند هذا الزعم بالأدلة." },
+              { "choice_id": "d", "text": "ضم مقاله عدة أفكار متباينة، محاولاً الربط بينها بأدلة عقلية، واستشهاد بالأقوال المأثورة." }
+            ],
+            "answer_key": "b",
+            "explanation": "الكاتب بدأ بتمهيد عن الضمير، ثم فصل في مؤثراته وأهمية الإرادة، وختم بطرق إحيائه.",
+            "difficulty": "medium", "question_pattern": "narrative_technique_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q33", "question_number": 33, "type": "mcq", "skill": "genre_characteristics_identification",
+            "prompt": "استنتج من خلال الفقرة السابقة ملمحاً رئيساً في بناء القصة القصيرة فناً.",
+            "choices": [
+              { "choice_id": "a", "text": "الاعتماد على تفاصيل الإنشاء؛ لتعطي العمل الفني تشويقاً." },
+              { "choice_id": "b", "text": "اختيار العبارات والمواقف الدالة على الفكرة بدقة؛ ليتحقق التكثيف والتركيز." },
+              { "choice_id": "c", "text": "اتخاذ الحوار مرتكزاً أساسياً في عملية البناء الدرامي؛ لتطور الحدث وتدرجه." },
+              { "choice_id": "d", "text": "استخدام لغة الحياة اليومية؛ ليتحقق أساس محاكاة الواقع." }
+            ],
+            "answer_key": "b",
+            "explanation": "الفقرة القصيرة لغادة السمان تحمل فكرة عميقة (انشغال الأم) بعبارات مركزة ومختزلة، مما يحقق التكثيف.",
+            "difficulty": "medium", "question_pattern": "genre_characteristics_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q34", "question_number": 34, "type": "mcq", "skill": "sentence_structure_analysis",
+            "prompt": "ميز المحل الإعرابي لجملة 'يصاحبه الرشد'.",
+            "choices": [
+              { "choice_id": "a", "text": "رفع خبر." }, { "choice_id": "b", "text": "جر نعت." },
+              { "choice_id": "c", "text": "نصب حال." }, { "choice_id": "d", "text": "جر مضاف إليه." }
+            ],
+            "answer_key": "b",
+            "explanation": "جملة 'يصاحبه الرشد' في محل جر نعت لكلمة 'طالب' المجرورة بالإضافة.",
+            "difficulty": "medium", "question_pattern": "sentence_grammatical_position",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q35", "question_number": 35, "type": "mcq", "skill": "parsing",
+            "prompt": "ميز إعراب كلمة (الحق) الواردة في الشطر الثاني من البيت السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "خبر لمبتدأ محذوف." }, { "choice_id": "b", "text": "معطوف." },
+              { "choice_id": "c", "text": "مفعول معه." }, { "choice_id": "d", "text": "مبتدأ." }
+            ],
+            "answer_key": "d",
+            "explanation": "'الحق نعم مثبت الأقدام'، 'الحق' مبتدأ مرفوع بالضمة.",
+            "difficulty": "medium", "question_pattern": "identifying_sentence_elements",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q36", "question_number": 36, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "بين المفضل الوارد في البيت السابق: 'فأجمل أخلاق الفتى ما تكافأت بمنزلة بين التواضع والكبر'.",
+            "choices": [
+              { "choice_id": "a", "text": "أخلاق." }, { "choice_id": "b", "text": "التواضع." },
+              { "choice_id": "c", "text": "ما تكافأت." }, { "choice_id": "d", "text": "الفتى." }
+            ],
+            "answer_key": "c",
+            "explanation": "المفضل هو 'ما تكافأت' الاسم الموصول الذي يعود على الأخلاق المتوازنة.",
+            "difficulty": "medium", "question_pattern": "comparative_adjective_rules",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q37", "question_number": 37, "type": "mcq", "skill": "parsing",
+            "prompt": "حدد الإعراب الصحيح لكلمة 'جنون' كما وردت في سياق البيت.",
+            "choices": [
+              { "choice_id": "a", "text": "فاعل مرفوع." }, { "choice_id": "b", "text": "مفعول مطلق." },
+              { "choice_id": "c", "text": "نائب فاعل مرفوع." }, { "choice_id": "d", "text": "توكيد لفظي." }
+            ],
+            "answer_key": "a",
+            "explanation": "'فجن جنون الرياح'، 'جنون' فاعل مرفوع للفعل 'جن'.",
+            "difficulty": "medium", "question_pattern": "identifying_sentence_elements",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q38", "question_number": 38, "type": "mcq", "skill": "morphology",
+            "prompt": "ميز مما يلي – الجملة التي ورد بها مصدر رباعي.",
+            "choices": [
+              { "choice_id": "a", "text": "كل مصري أصيل متحمل مسئولياته بعزة وإباء." },
+              { "choice_id": "b", "text": "الحكيم من يعمل على مجاراة منجزات العصر واستخدامها بوعي." },
+              { "choice_id": "c", "text": "من مطالب الذكاء الاجتماعي التحلي بالوعي في الحديث مع الآخرين." },
+              { "choice_id": "d", "text": "الأفكار الهدامة مقاومة بشدة من محبي الخير." }
+            ],
+            "answer_key": "b",
+            "explanation": "'مجاراة' مصدر رباعي على وزن 'مفاعلة' من الفعل 'جارى'.",
+            "difficulty": "medium", "question_pattern": "derived_noun_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q39", "question_number": 39, "type": "mcq", "skill": "grammar_usage",
+            "prompt": "بين - مما يلي – الجملة التي ورد بها أسلوب استثناء تام منفي.",
+            "choices": [
+              { "choice_id": "a", "text": "كل إنسان يسعى لعمل غير نافع لا يقدره المجتمع الرشيد." },
+              { "choice_id": "b", "text": "إذا أردت أن تحقق هدفك فلا تسع إلا لنهضة مجتمعك." },
+              { "choice_id": "c", "text": "لا يسمح لأحد بالوقوف على المنصة إلا ذوي الفصاحة." },
+              { "choice_id": "d", "text": "بناء الوطن والسعي لارتقائه لا يصدر إلا من إنسان حريص." }
+            ],
+            "answer_key": "d",
+            "explanation": "'لا يصدر إلا من إنسان حريص' استثناء تام منفي، حيث المستثنى منه مذكور ('بناء الوطن...').",
+            "difficulty": "hard", "question_pattern": "grammatical_construction_identification",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.82, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q40", "question_number": 40, "type": "mcq", "skill": "parsing",
+            "prompt": "بين سبب نصب كلمة 'خوف' في البيت السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "مفعول به." }, { "choice_id": "b", "text": "مفعول لأجله." },
+              { "choice_id": "c", "text": "تمييز." }, { "choice_id": "d", "text": "نائب عن المفعول المطلق." }
+            ],
+            "answer_key": "b",
+            "explanation": "'خوف' مفعول لأجله منصوب بالفتحة.",
+            "difficulty": "medium", "question_pattern": "identifying_grammatical_function",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q41", "question_number": 41, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "ميز نوع المنادى في العبارة السابقة: 'يا نديمي من سرنديب كفا عن ملامي'.",
+            "choices": [
+              { "choice_id": "a", "text": "مضاف." }, { "choice_id": "b", "text": "شبيه بالمضاف." },
+              { "choice_id": "c", "text": "نكرة مقصودة." }, { "choice_id": "d", "text": "نكرة غير مقصودة." }
+            ],
+            "answer_key": "a",
+            "explanation": "'نديمي' منادى مضاف، والياء مضاف إليه.",
+            "difficulty": "easy", "question_pattern": "vocative_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q42", "question_number": 42, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "ميز من بين الجمل التالية الجملة التي بها اسم فعل مضارع.",
+            "choices": [
+              { "choice_id": "a", "text": "شتان ما بين عقل يفكر وآخر يردد ما يسمع." },
+              { "choice_id": "b", "text": "ويك لمن يقصر ويرجو أن يرتقي ذرى المجد." },
+              { "choice_id": "c", "text": "من أراد التفوق فعليه بالعلم يتخذه سلاحاً." },
+              { "choice_id": "d", "text": "هيهات أن يحقق العدو أهدافه في أمة واعية." }
+            ],
+            "answer_key": "b",
+            "explanation": "'ويك' اسم فعل مضارع بمعنى 'أتعجب'.",
+            "difficulty": "medium", "question_pattern": "grammatical_particle_function",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q43", "question_number": 43, "type": "mcq", "skill": "parsing",
+            "prompt": "ميز من بين البدائل التالية الكلمة المعربة بعلامة إعراب فرعية.",
+            "choices": [
+              { "choice_id": "a", "text": "لا تراقب أوقات الناس؛ فلكل رزقه." },
+              { "choice_id": "b", "text": "من يدع الشر يستفد من الحياة." },
+              { "choice_id": "c", "text": "تتقدم الدول النامية وإنجازاتها." },
+              { "choice_id": "d", "text": "المتحف الكبير من أرقى ما رأيته." }
+            ],
+            "answer_key": "c",
+            "explanation": "'النامية' نعت مرفوع بالضمة المقدرة للتعذر (علامة فرعية).",
+            "difficulty": "hard", "question_pattern": "parsing_exception_cases",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.82, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q44", "question_number": 44, "type": "mcq", "skill": "parsing",
+            "prompt": "بين إعراب كلمة 'مجالا' في البيت السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "مفعول به." }, { "choice_id": "b", "text": "تمييز." },
+              { "choice_id": "c", "text": "مفعول لأجله." }, { "choice_id": "d", "text": "حال." }
+            ],
+            "answer_key": "b",
+            "explanation": "'مجالاً' تمييز منصوب بالفتحة.",
+            "difficulty": "medium", "question_pattern": "identifying_grammatical_function",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q45", "question_number": 45, "type": "mcq", "skill": "grammar_usage",
+            "prompt": "املأ الفراغ في البيت السابق بالكلمة الصحيحة: 'نعم صديق المرء من كان عونه وبئس ...... من لا يعين على الدهر'.",
+            "choices": [
+              { "choice_id": "a", "text": "رجل." }, { "choice_id": "b", "text": "امرؤ." }, { "choice_id": "c", "text": "امرأ." }, { "choice_id": "d", "text": "امرئ." }
+            ],
+            "answer_key": "a",
+            "explanation": "'بئس رجل' فاعل 'بئس' مرفوع بالضمة الظاهرة.",
+            "difficulty": "medium", "question_pattern": "praise_and_blame_structure",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q46", "question_number": 46, "type": "mcq", "skill": "sentence_structure_analysis",
+            "prompt": "ميز المحل الإعرابي لجملة 'عرضها الثرى' الواردة في البيت السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "نصب حال." }, { "choice_id": "b", "text": "نصب نعت." },
+              { "choice_id": "c", "text": "رفع خبر." }, { "choice_id": "d", "text": "جر مضاف إليه." }
+            ],
+            "answer_key": "b",
+            "explanation": "جملة 'عرضها الثرى' في محل نصب نعت لكلمة 'دولة'.",
+            "difficulty": "medium", "question_pattern": "sentence_grammatical_position",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q47", "question_number": 47, "type": "mcq", "skill": "parsing",
+            "prompt": "ميز الإعراب الصحيح لكلمة 'قوله' الواردة في البيت السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "مضاف إليه مجرور." }, { "choice_id": "b", "text": "مبتدأ مؤخر مرفوع." },
+              { "choice_id": "c", "text": "نائب فاعل مرفوع." }, { "choice_id": "d", "text": "بدل مطابق مجرور." }
+            ],
+            "answer_key": "c",
+            "explanation": "'قوله' نائب فاعل مرفوع بالضمة للفعل 'المشفوع' المبني للمجهول.",
+            "difficulty": "hard", "question_pattern": "passive_voice_parsing",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.85, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q48", "question_number": 48, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "بين نوع الواو في البيت السابق، وأعرب ما بعدها: 'لا تقطعن ذنب الأفعى وترسلها'.",
+            "choices": [
+              { "choice_id": "a", "text": "واو العطف – مضارع مرفوع." }, { "choice_id": "b", "text": "واو المعية – مضارع منصوب." },
+              { "choice_id": "c", "text": "واو الحال – مضارع مرفوع." }, { "choice_id": "d", "text": "واو القسم – مضارع مبني." }
+            ],
+            "answer_key": "b",
+            "explanation": "الواو للمعية، والفعل بعدها منصوب بأن مضمرة وجوباً بعد واو المعية.",
+            "difficulty": "hard", "question_pattern": "grammatical_particle_function",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.83, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q49", "question_number": 49, "type": "mcq", "skill": "sentence_structure_analysis",
+            "prompt": "حدد المحل الإعرابي للمصدر المؤول (أنهم حرصوا) الوارد في العبارة السابقة.",
+            "choices": [
+              { "choice_id": "a", "text": "رفع خبر." }, { "choice_id": "b", "text": "رفع فاعل." },
+              { "choice_id": "c", "text": "رفع مبتدأ." }, { "choice_id": "d", "text": "رفع نعت." }
+            ],
+            "answer_key": "b",
+            "explanation": "المصدر المؤول 'أنهم حرصوا' في محل رفع فاعل للفعل 'يؤثر'.",
+            "difficulty": "hard", "question_pattern": "infinitive_parsing",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.85, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q50", "question_number": 50, "type": "mcq", "skill": "topical_coherence",
+            "prompt": "حدد- مما يلي – التفصيلة التي لا يمكن الاستغناء عنها في مقال يدور حول زيادة الأمان وتقليل حوادث الطرق.",
+            "choices": [
+              { "choice_id": "a", "text": "منع السير بالسيارات صغيرة الحجم والتي تكون سريعة بطبعها، ويصعب رصدها." },
+              { "choice_id": "b", "text": "رفع الكفاءة المهنية والطبية والنفسية للمسعفين، وإمدادهم بما يحتاجون إليه." },
+              { "choice_id": "c", "text": "تخير أوقات السير المناسبة، وعدم السير على الطرق التي ما زالت قيد الإنشاء، والكشف الدوري على السائقين." },
+              { "choice_id": "d", "text": "عدم السير في الأوقات المزدحمة كأوقات خروج الموظفين من أعمالهم، وخروج الطلاب من مدارسهم." }
+            ],
+            "answer_key": "c",
+            "explanation": "الخيار 'ج' يتعلق مباشرة بإجراءات تقليل الحوادث وهو أساسي في المقال.",
+            "difficulty": "medium", "question_pattern": "identifying_irrelevant_information",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q51", "question_number": 51, "type": "mcq", "skill": "text_structure_analysis",
+            "prompt": "حدد النموذج الأمثل للربط بين الفقرتين السابقتين في سياق مقال عن 'تحديات اللغة العربية: الواقع والمأمول'.",
+            "choices": [
+              { "choice_id": "a", "text": "سبب – نتيجة." }, { "choice_id": "b", "text": "زعم – تفنيد." },
+              { "choice_id": "c", "text": "رأي – دليل." }, { "choice_id": "d", "text": "مشكلة – حل." }
+            ],
+            "answer_key": "d",
+            "explanation": "الفقرة الأولى تعرض مشكلة (تحديات اللغة العربية)، والثانية تقدم حلولاً.",
+            "difficulty": "medium", "question_pattern": "text_development_pattern",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.87, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q52", "question_number": 52, "type": "open_ended", "skill": "evidence_extraction",
+            "prompt": "هات من الفقرة أربعة أدلة تؤكد أن مفهوم الاستدامة في المتحف المصري الكبير تجاوز البعد البيئي التقليدي ليشمل أبعاداً حضارية واجتماعية.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "1. الحفاظ على التراث والهوية. 2. التعليم ونقل المعرفة عبر برامج بحثية وتعليمية تفاعلية. 3. المشاركة المجتمعية من كل فئات المجتمع المحلي والدولي. 4. تبادل الرؤى وحوار الحضارات.",
+            "difficulty": "medium", "question_pattern": "explicit_information_retrieval",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.88, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q53", "question_number": 53, "type": "open_ended", "skill": "evidence_extraction",
+            "prompt": "حدد من الفقرة دليلين على استطاعة تخطي القناة، ثم استنتج سمة أسلوبية من سمات الكاتب، وهات من العبارة ما يدل عليها.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "الدليل الأول: عبر القناة على كتف أحد إخوته. الدليل الثاني: ذهب غير مرة إلى حيث كانت تقوم شجرات التوت. السمة الأسلوبية: الإطناب والتكرار. العبارة التي تدل عليها: 'وهو يذكر أنه كان'... 'وهو يذكر أنه كان'.",
+            "difficulty": "medium", "question_pattern": "evidence_extraction_and_analysis",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.86, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_8_q54", "question_number": 54, "type": "open_ended", "skill": "grammar_transformation",
+            "prompt": "ابن الفعلين الواردين في العبارة السابقة للمجهول، وغير ما يلزم: 'إني دعوتكم لأصون وفاءكم'.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "إنكم دعيتم ليصان وفاؤكم.",
+            "difficulty": "medium", "question_pattern": "passive_voice_transformation",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_8_q55", "question_number": 55, "type": "open_ended", "skill": "topical_writing",
+            "prompt": "اكتب كلمة افتتاحية لندوة تدور حول المتاجر الإلكترونية، والخداع البصري الذي تلعبه دعاية المتاجر الإلكترونية، والجودة التي هي أساس الانتشار والاستمرارية. الندوة تحت عنوان 'المتاجر الإلكترونية العيوب والمميزات'. الكلمة الافتتاحية من (6 – 8) أسطر (80) كلمة، تتضمن الكلمة: التعريف بالندوة – أهميتها – الجمهور المستهدف. التعريف بالمتحدثين الرئيسيين عن الموضوع. عبارات ترحيبية؛ تستثير اهتمام الجمهور لمتابعة الندوة.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "يجب أن يكتب الطالب كلمة افتتاحية متكاملة تتضمن جميع العناصر المطلوبة بأسلوب بلاغي جذاب.",
+            "difficulty": "medium", "question_pattern": "guided_writing_task",
+            "exam_signal": { "high_frequency": true, "priority_weight": 1.0, "likely_to_repeat": true }
+          }
+        ],
+        "section_signals": { "section_weight": 0.98, "difficulty_curve": "easy_to_hard", "examiner_pattern": "integrates_article_analysis_with_grammar_rhetoric_and_writing", "student_priority": "critical" }
+      }
+    ]
+  }
+}

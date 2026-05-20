@@ -1,0 +1,1381 @@
+{
+  "exam_metadata": {
+    "exam_title": "النموذج الاسترشادي الرابع - اللغة العربية",
+    "academic_year": "2025/2026",
+    "grade": "الثانوية العامة",
+    "month": "أكتوبر 2025",
+    "total_questions": 55,
+    "sections": [
+      {
+        "section_id": "guidance_model_4_section_1",
+        "section_type": "reading_comprehension",
+        "title": "اقرأ ثم أجب (الذكاء الاصطناعي)",
+        "order": 1,
+        "passage": {
+          "passage_id": "reading_passage_artificial_intelligence",
+          "title": "الذكاء الاصطناعي",
+          "genre": "informational_article",
+          "domain": "technology_and_ethics",
+          "source_type": "scientific_informational_text",
+          "text": "الذكاء الاصطناعي هو فرع من فروع التكنولوجيا الحديثة التي تهدف إلى محاكاة القدرات الذهنية للبشر في الآلات والأنظمة. يُعرَّف الذكاء الاصطناعي بأنه قدرة الأجهزة والبرمجيات على التعلم، والتحليل، واتخاذ القرارات بشكل مستقل بناء على البيانات المتوفرة، وبدأت فكرة الذكاء الاصطناعي بالظهور في منتصف القرن العشرين؛ حيث طُرحت نظريات وأساليب لمحاكاة العمليات العقلية للبشر، وتطورت مع الوقت لتصبح جزءاً أساسياً من حياتنا اليومية. للذكاء الاصطناعي فوائد كثيرة تنعكس على البشرية؛ فمن خلاله يمكن تسهيل العمليات المعقدة، وتحسين كفاءة الأعمال في قطاعات متعددة مثل: الطب، التعليم، والصناعة، وعلى سبيل المثال يعتمد الطلاب على الذكاء الاصطناعي في تحسين أدائهم الدراسي من خلال البرامج التعليمية الذكية التي تقدم محتوى مخصصاً يتناسب مع احتياجاتهم، كما يساعد الأطباء في تشخيص الأمراض بشكل أدق وأسرع باستخدام أنظمة تعتمد على تحليل البيانات الطبية. ومع ذلك لا يخلو الذكاء الاصطناعي من مخاطر، ويخشى بعض العلماء من أن يؤدي الاستخدام غير المسؤول لهذه التكنولوجيا إلى فقدان بعض الوظائف البشرية، وانتهاك الخصوصية، وزيادة الاعتماد على الآلات بشكل قد يُضعف المهارات البشرية، كما أشار ستيفن هوكينغ إلى أن الذكاء الاصطناعي قد يصبح خطراً إذا تجاوز قدرة البشر على السيطرة عليه. ورغم المخاوف يؤكد خبراء التكنولوجيا أن الذكاء الاصطناعي أداة قيّمة إذا استُخدمت بحكمة، ولكن يجب توخي الحذر، ووضع ضوابط أخلاقية وقوانين تحكم استخدامه؛ لتجنب مخاطره المحتملة؛ فهو يحمل في طياته إمكانات هائلة لتحسين جودة الحياة ودفع البشرية نحو مستقبل أكثر تطوراً.",
+          "main_idea": "عرض مفهوم الذكاء الاصطناعي وفوائده ومخاطره وضرورة وضع ضوابط أخلاقية لاستخدامه.",
+          "sub_ideas": [
+            "تعريف الذكاء الاصطناعي ونشأته",
+            "فوائد الذكاء الاصطناعي في القطاعات المختلفة",
+            "مخاطر الذكاء الاصطناعي وتحدياته",
+            "أهمية وضع ضوابط أخلاقية وقوانين لاستخدامه"
+          ],
+          "keywords": [
+            "الذكاء الاصطناعي",
+            "التكنولوجيا",
+            "محاكاة",
+            "التعلم",
+            "الخصوصية",
+            "الأخلاقيات",
+            "ستيفن هوكينغ"
+          ],
+          "reading_skills": [
+            "contextual_vocabulary",
+            "definition_extraction",
+            "main_idea_detection",
+            "implicit_reasoning",
+            "cause_effect_analysis",
+            "prediction",
+            "evidence_extraction"
+          ]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_4_q1",
+            "question_number": 1,
+            "type": "mcq",
+            "skill": "evidence_extraction",
+            "prompt": "متى بدأت فكرة الذكاء الاصطناعي بالظهور في ضوء فهمك الفقرة الأولى؟",
+            "choices": [
+              { "choice_id": "a", "text": "في بداية القرن العشرين." },
+              { "choice_id": "b", "text": "في نهاية القرن التاسع عشر." },
+              { "choice_id": "c", "text": "في منتصف القرن العشرين." },
+              { "choice_id": "d", "text": "في بداية القرن الحادي والعشرين." }
+            ],
+            "answer_key": "c",
+            "explanation": "النص ينص صراحة على أن 'فكرة الذكاء الاصطناعي بدأت بالظهور في منتصف القرن العشرين'.",
+            "difficulty": "easy",
+            "question_pattern": "direct_information_retrieval",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.96,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q2",
+            "question_number": 2,
+            "type": "mcq",
+            "skill": "definition_extraction",
+            "prompt": "ما المقصود بالذكاء الاصطناعي في ضوء فهمك الفقرة الأولى؟",
+            "choices": [
+              { "choice_id": "a", "text": "تطوير قدرات التفكير لدى الإنسان في مختلف المجالات." },
+              { "choice_id": "b", "text": "قدرة الآلات والبرامج على التعلم واتخاذ القرارات بشكل ذاتي." },
+              { "choice_id": "c", "text": "استخدام التكنولوجيا المتقدمة في تطوير الأجهزة الذكية." },
+              { "choice_id": "d", "text": "توجيه الأنظمة الذكية والسيطرة عليها لتحقيق أهداف محددة." }
+            ],
+            "answer_key": "b",
+            "explanation": "النص يعرف الذكاء الاصطناعي بأنه 'قدرة الأجهزة والبرمجيات على التعلم، والتحليل، واتخاذ القرارات بشكل مستقل'.",
+            "difficulty": "easy",
+            "question_pattern": "explicit_definition_match",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.95,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q3",
+            "question_number": 3,
+            "type": "mcq",
+            "skill": "implicit_reasoning",
+            "prompt": "استنتج دور الذكاء الاصطناعي في التعليم في ضوء فهمك الفقرة الثانية.",
+            "choices": [
+              { "choice_id": "a", "text": "يُسهِّل عملية التعليم بتقديم محتوى مُوحَّد لكل الطلاب." },
+              { "choice_id": "b", "text": "يجعل التعليم أكثر تعقيداً بسبب التكنولوجيا المتقدمة." },
+              { "choice_id": "c", "text": "يقلل من أهمية المعلمين ودورهم في العملية التعليمية." },
+              { "choice_id": "d", "text": "يوفر برامج تعليمية تتوافق مع قدرات الطلاب واهتماماتهم." }
+            ],
+            "answer_key": "d",
+            "explanation": "النص يذكر أن البرامج التعليمية الذكية 'تقدم محتوى مخصصاً يتناسب مع احتياجاتهم'.",
+            "difficulty": "medium",
+            "question_pattern": "implicit_cause_inference",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.93,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q4",
+            "question_number": 4,
+            "type": "mcq",
+            "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة \"قد يُضعف المهارات البشرية\" بما قبلها في الفقرة الثالثة.",
+            "choices": [
+              { "choice_id": "a", "text": "نتيجة." },
+              { "choice_id": "b", "text": "تعليل." },
+              { "choice_id": "c", "text": "تأكيد." },
+              { "choice_id": "d", "text": "استدراك." }
+            ],
+            "answer_key": "a",
+            "explanation": "'ضعف المهارات البشرية' نتيجة لزيادة الاعتماد على الآلات.",
+            "difficulty": "medium",
+            "question_pattern": "detail_main_idea_relationship",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q5",
+            "question_number": 5,
+            "type": "mcq",
+            "skill": "evidence_extraction",
+            "prompt": "هات من الموضوع ما يدل على كيفية التخلص من خطورة الذكاء الاصطناعي.",
+            "choices": [
+              { "choice_id": "a", "text": "\"وضع ضوابط أخلاقية وقوانين تحكم استخدامه\"." },
+              { "choice_id": "b", "text": "\"تحسين جودة الحياة ودفع البشرية نحو مستقبل أكثر تطوراً\"." },
+              { "choice_id": "c", "text": "\"تسهيل العمليات المعقدة وتحسين كفاءة الأعمال\"." },
+              { "choice_id": "d", "text": "\"محاكاة القدرات الذهنية للبشر في الآلات والأنظمة\"." }
+            ],
+            "answer_key": "a",
+            "explanation": "النص ينص على ضرورة 'وضع ضوابط أخلاقية وقوانين تحكم استخدامه؛ لتجنب مخاطره المحتملة'.",
+            "difficulty": "easy",
+            "question_pattern": "scanning_for_details",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.94,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q6",
+            "question_number": 6,
+            "type": "mcq",
+            "skill": "prediction",
+            "prompt": "توقع السيناريو الأكثر احتمالاً لمستقبل الذكاء الاصطناعي وفق مخاوف العلماء كما ورد في الموضوع.",
+            "choices": [
+              { "choice_id": "a", "text": "سيظل نافعاً دون أي أضرار تذكر مع استمرار تطوره ونموه." },
+              { "choice_id": "b", "text": "ستحدث طفرة في الوظائف البشرية بالتعاون بين البشر والآلات." },
+              { "choice_id": "c", "text": "قد يتحول إلى خطر يهدد البشرية إذا فقد الإنسان القدرة على التحكم به." },
+              { "choice_id": "d", "text": "سيقتصر استخدامه في المستقبل على الأنظمة التعليمية فقط." }
+            ],
+            "answer_key": "c",
+            "explanation": "النص يشير إلى تحذير ستيفن هوكينغ من أن 'الذكاء الاصطناعي قد يصبح خطراً إذا تجاوز قدرة البشر على السيطرة عليه'.",
+            "difficulty": "medium",
+            "question_pattern": "predicting_outcomes",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q7",
+            "question_number": 7,
+            "type": "open_ended",
+            "skill": "evidence_extraction",
+            "prompt": "هات أربع فوائد للذكاء الاصطناعي من خلال فهمك الفقرة السابقة.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "1. تسهيل العمليات المعقدة. 2. تحسين كفاءة الأعمال في قطاعات الطب والتعليم والصناعة. 3. تحسين أداء الطلاب الدراسي من خلال برامج تعليمية ذكية. 4. مساعدة الأطباء في تشخيص الأمراض بشكل أدق وأسرع.",
+            "difficulty": "medium",
+            "question_pattern": "explicit_information_retrieval",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.88,
+              "likely_to_repeat": false
+            }
+          }
+        ],
+        "section_signals": {
+          "section_weight": 0.96,
+          "difficulty_curve": "easy_to_medium",
+          "examiner_pattern": "starts_with_direct_comprehension_then_moves_to_inference_and_prediction",
+          "student_priority": "critical"
+        }
+      },
+      {
+        "section_id": "guidance_model_4_section_2",
+        "section_type": "reading_comprehension",
+        "title": "اقرأ ثم أجب (ثروت أباظة - تصحيح أوراق)",
+        "order": 2,
+        "passage": {
+          "passage_id": "reading_passage_tharwat_abaza_papers_correction",
+          "title": "تصحيح أوراق",
+          "genre": "literary_memoir",
+          "domain": "arabic_literature",
+          "source_type": "literary_narrative_text",
+          "text": "كنت في السنة الرابعة الثانوية بمدرسة فاروق الأول، وكان الأستاذ ضاحي هو مدرس اللغة العربية، وقد طلب إلينا أن نكتب موضوع إنشاء أذكر عنوانه الآن، وكتبت الموضوع، واستعملت فيه فعل تساءل على وزن تفاعل، فإذا بالأستاذ ضاحي يضع خطاً أحمر تحت الفعل، ويقول: \"تساءل على وزن تفاعل، وتفاعل أي تبادل الشيء بينه وبين إنسان آخر، فالفعل خطأ\". وذهبت إلى البيت، وكشفت في القاموس فوجدت الأستاذ مخطئاً خطأ فادحاً، فكتبت كلمة عن خطأ الأستاذ، وكنت في ذلك الحين أنعم بصداقة من نوع عجيب هي مزيج بين الأستاذية والصداقة في وقت معاً، فقد كان الأستاذ العوضي الوكيل الشاعر العظيم من الذين يحبهم أبي حباً جماً، وكان يزورنا يوماً، وطلب إليه أبي أن يستقدم لنا مدرس لغة إنجليزية لي ولأخوتي، فصحب إلى بيتنا الأستاذ عثمان نويه الذي قامت بيني وبينه هذه الصلة؛ فقد كان أديباً من الطبقة الأولى في اللغة العربية والإنجليزية على السواء، ومنذ اللقاء الأول شعر كل منا أنه قريب إلى الآخر قرباً لا يكون إلا بصداقة سنوات طوال، وكان والد الأستاذ عثمان نويه قاضياً شرعياً، ووالد الأستاذ العمالقة أستاذ الأجيال، وعميد كلية الآداب في ذلك الحين أحمد بك أمين، وكان أستاذنا أحمد بك أمين يرعى شئون عثمان نويه وإخوته بعد وفاة والدهم، فكان منه بمثابة الابن. أطلعت عثمان على ما كتبت، وسألته إن كان يمكن أن ينشر لي هذه الكلمة بمجلة الثقافة، وكان عمري إذ ذاك ستة عشر عاماً فشجعني، وذهب بالكلمة إلى أحمد بك أمين، وعرضها عليه، وحين قرأها الأستاذ العميد قال لعثمان: \"أهي لمدرس زميلك\"، وتردد عثمان قليلاً، وقال: \"إنما هي لمحام صديق\". وفوجئت بالكلمة تنشر، كنت مهرتها بتوقيع تلميذ قديم، واتخذت لها عنواناً (تصحيح أوراق). أحدث نشر الكلمة انفجاراً في المدرسة، فقد عرف زملائي جميعاً أنني كاتبها، فالحوار الذي قرؤوه فيها كان بمشهد منهم. كان التلاميذ في ذلك الحين يقرؤون المجلات الأدبية. واستدعاني ناظر المدرسة الرجل العظيم نجيب بك هاشم أطال الله عمره، وطلب إليَّ في عذوبة ورقة ألا أكتب شيئاً بعد ذلك عن أساتذتي، ووعدت بذلك، والفرحة تخفق خفق أجنحة النسر بين ضلوعي. ذهب عثمان نويه إلى أحمد بك، وأخبره أن صاحب الكلمة تلميذ بالسنة الرابعة الثانوية التي كانت تسمى الثقافة، والعجيب أن أحمد بك فرح بدل من أن يغضب، وطلب أن يراني. وتولاني الخوف وأنا في طريقي إلى الأستاذ العميد، ولكن كم كان أنيساً أباً إنساناً، أبدى رضاءه عني، وكان مني بعد ذلك بمكان الأستاذ الحاني أو الأب الشفوق، وطلب إليَّ أن أكتب فكتبت مقالة عن الشاعرين أحمد القرعيش وتوفيق عوضي أباظة بعنوان (شعراء مجهولون)، ولم تنشر الكلمة، وانتظرت طويلاً، والعجيب أن أبي رحمه الله كان ينتظر معي، ولم تنشر الكلمة.",
+          "main_idea": "سرد تجربة الكاتب الشخصية في تصحيح خطأ أستاذه ونشر مقاله الأول وما ترتب على ذلك من أحداث.",
+          "sub_ideas": [
+            "خطأ الأستاذ وتصحيح الكاتب له",
+            "دور الصديق عثمان نويه في نشر المقال",
+            "ردود الفعل في المدرسة",
+            "تشجيع أحمد بك أمين للكاتب"
+          ],
+          "keywords": [
+            "الأستاذ ضاحي",
+            "عثمان نويه",
+            "أحمد بك أمين",
+            "مجلة الثقافة",
+            "تصحيح أوراق",
+            "الفرحة"
+          ],
+          "reading_skills": [
+            "implicit_reasoning",
+            "emotional_tone_inference",
+            "character_trait_analysis",
+            "understanding_relationships",
+            "evidence_extraction",
+            "compare_and_contrast"
+          ]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_4_q8",
+            "question_number": 8,
+            "type": "mcq",
+            "skill": "implicit_reasoning",
+            "prompt": "ما رأي الكاتب في وضع الأستاذ ضاحي خطاً أحمر تحت الفعل \"تساءل\"؟",
+            "choices": [
+              { "choice_id": "a", "text": "خطأ المعلم في الإجابة عن سؤال الطالب." },
+              { "choice_id": "b", "text": "توجيه الطالب إلى كتابة موضوع إنشائي رائع." },
+              { "choice_id": "c", "text": "ليتعلم الطالب من الخطأ الفادح الذي وقع فيه." },
+              { "choice_id": "d", "text": "خطأ المعلم في تصويب إجابة الطالب." }
+            ],
+            "answer_key": "d",
+            "explanation": "الكاتب اكتشف أن الأستاذ مخطئ في تصويبه، فكتب مقالاً لتصحيح خطأ الأستاذ.",
+            "difficulty": "easy",
+            "question_pattern": "character_motivation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.94,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q9",
+            "question_number": 9,
+            "type": "mcq",
+            "skill": "contextual_vocabulary",
+            "prompt": "ما دلالة قول الكاتب: \"أحدث نشر الكلمة انفجاراً في المدرسة\" في الفقرة الثالثة؟",
+            "choices": [
+              { "choice_id": "a", "text": "بيان كثرة المقالات الأدبية وانتشارها بين الطلاب." },
+              { "choice_id": "b", "text": "إظهار سرعة تأثير المقالة في المدرسة بشكل كبير." },
+              { "choice_id": "c", "text": "إبراز تشجيع الأستاذ له بكتابة مقالة يتأثر بها الطلاب." },
+              { "choice_id": "d", "text": "تأكيد حب الكاتب كتابة مقالات أدبية تثير فضول القراء." }
+            ],
+            "answer_key": "b",
+            "explanation": "'انفجاراً' تعني انتشار الخبر بسرعة وتأثيره الكبير في المدرسة.",
+            "difficulty": "medium",
+            "question_pattern": "idiom_interpretation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.92,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q10",
+            "question_number": 10,
+            "type": "mcq",
+            "skill": "emotional_tone_inference",
+            "prompt": "استنتج المغزى من قول الكاتب: \"والفرحة تخفق خفق أجنحة النسر بين ضلوعي\" في الفقرة الثالثة.",
+            "choices": [
+              { "choice_id": "a", "text": "بيان سرور الكاتب لنشر مقالات أدبية عن أساتذته الأجلاء." },
+              { "choice_id": "b", "text": "إظهار اضطراب الكاتب لمعرفة الطلاب أنه كاتب المقالة." },
+              { "choice_id": "c", "text": "إظهار رضا الكاتب عن نتيجة حديث ناظر المدرسة إليه." },
+              { "choice_id": "d", "text": "بيان تشجيع الناظر لكتابة مقالات أدبية عن نظام المدرسة." }
+            ],
+            "answer_key": "c",
+            "explanation": "الكاتب كان خائفاً من عقاب الناظر، لكنه خرج راضياً بعد حديثه اللطيف معه، مما جعل الفرحة تخفق في قلبه.",
+            "difficulty": "medium",
+            "question_pattern": "interpreting_figurative_language",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q11",
+            "question_number": 11,
+            "type": "mcq",
+            "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة عبارة \"فقد كان أديباً من الطبقة الأولى في اللغة العربية والإنجليزية على السواء\" في سياق الفقرة الثانية بما قبلها.",
+            "choices": [
+              { "choice_id": "a", "text": "نتيجة." },
+              { "choice_id": "b", "text": "توضيح." },
+              { "choice_id": "c", "text": "استدراك." },
+              { "choice_id": "d", "text": "تعليل." }
+            ],
+            "answer_key": "d",
+            "explanation": "العبارة تعليل لقيام الصلة القوية بين الكاتب وعثمان نويه.",
+            "difficulty": "medium",
+            "question_pattern": "text_structure_analysis",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q12",
+            "question_number": 12,
+            "type": "mcq",
+            "skill": "evidence_extraction",
+            "prompt": "هات من النص ما يدل على توسع الطلاب في ثقافتهم بعيداً عن مقررات الدراسة.",
+            "choices": [
+              { "choice_id": "a", "text": "\"كان التلاميذ في ذلك الحين يقرؤون المجلات الأدبية\"." },
+              { "choice_id": "b", "text": "\"فقد كان أديباً من الطبقة الأولى في اللغة العربية والإنجليزية على السواء\"." },
+              { "choice_id": "c", "text": "\"وفوجئت بالكلمة تنشر، كنت مهرتها بتوقيع تلميذ قديم\"." },
+              { "choice_id": "d", "text": "\"وذهبت إلى البيت وكشفت في القاموس فوجدت الأستاذ مخطئاً\"." }
+            ],
+            "answer_key": "a",
+            "explanation": "قراءة المجلات الأدبية دليل على توسع الطلاب في ثقافتهم خارج المقررات الدراسية.",
+            "difficulty": "medium",
+            "question_pattern": "scanning_for_details",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.92,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q13",
+            "question_number": 13,
+            "type": "mcq",
+            "skill": "compare_and_contrast",
+            "prompt": "وازن بين الكاتبين في البحث عن المعلومة التي شغلت فكر كل منهما أثناء الدراسة.",
+            "choices": [
+              { "choice_id": "a", "text": "اتفق الكاتبان في طريقة البحث عن المعلومة التي أرقت فكرهما." },
+              { "choice_id": "b", "text": "اختلف الكاتبان في التحقق من صحة المعلومة ثم انصرفا عنها." },
+              { "choice_id": "c", "text": "بحث ثروت أباظة للتأكد من صحة الفعل الذي خطأه معلمه، ولم يطل طه حسين البحث." },
+              { "choice_id": "d", "text": "سلم ثروت أباظة بصحة رأي معلمه ونشر مقالاً يشكره، واستعان طه حسين برأي شيخه." }
+            ],
+            "answer_key": "c",
+            "explanation": "ثروت أباظة بحث في القاموس للتأكد، بينما طه حسين لم يطل البحث بل استسلم للحيرة.",
+            "difficulty": "hard",
+            "question_pattern": "comparative_analysis",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.87,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q14",
+            "question_number": 14,
+            "type": "open_ended",
+            "skill": "inference",
+            "prompt": "توقع حاستين اعتمد عليهما طه حسين للشعور بما حوله ودلل عليهما من الفقرة السابقة.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "حاسة السمع: بدليل 'الأصوات المنكرة'. حاسة اللمس: بدليل 'يلتف في لحافه' و'تمتد منها يد عفريت إلى جسمه'.",
+            "difficulty": "medium",
+            "question_pattern": "sensory_inference",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.86,
+              "likely_to_repeat": false
+            }
+          }
+        ],
+        "section_signals": {
+          "section_weight": 0.96,
+          "difficulty_curve": "easy_to_medium",
+          "examiner_pattern": "moves_from_explicit_retrieval_to_implicit_analysis_and_comparison",
+          "student_priority": "critical"
+        }
+      },
+      {
+        "section_id": "guidance_model_4_section_3",
+        "section_type": "poetry_and_literature_analysis",
+        "title": "أسئلة الشعر والمدارس الأدبية",
+        "order": 3,
+        "passage": {
+          "passage_id": "poetry_composite_schools_analysis_4",
+          "title": "نصوص شعرية من مدارس مختلفة",
+          "genre": "poetry",
+          "domain": "arabic_literature",
+          "source_type": "literary_poetic_anthology",
+          "text": "قصيدة بدر شاكر السياب: يا غربة الروح في دنيا من الحجر. والثلج والقار والفولاذ والضجر. فأأتلسٌ يا غربة الروح.. لا شمس فيها ولا أفق. يطير فيه خيالي ساعة السحر. تضيء الخواء، تحترق المسافات. فيه فأدنيني، بلا سُرُجٍ، داني. أجنٍ من نخل جيكور الثمر. بلا نارٍ... إلَّا أحاديث من ماضيّ تندف. كأنهنَّ حفيفٌ منه أخيلة. في السمع باقية تبكي بلا شجر. || حافظ إبراهيم: تعلَّموا فالعلم يهدي الفؤادِ والتقى تحت أذيال الظلام مقيم. || خليل مطران: كانت لقلبِ المستهام دموعٌ صرمت واليأس كان له دموع. || أبو القاسم الشابي: واعدُنا مع الليالي حتفْنا في شعاب الحياة حتى دفينا. || صالح عبد الصبور: يا صاحبي زوق حديثك، كل شيء قد خلا من كل ذوق. الحزن يفترش الطريق....",
+          "main_idea": "تحليل نصوص شعرية من مدارس أدبية مختلفة واستنتاج سماتها الفنية والموضوعية.",
+          "sub_ideas": [
+            "الشعور بالغربة والاغتراب",
+            "التأمل في الكون والوجود",
+            "التعبير عن الذات والعواطف",
+            "استخدام اللغة الحية والرمز"
+          ],
+          "keywords": [
+            "مدرسة أبولو",
+            "مدرسة الإحياء",
+            "مدرسة الديوان",
+            "مدرسة المهجر",
+            "مدرسة الواقعية",
+            "الصورة البيانية"
+          ],
+          "reading_skills": [
+            "poetic_imagery_analysis",
+            "literary_school_identification",
+            "emotional_tone_inference",
+            "structural_analysis",
+            "interpretation"
+          ]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_4_q15",
+            "question_number": 15,
+            "type": "mcq",
+            "skill": "interpretation",
+            "prompt": "ماذا يتذكر الشاعر عن قريته في ضوء فهمك السطر الثامن؟",
+            "choices": [
+              { "choice_id": "a", "text": "دفء شمسها." },
+              { "choice_id": "b", "text": "طبيعتها الساحرة." },
+              { "choice_id": "c", "text": "حقولها الممتدة." },
+              { "choice_id": "d", "text": "استمتاعه فيها." }
+            ],
+            "answer_key": "d",
+            "explanation": "'أجني من نخل جيكور الثمر' يتذكر متعة جني الثمار من نخيل قريته.",
+            "difficulty": "medium",
+            "question_pattern": "interpretation_of_verse",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.89,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q16",
+            "question_number": 16,
+            "type": "mcq",
+            "skill": "interpretation",
+            "prompt": "استنتج دلالة قول الشاعر: \"دنيا من الحجر\" في السطر الأول.",
+            "choices": [
+              { "choice_id": "a", "text": "قسوة الحياة." },
+              { "choice_id": "b", "text": "انشغال الناس." },
+              { "choice_id": "c", "text": "ألم الفراق." },
+              { "choice_id": "d", "text": "كثرة الأحزان." }
+            ],
+            "answer_key": "a",
+            "explanation": "'دنيا من الحجر' تعبر عن قسوة الحياة وجمودها في الغربة.",
+            "difficulty": "medium",
+            "question_pattern": "interpreting_poetic_expression",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q17",
+            "question_number": 17,
+            "type": "mcq",
+            "skill": "interpretation",
+            "prompt": "استنتج المغزى من قول الشاعر: \"بلا نارٍ\" في السطر التاسع.",
+            "choices": [
+              { "choice_id": "a", "text": "إظهار عبء الذكريات على الشاعر." },
+              { "choice_id": "b", "text": "إظهار افتقاد الأنس وحسن الصحبة." },
+              { "choice_id": "c", "text": "بيان أثر النار في نفس الشاعر." },
+              { "choice_id": "d", "text": "بيان هجر الأصدقاء له وقسوتهم." }
+            ],
+            "answer_key": "b",
+            "explanation": "'بلا نار' تعني بلا دفء الأنس ولا صحبة، فالنار ترمز للاجتماع والألفة.",
+            "difficulty": "medium",
+            "question_pattern": "extracting_main_idea_from_verse",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.88,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q18",
+            "question_number": 18,
+            "type": "mcq",
+            "skill": "idea_identification",
+            "prompt": "بين المبدأ الذي تبناه الشاعر في قوله: \"تحترق المسافات فيه فأدنيني، بلا شك، داني\".",
+            "choices": [
+              { "choice_id": "a", "text": "الارتباط بالوطن راسخ بالنفس مهما اغتربت." },
+              { "choice_id": "b", "text": "الحنين لذكريات الماضي يثير الأسى والألم." },
+              { "choice_id": "c", "text": "التواصل مع الغرباء يخفف المعاناة في السفر." },
+              { "choice_id": "d", "text": "التقارب بين الأحباب يعيد إحياء الذكريات." }
+            ],
+            "answer_key": "a",
+            "explanation": "الشاعر يعبر عن أن الحنين للوطن يجعله قريباً منه رغم بعد المسافات.",
+            "difficulty": "hard",
+            "question_pattern": "abstract_idea_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.86,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q19",
+            "question_number": 19,
+            "type": "mcq",
+            "skill": "evidence_extraction",
+            "prompt": "هات من النص ما يدل على افتقاد الشاعر للمودة والإخاء في غربته.",
+            "choices": [
+              { "choice_id": "a", "text": "\"أجني داني من نخل جيكور الثمر\"." },
+              { "choice_id": "b", "text": "\"يطير فيه خيالي ساعة السحر\"." },
+              { "choice_id": "c", "text": "\"فأتلسٌ لا شمس فيها ولا أفق\"." },
+              { "choice_id": "d", "text": "\"فيه فأدنيني، بلا سُرُجٍ، داني\"." }
+            ],
+            "answer_key": "d",
+            "explanation": "'بلا سرج' تعني بلا أنيس ولا رفيق، مما يدل على افتقاد المودة والإخاء.",
+            "difficulty": "medium",
+            "question_pattern": "explicit_evidence_retrieval",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.93,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q20",
+            "question_number": 20,
+            "type": "mcq",
+            "skill": "emotional_tone_inference",
+            "prompt": "استنتج العاطفة المسيطرة على الشاعر في النص.",
+            "choices": [
+              { "choice_id": "a", "text": "اليأس والجزع." },
+              { "choice_id": "b", "text": "الشكوى والألم." },
+              { "choice_id": "c", "text": "التجلد والعزيمة." },
+              { "choice_id": "d", "text": "الشوق والتفاؤل." }
+            ],
+            "answer_key": "b",
+            "explanation": "القصيدة تعبر عن الشكوى والألم من الغربة والوحدة.",
+            "difficulty": "medium",
+            "question_pattern": "identifying_dominant_emotion",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.94,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q21",
+            "question_number": 21,
+            "type": "mcq",
+            "skill": "poetic_imagery_analysis",
+            "prompt": "ميز اللون البياني في قول الشاعر: \"يطير فيه خيالي\" في السطر الخامس.",
+            "choices": [
+              { "choice_id": "a", "text": "استعارة مكنية." },
+              { "choice_id": "b", "text": "استعارة تصريحية." },
+              { "choice_id": "c", "text": "تشبيه بليغ." },
+              { "choice_id": "d", "text": "تشبيه مجمل." }
+            ],
+            "answer_key": "a",
+            "explanation": "شبه الخيال بطائر يطير، فحذف المشبه به وأبقى على ما يدل عليه (يطير)، فهي استعارة مكنية.",
+            "difficulty": "medium",
+            "question_pattern": "rhetorical_device_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.88,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q22",
+            "question_number": 22,
+            "type": "mcq",
+            "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي اتضحت في النص من سمات المدرسة الواقعية من حيث المضمون.",
+            "choices": [
+              { "choice_id": "a", "text": "التعبير عن موقف الإنسان من الأساطير." },
+              { "choice_id": "b", "text": "الالتصاق بالواقع والتعبير عن متناقضات الحياة." },
+              { "choice_id": "c", "text": "التعبير عن موقف الإنسان من قضايا الوطن." },
+              { "choice_id": "d", "text": "الدعوة إلى استبطان النفس الإنسانية." }
+            ],
+            "answer_key": "b",
+            "explanation": "القصيدة تعبر عن واقع الغربة والشتات وتناقضات الحياة بين الماضي والحاضر.",
+            "difficulty": "medium",
+            "question_pattern": "characteristic_identification",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.86,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q23",
+            "question_number": 23,
+            "type": "mcq",
+            "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي اتضحت في هذا البيت من سمات مدرسة الإحياء والبعث.",
+            "choices": [
+              { "choice_id": "a", "text": "التنديد بالاحتلال ومظالمه." },
+              { "choice_id": "b", "text": "الدعوة إلى التساند الاجتماعي." },
+              { "choice_id": "c", "text": "الاهتمام بشعر المناسبات." },
+              { "choice_id": "d", "text": "الاهتمام بالنواحي البيانية." }
+            ],
+            "answer_key": "a",
+            "explanation": "بيت حافظ إبراهيم 'تعلَّموا فالعلم يهدي الفؤاد' يعبر عن التنديد بالجهل والاحتلال.",
+            "difficulty": "hard",
+            "question_pattern": "theme_identification_across_texts",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.82,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q24",
+            "question_number": 24,
+            "type": "mcq",
+            "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي عابها مطران على من سبقوه وخالف فيها منهجه في هذين البيتين.",
+            "choices": [
+              { "choice_id": "a", "text": "الانصراف عن النفس وما يشغلها من أحاسيس." },
+              { "choice_id": "b", "text": "الاهتمام بمعالجة مشكلات الناس وهمومهم." },
+              { "choice_id": "c", "text": "الاهتمام بقشور الأشياء وظواهرها." },
+              { "choice_id": "d", "text": "الامتزاج بالطبيعة والولع بجمالها." }
+            ],
+            "answer_key": "c",
+            "explanation": "مطران عاب على من سبقوه الاهتمام بقشور الأشياء وظواهرها دون التعمق في النفس الإنسانية.",
+            "difficulty": "medium",
+            "question_pattern": "trait_identification_through_quote",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q25",
+            "question_number": 25,
+            "type": "mcq",
+            "skill": "literary_school_identification",
+            "prompt": "بين السمة التي اتضحت في هذا البيت من سمات مدرسة أبولو.",
+            "choices": [
+              { "choice_id": "a", "text": "الامتزاج بالطبيعة ومناجاتها والولع بجمالها." },
+              { "choice_id": "b", "text": "التأمل في الكون والتعمق في أسرار الوجود." },
+              { "choice_id": "c", "text": "استخدام الرمز والأسطورة في شعرهم." },
+              { "choice_id": "d", "text": "الإحساس بالألم واليأس والتشاؤم والحزن." }
+            ],
+            "answer_key": "d",
+            "explanation": "بيت الشابي 'واعدنا مع الليالي حتفنا' يعبر عن اليأس والتشاؤم، وهي سمة في مدرسة أبولو.",
+            "difficulty": "hard",
+            "question_pattern": "characteristics_identification_from_example",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.87,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q26",
+            "question_number": 26,
+            "type": "mcq",
+            "skill": "literary_school_identification",
+            "prompt": "أي مما يلي يؤكد تحقق سمة استخدام اللغة الحية لدى شعراء الواقعية في هذه الأسطر.",
+            "choices": [
+              { "choice_id": "a", "text": "عبر الشاعر عن تجربته بما يسمعه في كلام الناس مثل: \"يا صاحبي\"- \"زوق حديثك\"." },
+              { "choice_id": "b", "text": "عبر الشاعر لصديقه عما يعانيه من ألم بلغة فصيحة مثل: \"الحزن يفترش\"." },
+              { "choice_id": "c", "text": "أظهر الشاعر تأثره بلغة الإحيائيين في حديثه عن الجمال مثل: \"خلا من كل ذوق\"." },
+              { "choice_id": "d", "text": "أوضح الشاعر توظيفه اللغة الجزلة للتعبير عما يرمز إليه مثل: \"يفترش الطريق\"." }
+            ],
+            "answer_key": "a",
+            "explanation": "استخدام ألفاظ الحياة اليومية وكلام الناس 'يا صاحبي' و'زوق حديثك' يؤكد سمة استخدام اللغة الحية.",
+            "difficulty": "medium",
+            "question_pattern": "theme_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          }
+        ],
+        "section_signals": {
+          "section_weight": 0.94,
+          "difficulty_curve": "medium_to_hard",
+          "examiner_pattern": "focuses_on_literary_schools_characteristics_and_emotional_analysis",
+          "student_priority": "high"
+        }
+      },
+      {
+        "section_id": "guidance_model_4_section_4",
+        "section_type": "reading_comprehension_and_grammar_and_writing",
+        "title": "نص الزيات (بني قارون) - أسئلة النحو والبلاغة والتعبير",
+        "order": 4,
+        "passage": {
+          "passage_id": "reading_passage_zayat_qarun",
+          "title": "بني قارون",
+          "genre": "literary_article",
+          "domain": "social_criticism",
+          "source_type": "argumentative_literary_text",
+          "text": "أنا لا آلف بني قارون شموخاً بحكم م ياي وطبعي فيهم، لا آلفهم لأنهم لا هم آلهة فيرزقوا، ولا هم أناس فيحسنوا؛ إنما هم صنف من خلق الله إلههم الذهب، ومعابدهم البنوك، ورسالتهم أن يظلموا أنفسهم بالشح، ويظلموا غيرهم بالأثرة. حبسوا مشاع الرزق في خزائن من الحديد ومخازن من الإسمنت؛ ثم جعلوا عليها أقفالاً من صنع الشيطان لا تنفتح إلا لتأخذ؛ واستغلوا ما ركب الله في طباع الناس من تقديس المال وتمجيد أهله؛ فجعلوا لهم أرياً في التشريع، وسلطاناً على العامة، وكان من وراء جشعهم وشحهم وأثرتهم وسلطتهم أن اختلت موازين الخير، وتكدرت مجاري النعمة، واحتكرت منابت الرزق؛ ووجد الضعيف مجاله الحيوي ضيقاً فاضطرب فيه، وحظه المقسوم مغتصباً فسكت عنه؛ ومن هنا نشأت مشكلة الفقر وما نجم عنها خلال القرون من نظم وأحكام وعظات ومقالات. ما أريت قارونياً إلا ملكني نوع من الشعور يحسه من يلقى سجّان النعمة، وحابس القوت، وغاصب الحياة، وكان في مقدور كل غني أن يكون رسول سلام، ومالك حب لو أنه فقه معنى الدين، وفهم حقيقة الإنسان، إن اللذة التي يجدها الغني البّر حين يرى صنائعه يرتعون في معروفه ويستظلون بجاهه لأصدق وأعمق من اللذة التي يدركها الغني الفاجر حين يرى ضحاياه يغمسون خبزهم في الدماء والدموع والعرق. على أن التعبير باللذة عن ذلك الشعور الآثم الذي يجده الغني اللئيم في بؤس الناس فيه تجوّز لجهلنا اللفظ الذي يطلق، فالغني لا يعتبر الغنى غاية كما يعتبره الأشحة، وإنما يعتقده سبيلاً غايته السعادة، والسعادة معنى منتشر لا يجتمع لنفسه إلا بسعادة أسرته وأمته؛ فهو لا يحتكر ولا يدخر ولا يطمع، إنما ينفق غلة أراضيه الواسعة على عامه الحاضر فلا يبقى شيئاً منها إلى قابل، وعلى هذا المبدأ يتسنى لإيمانه الكامل أن يعمر نواحي المعروف بفعله.",
+          "main_idea": "نقد أثرياء الجشع والأنانية وبيان الفرق بين لذة البذل والعطاء ولذة الظلم والاستغلال.",
+          "sub_ideas": [
+            "وصف بني قارون وأخلاقهم",
+            "آثار جشعهم على المجتمع",
+            "المقارنة بين الغني البّر والغني الفاجر",
+            "المفهوم الحقيقي للسعادة"
+          ],
+          "keywords": [
+            "بني قارون",
+            "الجشع",
+            "الأثرة",
+            "السعادة",
+            "الغني البّر",
+            "الغني الفاجر"
+          ],
+          "reading_skills": [
+            "contextual_vocabulary",
+            "implicit_reasoning",
+            "poetic_imagery_analysis",
+            "evidence_extraction",
+            "compare_and_contrast"
+          ]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_4_q27",
+            "question_number": 27,
+            "type": "mcq",
+            "skill": "contextual_vocabulary",
+            "prompt": "ما المراد بكلمة \"شموخاً\" في سياق الفقرة الأولى؟",
+            "choices": [
+              { "choice_id": "a", "text": "قوّة." },
+              { "choice_id": "b", "text": "كبراً." },
+              { "choice_id": "c", "text": "تفوقاً." },
+              { "choice_id": "d", "text": "غرور." }
+            ],
+            "answer_key": "b",
+            "explanation": "'شموخاً' هنا بمعنى التكبر والتعالي على الناس.",
+            "difficulty": "medium",
+            "question_pattern": "vocabulary_in_context",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.92,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q28",
+            "question_number": 28,
+            "type": "mcq",
+            "skill": "implicit_reasoning",
+            "prompt": "لماذا يعظم الكاتب الغني في قوله: \"كان في مقدور كل غني أن يكون رسول سلام\" في الفقرة الثالثة.",
+            "choices": [
+              { "choice_id": "a", "text": "إدراك أن الرسالة السامية للأغنياء هي تحقيق التكافل الاجتماعي." },
+              { "choice_id": "b", "text": "القناعة بأن عظائم الأمور لا تتحقق إلا من خلال الأغنياء." },
+              { "choice_id": "c", "text": "الإقرار بالمكانة الدنيا للفقراء وشدة احتياجهم لمتطلبات العيش." },
+              { "choice_id": "d", "text": "إعلاء شأن الأغنياء وتأكيد سيطرتهم وبسط نفوذهم على المجتمع." }
+            ],
+            "answer_key": "a",
+            "explanation": "الكاتب يرى أن الغني يستطيع أن يحقق السلام الاجتماعي من خلال البذل والعطاء.",
+            "difficulty": "medium",
+            "question_pattern": "character_motivation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q29",
+            "question_number": 29,
+            "type": "mcq",
+            "skill": "interpretation",
+            "prompt": "استنتج المغزى من قول الكاتب: \"يرى ضحاياه يغمسون خبزهم في الدماء\" في الفقرة الثالثة.",
+            "choices": [
+              { "choice_id": "a", "text": "بيان كفاح الفقراء سعياً وراء لقمة العيش." },
+              { "choice_id": "b", "text": "إظهار أنفة الفقراء أمام تعاظم الأغنياء." },
+              { "choice_id": "c", "text": "إظهار قسوة الاستغلال، وانعدام الإنسانية." },
+              { "choice_id": "d", "text": "بيان حرص الأغنياء على ممتلكاتهم الثمينة." }
+            ],
+            "answer_key": "c",
+            "explanation": "الصورة تعبر عن قسوة الأغنياء المستغلين الذين لا يبالون بمعاناة الفقراء.",
+            "difficulty": "medium",
+            "question_pattern": "interpreting_figurative_language",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.93,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q30",
+            "question_number": 30,
+            "type": "mcq",
+            "skill": "poetic_imagery_analysis",
+            "prompt": "بين نوع الصورة وقيمتها الفنية في قول الكاتب: \"معابدهم البنوك\" في الفقرة الأولى.",
+            "choices": [
+              { "choice_id": "a", "text": "استعارة مكنية، توضح تملك الأثرة في نفوس بعض الأغنياء." },
+              { "choice_id": "b", "text": "استعارة تصريحية، تؤكد عدم قدرة الفقراء على كسب أقواتهم." },
+              { "choice_id": "c", "text": "تشبيه بليغ، يؤكد سيطرة المال وتحكمه في نفوس الأغنياء." },
+              { "choice_id": "d", "text": "استعارة مكنية، تبرز رغبة الإنسان في اقتناء الأشياء الثمينة." }
+            ],
+            "answer_key": "c",
+            "explanation": "'معابدهم البنوك' تشبيه بليغ، شبه البنوك بالمعابد لبيان تقديسهم للمال.",
+            "difficulty": "hard",
+            "question_pattern": "rhetorical_device_and_function",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.84,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q31",
+            "question_number": 31,
+            "type": "mcq",
+            "skill": "evidence_extraction",
+            "prompt": "هات من النص ما يدل على استنكار الكاتب أثرة بعض الأغنياء.",
+            "choices": [
+              { "choice_id": "a", "text": "\"حبسوا مشاع الرزق في خزائن من الحديد\"." },
+              { "choice_id": "b", "text": "\"رسالتهم أن يظلموا أنفسهم بالشح\"." },
+              { "choice_id": "c", "text": "\"فهو لا يحتكر ولا يدخر ولا يطمع\"." },
+              { "choice_id": "d", "text": "\"اللذة التي يدركها الغني الفاجر\"." }
+            ],
+            "answer_key": "a",
+            "explanation": "'حبسوا مشاع الرزق' تعبير عن استنكار الكاتب لاحتكار الأغنياء للثروات.",
+            "difficulty": "medium",
+            "question_pattern": "scanning_for_details",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q32",
+            "question_number": 32,
+            "type": "mcq",
+            "skill": "poetic_imagery_analysis",
+            "prompt": "بين مما يلي الاستعارة المكنية وبين قيمتها الفنية.",
+            "choices": [
+              { "choice_id": "a", "text": "\"لا آلف بني قارون\"، تبرز الأثر الديني في شخصية الكاتب." },
+              { "choice_id": "b", "text": "\"السعادة معنى\"، تكشف فلسفة الكاتب في البحث عن السعادة." },
+              { "choice_id": "c", "text": "\"إلههم الذهب\"، توضح الحس المرهف للغني لحال الفقراء." },
+              { "choice_id": "d", "text": "\"يستظلون بجاهه\"، تكشف أثر الرحمة بالفقراء لشيوع التكافل." }
+            ],
+            "answer_key": "d",
+            "explanation": "'يستظلون بجاهه' استعارة مكنية، شبه الجاه بشجرة يستظل بها الفقراء، وسر جمالها التجسيم.",
+            "difficulty": "medium",
+            "question_pattern": "figurative_language_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.88,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q33",
+            "question_number": 33,
+            "type": "mcq",
+            "skill": "compare_and_contrast",
+            "prompt": "وازن بين الفقرتين من حيث الأسلوب الذي اعتمد عليه الكاتب في التعبير عن الفكرة.",
+            "choices": [
+              { "choice_id": "a", "text": "أكثر الكاتب في كلتيهما من استخدام صيغ التفضيل لتأكيد الفكرة." },
+              { "choice_id": "b", "text": "اقتصر الكاتب فيهما على الموسيقى الداخلية للتأثير في المتلقي." },
+              { "choice_id": "c", "text": "استخدم الكاتب التضاد في الفقرة الأولى والمقابلة في الثانية." },
+              { "choice_id": "d", "text": "اعتمد الكاتب فيهما على التصوير لإبراز فكرته وتأكيد رسالته." }
+            ],
+            "answer_key": "c",
+            "explanation": "الفقرة الأولى استخدمت التضاد، والثانية استخدمت المقابلة.",
+            "difficulty": "hard",
+            "question_pattern": "stylistic_comparison",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.80,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q34",
+            "question_number": 34,
+            "type": "mcq",
+            "skill": "genre_characteristics_identification",
+            "prompt": "بين الأساس الفني الذي يتميز به الفن المسرحي من خلال الحوار السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "الجملة المسرحية تتفاوت في فصاحتها طبقاً لمستوى الشخصية وطبيعة الفكرة." },
+              { "choice_id": "b", "text": "تقوم لغة المسرحية على اللغة الفصيحة ويعد النص السابق خروجاً على ذلك." },
+              { "choice_id": "c", "text": "يعتمد الحوار المسرحي على اللهجة العامية المصرية." },
+              { "choice_id": "d", "text": "الجملة المسرحية تفتقد حرارتها باستخدام اللغة العامية." }
+            ],
+            "answer_key": "a",
+            "explanation": "الحوار المسرحي يتفاوت في فصاحته حسب شخصية المتحدث وطبيعة الموقف.",
+            "difficulty": "medium",
+            "question_pattern": "literary_form_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.88,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q35",
+            "question_number": 35,
+            "type": "mcq",
+            "skill": "genre_characteristics_identification",
+            "prompt": "بين من خلال الفقرة السابقة ما اتضح فيها من سمات القصة القصيرة.",
+            "choices": [
+              { "choice_id": "a", "text": "قيامها على السرد لوصف الشخصيات والمشاهد بإسهاب وتفاصيل دقيقة." },
+              { "choice_id": "b", "text": "اعتمادها على الإيجاز من خلال الإيحاء المتصل بدلالات الألفاظ." },
+              { "choice_id": "c", "text": "اهتمامها بتحديد عنصري الزمان والمكان كعنصري بناء لها." },
+              { "choice_id": "d", "text": "اهتمامها بتوصيل المغزى للقارئ بصورة مباشرة وموجزة." }
+            ],
+            "answer_key": "b",
+            "explanation": "الوصف المركز والموحٍ يدل على الإيجاز والإيحاء، وهي سمة أساسية في القصة القصيرة.",
+            "difficulty": "medium",
+            "question_pattern": "genre_characteristics_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.88,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q36",
+            "question_number": 36,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "ميز مما يلي الجملة التي في محل جزم: \"إن تصبر على تلقى العلم وتكن طموحاً فستفوز بمكانة تليق بك\".",
+            "choices": [
+              { "choice_id": "a", "text": "تصبر على تلقى العلم." },
+              { "choice_id": "b", "text": "تكن طموحاً." },
+              { "choice_id": "c", "text": "فستفوز بمكانة." },
+              { "choice_id": "d", "text": "تليق بك." }
+            ],
+            "answer_key": "a",
+            "explanation": "جملة 'تصبر' في محل جزم فعل الشرط.",
+            "difficulty": "medium",
+            "question_pattern": "sentence_grammatical_position",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.92,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q37",
+            "question_number": 37,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "ميز مما يلي المحل الإعرابي لجملة (تغور): \"ما كنت أحسب قبل دفنك في الثرى أن الكواكب في التراب تغور\".",
+            "choices": [
+              { "choice_id": "a", "text": "في محل جر." },
+              { "choice_id": "b", "text": "في محل رفع." },
+              { "choice_id": "c", "text": "في محل نصب." },
+              { "choice_id": "d", "text": "في محل جزم." }
+            ],
+            "answer_key": "b",
+            "explanation": "جملة (تغور) في محل رفع خبر 'أن'.",
+            "difficulty": "hard",
+            "question_pattern": "infinitive_parsing",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.87,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q38",
+            "question_number": 38,
+            "type": "mcq",
+            "skill": "grammar_usage",
+            "prompt": "املأ الفراغ في العبارة السابقة بالكلمة الصحيحة: \"إننا شباب مصر ............. عزيمة تقهر الصعاب\".",
+            "choices": [
+              { "choice_id": "a", "text": "لَذي." },
+              { "choice_id": "b", "text": "لَذو." },
+              { "choice_id": "c", "text": "لَذوو." },
+              { "choice_id": "d", "text": "لَذوي." }
+            ],
+            "answer_key": "d",
+            "explanation": "'لذوي' جمع مذكر سالم مجرور، وهو الصحيح نحوياً.",
+            "difficulty": "hard",
+            "question_pattern": "grammar_error_correction",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.82,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q39",
+            "question_number": 39,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "ميز مما يلي إعراب كلمة (مشاركة): \"علينا أبناء الوطن أن نشارك في بنائه أعظم مشاركة\".",
+            "choices": [
+              { "choice_id": "a", "text": "تمييز منصوب." },
+              { "choice_id": "b", "text": "مضاف إليه." },
+              { "choice_id": "c", "text": "نائب عن المفعول المطلق." },
+              { "choice_id": "d", "text": "مفعول مطلق." }
+            ],
+            "answer_key": "d",
+            "explanation": "'مشاركة' مفعول مطلق منصوب.",
+            "difficulty": "medium",
+            "question_pattern": "identifying_grammatical_function",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q40",
+            "question_number": 40,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "ميز مما يلي المحل الإعرابي للضمير في جملة (نُكرمه): \"أيها المصرى، سوف نُكرمك تكريماً لا نُكرمه أحداً من الناس\".",
+            "choices": [
+              { "choice_id": "a", "text": "نصب نائب عن المفعول المطلق." },
+              { "choice_id": "b", "text": "نصب مفعول به." },
+              { "choice_id": "c", "text": "رفع نائب فاعل." },
+              { "choice_id": "d", "text": "رفع فاعل." }
+            ],
+            "answer_key": "c",
+            "explanation": "الهاء في (نكرمه) نائب فاعل مرفوع محلاً، مبني على الضم في محل رفع.",
+            "difficulty": "hard",
+            "question_pattern": "pronoun_case_identification",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.85,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q41",
+            "question_number": 41,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "بين مما يلي الخبر ونوعه في المقولة السابقة: \"مصرنا الأبية التي استعصت على كل معتد وحاقد عالية هامتها رغم كيد الكائدين\".",
+            "choices": [
+              { "choice_id": "a", "text": "الأبية – مفرد." },
+              { "choice_id": "b", "text": "استعصت – جملة." },
+              { "choice_id": "c", "text": "عالية هامتها – جملة." },
+              { "choice_id": "d", "text": "عالية – مفرد." }
+            ],
+            "answer_key": "c",
+            "explanation": "خبر المبتدأ 'مصرنا' هو الجملة الاسمية 'عالية هامتها'.",
+            "difficulty": "medium",
+            "question_pattern": "kana_and_sisters_analysis",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q42",
+            "question_number": 42,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "ميز مما يلي الإعراب الصحيح لكلمة (خير) في المقولة السابقة: \"الخير خير وإن طال الزمان به والشر أخبث ما أوعيت من زاد\".",
+            "choices": [
+              { "choice_id": "a", "text": "توكيد لفظي." },
+              { "choice_id": "b", "text": "مفعول مطلق." },
+              { "choice_id": "c", "text": "بدل مرفوع." },
+              { "choice_id": "d", "text": "خبر مرفوع." }
+            ],
+            "answer_key": "d",
+            "explanation": "'خير' الثانية خبر مرفوع للمبتدأ 'الخير'.",
+            "difficulty": "medium",
+            "question_pattern": "identifying_sentence_elements",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q43",
+            "question_number": 43,
+            "type": "mcq",
+            "skill": "verb_classification",
+            "prompt": "استخرج مما يلي الفعل المتعدي الوارد في المقولة السابقة: \"جلسنا ساعة لنستمتع بالكتب ونقرأها بكل شغف لنحصل على المعرفة\".",
+            "choices": [
+              { "choice_id": "a", "text": "نقرأ." },
+              { "choice_id": "b", "text": "جلسنا." },
+              { "choice_id": "c", "text": "نستمتع." },
+              { "choice_id": "d", "text": "نحصل." }
+            ],
+            "answer_key": "a",
+            "explanation": "'نقرأ' فعل متعدٍّ، يتعدى إلى المفعول به (الهاء في نقرأها).",
+            "difficulty": "medium",
+            "question_pattern": "transitive_vs_intransitive",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.89,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q44",
+            "question_number": 44,
+            "type": "mcq",
+            "skill": "grammar_usage",
+            "prompt": "ميز مما يلي أسلوب المدح الصحيح.",
+            "choices": [
+              { "choice_id": "a", "text": "نعم الرجلين من يقبلان على العلم." },
+              { "choice_id": "b", "text": "نعم شباباً المجتهدين." },
+              { "choice_id": "c", "text": "نعم رجالاً من يخلصون للعلم." },
+              { "choice_id": "d", "text": "نعم الشباب المتواضعين." }
+            ],
+            "answer_key": "d",
+            "explanation": "'نعم الشباب' أسلوب مدح صحيح نحوياً، فاعل 'نعم' هو 'الشباب'، والمخصوص بالمدح محذوف.",
+            "difficulty": "medium",
+            "question_pattern": "praise_and_blame_structure",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q45",
+            "question_number": 45,
+            "type": "mcq",
+            "skill": "grammar_rules_application",
+            "prompt": "بين مما يلي حالة اسم التفضيل وحكمه في المقولة السابقة: \"إن أقربكم مني مجلساً أحسنكم أخلاقاً\".",
+            "choices": [
+              { "choice_id": "a", "text": "مجرد من أل والإضافة – يلزم الإفراد والتذكير." },
+              { "choice_id": "b", "text": "مضاف إلى معرفة - تجوز المطابقة." },
+              { "choice_id": "c", "text": "مضاف إلى نكرة – يلزم الإفراد والتذكير." },
+              { "choice_id": "d", "text": "معرف بأل – تجب المطابقة." }
+            ],
+            "answer_key": "b",
+            "explanation": "'أقربكم' مضاف إلى معرفة (الضمير)، فتجوز المطابقة.",
+            "difficulty": "medium",
+            "question_pattern": "comparative_adjective_rules",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q46",
+            "question_number": 46,
+            "type": "mcq",
+            "skill": "grammar_usage",
+            "prompt": "املأ الفراغ بالكلمة الصحيحة في المقولة السابقة: \"متى تكنَّ متواضعاً فسوف تصبحن .......... مكانة بين الناس\".",
+            "choices": [
+              { "choice_id": "a", "text": "الأعليا." },
+              { "choice_id": "b", "text": "الأعلى." },
+              { "choice_id": "c", "text": "العليا." },
+              { "choice_id": "d", "text": "الأعلين." }
+            ],
+            "answer_key": "d",
+            "explanation": "'الأعلين' جمع مذكر سالم، وتكون الصياغة الصحيحة باستخدامها.",
+            "difficulty": "hard",
+            "question_pattern": "grammar_error_correction",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.82,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q47",
+            "question_number": 47,
+            "type": "mcq",
+            "skill": "grammar_transformation",
+            "prompt": "اجعل الجملة السابقة لجمع المذكر وغير ما يلزم: \"إنك أيها الابن لسامٍ بخلقك\".",
+            "choices": [
+              { "choice_id": "a", "text": "إنكم أيها الأبناء لسامين بأخلاقكم." },
+              { "choice_id": "b", "text": "إنكم أيها الأبناء لسامون بأخلاقكم." },
+              { "choice_id": "c", "text": "إنكم أيها الأبناء لساميون بأخلاقكم." },
+              { "choice_id": "d", "text": "إنكم أيها الأبناء لساموون بأخلاقكم." }
+            ],
+            "answer_key": "c",
+            "explanation": "'سامٍ' تصبح 'ساميون' جمع مذكر سالم مرفوعاً بالواو.",
+            "difficulty": "medium",
+            "question_pattern": "gender_number_transformation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q48",
+            "question_number": 48,
+            "type": "mcq",
+            "skill": "morphology",
+            "prompt": "بين مما يلي نوع كلمة (مسترجع) في المقولة السابقة: \"اغتنم شبابك واستثمره؛ فإن مسترجع الشباب أمر مستحيل\".",
+            "choices": [
+              { "choice_id": "a", "text": "مصدر ميمي." },
+              { "choice_id": "b", "text": "اسم مفعول." },
+              { "choice_id": "c", "text": "اسم زمان." },
+              { "choice_id": "d", "text": "اسم فاعل." }
+            ],
+            "answer_key": "a",
+            "explanation": "'مسترجع' مصدر ميمي بمعنى الاسترجاع، بدأ بميم زائدة.",
+            "difficulty": "medium",
+            "question_pattern": "derived_noun_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q49",
+            "question_number": 49,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "ميز مما يلي الإعراب الصحيح لكلمة (القوي) في المقولة السابقة: \"يُهاب في وقتنا هذا القوي الأمين\".",
+            "choices": [
+              { "choice_id": "a", "text": "بدل مطابق مجرور." },
+              { "choice_id": "b", "text": "نعت مرفوع." },
+              { "choice_id": "c", "text": "مفعول به منصوب." },
+              { "choice_id": "d", "text": "نائب فاعل مرفوع." }
+            ],
+            "answer_key": "d",
+            "explanation": "'القوي' نائب فاعل مرفوع للفعل 'يُهاب'.",
+            "difficulty": "medium",
+            "question_pattern": "passive_voice_parsing",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q50",
+            "question_number": 50,
+            "type": "mcq",
+            "skill": "grammar_transformation",
+            "prompt": "صغ الجملة السابقة بعد وضع أداة شرط جازمة بدلاً من (الذي): \"الذي يعيش قانعاً راضياً يفوز بالسعادة\".",
+            "choices": [
+              { "choice_id": "a", "text": "من يعيش ... يفز ..." },
+              { "choice_id": "b", "text": "من يعش ... فسوف يفز ..." },
+              { "choice_id": "c", "text": "من يعش ... فسوف يفوز ..." },
+              { "choice_id": "d", "text": "من يعش ... سوف يفوز ..." }
+            ],
+            "answer_key": "b",
+            "explanation": "جواب الشرط 'يفز' مجزوم بحذف الألف وليس مقترناً بالسين في الأصل، لكن عند إضافة 'سوف' يجب اقترانه بالفاء.",
+            "difficulty": "hard",
+            "question_pattern": "sentence_transformation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.83,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q51",
+            "question_number": 51,
+            "type": "mcq",
+            "skill": "morphology",
+            "prompt": "بين مما يلي الإجابة الصحيحة عند وضع المصدر الصريح مكان المصدر المؤول في المقولة السابقة: \"عليك يا بنى أن ترضي والديك\".",
+            "choices": [
+              { "choice_id": "a", "text": "ترضية." },
+              { "choice_id": "b", "text": "رضا." },
+              { "choice_id": "c", "text": "إرضاء." },
+              { "choice_id": "d", "text": "تراض." }
+            ],
+            "answer_key": "c",
+            "explanation": "المصدر الصريح للفعل 'ترضي' هو 'إرضاء'.",
+            "difficulty": "medium",
+            "question_pattern": "noun_derivation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q52",
+            "question_number": 52,
+            "type": "open_ended",
+            "skill": "grammar_transformation",
+            "prompt": "استبدل (لا النافية للجنس) بالفعل الناسخ في المقولة السابقة وغير ما يلزم: \"ليس ذو العلم بمهان في ثقافتنا العربية\".",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "لا ذا علمٍ مهان في ثقافتنا العربية.",
+            "difficulty": "hard",
+            "question_pattern": "sentence_combining_with_grammar_constraints",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.80,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q53",
+            "question_number": 53,
+            "type": "mcq",
+            "skill": "evidence_extraction",
+            "prompt": "حدد مما يلي البيت الذي يستشهد به على مكانة المرأة ودورها الإيجابي في المجتمع.",
+            "choices": [
+              { "choice_id": "a", "text": "من لي بتربية النساء فإنها في الشرق علة ذلك الإخفاق" },
+              { "choice_id": "b", "text": "الأم مدرسة إذا أعددتها أعددت شعباً طيب الأعراق" },
+              { "choice_id": "c", "text": "ظلم الرجال نساءهم وتعسفوا هل للنساء بمصر من أنصار" },
+              { "choice_id": "d", "text": "عندي على ضيم الحرائر بينكم نبأ يثير ضمائر الأحرار" }
+            ],
+            "answer_key": "b",
+            "explanation": "بيت 'الأم مدرسة' يبرز دور المرأة الإيجابي في تربية الأجيال وبناء المجتمع.",
+            "difficulty": "easy",
+            "question_pattern": "idea_evidence_matching",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.93,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q54",
+            "question_number": 54,
+            "type": "mcq",
+            "skill": "text_structure_analysis",
+            "prompt": "حدد النموذج الذي اتبعه الكاتب في ترتيب الفقرتين السابقتين في سياق مقال عن أضرار التلوث.",
+            "choices": [
+              { "choice_id": "a", "text": "زعم – تفنيد." },
+              { "choice_id": "b", "text": "مشكلة - حل." },
+              { "choice_id": "c", "text": "ظاهرة – تفسير." },
+              { "choice_id": "d", "text": "رأي – دليل." }
+            ],
+            "answer_key": "d",
+            "explanation": "الفقرة الأولى تعرض رأياً، والثانية تقدم أدلة وإحصاءات تؤكد هذا الرأي.",
+            "difficulty": "medium",
+            "question_pattern": "text_development_pattern",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.87,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_4_q55",
+            "question_number": 55,
+            "type": "open_ended",
+            "skill": "topical_writing",
+            "prompt": "اكتب كلمة ختامية لندوة عنوانها: (المرأة نصف المجتمع). في حدود (6 - 8) أسطر، (80) كلمة. تتضمن: شكر المشاركين في الندوة – والتذكير بأهدافها ومحاورها- وتلخيص لأهم التوصيات. الاستشهاد بأقوال مأثورة أو إحصاءات وبيانات تظهر أهمية الندوة. كلمة الختام.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "يجب أن يكتب الطالب كلمة ختامية متكاملة تتضمن جميع العناصر المطلوبة بأسلوب بلاغي مناسب.",
+            "difficulty": "medium",
+            "question_pattern": "guided_writing_task",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 1.0,
+              "likely_to_repeat": true
+            }
+          }
+        ],
+        "section_signals": {
+          "section_weight": 0.98,
+          "difficulty_curve": "easy_to_hard",
+          "examiner_pattern": "integrates_article_analysis_with_grammar_rhetoric_and_writing",
+          "student_priority": "critical"
+        }
+      }
+    ]
+  }
+}

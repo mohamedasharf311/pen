@@ -1,0 +1,775 @@
+{
+  "exam_metadata": {
+    "exam_title": "النموذج الاسترشادي السادس - اللغة العربية",
+    "academic_year": "2025/2026",
+    "grade": "الثانوية العامة",
+    "total_questions": 55,
+    "sections": [
+      {
+        "section_id": "guidance_model_6_section_1",
+        "section_type": "reading_comprehension",
+        "title": "اقرأ ثم أجب (طلعت حرب والتحول النقدي)",
+        "order": 1,
+        "passage": {
+          "passage_id": "reading_passage_talaat_harb_currency_transformation",
+          "title": "طلعت حرب والتحول النقدي",
+          "genre": "informational_article",
+          "domain": "economics_and_history",
+          "source_type": "historical_economic_text",
+          "text": "1 كانت النقود المتداولة في أيدي الناس إلى يوم أعلنت الحرب العظمى قطعاً معدنية تتبادل في المعاملات العادية، وطائفة من الحوالات والأوراق المصرفية تستعمل في أغراض متنوعة، فلما شبت تلك الحرب تغير الحال فامتنع تداول القطع الذهبية، وقل تداول القطع الفضية، وكثر التعامل بالأوراق الصادرة من البنوك والحكومات؛ ذلك لأن كل دولة عملت على الاحتفاظ بما عندها من معدن نفيس؛ لأن كميته بطبيعة الحال أصبحت محدودة لا تستطيع الدولة أن تكثر منها بعكس الأوراق المالية التي لا يكلفها إلا طبعها والأمر بتداولها. 2 وإذا استطاعت الدولة بسهولة أن تأمر رعاياها بتداول ورقها، فإنها لا تستطيع أن تأمر رعايا دولة أخرى بقبوله؛ ولذلك كانت المعاملات الخارجية لا تثق إلا بالذهب فبقي الذهب للمعاملات الخارجية. 3 ومن ثم كان على الدول أن تتحرر من قيود نظامها النقدي، وتسن القوانين الاستثنائية التي تصل في بعض الأحيان إلى مصادرة ما عند الناس من معدن؛ ليكون ملكاً للحكومة، وتلقي على بنكها المركزي عبء تدبير المال، وتقوم البنوك المركزية بدورها الجريء في التحول النقدي. 4 ولا ننسى في هذا الصدد السياسة البريطانية في مصر أثناء الاحتلال؛ حيث مكنت للبنك الأهلي الذي كانت تمتلكه بريطانيا قبل تأميمه عام 1965 - مكنته من أن يتمتع بكافة امتيازات البنوك المركزية دون أن يكون عليه أية رقابة من قبل الحكومة المصرية نفسها، أو من قبل البنوك التجارية الأخرى التي ينافسها في كافة أعمالها، ثم لا يمد لها يد المساعدة إذا وقعت في شدة من الشدائد التي تتعرض لها جميع البنوك. 5 لذلك كان زعيمنا الاقتصادي المرحوم طلعت حرب باشا على حق عندما رأى أن الاستقلال الاقتصادي هو سبيل الاستقلال السياسي الذي نطالب به؛ فأسس بنك مصر وشركاته العتيدة؛ ليستخلص لمصر خيراتها، ويحدث فيها نهضة صحيحة.",
+          "main_idea": "عرض تطور النظام النقدي خلال الحرب العالمية الأولى وبيان دور طلعت حرب في تحقيق الاستقلال الاقتصادي لمصر.",
+          "sub_ideas": [
+            "تغير النظام النقدي أثناء الحرب العظمى",
+            "أهمية الذهب في المعاملات الخارجية",
+            "دور البنوك المركزية في التحول النقدي",
+            "السياسة البريطانية في مصر أثناء الاحتلال",
+            "رؤية طلعت حرب في الاستقلال الاقتصادي"
+          ],
+          "keywords": ["التحول النقدي", "الذهب", "البنوك المركزية", "طلعت حرب", "الاستقلال الاقتصادي", "بنك مصر"],
+          "reading_skills": ["contextual_vocabulary", "definition_extraction", "main_idea_detection", "implicit_reasoning", "evidence_extraction", "prediction"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_6_q1", "question_number": 1, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "حدد – من خلال الموضوع - القيمة العليا للتعامل الاقتصادي العالمي.",
+            "choices": [
+              { "choice_id": "a", "text": "الفضة." },
+              { "choice_id": "b", "text": "الذهب." },
+              { "choice_id": "c", "text": "أوراق المال." },
+              { "choice_id": "d", "text": "البنوك المركزية." }
+            ],
+            "answer_key": "b",
+            "explanation": "النص ينص على أن 'المعاملات الخارجية لا تثق إلا بالذهب فبقي الذهب للمعاملات الخارجية'.",
+            "difficulty": "easy", "question_pattern": "direct_information_retrieval",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.96, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q2", "question_number": 2, "type": "mcq", "skill": "definition_extraction",
+            "prompt": "حدد - مما يلي- ما يعنيه مصطلح \"التحول النقدي\" كما فهمت من الفقرة الثالثة.",
+            "choices": [
+              { "choice_id": "a", "text": "استبدال الذهب والفضة بالأوراق النقدية واعتبارها موقوفة على البنوك فقط." },
+              { "choice_id": "b", "text": "قيام البنوك باستبدال الأوراق النقدية بالذهب والمعدن في التعامل الداخلي." },
+              { "choice_id": "c", "text": "بيع الذهب والمعدن للمواطنين واعتبار المواطن مالكاً له من قبل الحكومة." },
+              { "choice_id": "d", "text": "إنشاء هيئات متعددة الجنسيات داخل كل دولة لتسهيل رغبة المواطن في شراء الذهب." }
+            ],
+            "answer_key": "a",
+            "explanation": "الفقرة توضح أن التحول النقدي يعني تحرر الدول من قيود المعدن والاتجاه للأوراق النقدية التي تديرها البنوك المركزية.",
+            "difficulty": "medium", "question_pattern": "explicit_definition_match",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q3", "question_number": 3, "type": "mcq", "skill": "implicit_reasoning",
+            "prompt": "استنتج – مما يلي- المبدأ الذي اعتمده طلعت حرب في قوله: \"الاستقلال الاقتصادي سبيل الاستقلال السياسي.\"",
+            "choices": [
+              { "choice_id": "a", "text": "لا تعطني سمكة ولكن علمني كيف أصطاد." },
+              { "choice_id": "b", "text": "من يملك فأسه يملك حريته." },
+              { "choice_id": "c", "text": "امتلاكك للمال قد يكون وبالاً عليك." },
+              { "choice_id": "d", "text": "أنفق ينفق عليك، وأعن تعن." }
+            ],
+            "answer_key": "b",
+            "explanation": "امتلاك الاقتصاد (الفأس) يؤدي إلى الحرية السياسية، وهو ما يتوافق مع رؤية طلعت حرب.",
+            "difficulty": "medium", "question_pattern": "implicit_cause_inference",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q4", "question_number": 4, "type": "mcq", "skill": "textual_relationship_analysis",
+            "prompt": "استنتج – مما يلي- علاقة عبارة \"فأسس بنك مصر وشركاته العتيدة\" بما قبلها في الفقرة الخامسة.",
+            "choices": [
+              { "choice_id": "a", "text": "تعليل." },
+              { "choice_id": "b", "text": "نتيجة." },
+              { "choice_id": "c", "text": "تفصيل." },
+              { "choice_id": "d", "text": "توضيح." }
+            ],
+            "answer_key": "b",
+            "explanation": "تأسيس بنك مصر نتيجة لرؤية طلعت حرب بأن 'الاستقلال الاقتصادي هو سبيل الاستقلال السياسي'.",
+            "difficulty": "easy", "question_pattern": "detail_main_idea_relationship",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.94, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q5", "question_number": 5, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "استدل - من خلال قراءتك للموضوع - على سياسة الاحتلال القائمة على استنزاف الموارد والتخلي عن الحلفاء وقت الأزمات.",
+            "choices": [
+              { "choice_id": "a", "text": "\"إنها لا تستطيع أن تأمر رعايا دولة أخرى بقبوله\"" },
+              { "choice_id": "b", "text": "\"تلقي على بنكها عبء تدبير المال، وتقوم البنوك المركزية بدورها في التحول النقدي\"" },
+              { "choice_id": "c", "text": "\"ينافسها في كافة أعمالها، ثم لا يمد لها يد المساعدة إذا وقعت في شدة من الشدائد\"" },
+              { "choice_id": "d", "text": "\"مكنت للبنك الأهلي من أن يتمتع بكافة امتيازات البنوك المركزية دون أن يكون عليه أية تبعة\"" }
+            ],
+            "answer_key": "c",
+            "explanation": "عدم مد يد المساعدة وقت الشدائد دليل على سياسة الاستنزاف والتخلي عن الحلفاء.",
+            "difficulty": "medium", "question_pattern": "scanning_for_details",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q6", "question_number": 6, "type": "mcq", "skill": "prediction",
+            "prompt": "توقع – في ضوء فهمك للموضوع – الدور الذي يجب أن تقوم به الدولة كصورة من صور دعم الاقتصاد الوطني.",
+            "choices": [
+              { "choice_id": "a", "text": "قصر التعامل بالعملات الورقية داخل الدولة مع الاحتفاظ بالمعدن النفيس لتأمين المعاملات الخارجية." },
+              { "choice_id": "b", "text": "إلزام البنوك المركزية بالاستقلال التام عن رقابة الحكومة لتتحرر من قيود النظام النقدي." },
+              { "choice_id": "c", "text": "تشجيع رعايا الدول الأخرى على تداول العملة الوطنية الورقية دون غطاء ذهبي." },
+              { "choice_id": "d", "text": "إخضاع المؤسسات المالية لرقابة وطنية تضمن حماية البنوك المحلية واستثمار خيرات البلاد." }
+            ],
+            "answer_key": "d",
+            "explanation": "الموضوع يشير إلى أهمية الرقابة الوطنية على المؤسسات المالية، كما فعل طلعت حرب بإنشاء بنك مصر.",
+            "difficulty": "medium", "question_pattern": "predicting_outcomes",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q7", "question_number": 7, "type": "open_ended", "skill": "problem_solving",
+            "prompt": "اقترح من خلال فهمك للفقرة أربعة إجراءات تقوم بها الدولة لتضييق الخناق على العصابات التي تقوم بالتنقيب عن الذهب.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "1. سن قوانين استثنائية تجرم التنقيب غير القانوني. 2. مصادرة ما يتم العثور عليه من معدن نفيس ليكون ملكاً للحكومة. 3. إلقاء عبء تدبير شؤون الذهب على البنك المركزي. 4. فرض رقابة حكومية صارمة على عمليات التنقيب.",
+            "difficulty": "medium", "question_pattern": "explicit_information_retrieval",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.88, "likely_to_repeat": false }
+          }
+        ],
+        "section_signals": { "section_weight": 0.96, "difficulty_curve": "easy_to_medium", "examiner_pattern": "starts_with_direct_comprehension_then_moves_to_inference_and_prediction", "student_priority": "critical" }
+      },
+      {
+        "section_id": "guidance_model_6_section_2",
+        "section_type": "reading_comprehension",
+        "title": "اقرأ ثم أجب (العقاد - كتاب أنا)",
+        "order": 2,
+        "passage": {
+          "passage_id": "reading_passage_akkad_ana",
+          "title": "من كتاب أنا",
+          "genre": "literary_memoir",
+          "domain": "arabic_literature",
+          "source_type": "literary_narrative_text",
+          "text": "من الصفات الحقيقية التي أعرفها في نفسي أنني لا أميل إلى التوسط في الصداقة ولا في العداوة، فلا أعرف إنساناً نصفه صديق ونصفه عدو، وإنما أعرفه صديقاً مائة في المائة، أو عدواً مائة في المائة، ولا تهمني مع ذلك عداوته إذا حفظها لنفسه ... ولكنه إذا تعقبني بها، وأبى إلا أن يكشف عنها فهي الحرب التي لا توسط فيها، إلا أن يريحني احتقاره من هذا العناء. ومن هذه الصفات، أنني أحب الألف والعادة؛ فلا أقدم على التبديل إلا بعد عناء طويل، ومثل من أمثلة ذلك أن البيت الذي أسكنه قد تغير له أربعة من المالك، وأنا الساكن فيه لا أتغير. وإنني في مصر الجديدة، ودكان حلاقي في شارع محمد علي إلى الآن؛ لأنني منذ عشرين سنة كنت أسكن هناك. وإنني كنت أشكو مرض الكلى قبل نيف وعشرين سنة، فأشار عليَّ الطبيب باتباع نظام مخصوص في الطعام يناسب الحالة التي أشكوها، وقد زالت تلك الحالة بعد سنة واحدة، ولكني لا أزال إلى الساعة أجري على النظام الذي ألفته من جرائها، ولا أستطيب أن أعود إلى كل طعام! ومن هذه الصفات أن التجديد والمحافظة عندي يلتقيان في معظم الأمور، وعلة ذلك على ما أعتقد أنني نشأت بأسوان، وهي أعرق مدينة بين مدن مصر القديمة بموروثاتها التي لا تبلى، وهي في الوقت نفسه مدينة أوروبية في الشتاء، أو كانت كذلك يوم نشأت بها نشأتي الأولى، فأوروبا كلها كانت تتراءى هناك كل شتاء بملاهيها، وأزيائها، وعاداتها، ومؤلفاتها، وفنونها، واختلاف أقوامها. وأنا وفي جدا لأصدقائي من الأحياء والأموات، كما أنني وفي لذكرياتي، وأعتز بها كل الاعتزاز، وقد كنت شديد التعلق بوالدتي، وعندما كنت أزور أسوان كان أول ما أفعله هو أن أنزل من القطار وأهرع إلى غرفة والدتي، وألتصق بها ... فلما توفيت إلى رحمة الله لم أدخل غرفتها حتى الآن؛ كي لا أراها فارغة منها، حتى الشوارع التي كنت أغشاها مع صديقي المازني - رحمه الله - لم أستطع أن أغشاها بعد مماته.",
+          "main_idea": "عرض الكاتب لسماته الشخصية من حب الألف والعادة والوفاء للأصدقاء والذكريات.",
+          "sub_ideas": ["عدم الميل للتوسط في الصداقة والعداوة", "حب الألف والعادة ورفض التبديل", "اجتماع التجديد والمحافظة في شخصيته", "الوفاء للأصدقاء والذكريات والأماكن"],
+          "keywords": ["العقاد", "الصداقة", "الوفاء", "الألف والعادة", "أسوان", "الذكريات"],
+          "reading_skills": ["implicit_reasoning", "emotional_tone_inference", "character_trait_analysis", "understanding_relationships", "evidence_extraction", "compare_and_contrast"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_6_q8", "question_number": 8, "type": "mcq", "skill": "idea_matching",
+            "prompt": "حدد الفقرة التي يلتقي مضمونها مع دلالة البيت السابق: \"خلقت ألوفاً لو رجعت إلى الصبا لفارقت شيبي موجع القلب باكيا\".",
+            "choices": [
+              { "choice_id": "a", "text": "الأولى." }, { "choice_id": "b", "text": "الثانية." }, { "choice_id": "c", "text": "الثالثة." }, { "choice_id": "d", "text": "الرابعة." }
+            ],
+            "answer_key": "b",
+            "explanation": "الفقرة الثانية تتحدث عن حب العقاد للألف والعادة وعدم قدرته على التغيير، وهو ما يتوافق مع معنى البيت.",
+            "difficulty": "medium", "question_pattern": "cross_text_idea_matching",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q9", "question_number": 9, "type": "mcq", "skill": "contextual_vocabulary",
+            "prompt": "ما دلالة قول الكاتب \"لا أميل إلى التوسط في الصداقة ولا في العداوة\" في الفقرة الأولى؟",
+            "choices": [
+              { "choice_id": "a", "text": "المبالغة في ردود الأفعال والتميز للمقربين." },
+              { "choice_id": "b", "text": "يحب الوضوح والثبات وينفر من المواربة." },
+              { "choice_id": "c", "text": "يخشى الأقوال التي لا تدل على مواقفهم." },
+              { "choice_id": "d", "text": "يدقق في تخير أصدقائه ورفاقه." }
+            ],
+            "answer_key": "b",
+            "explanation": "العقاد يفضل الوضوح الكامل في العلاقات؛ إما صديق كامل أو عدو كامل، دون مناطق رمادية.",
+            "difficulty": "medium", "question_pattern": "idiom_interpretation",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q10", "question_number": 10, "type": "mcq", "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة جملة \"ولكني لا أزال إلى الساعة أجري على النظام\" في الفقرة الثانية بما قبلها.",
+            "choices": [
+              { "choice_id": "a", "text": "توضيح." }, { "choice_id": "b", "text": "تأكيد." }, { "choice_id": "c", "text": "نتيجة." }, { "choice_id": "d", "text": "استدراك." }
+            ],
+            "answer_key": "d",
+            "explanation": "'لكن' تفيد الاستدراك، فقد زال المرض لكنه ما زال على النظام الغذائي نفسه.",
+            "difficulty": "medium", "question_pattern": "text_structure_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q11", "question_number": 11, "type": "mcq", "skill": "implicit_reasoning",
+            "prompt": "بم فسر الكاتب عدم نفوره من اجتماع التقليد والتجديد.",
+            "choices": [
+              { "choice_id": "a", "text": "ثقافته الواسعة، وقدرته على الجمع بين المتناقضات." },
+              { "choice_id": "b", "text": "نشأته في أسوان التي يجتمع فيها العراقة والحداثة." },
+              { "choice_id": "c", "text": "صداقاته التي تجمع بين المجددين والمحافظين." },
+              { "choice_id": "d", "text": "ألفته وعدم قدرته على تغيير عاداته مع حبه للتجديد." }
+            ],
+            "answer_key": "b",
+            "explanation": "الكاتب يفسر ذلك بقوله: 'نشأت بأسوان، وهي أعرق مدينة... وهي في الوقت نفسه مدينة أوروبية'.",
+            "difficulty": "easy", "question_pattern": "direct_information_retrieval",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.94, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q12", "question_number": 12, "type": "mcq", "skill": "compare_and_contrast",
+            "prompt": "وازن بين العقاد وبين أخي الصبي ورفاقه، من حيث \"تأصل سمة الوفاء\" لديهم وكيفية التعبير عنها كما ظهر في النصين.",
+            "choices": [
+              { "choice_id": "a", "text": "كلاهما أظهر وفاء يتناسب مع طبيعة علاقته بالراحلين؛ العقاد بالارتباط الوجداني بالأماكن، ورفاق الصبي بالحزن الهادئ الذي لا رياء فيه." },
+              { "choice_id": "b", "text": "العقاد وفي لأصدقائه، وكذلك أخي الصبي ورفاقه أوفوا للحاج على حتى بعد وفاته بالدعاء وزيارة الربع." },
+              { "choice_id": "c", "text": "العقاد وفى لأصدقائه إلى حد المبالغة في الوفاء، بينما لا يتصف أخو الصبي وأصدقاؤه بذلك." },
+              { "choice_id": "d", "text": "سمة الوفاء غير متأصلة عند العقاد، وهي كذلك غير متأصلة عند أخي الصبي ورفاقه." }
+            ],
+            "answer_key": "a",
+            "explanation": "العقاد يعبر عن وفائه بالارتباط بالأماكن، بينما رفاق الصبي حزنوا حزناً هادئاً لم يصعد إلى عيونهم.",
+            "difficulty": "hard", "question_pattern": "comparative_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.87, "likely_to_repeat": false }
+          }
+        ],
+        "section_signals": { "section_weight": 0.96, "difficulty_curve": "easy_to_medium", "examiner_pattern": "moves_from_explicit_retrieval_to_implicit_analysis_and_comparison", "student_priority": "critical" }
+      },
+      {
+        "section_id": "guidance_model_6_section_3",
+        "section_type": "poetry_and_literature_analysis",
+        "title": "أسئلة الشعر والمدارس الأدبية",
+        "order": 3,
+        "passage": {
+          "passage_id": "poetry_composite_schools_analysis_6",
+          "title": "نصوص شعرية من مدارس مختلفة",
+          "genre": "poetry",
+          "domain": "arabic_literature",
+          "source_type": "literary_poetic_anthology",
+          "text": "قصيدة إيليا أبو ماضي... نزار قباني: أبا تمام : إن الشعر في أعماقه سفر وإبحار إلى الآتي .. وكشف ليس ينتظر...",
+          "main_idea": "تحليل نصوص شعرية من مدارس أدبية مختلفة واستنتاج سماتها الفنية والموضوعية.",
+          "sub_ideas": ["الدعوة إلى البذل والعطاء", "التعبير عن الذات والتأمل", "اليأس والتشاؤم", "نقد التقاليد الشعرية", "استخدام اللغة الحية"],
+          "keywords": ["مدرسة المهاجر", "مدرسة أبولو", "مدرسة الديوان", "مدرسة الواقعية", "مدرسة الإحياء", "الصورة البيانية"],
+          "reading_skills": ["poetic_imagery_analysis", "literary_school_identification", "emotional_tone_inference", "structural_analysis", "interpretation"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_6_q13", "question_number": 13, "type": "mcq", "skill": "interpretation",
+            "prompt": "إلامَ يدعو الشاعر في البيت الأول؟",
+            "choices": [
+              { "choice_id": "a", "text": "أن يجمع من الدنيا ما استطاع، ولا يقصر في السعي." },
+              { "choice_id": "b", "text": "أن يحسن العطاء كما يحسن السعي والكسب." },
+              { "choice_id": "c", "text": "أن يقتنص لحظات الفرح قبل فواتها." },
+              { "choice_id": "d", "text": "أن يوقن بأن الدنيا وما فيها إلى زوال." }
+            ],
+            "answer_key": "b",
+            "explanation": "البيت 'خذ ما استطعت... لكن تعلم كيف تعطيها' يدعو إلى التوازن بين الأخذ والعطاء.",
+            "difficulty": "medium", "question_pattern": "interpretation_of_verse",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q14", "question_number": 14, "type": "mcq", "skill": "interpretation",
+            "prompt": "ما المغزى الضمني للبيت الثالث؟",
+            "choices": [
+              { "choice_id": "a", "text": "التأكيد على أن الكون لا يتحمل البخلاء." },
+              { "choice_id": "b", "text": "إظهار استلهام العبرة واكتساب الخبرة من الطبيعة." },
+              { "choice_id": "c", "text": "بيان أن الكون يطغى نوره فيملأ الأرجاء." },
+              { "choice_id": "d", "text": "إبراز سعة رحمة الله وكثرة آلائه ورفقه بالبشرية." }
+            ],
+            "answer_key": "b",
+            "explanation": "البيت 'أ كان في الكون نور تستضيء به' يحث على التأمل في الطبيعة واستخلاص العبر.",
+            "difficulty": "medium", "question_pattern": "interpreting_poetic_expression",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q15", "question_number": 15, "type": "mcq", "skill": "idea_identification",
+            "prompt": "بين المبدأ الذي طبقه الشاعر في قوله: \"كن وردة طيـبها حتى لساقيها\".",
+            "choices": [
+              { "choice_id": "a", "text": "\"من يفعل الخير لا يعدم جوازيه\"." },
+              { "choice_id": "b", "text": "\"لا يفسد المعروف إلا الكبر والغرور\"." },
+              { "choice_id": "c", "text": "\"أحسن دوماً وإن أسيئ إليك\"." },
+              { "choice_id": "d", "text": "\"يموت الصالحون وتبقى سيرتهم\"." }
+            ],
+            "answer_key": "c",
+            "explanation": "البيت يدعو إلى الإحسان حتى لمن قد يسيء إليك، فالوردة تعطي عطرها حتى لساقيها الذي قد يقطعها.",
+            "difficulty": "hard", "question_pattern": "abstract_idea_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.86, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q16", "question_number": 16, "type": "mcq", "skill": "interpretation",
+            "prompt": "بين – في ضوء فهمك الأبيات – فلسفة الشاعر في الحياة.",
+            "choices": [
+              { "choice_id": "a", "text": "الث راء والغنى لا يتحصلان للبخلاء والمضيقين على الناس." },
+              { "choice_id": "b", "text": "لا تتحقق بالأموال السعادة إلا باستخدامها في إسعاد الآخرين." },
+              { "choice_id": "c", "text": "بذل الأموال في إسعاد الأهل والأقربين سعادة لا تقدر بثمن." },
+              { "choice_id": "d", "text": "الغني غنى النفس، ومن يستغن يغنه الله." }
+            ],
+            "answer_key": "b",
+            "explanation": "القصيدة كلها تدعو إلى البذل والعطاء واستخدام المال في إسعاد الآخرين.",
+            "difficulty": "medium", "question_pattern": "main_idea_extraction_poetry",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q17", "question_number": 17, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "هات من النص ما يدل على الأثر السيئ للشح على صاحبه.",
+            "choices": [
+              { "choice_id": "a", "text": "\"لكن تعلم قليلاً كيف تعطيها\"." },
+              { "choice_id": "b", "text": "\"هل وجدت به روحاً تؤاسيك\"." },
+              { "choice_id": "c", "text": "\"لو السماء طوت عنا دراريها\"." },
+              { "choice_id": "d", "text": "\"لكن عادتها الشنعاء ترديها\"." }
+            ],
+            "answer_key": "d",
+            "explanation": "الشاعر يشبه الشح بالنار التي عادتها الفتك ('الشنعاء ترديها' أي تهلك صاحبها).",
+            "difficulty": "medium", "question_pattern": "explicit_evidence_retrieval",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q18", "question_number": 18, "type": "mcq", "skill": "emotional_tone_inference",
+            "prompt": "استنتج العاطفة المسيطرة على الشاعر في الأبيات.",
+            "choices": [
+              { "choice_id": "a", "text": "الضجر والضيق من أفعال البخيل التي تهلك أهله وذويه." },
+              { "choice_id": "b", "text": "الإعجاب بالبذل وحب العطاء دون انتظار المقابل." },
+              { "choice_id": "c", "text": "الأمل في انتشار مشاعر الخير التي تؤدي إلى صلاح المجتمع." },
+              { "choice_id": "d", "text": "الأسى والحزن لما يفعله الحاقدون من نشر للضغينة والكراهية." }
+            ],
+            "answer_key": "c",
+            "explanation": "القصيدة تعبر عن الأمل في نشر الخير والبذل في المجتمع.",
+            "difficulty": "medium", "question_pattern": "identifying_dominant_emotion",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.94, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q19", "question_number": 19, "type": "mcq", "skill": "poetic_imagery_analysis",
+            "prompt": "ميز اللون البياني في قول الشاعر \"كـن وردة\" في البيت الثاني.",
+            "choices": [
+              { "choice_id": "a", "text": "تشبيه بليغ." }, { "choice_id": "b", "text": "استعارة مكنية." }, { "choice_id": "c", "text": "استعارة تصريحية." }, { "choice_id": "d", "text": "مجاز مرسل." }
+            ],
+            "answer_key": "c",
+            "explanation": "'كن وردة' استعارة تصريحية، حيث صرح بالمشبه به (الوردة) وحذف المشبه (الإنسان الكريم).",
+            "difficulty": "medium", "question_pattern": "rhetorical_device_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q20", "question_number": 20, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي اتضحت في الأبيات من سمات مدرسة المهاجر من حيث المضمون.",
+            "choices": [
+              { "choice_id": "a", "text": "المغالاة في التجديد، والتساهل في اللغة." },
+              { "choice_id": "b", "text": "الدعوة إلى المحبة والأخوة الإنسانية." },
+              { "choice_id": "c", "text": "حدة العاطفة والامتزاج بالطبيعة." },
+              { "choice_id": "d", "text": "التأمل في النفس واستبطان النفس." }
+            ],
+            "answer_key": "b",
+            "explanation": "القصيدة تدعو إلى المحبة والبذل والأخوة الإنسانية، وهي من سمات مدرسة المهاجر.",
+            "difficulty": "medium", "question_pattern": "characteristic_identification",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.86, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q21", "question_number": 21, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "بين مما يلي السمة التي خالف فيها الشاعر سمات مدرسة الإحياء والبعث.",
+            "choices": [
+              { "choice_id": "a", "text": "التمرد على تقاليد الشعر وانتقاد المبالغة وشعر المناسبات." },
+              { "choice_id": "b", "text": "الميل إلى اللغة الحية التي نسمعها في كلام الناس." },
+              { "choice_id": "c", "text": "ظهور نزعة التأمل في الكون والتعمق في أسرار الوجود." },
+              { "choice_id": "d", "text": "حدة العاطفة والاعتماد على الرمز واستخدام لغة العصر." }
+            ],
+            "answer_key": "a",
+            "explanation": "الزهاوي يتمرد على تقاليد الشعر الكلاسيكي، منتقداً محاولات إسكات الشاعر عن قول الحقيقة.",
+            "difficulty": "hard", "question_pattern": "theme_identification_across_texts",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.82, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q22", "question_number": 22, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "بين كيف طبق الشاعر في البيتين سمات مدرسة الديوان.",
+            "choices": [
+              { "choice_id": "a", "text": "مال إلى التعبير عن النزعة الروحية، ومال إلى استبطان النفس." },
+              { "choice_id": "b", "text": "أظهر يأسه وتشاؤمه واستسالمه للأحزان." },
+              { "choice_id": "c", "text": "استخدم اللغة الكلاسيكية وفضل تقليد الأنماط الشعرية المكررة." },
+              { "choice_id": "d", "text": "حاكى الواقع، وأظهر حب الطبيعة والولع بها." }
+            ],
+            "answer_key": "b",
+            "explanation": "بيتا شكري 'باعد الهم... وجعلت الفراش مأوى همومي' يعبران عن اليأس والتشاؤم، وهي سمة بارزة لدى شعراء الديوان.",
+            "difficulty": "medium", "question_pattern": "trait_identification_through_quote",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q23", "question_number": 23, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي تحققت في البيتين من سمات مدرسة أبولو.",
+            "choices": [
+              { "choice_id": "a", "text": "حدة العاطفة في إبراز تجربته الذاتية." },
+              { "choice_id": "b", "text": "الميل إلى التأمل في أسرار الكون." },
+              { "choice_id": "c", "text": "طغيان الجانب الفكري، والميل إلى الذهنية." },
+              { "choice_id": "d", "text": "المشاركة الوجدانية والدعوة إلى التساند." }
+            ],
+            "answer_key": "a",
+            "explanation": "بيتا إبراهيم ناجي يعبران عن حدة العاطفة والخوف من فقدان الحبيب، وهي سمة أبولوية.",
+            "difficulty": "medium", "question_pattern": "characteristics_identification_from_example",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q24", "question_number": 24, "type": "mcq", "skill": "literary_school_identification",
+            "prompt": "ميز السمة التي اتضحت في الأسطر السابقة من سمات المدرسة الواقعية من حيث الشكل.",
+            "choices": [
+              { "choice_id": "a", "text": "التعبير عن الواقع بوجوهه المختلفة من تقدم وتخلف." },
+              { "choice_id": "b", "text": "التطلع للمثل العليا من إظهار القيم المثلى في الشعر." },
+              { "choice_id": "c", "text": "استخدام اللغة الحية القريبة من كلام الناس." },
+              { "choice_id": "d", "text": "اعتزاز الفرد بثقافته الجديدة ووعيه الاجتماعي." }
+            ],
+            "answer_key": "c",
+            "explanation": "نزار قباني يستخدم لغة حية قريبة من كلام الناس ('أبا تمام'، 'يشبه الزفة')، وهي سمة من سمات الواقعية.",
+            "difficulty": "medium", "question_pattern": "theme_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          }
+        ],
+        "section_signals": { "section_weight": 0.94, "difficulty_curve": "medium_to_hard", "examiner_pattern": "focuses_on_literary_schools_characteristics_and_emotional_analysis", "student_priority": "high" }
+      },
+      {
+        "section_id": "guidance_model_6_section_4",
+        "section_type": "reading_comprehension_and_grammar_and_writing",
+        "title": "نص المازني (الصديق المصور) - أسئلة النحو والبلاغة والتعبير",
+        "order": 4,
+        "passage": {
+          "passage_id": "reading_passage_mazini_photographer_friend",
+          "title": "الصديق المصور",
+          "genre": "literary_article",
+          "domain": "arabic_literature_and_art",
+          "source_type": "argumentative_literary_text",
+          "text": "لي صديق مصور مخلص لفنه دعاني مرة إلى محله وقال: إني أريد أن أرسمك لأني أتوسم في رأسك مادة صالحة لصورة لها قيمة فنية؛ فشكرت له ذلك، وقلت له: إن عندي من الغرور ما هو فوق الكفاية... وكان يقول لي: 'إنكم أيها الكتاب تستطيعون أن تسوقوا خواطركم ومعانيكم واحداً في أثر واحد...'... والذي ظهر لي أن أعظم ما يعين الفنان أو الكاتب على المثابرة من خفة الحساس... وأعني أن يكون المرء هادئ النفس، قليل الاكتراث...",
+          "main_idea": "مقارنة بين فن الرسم وفن الكتابة، وبيان الصفات التي تعين الفنان والكاتب على الإبداع والمثابرة.",
+          "sub_ideas": ["طلب المصور رسم الكاتب", "مقارنة بين صعوبة الرسم والكتابة", "الصفات المعينة على الإبداع", "أهمية الرضا الداخلي"],
+          "keywords": ["المصور", "المازني", "الكتابة", "الرسم", "المثابرة", "الرضا"],
+          "reading_skills": ["contextual_vocabulary", "implicit_reasoning", "poetic_imagery_analysis", "evidence_extraction", "compare_and_contrast", "genre_identification", "grammar", "parsing"]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_6_q25", "question_number": 25, "type": "mcq", "skill": "contextual_vocabulary",
+            "prompt": "حدد – مما يلي – ما يؤدي معنى كلمة (تكابده) كما وردت في سياق الفقرة الثالثة:",
+            "choices": [
+              { "choice_id": "a", "text": "تجاهد فيه وتقاسيه." },
+              { "choice_id": "b", "text": "تعالجه وتعانيه." },
+              { "choice_id": "c", "text": "تجادله وتماريه." },
+              { "choice_id": "d", "text": "تزينه وتحسنه." }
+            ],
+            "answer_key": "a",
+            "explanation": "'تكابده' تعني تتحمل المشقة فيه وتقاسي صعوبته.",
+            "difficulty": "medium", "question_pattern": "vocabulary_in_context",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q26", "question_number": 26, "type": "mcq", "skill": "implicit_reasoning",
+            "prompt": "بم فسر المصور \"صعوبة الإخفاق\" في فن الرسم مقارنة بفن الكتابة؟",
+            "choices": [
+              { "choice_id": "a", "text": "سهولة نقد الصورة؛ لوضوح ما يعيبها أو ينقصها." },
+              { "choice_id": "b", "text": "محاولة المصور المستمرة اختراق نفس المشاهد." },
+              { "choice_id": "c", "text": "احتمالية فشل الصورة في التأثير على المشاهد." },
+              { "choice_id": "d", "text": "أن المصور حائر في طريقة إظهار رسمه بخلاف الكاتب." }
+            ],
+            "answer_key": "a",
+            "explanation": "المصور يقول إن عيوب الصورة واضحة للناظر، بينما المعاني المكتوبة قد تخفى على الأفهام.",
+            "difficulty": "medium", "question_pattern": "character_motivation",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q27", "question_number": 27, "type": "mcq", "skill": "emotional_tone_inference",
+            "prompt": "استنتج دلالة قول الكاتب \"ولم يكن ينقصني أن أعلم من فنان مثلك أن رأسي جدير بالتصوير\" في الفقرة الأولى.",
+            "choices": [
+              { "choice_id": "a", "text": "غرور الكاتب واعتداده الزائد بنفسه." },
+              { "choice_id": "b", "text": "وعي الكاتب بسماته وتصادقه معها." },
+              { "choice_id": "c", "text": "قلق الكاتب من ظهور صورته بعد الرسم بشكل غير مرض." },
+              { "choice_id": "d", "text": "اتفاق الكاتب مع صديقه في أن الرسم أصعب من الكتابة." }
+            ],
+            "answer_key": "b",
+            "explanation": "الكاتب يعبر عن معرفته بنفسه وثقته بقدراته، وهو ما يعكس وعياً ذاتياً وصدقاً مع الذات.",
+            "difficulty": "medium", "question_pattern": "interpreting_figurative_language",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q28", "question_number": 28, "type": "mcq", "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة \"وأعني أن يكون المرء هادئ النفس قليل الاكتراث ...\" في الفقرة الثالثة بما قبلها.",
+            "choices": [
+              { "choice_id": "a", "text": "توضيح." }, { "choice_id": "b", "text": "تفصيل." }, { "choice_id": "c", "text": "نتيجة." }, { "choice_id": "d", "text": "تعليل." }
+            ],
+            "answer_key": "a",
+            "explanation": "العبارة توضيح وتفسير للمعنى السابق حول 'خفة الحساس'.",
+            "difficulty": "medium", "question_pattern": "text_structure_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q29", "question_number": 29, "type": "mcq", "skill": "poetic_imagery_analysis",
+            "prompt": "ميز نوع الصورة البيانية في قوله \"تسوقوا خواطركم ومعانيكم\" في الفقرة الثانية وبين قيمتها.",
+            "choices": [
+              { "choice_id": "a", "text": "تشبيه بليغ، فيه تشخيص، ويوحي بتزاحم الخواطر." },
+              { "choice_id": "b", "text": "مجاز مرسل، فيه إيجاز، ويوحي باضطراب الخواطر." },
+              { "choice_id": "c", "text": "استعارة مكنية، فيها تجسيم، وتوحي بالقدرة على البيان." },
+              { "choice_id": "d", "text": "استعارة تصريحية، فيها تشخيص، وتوحي بغزارة الثقافة." }
+            ],
+            "answer_key": "c",
+            "explanation": "شبه الخواطر والمعاني بشيء مادي يُساق، فحذف المشبه به وأبقى على ما يدل عليه (تسوقوا)، فهي استعارة مكنية توحي بالقدرة على التعبير.",
+            "difficulty": "hard", "question_pattern": "rhetorical_device_and_function",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.84, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q30", "question_number": 30, "type": "mcq", "skill": "evidence_extraction",
+            "prompt": "هات من الموضوع ما يدل على أن الرضا الداخلي للإنسان هو خير معين على الوصول إلى الهدف.",
+            "choices": [
+              { "choice_id": "a", "text": "\"إن عندي من الغرور ما هو فوق الكفاية\"." },
+              { "choice_id": "b", "text": "\"تثور آماله أو مخاوفه إلى درجة من الألم واللحاح\"." },
+              { "choice_id": "c", "text": "\"كانت أشق وكان الإخفاق أخلق بأن يكون أبين\"." },
+              { "choice_id": "d", "text": "\"ليس أعون على المثابرة والصبر من خفة الحساس\"." }
+            ],
+            "answer_key": "d",
+            "explanation": "'خفة الحساس' تعني الرضا الداخلي والهدوء النفسي، وهو خير معين على المثابرة والصبر.",
+            "difficulty": "medium", "question_pattern": "scanning_for_details",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q31", "question_number": 31, "type": "mcq", "skill": "poetic_imagery_analysis",
+            "prompt": "استخرج من النص كناية، وبين قيمتها الفنية:",
+            "choices": [
+              { "choice_id": "a", "text": "\"تتدلى يداه وينثني رأسه\" - توحي بالسآمة والضجر." },
+              { "choice_id": "b", "text": "\"تسوقوا خواطركم ومعانيكم\" - توحي بالانقياد للرغبات." },
+              { "choice_id": "c", "text": "\"لا تثور آماله\" - تؤكد على شدة الأهواء." },
+              { "choice_id": "d", "text": "\"يروضون نفوسهم\" - تظهر قيمة الكتابة." }
+            ],
+            "answer_key": "a",
+            "explanation": "'تتدلى يداه وينثني رأسه' كناية عن اليأس والإحباط والسآمة.",
+            "difficulty": "medium", "question_pattern": "figurative_language_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q32", "question_number": 32, "type": "mcq", "skill": "genre_characteristics_identification",
+            "prompt": "بين الفن النثري الذي يمثله النص السابق، ودلل على ذلك.",
+            "choices": [
+              { "choice_id": "a", "text": "قصة قصيرة، فقد حقق الكاتب عنصر وحدة الحدث ووحدة الزمان والمكان." },
+              { "choice_id": "b", "text": "سيرة ذاتية؛ فقد سرد الكاتب خبرات حياتية؛ ليفيد منها القارئ." },
+              { "choice_id": "c", "text": "مقال قصصي، فقد عرض الكاتب فكرته في صورة أدبية تحمل بعض عناصر القصة كالحوار والحدث." },
+              { "choice_id": "d", "text": "رواية؛ فقد حرص الكاتب على محاكاة الواقع فيما يتعلق بعنصر الزمان والمكان والحدث والشخصية." }
+            ],
+            "answer_key": "c",
+            "explanation": "النص يعرض فكرة فلسفية حول الإبداع بأسلوب أدبي يحوي حواراً وشخصيات، مما يجعله مقالاً قصصياً.",
+            "difficulty": "medium", "question_pattern": "literary_form_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q33", "question_number": 33, "type": "mcq", "skill": "compare_and_contrast",
+            "prompt": "وازن بين الكاتبين من حيث الاعتماد على الموسيقا.",
+            "choices": [
+              { "choice_id": "a", "text": "اعتمد كلا الكاتبين على الموسيقا الخفية، والموسيقا الظاهرة المتمثلة في الازدواج." },
+              { "choice_id": "b", "text": "اقتصر كلا الكاتبين على استخدام الموسيقا الخفية فقط." },
+              { "choice_id": "c", "text": "اقتصر كلا الكاتبين على الموسيقا الظاهرة فقط النابعة من المحسنات اللفظية كالازدواج." },
+              { "choice_id": "d", "text": "اقتصر المازني على الموسيقا الخفية فقط، بينما اعتمد الزيات على الموسيقا الخفية والظاهرة." }
+            ],
+            "answer_key": "a",
+            "explanation": "كلا الكاتبين استخدم الموسيقا الخفية النابعة من ترتيب الجمل، والموسيقا الظاهرة المتمثلة في الازدواج.",
+            "difficulty": "hard", "question_pattern": "stylistic_comparison",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.80, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q34", "question_number": 34, "type": "mcq", "skill": "parsing",
+            "prompt": "حدد الإعراب الصحيح لكلمة \"نملة\" في الشطر الثاني من البيت الشعري السابق: \"فما حرمت رزقا على صخرة نملة\".",
+            "choices": [
+              { "choice_id": "a", "text": "مضاف إليه." }, { "choice_id": "b", "text": "مفعول به ثان." }, { "choice_id": "c", "text": "نائب فاعل." }, { "choice_id": "d", "text": "بدل." }
+            ],
+            "answer_key": "a",
+            "explanation": "'نملة' مضاف إليه مجرور بالكسرة الظاهرة.",
+            "difficulty": "easy", "question_pattern": "identifying_sentence_elements",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.94, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q35", "question_number": 35, "type": "mcq", "skill": "sentence_structure_analysis",
+            "prompt": "ميز مما يلي المحل الإعرابي الصحيح لجملة \"أين الهبوط\" في الشطر الثاني.",
+            "choices": [
+              { "choice_id": "a", "text": "حال." }, { "choice_id": "b", "text": "مفعول به." }, { "choice_id": "c", "text": "لا محل لها." }, { "choice_id": "d", "text": "خبر." }
+            ],
+            "answer_key": "b",
+            "explanation": "جملة 'أين الهبوط' في محل نصب مفعول به للفعل 'قال' في الشطر الأول.",
+            "difficulty": "medium", "question_pattern": "sentence_grammatical_position",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.92, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q36", "question_number": 36, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "ميز المفضل في العبارة السابقة: \"فأشرف الناس نفساً وأعلاهم همة وأرفعهم قدراً من لذتهم في مرضاة الله\".",
+            "choices": [
+              { "choice_id": "a", "text": "الناس." }, { "choice_id": "b", "text": "نفساً." }, { "choice_id": "c", "text": "همة." }, { "choice_id": "d", "text": "مــن." }
+            ],
+            "answer_key": "a",
+            "explanation": "المفضل هو 'الناس'، وهو مجرور بـ'من' الموصولة.",
+            "difficulty": "medium", "question_pattern": "comparative_adjective_rules",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q37", "question_number": 37, "type": "mcq", "skill": "parsing",
+            "prompt": "حدد الإعراب الصحيح لكلمة \"مائة\" في العبارة السابقة: \"سمته العرب مائة اسم\".",
+            "choices": [
+              { "choice_id": "a", "text": "تمييز منصوب." }, { "choice_id": "b", "text": "تمييز مجرور." }, { "choice_id": "c", "text": "فاعل مرفوع." }, { "choice_id": "d", "text": "مفعول به ثان." }
+            ],
+            "answer_key": "d",
+            "explanation": "'مائة' مفعول به ثان منصوب بالفتحة للفعل 'سمت'.",
+            "difficulty": "medium", "question_pattern": "identifying_grammatical_function",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q38", "question_number": 38, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "ميز نوع \"ما\" في البيت الشعري: \"ما أضيع الغمد بغير نصله والشعر ما لم يك عند أهله\".",
+            "choices": [
+              { "choice_id": "a", "text": "مصدرية." }, { "choice_id": "b", "text": "تعجبية." }, { "choice_id": "c", "text": "نافية." }, { "choice_id": "d", "text": "موصولة." }
+            ],
+            "answer_key": "b",
+            "explanation": "'ما أضيع' صيغة تعجب قياسية (ما أفعله).",
+            "difficulty": "easy", "question_pattern": "grammatical_particle_function", "exam_signal": { "high_frequency": true, "priority_weight": 0.93, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q39", "question_number": 39, "type": "mcq", "skill": "parsing",
+            "prompt": "حدد الإعراب الصحيح لكلمة \"شريف\" الواردة في الشطر الثاني: \"وكن في الطريق عفيف الخطا شريف السماع كريم النظر\".",
+            "choices": [
+              { "choice_id": "a", "text": "نعت." }, { "choice_id": "b", "text": "خبر منصوب." }, { "choice_id": "c", "text": "فاعل لصيغة المبالغة." }, { "choice_id": "d", "text": "مبتدأ." }
+            ],
+            "answer_key": "a",
+            "explanation": "'شريف' نعت مرفوع بالضمة الظاهرة (معطوف على 'عفيف').",
+            "difficulty": "medium", "question_pattern": "identifying_sentence_elements",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q40", "question_number": 40, "type": "mcq", "skill": "morphology",
+            "prompt": "حدد نوع الكلمة \"المتاب\" في الشطر الثاني للبيت الشعري: \"ولو أني استطعت لتبت عنه ولكن كيف عن روحي المتاب\".",
+            "choices": [
+              { "choice_id": "a", "text": "اسم زمان." }, { "choice_id": "b", "text": "مصدر ميمي." }, { "choice_id": "c", "text": "اسم مفعول." }, { "choice_id": "d", "text": "اسم مكان." }
+            ],
+            "answer_key": "b",
+            "explanation": "'المتاب' مصدر ميمي من الفعل 'تاب-يتوب'، بدأ بميم زائدة.",
+            "difficulty": "medium", "question_pattern": "derived_noun_identification",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q41", "question_number": 41, "type": "mcq", "skill": "parsing",
+            "prompt": "حدد العلامة الإعرابية للفعل \"تر\" في البيت الشعري: \"ألم تر أن الرزق غاد ورائح\".",
+            "choices": [
+              { "choice_id": "a", "text": "حذف النون." }, { "choice_id": "b", "text": "الفتحة." }, { "choice_id": "c", "text": "الضمة." }, { "choice_id": "d", "text": "حذف حرف العلة." }
+            ],
+            "answer_key": "d",
+            "explanation": "'تر' فعل مضارع مجزوم بـ'لم' وعلامة جزمه حذف حرف العلة.",
+            "difficulty": "medium", "question_pattern": "verb_parsing",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q42", "question_number": 42, "type": "mcq", "skill": "parsing",
+            "prompt": "بين نوع خبر الحرف الناسخ في البيت الشعري: \"إن السعيدة في غيرها عظة وفي التجارب تحكيم ومعتبر\".",
+            "choices": [
+              { "choice_id": "a", "text": "شبه جملة." }, { "choice_id": "b", "text": "جملة اسمية." }, { "choice_id": "c", "text": "جملة فعلية." }, { "choice_id": "d", "text": "مفرد." }
+            ],
+            "answer_key": "a",
+            "explanation": "خبر 'إن' هو شبه الجملة 'في غيرها'.",
+            "difficulty": "medium", "question_pattern": "kana_and_sisters_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q43", "question_number": 43, "type": "mcq", "skill": "grammar_rules_application",
+            "prompt": "سبب اقتران جواب الشرط بالفاء في العبارة السابقة: \"إن سمعت من صاحبك كلاماً... فلا تنتحله\".",
+            "choices": [
+              { "choice_id": "a", "text": "جملة اسمية." }, { "choice_id": "b", "text": "جملة طلبية." }, { "choice_id": "c", "text": "جملة منفية." }, { "choice_id": "d", "text": "مبدوءة بفعل جامد." }
+            ],
+            "answer_key": "b",
+            "explanation": "الجواب 'فلا تنتحله' جملة طلبية (نهي)، لذا وجب اقترانه بالفاء.",
+            "difficulty": "medium", "question_pattern": "conditional_particle_rules",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.91, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q44", "question_number": 44, "type": "mcq", "skill": "sentence_structure_analysis",
+            "prompt": "حدد المحل الإعرابي لجملة \"انعاني\" في الشطر الثاني من البيت الشعري: \"ناشدتك الله يا طير الحمام إذا... فانعاني\".",
+            "choices": [
+              { "choice_id": "a", "text": "في محل نصب." }, { "choice_id": "b", "text": "في محل رفع." }, { "choice_id": "c", "text": "في محل جزم." }, { "choice_id": "d", "text": "لا محل لها." }
+            ],
+            "answer_key": "c",
+            "explanation": "جملة 'انعاني' في محل جزم جواب الشرط (إذا).",
+            "difficulty": "hard", "question_pattern": "conditional_sentence_structure",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.87, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q45", "question_number": 45, "type": "mcq", "skill": "parsing",
+            "prompt": "ميز الإعراب الصحيح لكلمة \"غير\" في الشطر الثاني من البيت الشعري: \"فظنوا العبيدا قوما غير أحرار\".",
+            "choices": [
+              { "choice_id": "a", "text": "نعت منصوب." }, { "choice_id": "b", "text": "مستثنى منصوب." }, { "choice_id": "c", "text": "مضاف إليه مجرور." }, { "choice_id": "d", "text": "بدل منصوب." }
+            ],
+            "answer_key": "a",
+            "explanation": "'غير' نعت منصوب بالفتحة لكلمة 'قوماً' المنصوبة.",
+            "difficulty": "hard", "question_pattern": "unusual_grammatical_function",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.83, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q46", "question_number": 46, "type": "mcq", "skill": "grammar_transformation",
+            "prompt": "ميز الصياغة الصحيحة عند بناء الفعل في الجملة السابقة للمجهول: \"أذاق جيش مصر أعداءنا مرارة الهزيمة\".",
+            "choices": [
+              { "choice_id": "a", "text": "ذيق أعداؤنا." }, { "choice_id": "b", "text": "أذيق أعداؤنا." }, { "choice_id": "c", "text": "أذيق أعداءنا." }, { "choice_id": "d", "text": "تذوق أعداؤنا." }
+            ],
+            "answer_key": "b",
+            "explanation": "عند بناء الفعل للمجهول يصبح 'أذيق'، و'أعداؤنا' نائب فاعل مرفوع.",
+            "difficulty": "hard", "question_pattern": "passive_voice_transformation",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.83, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q47", "question_number": 47, "type": "mcq", "skill": "grammar_identification",
+            "prompt": "بين نوع المنادى الوارد في البيت السابق: \"أرض آبائنا عليك سلام\".",
+            "choices": [
+              { "choice_id": "a", "text": "نكرة مقصودة." }, { "choice_id": "b", "text": "نكرة غير مقصودة." }, { "choice_id": "c", "text": "مضاف." }, { "choice_id": "d", "text": "شبيه بالمضاف." }
+            ],
+            "answer_key": "a",
+            "explanation": "'أرض' منادى نكرة مقصودة، مبني على الضم في محل نصب.",
+            "difficulty": "medium", "question_pattern": "vocative_analysis",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.90, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q48", "question_number": 48, "type": "mcq", "skill": "verb_classification",
+            "prompt": "حدد الفعل اللازم الوارد في البيت السابق: \"طربت ولولا الحلم أدركني الجهل\".",
+            "choices": [
+              { "choice_id": "a", "text": "طرب." }, { "choice_id": "b", "text": "أدرك." }, { "choice_id": "c", "text": "عاود." }, { "choice_id": "d", "text": "زال." }
+            ],
+            "answer_key": "a",
+            "explanation": "'طرب' فعل لازم لا ينصب مفعولاً به. أما 'أدرك' و'عاود' فهما متعديان.",
+            "difficulty": "medium", "question_pattern": "transitive_vs_intransitive",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q49", "question_number": 49, "type": "mcq", "skill": "grammar_usage",
+            "prompt": "حدد الجملة التي تشتمل على أسلوب تحذير نحوي صحيح.",
+            "choices": [
+              { "choice_id": "a", "text": "إياك أعني، فاحذر الشر والأشرار." },
+              { "choice_id": "b", "text": "الحذر الحذر من مصاحبة الأشرار." },
+              { "choice_id": "c", "text": "رفقاء السوء؛ فإنهم بوابة الندم." },
+              { "choice_id": "d", "text": "مصاحبة الأشرار بوابة الندم." }
+            ],
+            "answer_key": "a",
+            "explanation": "'إياك أعني' أسلوب تحذير صحيح نحوياً، ويتضمن المحذر منه ('الشر والأشرار').",
+            "difficulty": "medium", "question_pattern": "identifying_grammatical_style",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.89, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q50", "question_number": 50, "type": "mcq", "skill": "topical_coherence",
+            "prompt": "حدد التفصيلة التي يجدر بالكاتب حذفها حتى تكون كتابته وثيقة الصلة بالفكرة السابقة: \"كلنا يعلم أن شبكات التواصل الاجتماعي أضافت بعداً جديداً...\".",
+            "choices": [
+              { "choice_id": "a", "text": "إن التواصل مع الغير قد يكسبك صديقا ذا هوية مختلفة عنك، وقد يكون بالغرفة التي بجانبك." },
+              { "choice_id": "b", "text": "إن حرية إضافة المحتوى الذي يعبر عن معتقداتك وأفكارك وإن اختلف مع الغير لمكسب كبير." },
+              { "choice_id": "c", "text": "الحياة التكنولوجية أصبحت أكثر تعقيداً بما يجعلها تبعث في النفس حياز كبيراً من الخوف." },
+              { "choice_id": "d", "text": "اليوم ومع تطور تكنولوجيا التواصل أصبح من السهل على العائلات متابعة أخبار بعضها البعض." }
+            ],
+            "answer_key": "c",
+            "explanation": "الخيار 'ج' يتحدث عن الخوف من التكنولوجيا، وهو بعيد عن فكرة 'الإيجابيات التي أضافتها شبكات التواصل الاجتماعي'.",
+            "difficulty": "medium", "question_pattern": "identifying_irrelevant_information",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q51", "question_number": 51, "type": "mcq", "skill": "text_structure_analysis",
+            "prompt": "حدد النموذج الأنسب للربط بين الفقرتين السابقتين في سياق مقال عن دور جامعة القاهرة الاجتماعي.",
+            "choices": [
+              { "choice_id": "a", "text": "سبب ونتيجة." }, { "choice_id": "b", "text": "رأي ودليل." }, { "choice_id": "c", "text": "ظاهرة وتفسير." }, { "choice_id": "d", "text": "زعم وتفنيد." }
+            ],
+            "answer_key": "b",
+            "explanation": "الفقرة الأولى تقدم رأياً، والثانية تقدم دليلاً تاريخياً على هذا الرأي.",
+            "difficulty": "medium", "question_pattern": "text_development_pattern",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.87, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q53", "question_number": 53, "type": "open_ended", "skill": "emotional_tone_inference",
+            "prompt": "استنتج – من خلال الفقرة – الشعور المسيطر على سيدنا أثناء امتحان الصبي، والشعور المسيطر عليه بعد امتحان الصبي، ودلل على كلا الشعورين من الفقرة.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "قبل الامتحان: الخوف والقلق، الدليل: 'وكنت على النار مخافة أن تزل أو تنحرف' و'وكنت أحصنك بالحي القيوم'. بعد الامتحان: الفرح والسرور، الدليل: 'فدعا الشيخ الصبي بلقب الشيخ... فأنت تستحق أن تدعى شيخاً' و'رفعت رأسي وبيضت وجهي'.",
+            "difficulty": "medium", "question_pattern": "emotional_evidence_retrieval",
+            "exam_signal": { "high_frequency": false, "priority_weight": 0.86, "likely_to_repeat": false }
+          },
+          {
+            "question_id": "guidance_model_6_q54", "question_number": 54, "type": "open_ended", "skill": "grammar_transformation",
+            "prompt": "ضع \"من\" الشرطية بدلاً من الاسم الموصول وغير ما يلزم: \"الذين يتعودون فعل الخير لا يلتفتوا لمن ينتقدهم بغير دليل\".",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "من يتعود فعل الخير لا يلتفت لمن ينتقده بغير دليل.",
+            "difficulty": "medium", "question_pattern": "sentence_transformation",
+            "exam_signal": { "high_frequency": true, "priority_weight": 0.88, "likely_to_repeat": true }
+          },
+          {
+            "question_id": "guidance_model_6_q55", "question_number": 55, "type": "open_ended", "skill": "topical_writing",
+            "prompt": "اكتب كلمة افتتاحية لندوة تهدف إلى تشجيع الشباب للعمل الحر وطرق أبواب الاقتصاد الرقمي. الكلمة من 6-8 أسطر في حدود ثمانين كلمة، تتضمن: التعريف بالغرض من الندوة وأهميتها والجمهور المستهدف، التعريف بالمتحدثين في الندوة، عبارات ترحيبية من شأنها جذب انتباه الجمهور لمتابعة فعاليات الندوة (يتضمن ذلك استشهادات وأقوالاً مأثورة).",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "يجب أن يكتب الطالب كلمة افتتاحية متكاملة تتضمن جميع العناصر المطلوبة بأسلوب بلاغي جذاب.",
+            "difficulty": "medium", "question_pattern": "guided_writing_task",
+            "exam_signal": { "high_frequency": true, "priority_weight": 1.0, "likely_to_repeat": true }
+          }
+        ],
+        "section_signals": { "section_weight": 0.98, "difficulty_curve": "easy_to_hard", "examiner_pattern": "integrates_article_analysis_with_grammar_rhetoric_and_writing", "student_priority": "critical" }
+      }
+    ]
+  }
+}

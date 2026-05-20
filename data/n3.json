@@ -1,0 +1,1386 @@
+{
+  "exam_metadata": {
+    "exam_title": "النموذج الاسترشادي الثالث - اللغة العربية",
+    "academic_year": "2025/2026",
+    "grade": "الثانوية العامة",
+    "month": "أكتوبر 2025",
+    "total_questions": 55,
+    "sections": [
+      {
+        "section_id": "guidance_model_3_section_1",
+        "section_type": "reading_comprehension",
+        "title": "اقرأ ثم أجب (التشتت الرقمي)",
+        "order": 1,
+        "passage": {
+          "passage_id": "reading_passage_digital_distraction",
+          "title": "التشتت الرقمي",
+          "genre": "informational_article",
+          "domain": "technology_and_psychology",
+          "source_type": "scientific_informational_text",
+          "text": "سهلت الثورة التكنولوجية الحياة على كثير منا سواء في العمل أو في حياتنا الشخصية، ومع ذلك فإن منتجات هذه الثورة أسهمت في تشتيت انتباهنا، وأصابتنا بالقلق والتوتر والخوف من حدوث أشياء قد لا تكون مهمة على الإطلاق، مثل: الخوف من أن يفوتنا حدث ما على الشبكة، أو الخوف من فقدان أو نسيان الهاتف المحمول، أو الخوف من فقدان الاتصال بالإنترنت، أو عدم الانتباه لرسالة بريد إلكتروني مهمة، وغيرها من المخاوف التي تصيبنا بالتوتر والقلق. يُعد التشتت الرقمي أخطر الآفات التي يعاني منها الإنسان في العصر الحديث 'عصر الرقمنة'، كما يعد الإفراط في استخدام وسائل التواصل الاجتماعي من أسباب التشتت، وفقد الذات، وعدم القدرة على الإصغاء والقراءة العميقة والإبداع والتأمل، وتعتمد الرقمنة على استخدام الويب والأجهزة الذكية بديلاً لذاكرة الإنسان، وهذا قد يؤدي إلى إفراغ العقول من ثرواتها؛ والإدمان الإلكتروني، ونقص التركيز، والانطواء، وفرط الحركة، والتباعد الاجتماعي، وقلة الإنتاج، لذا يجب الاعتدال في الاعتماد على الرقمنة، وفطم النفس عن الأجهزة الإلكترونية؛ للوقاية من الانحراف التكنولوجي، وهو الإفراط في استخدام التقنية حتى الوصول لمرحلة الإلهاء الرقمي. وقد أكدت الدراسات أن التشتت الرقمي والإدمان على وسائل التواصل الاجتماعي يؤثران سلبًا في التركيز وضعف الإنتاج، ويسببان الإصابة بضعف الانتباه وقلة تحصيل العلم حيث يؤدي التشتت الرقمي والإدمان الإلكتروني إلى اضطراب الساعة البيولوجية، والإجهاد، وقلة النوم، والإصابة بالأرق والاكتئاب، وغيرها من الأمراض النفسية والجسدية؛ فالضوء والموجات المنبعثة من الأجهزة الإلكترونية تؤثران سلبًا في توازن الهرمونات المسؤولة عن تنظيم الساعة البيولوجية مثل الميلاتونين وغيره، هذه الهرمونات تتحكم في نوم الإنسان ويقظته وغيرها من وظائف الجسم. وباختلال الساعة البيولوجية تحدث اضطرابات النوم؛ حيث تتراكم المواد السامة في الخلايا، فتقل فرص إصلاح الخلل الجيني والخلوي، مما يؤدي إلى خلل وظيفي في أعضاء الجسم لا سيما الجهاز العصبي، فينتج عن ذلك ضعف الذاكرة، وعدم التوازن بين النظام المعرفي والنظام السلوكي، والإصابة بالخرف والزهايمر.",
+          "main_idea": "عرض ظاهرة التشتت الرقمي وأسبابه وآثاره السلبية على الصحة النفسية والجسدية وطرق الوقاية منه.",
+          "sub_ideas": [
+            "أسباب التشتت الرقمي",
+            "الآثار النفسية والاجتماعية للتشتت الرقمي",
+            "الآثار الجسدية والعصبية للتشتت الرقمي",
+            "طرق الوقاية من التشتت الرقمي"
+          ],
+          "keywords": [
+            "التشتت الرقمي",
+            "الإدمان الإلكتروني",
+            "الساعة البيولوجية",
+            "وسائل التواصل الاجتماعي",
+            "الرقمنة",
+            "الصحة النفسية"
+          ],
+          "reading_skills": [
+            "contextual_vocabulary",
+            "definition_extraction",
+            "main_idea_detection",
+            "implicit_reasoning",
+            "cause_effect_analysis",
+            "evidence_extraction",
+            "critical_reading"
+          ]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_3_q1",
+            "question_number": 1,
+            "type": "mcq",
+            "skill": "implicit_reasoning",
+            "prompt": "في ضوء فهمك للفقرة الثانية حدد أهمَّ الأسباب التي تؤدي إلى حدوث التشتت الرقمي.",
+            "choices": [
+              { "choice_id": "a", "text": "اضطراب الساعة البيولوجية." },
+              { "choice_id": "b", "text": "الإفراط في شراء الأجهزة الرقمية." },
+              { "choice_id": "c", "text": "إدمان وسائل التواصل الاجتماعي." },
+              { "choice_id": "d", "text": "ضعف الانتباه وقلة التحصيل." }
+            ],
+            "answer_key": "c",
+            "explanation": "الفقرة الثانية تنص صراحة على أن 'الإفراط في استخدام وسائل التواصل الاجتماعي من أسباب التشتت'.",
+            "difficulty": "easy",
+            "question_pattern": "direct_information_retrieval",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.95,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q2",
+            "question_number": 2,
+            "type": "mcq",
+            "skill": "definition_extraction",
+            "prompt": "أي المصطلحات التالية يشير إلى استخدام الويب والأجهزة الذكية بديلاً لذاكرة الإنسان؟",
+            "choices": [
+              { "choice_id": "a", "text": "التشتت الرقمي." },
+              { "choice_id": "b", "text": "الرقمنة." },
+              { "choice_id": "c", "text": "الإلهاء الرقمي." },
+              { "choice_id": "d", "text": "الإدمان الإلكتروني." }
+            ],
+            "answer_key": "b",
+            "explanation": "النص ينص على أن 'الرقمنة تعتمد على استخدام الويب والأجهزة الذكية بديلاً لذاكرة الإنسان'.",
+            "difficulty": "easy",
+            "question_pattern": "explicit_definition_match",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.95,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q3",
+            "question_number": 3,
+            "type": "mcq",
+            "skill": "contextual_vocabulary",
+            "prompt": "استنتج دلالة قول الكاتب: \"فطم النفس عن الأجهزة الإلكترونية\" في سياق الفقرة الثانية.",
+            "choices": [
+              { "choice_id": "a", "text": "الامتناع الكامل عن استخدام الأجهزة الإلكترونية." },
+              { "choice_id": "b", "text": "العزوف عن شراء الأجهزة الإلكترونية." },
+              { "choice_id": "c", "text": "تحقيق التوازن في استخدام التكنولوجيا." },
+              { "choice_id": "d", "text": "تضييق الفجوة بين التكنولوجيا وذاكرة الإنسان." }
+            ],
+            "answer_key": "c",
+            "explanation": "'فطم النفس' تعني تعويدها على الاعتدال والتوازن، وليس المنع الكامل.",
+            "difficulty": "medium",
+            "question_pattern": "idiom_interpretation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.92,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q4",
+            "question_number": 4,
+            "type": "mcq",
+            "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة عبارة: \"فالضوء والموجات... تؤثران سلبًا في توازن الهرمونات\" بما قبلها في الفقرة الثالثة.",
+            "choices": [
+              { "choice_id": "a", "text": "تعليل." },
+              { "choice_id": "b", "text": "نتيجة." },
+              { "choice_id": "c", "text": "تفصيل." },
+              { "choice_id": "d", "text": "تفنيد." }
+            ],
+            "answer_key": "a",
+            "explanation": "العبارة تعليل وسبب لحدوث الأمراض النفسية والجسدية التي تم ذكرها قبلها.",
+            "difficulty": "medium",
+            "question_pattern": "detail_main_idea_relationship",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q5",
+            "question_number": 5,
+            "type": "mcq",
+            "skill": "evidence_extraction",
+            "prompt": "هات من الموضوع ما يؤكد أثر التشتت الرقمي في تدمير الخلايا العصبية.",
+            "choices": [
+              { "choice_id": "a", "text": "\"إن منتجات هذه الثورة أسهمت في تشتيت انتباهنا وأصابتنا بالقلق\"." },
+              { "choice_id": "b", "text": "\"تتراكم المواد السامة في الخلايا، فتقلّ فرص إصلاح الخلل الجيني والخلوي\"." },
+              { "choice_id": "c", "text": "\"يُعدّ التشتت الرقمي أخطر الآفات التي يعاني منها الإنسان في العصر الحديث\"." },
+              { "choice_id": "d", "text": "\"أكدت الدراسات أن التشتت الرقمي... يؤثران سلبًا في التركيز وضعف الإنتاج\"." }
+            ],
+            "answer_key": "b",
+            "explanation": "تراكم المواد السامة في الخلايا وتقليل فرص إصلاح الخلل الجيني والخلوي يؤدي إلى تدمير الخلايا العصبية.",
+            "difficulty": "medium",
+            "question_pattern": "scanning_for_details",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q6",
+            "question_number": 6,
+            "type": "mcq",
+            "skill": "author_purpose_analysis",
+            "prompt": "حدد الطريقة التي اتبعها الكاتب في عرض أفكار الموضوع.",
+            "choices": [
+              { "choice_id": "a", "text": "تقديم حقائق علمية توضح أثر التشتت الرقمي في الصحة الجسمية والنفسية." },
+              { "choice_id": "b", "text": "استثارة مشاعر الخوف من الإفراط في استخدام وسائل التكنولوجيا الحديثة." },
+              { "choice_id": "c", "text": "تقديم حقائق توضح تأثير التشتت الرقمي في القوة البدنية." },
+              { "choice_id": "d", "text": "استثارة مشاعر الخوف من تفكك الروابط الاجتماعية." }
+            ],
+            "answer_key": "a",
+            "explanation": "الكاتب يعتمد على الدراسات والحقائق العلمية لعرض الآثار الجسمية والنفسية للتشتت الرقمي.",
+            "difficulty": "medium",
+            "question_pattern": "narrative_technique_analysis",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q7",
+            "question_number": 7,
+            "type": "open_ended",
+            "skill": "evidence_extraction",
+            "prompt": "هات من خلال فهمك للفقرة أربعة أدلة تؤكد الآثار السلبية للتشتت الرقمي.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "1. إفراغ العقول من ثرواتها. 2. الإدمان الإلكتروني ونقص التركيز. 3. الانطواء والتباعد الاجتماعي وقلة الإنتاج. 4. الوصول لمرحلة الإلهاء الرقمي والانحراف التكنولوجي.",
+            "difficulty": "medium",
+            "question_pattern": "explicit_information_retrieval",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.88,
+              "likely_to_repeat": false
+            }
+          }
+        ],
+        "section_signals": {
+          "section_weight": 0.96,
+          "difficulty_curve": "easy_to_medium",
+          "examiner_pattern": "starts_with_direct_comprehension_then_moves_to_inference_and_analysis",
+          "student_priority": "critical"
+        }
+      },
+      {
+        "section_id": "guidance_model_3_section_2",
+        "section_type": "reading_comprehension",
+        "title": "اقرأ ثم أجب (أحمد أمين - الأزهر)",
+        "order": 2,
+        "passage": {
+          "passage_id": "reading_passage_ahmed_amin_alazhar",
+          "title": "الأزهر",
+          "genre": "literary_memoir",
+          "domain": "arabic_literature",
+          "source_type": "literary_narrative_text",
+          "text": "هذا أبي يأخذني معه كل صباح يوم فأسير في شوارع لا عهد لي بها، وأمشي فأطيل المشي، لا كما كان العهد يوم كنت في المدرسة إذ كانت بالقرب من بيتنا، وأخيرًا أصل إلى بناء كبير، فيقول أبي هذا هو الأزهر، ولا أدري كيف كان وقع هذه الكلمة على نفسي، فالأزهر شيء غامض لا أعلم كنهه ولا نظامه ولا منهجه ولا مستقبله؛ أقدم عليه في هيبة وغموض، وأسمع عند الباب صوتًا غريبًا، دويًا كدوي النحل يضرب السمع ولا تستوضح له لفظًا، فتأخذني الرهبة مما أسمع. وأرى أبي يخلع نعليه عند الباب ويطويهما ويمسكهما بيده فأعمل في ممشى مثل عمله، وأسير بجانبه قليلاً، أدخل منه على إيوان كبير، رحى العين آخره، فرش كله بالحصير، وامتدت أعمدة صفوفًا، كل عمود قد شن جنب بجانبه كرسي عال منجد، جلس على كل كرسي شيخ معمم كأبي، بيده ملاَزمة من كتاب، صفراء وأمامه حلقة مفرغة أحياناً وغير مفرغة أحياناً، يلبس أكثرهم جلباباً أبيض عليه عباءة سوداء، ويمسك بيده ملزمة من كتاب كما يمسك الشيخ، والشيخ يقرأ أو يفسر والطلبة ينصتون أو يجادلون وبين العمود والعمود بعض الطلبة يجتمعون فيأكلون أو يذاكرون. تخطيت هذه الجموع في غرابة، ونظرت إليها في دهشة، وأحياناً أرى في بعض الأركان كتاباً ككتابي القديم، فأفهم أن الأزهر امتداد للكتاب امتداد للمدرسة، ثم نخرج من هذا الإيوان إلى فناء الأزهر أو صحنه فأراه سماوياً غير مسقوف، ومبلطاً غير مفروش، وهنا وهناك فرشت ملاءة بيضاء أو عباءة سوداء صفف عليها خبز ريفي، وعرض في الشمس ليجف وسألت أبي فقال: إنه بعض زاد المجاورين أحضروه معهم من ريفهم أو أرسله إليهم آباؤهم، فهم يشمسونه ثم يختزنونه في بيوتهم. هذا هو كل الأزهر كما رأيته أول مرة. وفهمت من هذا أني سأكون أحد هؤلاء المتحلقين، وسأجلس على الحصير كما يجلسون، وأسمع إلى درس الشيخ كما يسمعون، وآكل في ركن من أركانه كما يأكلون، وقارنت بين حصير الأزهر ومقاعد المدرسة، ومدرس الأزهر ومدرس المدرسة، وفناء الأزهر حيث يُشمس الخبز وفناء المدرسة حيث نلعب ونمرح، فكانت مقارنة حزينة.. وأخذت إلى رواق من أروقة الأزهر، وتقدمنا إلى شيخ أخذ منا طلب الالتحاق، وامتحنني في القرآن فأحسنت الإجابة، فقيدني طالباً.",
+          "main_idea": "وصف الكاتب لانطباعه الأول عن الأزهر عند زيارته لأول مرة والمقارنة بينه وبين المدرسة.",
+          "sub_ideas": [
+            "الوصول إلى الأزهر والشعور بالغموض والرهبة",
+            "وصف مشاهد الأزهر من شيوخ وطلبة وحلقات علم",
+            "وصف فناء الأزهر وزاد المجاورين",
+            "إدراك الكاتب أنه سيصبح واحداً من طلبة الأزهر",
+            "المقارنة الحزينة بين الأزهر والمدرسة"
+          ],
+          "keywords": [
+            "الأزهر",
+            "الشيخ",
+            "الحصير",
+            "المجاورون",
+            "المدرسة",
+            "الغموض",
+            "الرهبة"
+          ],
+          "reading_skills": [
+            "implicit_reasoning",
+            "emotional_tone_inference",
+            "character_trait_analysis",
+            "understanding_relationships",
+            "evidence_extraction",
+            "compare_and_contrast"
+          ]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_3_q8",
+            "question_number": 8,
+            "type": "mcq",
+            "skill": "emotional_tone_inference",
+            "prompt": "ما سبب حزن الكاتب كما تفهم من الفقرة الأخيرة؟",
+            "choices": [
+              { "choice_id": "a", "text": "ضيق ساحة الأزهر مقارنة بساحة المدرسة." },
+              { "choice_id": "b", "text": "طول المشي لبُعد المسافة بينه وبين الأزهر." },
+              { "choice_id": "c", "text": "اختلاف نظام الأزهر عن نظام المدرسة في كل شيء." },
+              { "choice_id": "d", "text": "ضرورة امتحانه في القرآن الكريم للالتحاق بالأزهر." }
+            ],
+            "answer_key": "c",
+            "explanation": "الكاتب قارن بين حصير الأزهر ومقاعد المدرسة، ومدرس الأزهر ومدرس المدرسة، وفناء الأزهر وفناء المدرسة، فكانت مقارنة حزينة بسبب الاختلاف الكبير.",
+            "difficulty": "medium",
+            "question_pattern": "character_analysis",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.92,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q9",
+            "question_number": 9,
+            "type": "mcq",
+            "skill": "implicit_reasoning",
+            "prompt": "لماذا كان وقع كلمة \"الأزهر\" غامضاً على الكاتب أول الأمر؟",
+            "choices": [
+              { "choice_id": "a", "text": "لأنه لا يدري نظامه، ولا كيفية الدراسة فيه." },
+              { "choice_id": "b", "text": "لصعوبة الكتب التي تدرس فيه وشدة مشايخه." },
+              { "choice_id": "c", "text": "لتعوده على الحركة واللعب والمرح في المدرسة." },
+              { "choice_id": "d", "text": "لأن الأزهر بناء عتيق يبعث في النفس المهابة." }
+            ],
+            "answer_key": "a",
+            "explanation": "الكاتب يقول: 'لا أعلم كنهه ولا نظامه ولا منهجه ولا مستقبله'.",
+            "difficulty": "easy",
+            "question_pattern": "direct_information_retrieval",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.94,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q10",
+            "question_number": 10,
+            "type": "mcq",
+            "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة جملة \"دويًا كدوي النحل يضرب السمع\" بما قبلها في الفقرة الأولى.",
+            "choices": [
+              { "choice_id": "a", "text": "نتيجة." },
+              { "choice_id": "b", "text": "استدراك." },
+              { "choice_id": "c", "text": "تفصيل." },
+              { "choice_id": "d", "text": "توضيح." }
+            ],
+            "answer_key": "d",
+            "explanation": "الجملة توضيح وتفسير للصوت الغريب الذي سمعه الكاتب عند الباب.",
+            "difficulty": "medium",
+            "question_pattern": "text_structure_analysis",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q11",
+            "question_number": 11,
+            "type": "mcq",
+            "skill": "implicit_reasoning",
+            "prompt": "استنتج دلالة قوله: \"فأعمل في ممشى مثل عمله\" في الفقرة الثانية.",
+            "choices": [
+              { "choice_id": "a", "text": "توضيح الهيئة التي يكون عليها الطالب." },
+              { "choice_id": "b", "text": "بيان حبه لأبيه والاقتداء به." },
+              { "choice_id": "c", "text": "إبراز قدرته على ملاحظة ما يشاهده." },
+              { "choice_id": "d", "text": "تأكيد تمسكه بالتقاليد الأزهرية." }
+            ],
+            "answer_key": "b",
+            "explanation": "الكاتب يقلد أباه في خلع النعل وطيها وإمساكها باليد، مما يدل على حبه لأبيه والاقتداء به.",
+            "difficulty": "medium",
+            "question_pattern": "character_motivation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q12",
+            "question_number": 12,
+            "type": "mcq",
+            "skill": "evidence_extraction",
+            "prompt": "هات من الموضوع ما يدل على أن طريقة التعليم في الأزهر لم تكن تعتمد على التلقين والحفظ.",
+            "choices": [
+              { "choice_id": "a", "text": "\"شيخ معمم كأبي، بيده ملازمة صفراء من كتاب\"." },
+              { "choice_id": "b", "text": "\"الشيخ يقرأ أو يفسر والطلبة ينصتون أو يجادلون\"." },
+              { "choice_id": "c", "text": "\"أن الأزهر امتداد للكتاب امتداد للمدرسة\"." },
+              { "choice_id": "d", "text": "\"سأجلس على الحصير... وأسمع... كما يسمعون\"." }
+            ],
+            "answer_key": "b",
+            "explanation": "وجود الجدال بين الطلبة والشيخ يدل على أن الطريقة لم تكن تلقيناً وحفظاً فقط.",
+            "difficulty": "medium",
+            "question_pattern": "scanning_for_details",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.92,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q13",
+            "question_number": 13,
+            "type": "mcq",
+            "skill": "compare_and_contrast",
+            "prompt": "وازن بين وجهتي نظر الكاتب وطه حسين من الدراسة في الأزهر في ضوء فهمك للفقرتين.",
+            "choices": [
+              { "choice_id": "a", "text": "يجهل كل من الكاتبين طبيعة الدراسة في الأزهر." },
+              { "choice_id": "b", "text": "يرى طه حسين صعوبة الدراسة في الأزهر بينما يراها الكاتب أيسر من دراسته في المدرسة." },
+              { "choice_id": "c", "text": "يعي كل من الكاتبين سهولة دراسة علوم الأزهر." },
+              { "choice_id": "d", "text": "يرى طه حسين الأزهر مصدرًا للعلم والمكانة المرموقة، بينما يراه الكاتب شيئًا مبهمًا مثيرًا للرهبة." }
+            ],
+            "answer_key": "d",
+            "explanation": "طه حسين يرى الأزهر مصدرًا للعلم والمكانة (أخوه الأزهري أصبح عالمًا وظفر بمكانة ممتازة)، بينما يراه الكاتب شيئًا غامضًا يثير الرهبة.",
+            "difficulty": "hard",
+            "question_pattern": "comparative_analysis",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.87,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q14",
+            "question_number": 14,
+            "type": "open_ended",
+            "skill": "evidence_extraction",
+            "prompt": "دلل بأربعة أدلة من خلال الفقرة على شعور الصبي باللهفة والترقب.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "1. 'وقد أرق الصبي ليلته كلها'. 2. 'كان أرقًا فرحًا مبتهجًا'. 3. 'فيه كثير من تعجل الوقت واستبطاء الصبح'. 4. 'عاد الصبي إلى الغرفة في الضحى فأنفق وقته هادئًا قلقًا'.",
+            "difficulty": "medium",
+            "question_pattern": "emotional_evidence_retrieval",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.86,
+              "likely_to_repeat": false
+            }
+          }
+        ],
+        "section_signals": {
+          "section_weight": 0.96,
+          "difficulty_curve": "easy_to_medium",
+          "examiner_pattern": "moves_from_explicit_retrieval_to_implicit_analysis_and_comparison",
+          "student_priority": "critical"
+        }
+      },
+      {
+        "section_id": "guidance_model_3_section_3",
+        "section_type": "poetry_and_literature_analysis",
+        "title": "أسئلة الشعر والمدارس الأدبية",
+        "order": 3,
+        "passage": {
+          "passage_id": "poetry_composite_schools_analysis_3",
+          "title": "نصوص شعرية من مدارس مختلفة",
+          "genre": "poetry",
+          "domain": "arabic_literature",
+          "source_type": "literary_poetic_anthology",
+          "text": "قصيدة أحمد شوقي: نفضوا العيون من الكرى واستأنفوا سفر الحياة رحلة الأيام. كل سلاحهم الحق والحق مثبت الأقدام. قل للحوادث أقدمي أو أحجمي إنا بنو الإقدام والإحجام. نحن السلام إذا الليالي النيام غيرنا فإذا ثبن فنحن نيام. فينا من الصبر الجميل بقيّة لحوادث خلف الغيوب جسام. اعدد من ليس في ركب الزمان مغبرًا بين غوابر الأقوام. يا مصر أنت كنانة الله التي لا تستباح وللكنانة حام. استقبلي الآمال في غاياتها وتأملي الدنيا بطرف سام. || نازك الملائكة: كان يعيش... غلام... هناك بعيد الخيال. إذا جاع يأكل ضوء النجوم... ولون الجبال. || إبراهيم ناجي: أصغى العباب ورجع الوادي أصداءه وتناجت السحب. || عباس محمود العقاد: رأوا فما عرفوا، كلا ولا عجبوا ولا دروا بالذي أرجو وأرتقب. كأنما أنا من أمسي ومن غده لم يختلف قط لي شجو ولا طرب. || جبران خليل جبران: نسيم لبنان حيانا يضحى فشفى ما في فؤادي من العلات والحرق.",
+          "main_idea": "تحليل نصوص شعرية من مدارس أدبية مختلفة واستنتاج سماتها الفنية والموضوعية.",
+          "sub_ideas": [
+            "الفخر بالأمة المصرية ودورها",
+            "التأمل في الوجود والطبيعة",
+            "التعبير عن الذات والعواطف",
+            "الحنين إلى الوطن"
+          ],
+          "keywords": [
+            "مدرسة الإحياء",
+            "مدرسة أبولو",
+            "مدرسة الديوان",
+            "مدرسة المهجر",
+            "مدرسة الواقعية",
+            "الصورة البيانية"
+          ],
+          "reading_skills": [
+            "poetic_imagery_analysis",
+            "literary_school_identification",
+            "emotional_tone_inference",
+            "structural_analysis",
+            "interpretation"
+          ]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_3_q15",
+            "question_number": 15,
+            "type": "mcq",
+            "skill": "interpretation",
+            "prompt": "بم وصف الشاعر المصريين في البيت الأول؟",
+            "choices": [
+              { "choice_id": "a", "text": "حب العمل والوصول إلى الهدف بكل الوسائل الممكنة." },
+              { "choice_id": "b", "text": "الرغبة في إثبات الذات والعمل على تحقيق الثروة الطائلة." },
+              { "choice_id": "c", "text": "الجدية واليقظة والسعي الدؤوب لبناء حياتهم بالعرق والكفاح." },
+              { "choice_id": "d", "text": "التعاون البناء بين أبناء الوطن لمواجهة المخاطر المحدقة." }
+            ],
+            "answer_key": "c",
+            "explanation": "'نفضوا العيون من الكرى واستأنفوا سفر الحياة' تدل على اليقظة والجدية والسعي الدؤوب.",
+            "difficulty": "medium",
+            "question_pattern": "interpretation_of_verse",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.89,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q16",
+            "question_number": 16,
+            "type": "mcq",
+            "skill": "interpretation",
+            "prompt": "استنتج دلالة قول الشاعر: \"قل للحوادث أقدمي أو أحجمي إنا بنو الإقدام والإحجام\" في البيت الثالث.",
+            "choices": [
+              { "choice_id": "a", "text": "القدرة والتأهب عند مواجهة الشدائد بثقة وقوة وعزم." },
+              { "choice_id": "b", "text": "الحذر من نوائب الدهر والاستعداد لمستقبل مشرق." },
+              { "choice_id": "c", "text": "تجاهل الصعاب؛ فلا مبرر للخوف من تقلبات الأيام." },
+              { "choice_id": "d", "text": "تجنب المخاطر وعدم التردد عند مواجهة التحديات." }
+            ],
+            "answer_key": "a",
+            "explanation": "الشاعر يتحدى الحوادث بثقة، مؤكداً أن المصريين قادرون على الإقدام والإحجام حسب الموقف.",
+            "difficulty": "medium",
+            "question_pattern": "interpreting_poetic_expression",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q17",
+            "question_number": 17,
+            "type": "mcq",
+            "skill": "interpretation",
+            "prompt": "استنتج المغزى الذي يرمي إليه الشاعر في البيت السابع.",
+            "choices": [
+              { "choice_id": "a", "text": "بيان احتضان مصر لجميع الأديان وحرصها على الوحدة." },
+              { "choice_id": "b", "text": "إظهار قوة مصر وقدرة أبنائها على الذود عنها وحفظ الله لها." },
+              { "choice_id": "c", "text": "بيان سمو منزلة الشعب المصري والمسارعة لمساعدة الأشقاء." },
+              { "choice_id": "d", "text": "إظهار حب المصريين لوطنهم وسعيهم الدائم لبنائه وتنميته." }
+            ],
+            "answer_key": "b",
+            "explanation": "البيت 'يا مصر أنت كنانة الله... لا تستباح وللكنانة حام' يظهر قوة مصر وحفظ الله لها.",
+            "difficulty": "medium",
+            "question_pattern": "extracting_main_idea_from_verse",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.88,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q18",
+            "question_number": 18,
+            "type": "mcq",
+            "skill": "idea_identification",
+            "prompt": "بين المبدأ الذي طبقه الشاعر في البيت السادس.",
+            "choices": [
+              { "choice_id": "a", "text": "لكل شيء إذا ما تم نقصان." },
+              { "choice_id": "b", "text": "يؤتى الحذر من مأمنه." },
+              { "choice_id": "c", "text": "لكل شيء في الزمان وقته فلا تعجل." },
+              { "choice_id": "d", "text": "الجد في الجد والحرمان في الكسل." }
+            ],
+            "answer_key": "d",
+            "explanation": "البيت 'اعدد من ليس في ركب الزمان مغبرًا بين غوابر الأقوام' يدعو إلى الجد والعمل وعدم التخلف عن الركب.",
+            "difficulty": "hard",
+            "question_pattern": "abstract_idea_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.86,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q19",
+            "question_number": 19,
+            "type": "mcq",
+            "skill": "evidence_extraction",
+            "prompt": "هات من الأبيات ما يدل على تفاؤل المصريين لمستقبل بلادهم.",
+            "choices": [
+              { "choice_id": "a", "text": "\"واستقبِلي الآمالَ في غاياتها وتأمَّلي الدنيا بطرفٍ سام\"." },
+              { "choice_id": "b", "text": "\"نحن السلام إذا الليالي النيامُ غيرنا فإذا ثَبنَ فنحن نيام\"." },
+              { "choice_id": "c", "text": "\"فينا من الصبرِ الجميلِ بقيَّةٌ لحوادثٍ خلفَ الغيوبِ جسام\"." },
+              { "choice_id": "d", "text": "\"فاعدُد من ليس في ركبِ الزمانِ مُغبِّرًا بين غوابرِ الأقوام\"." }
+            ],
+            "answer_key": "a",
+            "explanation": "'استقبلي الآمال في غاياتها' تعبر عن التفاؤل والنظر إلى المستقبل بأمل.",
+            "difficulty": "easy",
+            "question_pattern": "explicit_evidence_retrieval",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.93,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q20",
+            "question_number": 20,
+            "type": "mcq",
+            "skill": "emotional_tone_inference",
+            "prompt": "استنتج العاطفة المسيطرة على الشاعر في الأبيات.",
+            "choices": [
+              { "choice_id": "a", "text": "الاعتزاز بالوطن والإعجاب بقدرة أبنائه على تخطي العقبات." },
+              { "choice_id": "b", "text": "الأمل في يقظة أبناء الوطن وكراهية السلبية والجبن عند المحن." },
+              { "choice_id": "c", "text": "الأمل في بناء دولة عصرية تقوم على مبادئ العلم والإيمان." },
+              { "choice_id": "d", "text": "الاعتزاز بما حققه أبناء مصر من إنجازات أبهرت الجميع." }
+            ],
+            "answer_key": "a",
+            "explanation": "القصيدة تعبر عن الاعتزاز بالوطن والإعجاب بقدرة أبنائه على مواجهة التحديات.",
+            "difficulty": "medium",
+            "question_pattern": "identifying_dominant_emotion",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.94,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q21",
+            "question_number": 21,
+            "type": "mcq",
+            "skill": "poetic_imagery_analysis",
+            "prompt": "ميز اللون البياني في قول الشاعر: \"نفضوا العيون\" في البيت الأول.",
+            "choices": [
+              { "choice_id": "a", "text": "استعارة تصريحية." },
+              { "choice_id": "b", "text": "تشبيه بليغ." },
+              { "choice_id": "c", "text": "كناية عن صفة." },
+              { "choice_id": "d", "text": "كناية عن موصوف." }
+            ],
+            "answer_key": "c",
+            "explanation": "'نفضوا العيون من الكرى' كناية عن اليقظة والنشاط، وهي كناية عن صفة.",
+            "difficulty": "medium",
+            "question_pattern": "rhetorical_device_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.88,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q22",
+            "question_number": 22,
+            "type": "mcq",
+            "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي اتضحت في الأبيات من سمات شعراء الإحياء.",
+            "choices": [
+              { "choice_id": "a", "text": "ترسيخ الإحساس بتراث الأجداد وماضينا العريق." },
+              { "choice_id": "b", "text": "موقفهم من القصر الحاكم ووحدة الأمة مسلمين وأقباطاً." },
+              { "choice_id": "c", "text": "عمق الوعي لدى المصريين نتيجة النضال الوطني." },
+              { "choice_id": "d", "text": "الانفتاح على الثقافة الغربية عن طريق قراءة المترجمات." }
+            ],
+            "answer_key": "a",
+            "explanation": "القصيدة تعزز الفخر بالماضي والإحساس بالتراث العريق، وهي من سمات مدرسة الإحياء.",
+            "difficulty": "medium",
+            "question_pattern": "characteristic_identification",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.86,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q23",
+            "question_number": 23,
+            "type": "mcq",
+            "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي اتضحت في السطرين السابقين من سمات الواقعية.",
+            "choices": [
+              { "choice_id": "a", "text": "كثرة الحديث عن النهاية والموت." },
+              { "choice_id": "b", "text": "التأمل في الكون، والتعمق في أسرار الوجود." },
+              { "choice_id": "c", "text": "الاهتمام بالصورة، وتوظيف الرمز." },
+              { "choice_id": "d", "text": "التعبير عن موقف الإنسان من قضايا الوطن." }
+            ],
+            "answer_key": "c",
+            "explanation": "السطران لنازك الملائكة يعتمدان على الصورة الخيالية والرمز (يأكل ضوء النجوم)، وهي من سمات الواقعية التي تهتم بالصورة والرمز.",
+            "difficulty": "hard",
+            "question_pattern": "theme_identification_across_texts",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.82,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q24",
+            "question_number": 24,
+            "type": "mcq",
+            "skill": "literary_school_identification",
+            "prompt": "استنتج السمة التي اتضحت في البيت السابق من سمات شعراء أبولو.",
+            "choices": [
+              { "choice_id": "a", "text": "استبطان النفس الإنسانية." },
+              { "choice_id": "b", "text": "الامتزاج بالطبيعة والولع بها." },
+              { "choice_id": "c", "text": "التشاؤم والاستسلام للأحزان." },
+              { "choice_id": "d", "text": "استخدام القصة والأسطورة." }
+            ],
+            "answer_key": "b",
+            "explanation": "بيت إبراهيم ناجي 'أصغى العباب ورجع الوادي أصداءه وتناجت السحب' يعكس الامتزاج بالطبيعة ومناجاتها، وهي سمة أساسية في مدرسة أبولو.",
+            "difficulty": "medium",
+            "question_pattern": "trait_identification_through_quote",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q25",
+            "question_number": 25,
+            "type": "mcq",
+            "skill": "literary_school_identification",
+            "prompt": "بين السمة التي اتضحت في هذين البيتين من سمات مدرسة الديوان.",
+            "choices": [
+              { "choice_id": "a", "text": "ظهور مسحة اليأس والتشاؤم في حديثه عن مستقبله." },
+              { "choice_id": "b", "text": "غلبة الجانب الفكري في تعبيره عن آماله وتطلعاته." },
+              { "choice_id": "c", "text": "التعمق في أسرار الوجود في ذكر أحداث الماضي." },
+              { "choice_id": "d", "text": "استهداف المثل العليا والتعجب من طبيعة البشر." }
+            ],
+            "answer_key": "a",
+            "explanation": "بيتا العقاد يعبران عن التشاؤم واليأس (رأوا فما عرفوا... كأنما أنا من أمسي ومن غده لم يختلف قط لي شجو ولا طرب).",
+            "difficulty": "hard",
+            "question_pattern": "characteristics_identification_from_example",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.87,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q26",
+            "question_number": 26,
+            "type": "mcq",
+            "skill": "literary_school_identification",
+            "prompt": "أي مما يلي يؤكد تحقق سمة الامتزاج بالطبيعة عند شعراء المهاجر في البيت السابق؟",
+            "choices": [
+              { "choice_id": "a", "text": "أظهر الشاعر تجاوب هواء بلاده معه وعالج آلام الشوق." },
+              { "choice_id": "b", "text": "عبر الشاعر عن جمال وطنه وشدة حنينه إليه في غربته." },
+              { "choice_id": "c", "text": "أكد الشاعر تنوع الطقس في بلاده صباح ومساء وتقلبه." },
+              { "choice_id": "d", "text": "عكس الشاعر ما يعانيه من مرض يرجو الشفاء منه." }
+            ],
+            "answer_key": "a",
+            "explanation": "بيت جبران 'نسيم لبنان حيانا يضحى فشفى ما في فؤادي' يظهر تجاوب الطبيعة (النسيم) مع مشاعر الشاعر وعلاجه لآلامه.",
+            "difficulty": "medium",
+            "question_pattern": "theme_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          }
+        ],
+        "section_signals": {
+          "section_weight": 0.94,
+          "difficulty_curve": "medium_to_hard",
+          "examiner_pattern": "focuses_on_literary_schools_characteristics_and_emotional_analysis",
+          "student_priority": "high"
+        }
+      },
+      {
+        "section_id": "guidance_model_3_section_4",
+        "section_type": "reading_comprehension_and_grammar_and_writing",
+        "title": "نص المنفلوطي (العلم المحفوظ والعلم المفهوم) - أسئلة النحو والبلاغة والتعبير",
+        "order": 4,
+        "passage": {
+          "passage_id": "reading_passage_manfaluti_knowledge_types",
+          "title": "العلم المحفوظ والعلم المفهوم",
+          "genre": "informational_article",
+          "domain": "education_and_philosophy",
+          "source_type": "argumentative_text",
+          "text": "قال المنفلوطي: يا طالب العلم كن عالي الهمة، ولا يكن نظرك في تاريخ عظماء الرجال نظرًا يبعث في قلبك الرهبة والهيبة، فتتضاءل وتتصاغر كما يفعل الجبان المستطار حينما يسمع قصة من قصص الحروب، أو خرافة من خرافات الجن! وحذار أن يملك اليأس عليك قوتك وشجاعتك فتستسلم استسلام العاجز الضعيف... جناحان عظيمان يطير بهما المتعلم إلى سماء المجد والشرف: علو الهمة، والفهم في العلم. أما علو الهمة فقد عرفته، وأما الفهم في العلم فإليك الكلمة الآتية: العلم علمان: علم محفوظ، وعلم مفهوم؛ أما العلم المحفوظ فيستوي صاحبه فيه مع الكتاب المرقوم... الحافظ يحفظ ما يسمع؛ لأنه قوي الذاكرة، وقوة الذاكرة قدر مشترك بين الذكي والغبي والنابه والأبله؛ لأن الحافظة ملكة مستقلة بنفسها عن بقية الملكات... قيل لأحد العلماء: 'إن فلاناً حفظ متن البخاري.' فقال: 'لقد زادت نسخة في البلد!' ذلك هو السر العظيم في كثرة المتعلمين وقلة العاملين؛ لأن من فهم معلومًا من المعلومات حق الفهم أشربته روحه، وخالط لحمه ودمه، ووصل من قلبه إلى سويدائه، وكان إحدى غرائزه، فلا يرى له بداً من العمل به، رضي أم أبى. العلم المحفوظ -وهو على ما نشاهد ونعلم من سوء الأثر وقلة الجدوى- لو كان علمًا ما ورد مدح العلم في كتاب ولا سنة، ولا قدسه كاتب أو ترنم بمدحه شاعر. فإذا سمعت ذكر العلم فاعلم أنه العلم المفهوم لا المحفوظ، وإذا أردت أن تلقب بالعالم فلا تلقب به من يحفظ بل من يفهم ما يحفظ. وآية فهم المعلوم تأثر العالم به وظهوره في حركاته وسكناته، ولا تثق بالحافظ فيما ينقل إليك، من أطواره أنه يجمع في حافظته بين النقيض ونقيضه، فربما مر بالمعلوم محرفًا فأخذه على علاته. وأقبح ما عرفنا والغث والثمين، والجيد والزائف، فكأن ذاكرته حانوت عطار اختلطت فيها الأدوية الشافية بالعقاقير السامة... ولن يبلغ المتعلم درجة النبوغ إلا إذا وضع في العلم الذي مارسه مسألة، أو كشف حقيقة، أو أصلح هفوة، أو اخترع طريقة. ولن يسلس له ذلك إلا إذا كان علمه مفهومًا لا محفوظًا، ولا يكون مفهومًا إلا إذا أخلص المتعلم إليه، وتعبَّد له، وأنس به أنس العاشق بمعشوقه، ولم ينظر إليه نظر التاجر لسلعته، والمحترف إلى حرفته.",
+          "main_idea": "التمييز بين العلم المحفوظ والعلم المفهوم، وبيان أن الفهم الحقيقي هو أساس العمل والنبوغ.",
+          "sub_ideas": [
+            "الحث على علو الهمة والفهم",
+            "التمييز بين العلم المحفوظ والعلم المفهوم",
+            "عيوب العلم المحفوظ",
+            "أهمية الفهم والتأثر بالعلم",
+            "شروط بلوغ درجة النبوغ"
+          ],
+          "keywords": [
+            "العلم المحفوظ",
+            "العلم المفهوم",
+            "الهمة",
+            "النبوغ",
+            "الفهم",
+            "الحافظة"
+          ],
+          "reading_skills": [
+            "implicit_reasoning",
+            "main_idea_detection",
+            "textual_relationship_analysis",
+            "poetic_imagery_analysis",
+            "evidence_extraction",
+            "compare_and_contrast",
+            "grammatical_analysis",
+            "parsing"
+          ]
+        },
+        "questions": [
+          {
+            "question_id": "guidance_model_3_q27",
+            "question_number": 27,
+            "type": "mcq",
+            "skill": "implicit_reasoning",
+            "prompt": "بم ينال طالب العلم المجد والشرف من خلال فهمك للفقرة الأولى؟",
+            "choices": [
+              { "choice_id": "a", "text": "الأمل والتفاؤل والعمل." },
+              { "choice_id": "b", "text": "الوعى بتاريخ العظماء." },
+              { "choice_id": "c", "text": "التحمُّل وقوة البدن." },
+              { "choice_id": "d", "text": "الفهم وقوة العزم." }
+            ],
+            "answer_key": "d",
+            "explanation": "الكاتب يقول: 'جناحان عظيمان يطير بهما المتعلم إلى سماء المجد والشرف: علو الهمة، والفهم في العلم'.",
+            "difficulty": "easy",
+            "question_pattern": "direct_information_retrieval",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.95,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q28",
+            "question_number": 28,
+            "type": "mcq",
+            "skill": "textual_relationship_analysis",
+            "prompt": "استنتج علاقة عبارة: \"فربما مرَّ بالمعلوم محرفًا فأخذه على علاته\" بما قبلها في الفقرة الثالثة.",
+            "choices": [
+              { "choice_id": "a", "text": "تعليل." },
+              { "choice_id": "b", "text": "توضيح." },
+              { "choice_id": "c", "text": "نتيجة." },
+              { "choice_id": "d", "text": "تفصيل." }
+            ],
+            "answer_key": "d",
+            "explanation": "العبارة تفصيل وتفريع على قوله 'يجمع في حافظته بين النقيض ونقيضه'.",
+            "difficulty": "medium",
+            "question_pattern": "text_structure_analysis",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q29",
+            "question_number": 29,
+            "type": "mcq",
+            "skill": "interpretation",
+            "prompt": "استنتج المغزى من قول الكاتب \"قوة الذاكرة قدر مشترك بين الذكي والغبي\" في سياق الفقرة الثانية.",
+            "choices": [
+              { "choice_id": "a", "text": "إظهار إمكانية تميّز الغبي." },
+              { "choice_id": "b", "text": "تأكيد ضرورة الفهم والإدراك." },
+              { "choice_id": "c", "text": "إبراز أهمية بذل الجهد للذكي." },
+              { "choice_id": "d", "text": "توضيح أن الحفظ ملكة فطرية." }
+            ],
+            "answer_key": "b",
+            "explanation": "المغزى أن الحفظ لا يميز أحداً عن أحد، بل الفهم هو المهم.",
+            "difficulty": "medium",
+            "question_pattern": "interpreting_figurative_language",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.93,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q30",
+            "question_number": 30,
+            "type": "mcq",
+            "skill": "poetic_imagery_analysis",
+            "prompt": "بين نوع الصورة وقيمتها الفنية في قوله: \"أنس به أنس العاشق بمعشوقه\" في الفقرة الثالثة.",
+            "choices": [
+              { "choice_id": "a", "text": "استعارة مكنية، توضّح إخلاصه في طلب العلم." },
+              { "choice_id": "b", "text": "تشبيه مجمل، يؤكّد أن العلم له منزلة العشق." },
+              { "choice_id": "c", "text": "تشبيه بليغ، يبرز قوة التعلق بطلب العلم." },
+              { "choice_id": "d", "text": "استعارة تصريحية، تبيّن مكانة العلم السامية." }
+            ],
+            "answer_key": "c",
+            "explanation": "'أنس به أنس العاشق بمعشوقه' تشبيه بليغ يبرز قوة تعلق المتعلم بالعلم.",
+            "difficulty": "hard",
+            "question_pattern": "rhetorical_device_and_function",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.84,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q31",
+            "question_number": 31,
+            "type": "mcq",
+            "skill": "evidence_extraction",
+            "prompt": "هات من الفقرة الرابعة ما يبرز أثر العلم الصحيح على الإنسان.",
+            "choices": [
+              { "choice_id": "a", "text": "\"لم ينظر إليه نظر التاجر لسلعته، والمحترف إلى حرفته\"." },
+              { "choice_id": "b", "text": "\"فإذا سمعت ذكر العلم فاعلم أنه العلم المفهوم لا المحفوظ\"." },
+              { "choice_id": "c", "text": "\"آية فهم المعلوم تأثر العالم به وظهوره في حركاته وسكناته\"." },
+              { "choice_id": "d", "text": "\"فكأن ذاكرته حانوت عطار اختلطت فيها الأدوية الشافية بالعقاقير السامة\"." }
+            ],
+            "answer_key": "c",
+            "explanation": "ظهور أثر العلم في حركات العالم وسكناته يبرز تأثير العلم الصحيح على الإنسان.",
+            "difficulty": "medium",
+            "question_pattern": "scanning_for_details",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q32",
+            "question_number": 32,
+            "type": "mcq",
+            "skill": "poetic_imagery_analysis",
+            "prompt": "استخرج من النص استعارة مكنية ووضح سر جمالها.",
+            "choices": [
+              { "choice_id": "a", "text": "\"جناحان عظيمان يطير بهما المتعلم\"، سر جمالها التوضيح." },
+              { "choice_id": "b", "text": "\"تستسلم استسلام العاجز الضعيف\"، سر جماله التجسيم." },
+              { "choice_id": "c", "text": "\"سماء المجد والشرف\"، سر جمالها التجسيم." },
+              { "choice_id": "d", "text": "\"كان إحدى غرائزه\"، سر جمالها التوضيح." }
+            ],
+            "answer_key": "c",
+            "explanation": "'سماء المجد والشرف' استعارة مكنية حيث شبه المجد والشرف بسماء عالية، وحذف المشبه به ورمز له بلفظ 'سماء'، وسر جمالها التجسيم.",
+            "difficulty": "medium",
+            "question_pattern": "figurative_language_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.88,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q33",
+            "question_number": 33,
+            "type": "mcq",
+            "skill": "compare_and_contrast",
+            "prompt": "وازن بين الفقرتين من حيث استخدام الإطناب.",
+            "choices": [
+              { "choice_id": "a", "text": "استخدم المنفلوطي الإطناب، في حين لم يستخدمه الزيات." },
+              { "choice_id": "b", "text": "استخدم الزيات الإطناب، في حين لم يستخدمه المنفلوطي." },
+              { "choice_id": "c", "text": "لم يستخدم الكاتبان الإطناب." },
+              { "choice_id": "d", "text": "اعتمد الكاتبان على الإطناب." }
+            ],
+            "answer_key": "d",
+            "explanation": "كل من المنفلوطي والزيات استخدما الإطناب في التعبير عن أفكارهما.",
+            "difficulty": "hard",
+            "question_pattern": "stylistic_comparison",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.80,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q34",
+            "question_number": 34,
+            "type": "mcq",
+            "skill": "genre_characteristics_identification",
+            "prompt": "بين اللون الأدبي الذي يمثله النص السابق.",
+            "choices": [
+              { "choice_id": "a", "text": "قصة قصيرة؛ فقد اعتمد الكاتب على التكثيف والتركيز والإيجاز." },
+              { "choice_id": "b", "text": "مقال أدبي؛ فقد حرص الكاتب على تحقيق عنصر الذاتية والقناع." },
+              { "choice_id": "c", "text": "مقال علمي متأدب؛ فقد استخدم الكاتب مصطلحات علمية، ووظف البيان." },
+              { "choice_id": "d", "text": "جزء من رواية أدبية؛ فقد اعتمد الكاتب على الحوار الداخلي والخارجي." }
+            ],
+            "answer_key": "c",
+            "explanation": "النص يجمع بين الأسلوب العلمي (المصطلحات، التقسيم) والأدبي (الصور البيانية، العاطفة)، فهو مقال علمي متأدب.",
+            "difficulty": "medium",
+            "question_pattern": "literary_form_identification",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.88,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q35",
+            "question_number": 35,
+            "type": "mcq",
+            "skill": "prediction",
+            "prompt": "توقع دور اللغة في العمل الروائي في ضوء مقولة أحد النقاد.",
+            "choices": [
+              { "choice_id": "a", "text": "وسيلة لتناول الحدث ونقله بصورة صادقة." },
+              { "choice_id": "b", "text": "وسيلة لإدراك أعمق للمواقف والشخصيات." },
+              { "choice_id": "c", "text": "أداة سهلة للعرض المباشر للحدث الرئيس." },
+              { "choice_id": "d", "text": "أداة تصف الواقع الخارجي ولا تؤثر على الفكرة." }
+            ],
+            "answer_key": "b",
+            "explanation": "المقولة تشير إلى أن اللغة تتجاوز التواصل التقليدي لتصبح أداة للفهم والتفكير، أي وسيلة لإدراك أعمق.",
+            "difficulty": "medium",
+            "question_pattern": "text_to_concept_application",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.88,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q36",
+            "question_number": 36,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "ميز المحل الإعرابي لجملة (تقضى) في البيت السابق: \"وأفضل الناس ما بين الورى رجل تقضى على يده للناس حاجات\".",
+            "choices": [
+              { "choice_id": "a", "text": "رفع خبر." },
+              { "choice_id": "b", "text": "نصب حال." },
+              { "choice_id": "c", "text": "رفع نعت." },
+              { "choice_id": "d", "text": "نصب نعت." }
+            ],
+            "answer_key": "c",
+            "explanation": "جملة (تقضى) في محل رفع نعت لكلمة 'رجل' المرفوعة.",
+            "difficulty": "medium",
+            "question_pattern": "sentence_grammatical_position",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.92,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q37",
+            "question_number": 37,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "ميز سبب نصب كلمة (طويلاً) في المقولة السابقة: \"البطل الحق هو من عركته هموم الحياة طويلاً\".",
+            "choices": [
+              { "choice_id": "a", "text": "تمييز." },
+              { "choice_id": "b", "text": "حال." },
+              { "choice_id": "c", "text": "مفعول به." },
+              { "choice_id": "d", "text": "نائب عن المفعول المطلق." }
+            ],
+            "answer_key": "d",
+            "explanation": "'طويلاً' نائب عن المفعول المطلق، صفة لمحذوف تقديره 'عركًا طويلاً'.",
+            "difficulty": "medium",
+            "question_pattern": "identifying_grammatical_function",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q38",
+            "question_number": 38,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "ميز إعراب كلمة (نفسًا) في البيت السابق: \"طبت نفسًا على الزمان وعين يا بالدي وأنت قرة عيني\".",
+            "choices": [
+              { "choice_id": "a", "text": "حال منصوب." },
+              { "choice_id": "b", "text": "مفعول به منصوب." },
+              { "choice_id": "c", "text": "تمييز منصوب." },
+              { "choice_id": "d", "text": "مفعول لأجله منصوب." }
+            ],
+            "answer_key": "c",
+            "explanation": "'نفسًا' تمييز محول عن الفاعل، منصوب.",
+            "difficulty": "medium",
+            "question_pattern": "parsing_exception_cases",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.89,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q39",
+            "question_number": 39,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "ميز إعراب كلمة (شباب) في المقولة السابقة: \"علينا أن نصون وطننا، شباب مصر\".",
+            "choices": [
+              { "choice_id": "a", "text": "مبتدأ." },
+              { "choice_id": "b", "text": "منادى." },
+              { "choice_id": "c", "text": "مفعول به." },
+              { "choice_id": "d", "text": "خبر." }
+            ],
+            "answer_key": "c",
+            "explanation": "'شباب' مفعول به لفعل محذوف تقديره 'أخص' أو 'أعني'.",
+            "difficulty": "medium",
+            "question_pattern": "identifying_grammatical_style",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q40",
+            "question_number": 40,
+            "type": "mcq",
+            "skill": "sentence_structure_analysis",
+            "prompt": "ميز المحل الإعرابي للمصدر المؤول في المقولة السابقة: \"حذار أن تصاب باليأس فتضعف\".",
+            "choices": [
+              { "choice_id": "a", "text": "مفعول به." },
+              { "choice_id": "b", "text": "مضاف إليه." },
+              { "choice_id": "c", "text": "فاعل." },
+              { "choice_id": "d", "text": "خبر." }
+            ],
+            "answer_key": "b",
+            "explanation": "المصدر المؤول 'أن تصاب' في محل جر مضاف إليه لكلمة 'حذار'.",
+            "difficulty": "hard",
+            "question_pattern": "infinitive_parsing",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.85,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q41",
+            "question_number": 41,
+            "type": "mcq",
+            "skill": "grammar_rules_application",
+            "prompt": "ميز نوع حرف الجر الداخل على كلمة (أساطيل) وأعراب ما بعده في المقولة السابقة.",
+            "choices": [
+              { "choice_id": "a", "text": "زائد - فاعل." },
+              { "choice_id": "b", "text": "أصلي - اسم مجرور بالكسرة." },
+              { "choice_id": "c", "text": "زائد - مفعول به." },
+              { "choice_id": "d", "text": "أصلي - اسم مجرور بالفتحة." }
+            ],
+            "answer_key": "c",
+            "explanation": "الباء (بأساطيل) زائدة، و'أساطيل' مفعول به منصوب بفتحة مقدرة على الياء المحذوفة منع من ظهورها الثقل.",
+            "difficulty": "hard",
+            "question_pattern": "grammatical_particle_function",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.82,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q42",
+            "question_number": 42,
+            "type": "mcq",
+            "skill": "grammar_rules_application",
+            "prompt": "بين حكم حذف الفعل في الجملة السابقة: \"شهادة الزور إياك و\".",
+            "choices": [
+              { "choice_id": "a", "text": "جائز." },
+              { "choice_id": "b", "text": "واجب." },
+              { "choice_id": "c", "text": "ممتنع." },
+              { "choice_id": "d", "text": "يقل." }
+            ],
+            "answer_key": "b",
+            "explanation": "في أسلوب التحذير، حذف الفعل (أحذر) واجب عندما يكون المحذر منه معطوفاً بالواو.",
+            "difficulty": "medium",
+            "question_pattern": "grammar_rule_application",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.89,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q43",
+            "question_number": 43,
+            "type": "mcq",
+            "skill": "parsing",
+            "prompt": "بين خبر الناسخ ونوعه في البيت السابق: \"تأنَّ صاحبًا ولا تعجل بلوم ك لعلَّ له عذرًا وأنت تلوم\".",
+            "choices": [
+              { "choice_id": "a", "text": "تلوم - جملة فعلية." },
+              { "choice_id": "b", "text": "أنت تلوم - جملة اسمية." },
+              { "choice_id": "c", "text": "له - شبه جملة." },
+              { "choice_id": "d", "text": "عذرًا - مفرد." }
+            ],
+            "answer_key": "c",
+            "explanation": "خبر لعل هو 'له' وهو شبه جملة، واسمها 'عذراً'.",
+            "difficulty": "medium",
+            "question_pattern": "kana_and_sisters_analysis",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q44",
+            "question_number": 44,
+            "type": "mcq",
+            "skill": "grammar_rules_application",
+            "prompt": "بين حكم اسم التفضيل في البيت السابق: \"لم تر قط عيني أحسن منك ولم تلد النساء أجمل منك\".",
+            "choices": [
+              { "choice_id": "a", "text": "جواز مطابقته للمفضل." },
+              { "choice_id": "b", "text": "جواز الإفراد والتذكير والتنكير." },
+              { "choice_id": "c", "text": "وجوب مطابقته للمفضل." },
+              { "choice_id": "d", "text": "وجوب الإفراد والتذكير والتنكير." }
+            ],
+            "answer_key": "d",
+            "explanation": "اسم التفضيل هنا 'أحسن' و'أجمل' وردا نكرتين مجردين من (أل) والإضافة، فيجب إفرادهما وتذكيرهما وتنكيرهما.",
+            "difficulty": "medium",
+            "question_pattern": "comparative_adjective_rules",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q45",
+            "question_number": 45,
+            "type": "mcq",
+            "skill": "grammar_usage",
+            "prompt": "بين الجملة التي ورد بها المختص مبنياً في محل نصب.",
+            "choices": [
+              { "choice_id": "a", "text": "إنك أيها العبد فقير إلى عفو الله." },
+              { "choice_id": "b", "text": "إنك أيها العبد فقير إلى عفو الله." },
+              { "choice_id": "c", "text": "إنك عبد الله فقير إلى عفو الله." },
+              { "choice_id": "d", "text": "إنك العبد الفقير إلى عفو الله." }
+            ],
+            "answer_key": "a",
+            "explanation": "'أيها العبد' مختص مبني في محل نصب، حيث 'أي' منادى مبني على الضم في محل نصب مفعول به لفعل محذوف.",
+            "difficulty": "medium",
+            "question_pattern": "special_grammatical_constructions",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.88,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q46",
+            "question_number": 46,
+            "type": "mcq",
+            "skill": "grammar_transformation",
+            "prompt": "بين الصياغة الصحيحة عند وضع (ليس) مكان (ما) في الجملة السابقة: \"ما هذا الرجل إلا ساعٍ إلى الخير\".",
+            "choices": [
+              { "choice_id": "a", "text": "ليس هذا الرجل إلا ساعٍ إلى الخير." },
+              { "choice_id": "b", "text": "ليس هذا الرجل إلا ساعيًا إلى الخير." },
+              { "choice_id": "c", "text": "ليس هذا الرجل إلا ساعي إلى الخير." },
+              { "choice_id": "d", "text": "ليس هذا الرجل إلا إلى الخير ساعي." }
+            ],
+            "answer_key": "a",
+            "explanation": "عند وضع 'ليس' مكان 'ما'، تبقى الجملة كما هي لأن 'ليس' ترفع المبتدأ وتنصب الخبر، و'ساعٍ' خبر ليس منصوب بالفتحة المقدرة على الياء المحذوفة.",
+            "difficulty": "hard",
+            "question_pattern": "sentence_transformation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.85,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q47",
+            "question_number": 47,
+            "type": "mcq",
+            "skill": "morphology",
+            "prompt": "بين نوع كلمة (منطلق) الواردة في الجملة السابقة: \"انطلق جنودنا في حرب أكتوبر منطلق الأسود\".",
+            "choices": [
+              { "choice_id": "a", "text": "اسم زمان." },
+              { "choice_id": "b", "text": "اسم مفعول." },
+              { "choice_id": "c", "text": "مصدر ميمي." },
+              { "choice_id": "d", "text": "اسم مكان." }
+            ],
+            "answer_key": "c",
+            "explanation": "'منطلق' مصدر ميمي بمعنى الانطلاق.",
+            "difficulty": "medium",
+            "question_pattern": "noun_derivation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.91,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q48",
+            "question_number": 48,
+            "type": "mcq",
+            "skill": "grammar_transformation",
+            "prompt": "بين الصياغة الصحيحة للجملة السابقة عند دخول (ما) على (ليت): \"ليت الداعيين إلى الخير موفقان\".",
+            "choices": [
+              { "choice_id": "a", "text": "ليتما الداعيان إلى الخير موفقان." },
+              { "choice_id": "b", "text": "ليتما الداعيين إلى الخير موفقين." },
+              { "choice_id": "c", "text": "ليتما الداعيان إلى الخير موفقين." },
+              { "choice_id": "d", "text": "ليتما الداعيان إلى الخير موفقين." }
+            ],
+            "answer_key": "a",
+            "explanation": "عند دخول 'ما' على 'ليت' لا يتغير حكمها، ويبقى اسمها 'الداعيان' مرفوعاً، وخبرها 'موفقان' مرفوعاً.",
+            "difficulty": "medium",
+            "question_pattern": "particle_effect_on_sentence",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q49",
+            "question_number": 49,
+            "type": "mcq",
+            "skill": "grammar_transformation",
+            "prompt": "بين الصياغة الصحيحة عند بناء فعلي الجملة السابقة للمجهول: \"نريك يا أمي ما تعاهدنا عليه من الاجتهاد\".",
+            "choices": [
+              { "choice_id": "a", "text": "تُرين يا أمي ما تعاهد عليه من الاجتهاد." },
+              { "choice_id": "b", "text": "تُرين يا أمي ما تُعوهِد عليه من الاجتهاد." },
+              { "choice_id": "c", "text": "تُرى يا أمي ما عوهِد عليه من الاجتهاد." },
+              { "choice_id": "d", "text": "تُرى يا أمي ما تُعوهِد عليه من الاجتهاد." }
+            ],
+            "answer_key": "c",
+            "explanation": "'نريك' مبنية للمعلوم، وعند بنائها للمجهول تصبح 'تُرى'، و'تعاهدنا' مبنية للمعلوم تصبح 'عوهِد' للمجهول.",
+            "difficulty": "hard",
+            "question_pattern": "passive_voice_transformation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.83,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q50",
+            "question_number": 50,
+            "type": "mcq",
+            "skill": "morphology",
+            "prompt": "بين نوع المصدر (مجاورة) وفعله في البيت السابق: \"احذر مجاورة الحسود فإنه يتذرع بخلاَف ما في نفسه\".",
+            "choices": [
+              { "choice_id": "a", "text": "استجار - سداسي." },
+              { "choice_id": "b", "text": "تجاور - خماسي." },
+              { "choice_id": "c", "text": "جاور - رباعي." },
+              { "choice_id": "d", "text": "جار - ثلاثي." }
+            ],
+            "answer_key": "c",
+            "explanation": "'مجاورة' مصدر ميمي من الفعل الرباعي 'جاور'.",
+            "difficulty": "medium",
+            "question_pattern": "verb_noun_derivation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q51",
+            "question_number": 51,
+            "type": "mcq",
+            "skill": "grammar_transformation",
+            "prompt": "بين الصياغة الصحيحة للجملة السابقة عند تحويلها إلى الجمع المؤنث السالم: \"كُن الأسمى منزلة بين زملائك\".",
+            "choices": [
+              { "choice_id": "a", "text": "كُن الأسميات منزلة بين زميلاتكن." },
+              { "choice_id": "b", "text": "كُن السمييات منزلة بين زميلاتكن." },
+              { "choice_id": "c", "text": "كونوا الأسمون منزلة بين زملائكم." },
+              { "choice_id": "d", "text": "كونوا الأسميات منزلة بين زملائكم." }
+            ],
+            "answer_key": "a",
+            "explanation": "'كُن' للمذكر، وتحويلها للمؤنث: 'كُنَّ'. و'الأسمى' تصبح 'الأسميات' جمعاً مؤنثاً سالماً.",
+            "difficulty": "medium",
+            "question_pattern": "gender_number_transformation",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.90,
+              "likely_to_repeat": true
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q52",
+            "question_number": 52,
+            "type": "open_ended",
+            "skill": "synthesis",
+            "prompt": "اربط بين الجملتين بأداة شرط جازمة مع بقاء السين في (سيظل): \"تكون التحديات كثيرة - سيظل المصريون في ترابط\".",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "إن تكن التحديات كثيرة فسيظل المصريون في ترابط. (الفاء واجبة لأن الجواب مقترن بالسين).",
+            "difficulty": "hard",
+            "question_pattern": "sentence_combining_with_grammar_constraints",
+            "exam_signal": {
+              "high_frequency": false,
+              "priority_weight": 0.80,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q53",
+            "question_number": 53,
+            "type": "mcq",
+            "skill": "text_structure_analysis",
+            "prompt": "بين النموذج الأنسب للربط بين الفقرتين السابقتين حول الكائنات البحرية.",
+            "choices": [
+              { "choice_id": "a", "text": "مقدمة - نتيجة." },
+              { "choice_id": "b", "text": "زعم - تفنيد." },
+              { "choice_id": "c", "text": "إجمال - تفصيل." },
+              { "choice_id": "d", "text": "ظاهرة - تفسير." }
+            ],
+            "answer_key": "b",
+            "explanation": "الفقرة الأولى تقدم زعماً خاطئاً، والثانية تفنده بالحقيقة العلمية.",
+            "difficulty": "medium",
+            "question_pattern": "text_development_pattern",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.87,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q54",
+            "question_number": 54,
+            "type": "mcq",
+            "skill": "topical_coherence",
+            "prompt": "بين التفصيلة التي يجدر بالكاتب حذفها؛ لتصبح كتابته وثيقة الصلة بالفكرة السابقة: \"تعمل الدول جاهدة للحفاظ على مواردها\".",
+            "choices": [
+              { "choice_id": "a", "text": "تعمُّق الدراسة الجيولوجية وحصر الموارد يُعدّ أول درجات استثمارها وعدم إهدارها." },
+              { "choice_id": "b", "text": "تنظيم استهلاك الموارد يسهم في تحقيق التنمية المستدامة." },
+              { "choice_id": "c", "text": "تنمية الوعي البيئي يدعم الاستخدام الأمثل للموارد باستمرار." },
+              { "choice_id": "d", "text": "افتقار الإنسان القديم إلى الأدوات والإمكانات منعه من التحكم في الموارد الطبيعية." }
+            ],
+            "answer_key": "d",
+            "explanation": "الخيار 'د' يتحدث عن الإنسان القديم، وهو بعيد عن موضوع 'الحفاظ على الموارد' في العصر الحالي.",
+            "difficulty": "medium",
+            "question_pattern": "identifying_irrelevant_information",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 0.88,
+              "likely_to_repeat": false
+            }
+          },
+          {
+            "question_id": "guidance_model_3_q55",
+            "question_number": 55,
+            "type": "open_ended",
+            "skill": "topical_writing",
+            "prompt": "اكتب كلمة افتتاحية لندوة عنوانها: (وسائل التواصل.. لك أو عليك). في حدود (6 - 8) أسطر، (80) كلمة. تتضمن: التعريف بالغرض من الندوة -وأهميتها- والجمهور المستهدف. التعريف بالمتحدثين الرئيسيين في الندوة أو صفتهم. عبارات ترحيبية، تستثير اهتمام الجمهور لمتابعة الندوة واستشهادات بأقوال مأثورة أو حقائق أو إحصاءات.",
+            "choices": [],
+            "answer_key": "open_text",
+            "explanation": "يجب أن يكتب الطالب كلمة افتتاحية متكاملة تتضمن جميع العناصر المطلوبة بأسلوب بلاغي جذاب.",
+            "difficulty": "medium",
+            "question_pattern": "guided_writing_task",
+            "exam_signal": {
+              "high_frequency": true,
+              "priority_weight": 1.0,
+              "likely_to_repeat": true
+            }
+          }
+        ],
+        "section_signals": {
+          "section_weight": 0.98,
+          "difficulty_curve": "easy_to_hard",
+          "examiner_pattern": "integrates_article_analysis_with_grammar_rhetoric_and_writing",
+          "student_priority": "critical"
+        }
+      }
+    ]
+  }
+}
