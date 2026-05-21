@@ -34,7 +34,7 @@ app.add_middleware(
 )
 
 # =========================================
-# FIREBASE CONFIG (من كودك)
+# FIREBASE CONFIG
 # =========================================
 
 FIREBASE_CONFIG = {
@@ -48,7 +48,7 @@ FIREBASE_CONFIG = {
 }
 
 # =========================================
-# STUDENT SERVICE (معدل من كودك)
+# STUDENT SERVICE
 # =========================================
 
 class StudentService:
@@ -70,7 +70,6 @@ class StudentService:
             
             cred = None
             
-            # استخدام credentials من base64 environment variable
             b64 = os.getenv("FIREBASE_CREDENTIALS_BASE64", "")
             if b64:
                 try:
@@ -116,10 +115,8 @@ class StudentService:
     
     @classmethod
     def create_user(cls, username: str, password: str, name: str = "") -> Dict:
-        """إنشاء مستخدم جديد"""
         username = username.strip().lower()
         
-        # التحقق من عدم وجود المستخدم
         if cls._rtdb:
             try:
                 existing = cls._rtdb.reference(f"users/{username}").get()
@@ -131,7 +128,6 @@ class StudentService:
         if username in cls._local_db["users"]:
             return {"error": "اسم المستخدم موجود بالفعل"}
         
-        # تشفير كلمة المرور
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         
         user_data = {
@@ -145,10 +141,8 @@ class StudentService:
             "total_interactions": 0,
         }
         
-        # حفظ محلي
         cls._local_db["users"][username] = user_data
         
-        # حفظ في Firebase
         if cls._rtdb:
             try:
                 cls._rtdb.reference(f"users/{username}").set(user_data)
@@ -166,11 +160,9 @@ class StudentService:
     
     @classmethod
     def login_user(cls, username: str, password: str) -> Dict:
-        """تسجيل دخول المستخدم"""
         username = username.strip().lower()
         hashed_password = hashlib.sha256(password.encode()).hexdigest()
         
-        # البحث في Firebase
         user_data = None
         if cls._rtdb:
             try:
@@ -178,7 +170,6 @@ class StudentService:
             except Exception:
                 pass
         
-        # البحث محلياً
         if not user_data:
             user_data = cls._local_db["users"].get(username)
         
@@ -188,7 +179,6 @@ class StudentService:
         if user_data.get("password") != hashed_password:
             return {"error": "كلمة المرور غير صحيحة"}
         
-        # تحديث آخر ظهور
         cls.update_last_seen(username)
         
         return {
@@ -216,7 +206,6 @@ class StudentService:
     
     @classmethod
     def save_conversation(cls, username: str, user_msg: str, bot_reply: str):
-        """حفظ المحادثة"""
         cls.update_last_seen(username)
         
         conversation = {
@@ -226,14 +215,12 @@ class StudentService:
             "created_at": cls._now_iso(),
         }
         
-        # حفظ محلي
         if "conversations" not in cls._local_db:
             cls._local_db["conversations"] = {}
         if username not in cls._local_db["conversations"]:
             cls._local_db["conversations"][username] = []
         cls._local_db["conversations"][username].append(conversation)
         
-        # حفظ في Firebase
         if cls._rtdb:
             try:
                 cls._rtdb.reference(f"students/{username}/conversations").push(conversation)
@@ -242,7 +229,6 @@ class StudentService:
     
     @classmethod
     def save_exam_result(cls, username: str, result: Dict) -> Dict:
-        """حفظ نتيجة الامتحان"""
         cls.update_last_seen(username)
         
         correct = result.get("correct", 0)
@@ -258,7 +244,6 @@ class StudentService:
             "grade": cls._calculate_grade(percentage),
         }
         
-        # حفظ في Firebase
         if cls._rtdb:
             try:
                 cls._rtdb.reference(f"students/{username}/exams").push(exam_data)
@@ -282,7 +267,6 @@ class StudentService:
     
     @classmethod
     def update_stats(cls, username: str) -> Dict:
-        """تحديث إحصائيات الطالب"""
         exams_data = {}
         
         if cls._rtdb:
@@ -302,7 +286,6 @@ class StudentService:
         avg_percentage = int(sum(percentages) / len(percentages)) if percentages else 0
         best_score = max(percentages) if percentages else 0
         
-        # تحليل نقاط القوة والضعف
         strengths = []
         weaknesses = []
         
@@ -342,7 +325,6 @@ class StudentService:
     
     @classmethod
     def get_stats(cls, username: str) -> Dict:
-        """الحصول على إحصائيات الطالب"""
         if cls._rtdb:
             try:
                 stats = cls._rtdb.reference(f"students/{username}/stats").get()
@@ -355,7 +337,6 @@ class StudentService:
     
     @classmethod
     def get_level_analytics(cls, username: str) -> str:
-        """تحليل مستوى الطالب"""
         stats = cls.get_stats(username)
         
         if not stats or stats.get("total_exams", 0) == 0:
@@ -416,7 +397,6 @@ class StudentService:
                 pass
         return False
 
-# تهيئة Firebase
 StudentService.initialize()
 
 # =========================================
@@ -572,7 +552,7 @@ LAST_MESSAGE_TIME: Dict[str, float] = {}
 LAST_COMMAND: Dict[str, str] = {}
 LAST_COMMAND_TIME: Dict[str, float] = {}
 COMMAND_MEMORY_TIMEOUT = 30
-ACTIVE_USERS: Dict[str, str] = {}  # chat_id -> username
+ACTIVE_USERS: Dict[str, str] = {}
 
 async def cleanup_expired_sessions():
     while True:
@@ -926,7 +906,6 @@ def process_exam_answer(chat_id: str, user_answer: str, username: str = None) ->
         total = result["total"]
         percentage = (final_score / total) * 100 if total > 0 else 0
         
-        # حفظ النتيجة في قاعدة البيانات
         if username:
             StudentService.save_exam_result(username, {
                 "correct": final_score,
@@ -1071,11 +1050,6 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
         if is_rate_limited(chat_id):
             return ""
         
-        # حفظ المحادثة
-        if username:
-            # هنحفظ الرد بعد ما نعرفه
-            pass
-        
         if chat_id in user_sessions:
             session = user_sessions[chat_id]
             if session.active and not session.is_expired():
@@ -1153,7 +1127,6 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
 • `خطة التركيز` - أهم الموضوعات
 • `مستوايا` - تحليل مستواك"""
         
-        # حفظ المحادثة
         if username and reply:
             StudentService.save_conversation(username, body, reply)
         
@@ -1169,7 +1142,6 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
 
 @app.post("/api/register")
 async def register(request: Request):
-    """تسجيل مستخدم جديد"""
     try:
         data = await request.json()
         username = data.get("username", "").strip()
@@ -1197,7 +1169,6 @@ async def register(request: Request):
 
 @app.post("/api/login")
 async def login(request: Request):
-    """تسجيل دخول"""
     try:
         data = await request.json()
         username = data.get("username", "").strip()
@@ -1211,7 +1182,6 @@ async def login(request: Request):
         if "error" in result:
             return JSONResponse(result, status_code=401)
         
-        # تخزين المستخدم النشط
         chat_id = result.get("chat_id")
         if chat_id:
             ACTIVE_USERS[chat_id] = username
@@ -1223,7 +1193,6 @@ async def login(request: Request):
 
 @app.post("/api/chat")
 async def chat(request: Request):
-    """المحادثة مع البوت (تتطلب تسجيل الدخول)"""
     try:
         data = await request.json()
         chat_id = data.get("chat_id", "")
@@ -1233,7 +1202,6 @@ async def chat(request: Request):
         if not message:
             return JSONResponse({"reply": ""})
         
-        # التحقق من المستخدم
         if username:
             ACTIVE_USERS[chat_id] = username
         
@@ -1250,13 +1218,11 @@ async def chat(request: Request):
 
 @app.get("/api/stats/{username}")
 async def get_stats(username: str):
-    """الحصول على إحصائيات المستخدم"""
     stats = StudentService.get_stats(username)
     return JSONResponse(stats)
 
 @app.api_route("/api/webhook", methods=["GET", "POST"])
 async def webhook_handler(request: Request):
-    """للتوافق مع الإصدارات القديمة"""
     if request.method == "GET":
         return JSONResponse({
             "status": "active",
@@ -1298,7 +1264,7 @@ async def health():
     }
 
 # =========================================
-# HTML INTERFACE WITH LOGIN
+# HTML INTERFACE WITH FIXED AUTH
 # =========================================
 
 @app.get("/", response_class=HTMLResponse)
@@ -1315,7 +1281,6 @@ async def serve_html():
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
     body { background: #0f172a; color: #e2e8f0; display: flex; flex-direction: column; min-height: 100vh; }
     
-    /* Login Page */
     .login-container {
       display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px;
     }
@@ -1341,7 +1306,6 @@ async def serve_html():
     .error-msg { background: #7f1d1d; color: #fca5a5; padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; text-align: center; display: none; }
     .success-msg { background: #064e3b; color: #6ee7b7; padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; text-align: center; display: none; }
 
-    /* Main App */
     .app-container { display: none; flex-direction: column; min-height: 100vh; }
     .top-bar { background: #1e293b; color: #f1f5f9; padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.5); border-bottom: 1px solid #334155; }
     .logo-area { display: flex; align-items: center; gap: 12px; }
@@ -1405,6 +1369,8 @@ async def serve_html():
       </div>
       <div id="errorMsg" class="error-msg"></div>
       <div id="successMsg" class="success-msg"></div>
+      
+      <!-- Login Form -->
       <div id="loginForm">
         <div class="form-group">
           <label><i class="fas fa-user"></i> اسم المستخدم</label>
@@ -1418,6 +1384,8 @@ async def serve_html():
           <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
         </button>
       </div>
+      
+      <!-- Register Form -->
       <div id="registerForm" style="display:none;">
         <div class="form-group">
           <label><i class="fas fa-user"></i> اسم المستخدم</label>
@@ -1435,6 +1403,7 @@ async def serve_html():
           <i class="fas fa-user-plus"></i> إنشاء حساب
         </button>
       </div>
+      
       <div class="toggle-text">
         <span id="toggleText">ليس لديك حساب؟</span>
         <a id="toggleLink" onclick="toggleForm()">إنشاء حساب جديد</a>
@@ -1489,7 +1458,7 @@ async def serve_html():
         </div>
         <div class="chat-messages" id="chatMessages">
           <div class="message bot-msg">
-            <div class="msg-bubble">👋 مرحباً <strong id="welcomeName"></strong>! أنا مساعدك الذكي في منصة Pen.<br><br>📊 <strong>""" + str(len(ALL_QUESTIONS)) + """ سؤال</strong> | <strong>""" + str(len(MCQ_QUESTIONS)) + """ MCQ</strong> جاهزين<br><br>اختر من الأزرار أو اكتب سؤالك مباشرة.</div>
+            <div class="msg-bubble">👋 مرحباً بك في منصة Pen!<br><br>📊 <strong>489 سؤال</strong> | <strong>454 MCQ</strong> جاهزين<br><br>اختر من الأزرار أو اكتب سؤالك مباشرة.</div>
           </div>
         </div>
         <div class="chat-input-area">
@@ -1507,19 +1476,20 @@ async def serve_html():
     let isWaitingForResponse = false;
     let isLoginMode = true;
 
-    // ============ AUTH FUNCTIONS ============
     function showError(msg) {
       const el = document.getElementById('errorMsg');
       el.textContent = msg;
       el.style.display = 'block';
-      setTimeout(() => el.style.display = 'none', 5000);
+      document.getElementById('successMsg').style.display = 'none';
+      setTimeout(() => { el.style.display = 'none'; }, 5000);
     }
 
     function showSuccess(msg) {
       const el = document.getElementById('successMsg');
       el.textContent = msg;
       el.style.display = 'block';
-      setTimeout(() => el.style.display = 'none', 3000);
+      document.getElementById('errorMsg').style.display = 'none';
+      setTimeout(() => { el.style.display = 'none'; }, 3000);
     }
 
     function toggleForm() {
@@ -1538,7 +1508,17 @@ async def serve_html():
       const password = document.getElementById('regPassword').value.trim();
 
       if (!username || !password) {
-        showError('اسم المستخدم وكلمة المرور مطلوبين');
+        showError('⚠️ اسم المستخدم وكلمة المرور مطلوبين');
+        return;
+      }
+      
+      if (username.length < 3) {
+        showError('⚠️ اسم المستخدم يجب أن يكون 3 أحرف على الأقل');
+        return;
+      }
+      
+      if (password.length < 6) {
+        showError('⚠️ كلمة المرور يجب أن تكون 6 أحرف على الأقل');
         return;
       }
 
@@ -1552,13 +1532,17 @@ async def serve_html():
         const data = await response.json();
 
         if (data.error) {
-          showError(data.error);
+          showError('❌ ' + data.error);
         } else {
-          showSuccess('تم إنشاء الحساب بنجاح! يمكنك تسجيل الدخول الآن');
-          setTimeout(() => toggleForm(), 1500);
+          showSuccess('✅ تم إنشاء الحساب بنجاح! يمكنك تسجيل الدخول الآن');
+          setTimeout(() => {
+            toggleForm();
+            document.getElementById('loginUsername').value = username;
+            document.getElementById('loginPassword').value = '';
+          }, 1500);
         }
       } catch (error) {
-        showError('حدث خطأ في الاتصال');
+        showError('❌ حدث خطأ في الاتصال بالخادم');
       }
     }
 
@@ -1567,7 +1551,7 @@ async def serve_html():
       const password = document.getElementById('loginPassword').value.trim();
 
       if (!username || !password) {
-        showError('اسم المستخدم وكلمة المرور مطلوبين');
+        showError('⚠️ اسم المستخدم وكلمة المرور مطلوبين');
         return;
       }
 
@@ -1581,19 +1565,16 @@ async def serve_html():
         const data = await response.json();
 
         if (data.error) {
-          showError(data.error);
+          showError('❌ ' + data.error);
         } else {
           currentUser = data;
           chatId = data.chat_id;
           
-          // حفظ في localStorage
           localStorage.setItem('pen_user', JSON.stringify(data));
-          
-          // إظهار التطبيق
           showApp();
         }
       } catch (error) {
-        showError('حدث خطأ في الاتصال');
+        showError('❌ حدث خطأ في الاتصال بالخادم');
       }
     }
 
@@ -1605,26 +1586,30 @@ async def serve_html():
       document.getElementById('appPage').style.display = 'none';
       document.getElementById('loginUsername').value = '';
       document.getElementById('loginPassword').value = '';
+      document.getElementById('errorMsg').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'none';
     }
 
     function showApp() {
       document.getElementById('loginPage').style.display = 'none';
       document.getElementById('appPage').style.display = 'flex';
       document.getElementById('displayName').textContent = currentUser.name || currentUser.username;
-      document.getElementById('welcomeName').textContent = currentUser.name || currentUser.username;
       
-      // مسح الرسائل القديمة وإظهار رسالة الترحيب
       const chatMessages = document.getElementById('chatMessages');
       chatMessages.innerHTML = `
         <div class="message bot-msg">
-          <div class="msg-bubble">👋 مرحباً <strong>${currentUser.name || currentUser.username}</strong>! أنا مساعدك الذكي في منصة Pen.<br><br>📊 <strong>${document.querySelector('script').textContent.match(/ALL_QUESTIONS/) ? '...' : '489 سؤال'}</strong> | <strong>454 MCQ</strong> جاهزين<br><br>اختر من الأزرار أو اكتب سؤالك مباشرة.</div>
+          <div class="msg-bubble">👋 مرحباً <strong>${currentUser.name || currentUser.username}</strong>! أنا مساعدك الذكي في منصة Pen.<br><br>📊 <strong>489 سؤال</strong> | <strong>454 MCQ</strong> جاهزين<br><br>اختر من الأزرار أو اكتب سؤالك مباشرة.</div>
         </div>
       `;
     }
 
-    // ============ CHAT FUNCTIONS ============
     function formatMessage(text) {
-      return text.replace(/\*(.*?)\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>').replace(/─+/g, '─'.repeat(25));
+      if (!text) return '';
+      return text
+        .replace(/\\*/g, '')
+        .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
+        .replace(/\n/g, '<br>')
+        .replace(/─+/g, '─'.repeat(25));
     }
 
     function addMessage(text, isUser) {
@@ -1709,8 +1694,7 @@ async def serve_html():
       sendMessage();
     }
 
-    // ============ INIT ============
-    // التحقق من وجود جلسة سابقة
+    // Check for saved session
     const savedUser = localStorage.getItem('pen_user');
     if (savedUser) {
       try {
@@ -1723,10 +1707,26 @@ async def serve_html():
       }
     }
 
-    // Enter key
+    // Enter key handler
     document.addEventListener('keypress', function(e) {
       if (e.key === 'Enter' && document.getElementById('appPage').style.display === 'flex') {
+        e.preventDefault();
         sendMessage();
+      }
+    });
+    
+    // Also handle Enter on login page
+    document.getElementById('loginPassword').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleLogin();
+      }
+    });
+    
+    document.getElementById('regPassword').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleRegister();
       }
     });
   </script>
