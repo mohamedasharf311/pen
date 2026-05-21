@@ -58,4 +58,144 @@
     <div id="registerForm" style="display:none;">
       <div class="form-group">
         <label><i class="fas fa-user"></i> اسم المستخدم</label>
-        <input type="text" id="regUsername" placeholder="اختر اسم
+        <input type="text" id="regUsername" placeholder="اختر اسم مستخدم (3 أحرف على الأقل)" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-id-card"></i> الاسم (اختياري)</label>
+        <input type="text" id="regName" placeholder="أدخل اسمك">
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-lock"></i> كلمة المرور</label>
+        <input type="password" id="regPassword" placeholder="اختر كلمة مرور (6 أحرف على الأقل)" autocomplete="new-password">
+      </div>
+      <button class="btn btn-primary" id="registerBtn">
+        <i class="fas fa-user-plus"></i> إنشاء حساب
+      </button>
+    </div>
+    
+    <div class="toggle-text">
+      <span id="toggleText">ليس لديك حساب؟</span>
+      <a id="toggleLink">إنشاء حساب جديد</a>
+    </div>
+  </div>
+
+  <script>
+    var isLoginMode = true;
+    
+    function showError(msg) {
+      document.getElementById('errorMsg').textContent = msg;
+      document.getElementById('errorMsg').style.display = 'block';
+      document.getElementById('successMsg').style.display = 'none';
+      setTimeout(function() { document.getElementById('errorMsg').style.display = 'none'; }, 5000);
+    }
+
+    function showSuccess(msg) {
+      document.getElementById('successMsg').textContent = msg;
+      document.getElementById('successMsg').style.display = 'block';
+      document.getElementById('errorMsg').style.display = 'none';
+      setTimeout(function() { document.getElementById('successMsg').style.display = 'none'; }, 3000);
+    }
+
+    function toggleForm() {
+      isLoginMode = !isLoginMode;
+      document.getElementById('loginForm').style.display = isLoginMode ? 'block' : 'none';
+      document.getElementById('registerForm').style.display = isLoginMode ? 'none' : 'block';
+      document.getElementById('toggleText').textContent = isLoginMode ? 'ليس لديك حساب؟' : 'لديك حساب بالفعل؟';
+      document.getElementById('toggleLink').textContent = isLoginMode ? 'إنشاء حساب جديد' : 'تسجيل الدخول';
+      document.getElementById('errorMsg').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'none';
+    }
+
+    async function handleRegister() {
+      var username = document.getElementById('regUsername').value.trim();
+      var name = document.getElementById('regName').value.trim();
+      var password = document.getElementById('regPassword').value.trim();
+
+      if (!username || !password) {
+        showError('⚠️ اسم المستخدم وكلمة المرور مطلوبين');
+        return;
+      }
+      if (username.length < 3) {
+        showError('⚠️ اسم المستخدم 3 أحرف على الأقل');
+        return;
+      }
+      if (password.length < 6) {
+        showError('⚠️ كلمة المرور 6 أحرف على الأقل');
+        return;
+      }
+
+      try {
+        var response = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: username, password: password, name: name })
+        });
+        var data = await response.json();
+        
+        if (data.error) {
+          showError('❌ ' + data.error);
+        } else {
+          showSuccess('✅ تم إنشاء الحساب!');
+          setTimeout(function() {
+            toggleForm();
+            document.getElementById('loginUsername').value = username;
+          }, 1500);
+        }
+      } catch (e) {
+        showError('❌ خطأ في الاتصال');
+      }
+    }
+
+    async function handleLogin() {
+      var username = document.getElementById('loginUsername').value.trim();
+      var password = document.getElementById('loginPassword').value.trim();
+
+      if (!username || !password) {
+        showError('⚠️ اسم المستخدم وكلمة المرور مطلوبين');
+        return;
+      }
+
+      try {
+        var response = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: username, password: password })
+        });
+        var data = await response.json();
+        
+        if (data.error) {
+          showError('❌ ' + data.error);
+        } else {
+          localStorage.setItem('pen_user', JSON.stringify(data));
+          window.location.href = '/app';
+        }
+      } catch (e) {
+        showError('❌ خطأ في الاتصال');
+      }
+    }
+
+    // Events
+    document.getElementById('loginBtn').addEventListener('click', handleLogin);
+    document.getElementById('registerBtn').addEventListener('click', handleRegister);
+    document.getElementById('toggleLink').addEventListener('click', toggleForm);
+
+    // Enter keys
+    ['loginUsername', 'loginPassword'].forEach(function(id) {
+      document.getElementById(id).addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') handleLogin();
+      });
+    });
+    
+    ['regUsername', 'regName', 'regPassword'].forEach(function(id) {
+      document.getElementById(id).addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') handleRegister();
+      });
+    });
+
+    // Auto redirect if logged in
+    if (localStorage.getItem('pen_user')) {
+      window.location.href = '/app';
+    }
+  </script>
+</body>
+</html>
