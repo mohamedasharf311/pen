@@ -1,8 +1,6 @@
 from fastapi import FastAPI, Request, HTTPException
-from fastapi.responses import JSONResponse, HTMLResponse
+from fastapi.responses import JSONResponse, HTMLResponse, RedirectResponse
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.security import HTTPBasic, HTTPBasicCredentials
-import secrets
 
 import os
 import json
@@ -61,7 +59,6 @@ class StudentService:
     def initialize(cls):
         if cls._initialized:
             return
-        
         cls._initialized = True
         
         try:
@@ -69,7 +66,6 @@ class StudentService:
             from firebase_admin import credentials
             
             cred = None
-            
             b64 = os.getenv("FIREBASE_CREDENTIALS_BASE64", "")
             if b64:
                 try:
@@ -86,7 +82,6 @@ class StudentService:
             if cred:
                 try:
                     firebase_admin.get_app()
-                    print("ℹ️ Firebase app already exists")
                 except ValueError:
                     firebase_admin.initialize_app(cred, {
                         "databaseURL": FIREBASE_CONFIG["databaseURL"]
@@ -192,7 +187,6 @@ class StudentService:
     @classmethod
     def update_last_seen(cls, username: str):
         now = cls._now_iso()
-        
         if username in cls._local_db["users"]:
             cls._local_db["users"][username]["last_seen"] = now
             cls._local_db["users"][username]["total_interactions"] = cls._local_db["users"][username].get("total_interactions", 0) + 1
@@ -1264,33 +1258,27 @@ async def health():
     }
 
 # =========================================
-# HTML INTERFACE WITH FIXED AUTH
+# AUTH PAGE (Login & Register)
 # =========================================
 
 @app.get("/", response_class=HTMLResponse)
-async def serve_html():
+async def auth_page():
     return """
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>منصة Pen | تعليم ذكي</title>
+  <title>منصة Pen | تسجيل الدخول</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-    body { background: #0f172a; color: #e2e8f0; display: flex; flex-direction: column; min-height: 100vh; }
-    
-    .login-container {
-      display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px;
-    }
-    .login-box {
-      background: #1e293b; border-radius: 24px; padding: 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-      border: 1px solid #334155; width: 100%; max-width: 420px;
-    }
-    .login-header { text-align: center; margin-bottom: 2rem; }
-    .login-logo { font-size: 3rem; color: #fbbf24; margin-bottom: 1rem; }
-    .login-title { font-size: 2rem; font-weight: bold; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    body { background: #0f172a; color: #e2e8f0; display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; }
+    .auth-box { background: #1e293b; border-radius: 24px; padding: 2.5rem; box-shadow: 0 8px 32px rgba(0,0,0,0.6); border: 1px solid #334155; width: 100%; max-width: 420px; }
+    .auth-header { text-align: center; margin-bottom: 2rem; }
+    .auth-logo { font-size: 3rem; color: #fbbf24; margin-bottom: 1rem; }
+    .auth-title { font-size: 2rem; font-weight: bold; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .auth-subtitle { color: #94a3b8; margin-top: 0.5rem; }
     .form-group { margin-bottom: 1.2rem; }
     .form-group label { display: block; margin-bottom: 0.5rem; color: #94a3b8; font-weight: 500; }
     .form-group input { width: 100%; padding: 0.9rem 1.2rem; border-radius: 12px; border: 1px solid #475569; background: #0f172a; color: #e2e8f0; font-size: 1rem; outline: none; transition: 0.2s; }
@@ -1298,15 +1286,219 @@ async def serve_html():
     .btn { width: 100%; padding: 0.9rem; border-radius: 12px; border: none; font-size: 1rem; font-weight: bold; cursor: pointer; transition: 0.2s; margin-top: 0.5rem; }
     .btn-primary { background: #fbbf24; color: #0f172a; }
     .btn-primary:hover { background: #f59e0b; transform: scale(1.02); }
-    .btn-secondary { background: #334155; color: #e2e8f0; }
-    .btn-secondary:hover { background: #475569; }
     .toggle-text { text-align: center; margin-top: 1.5rem; color: #94a3b8; }
     .toggle-text a { color: #fbbf24; cursor: pointer; text-decoration: none; font-weight: 500; }
     .toggle-text a:hover { text-decoration: underline; }
-    .error-msg { background: #7f1d1d; color: #fca5a5; padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; text-align: center; display: none; }
-    .success-msg { background: #064e3b; color: #6ee7b7; padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; text-align: center; display: none; }
+    .msg { padding: 0.8rem; border-radius: 10px; margin-bottom: 1rem; text-align: center; display: none; }
+    .error-msg { background: #7f1d1d; color: #fca5a5; }
+    .success-msg { background: #064e3b; color: #6ee7b7; }
+  </style>
+</head>
+<body>
+  <div class="auth-box">
+    <div class="auth-header">
+      <div class="auth-logo"><i class="fas fa-pen-fancy"></i></div>
+      <div class="auth-title">Pen</div>
+      <p class="auth-subtitle">منصة التعلم الذكية</p>
+    </div>
+    
+    <div id="errorMsg" class="msg error-msg"></div>
+    <div id="successMsg" class="msg success-msg"></div>
+    
+    <!-- Login Form -->
+    <div id="loginForm">
+      <div class="form-group">
+        <label><i class="fas fa-user"></i> اسم المستخدم</label>
+        <input type="text" id="loginUsername" placeholder="أدخل اسم المستخدم" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-lock"></i> كلمة المرور</label>
+        <input type="password" id="loginPassword" placeholder="أدخل كلمة المرور" autocomplete="current-password">
+      </div>
+      <button class="btn btn-primary" id="loginBtn">
+        <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+      </button>
+    </div>
+    
+    <!-- Register Form -->
+    <div id="registerForm" style="display:none;">
+      <div class="form-group">
+        <label><i class="fas fa-user"></i> اسم المستخدم</label>
+        <input type="text" id="regUsername" placeholder="اختر اسم مستخدم (3 أحرف على الأقل)" autocomplete="username">
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-id-card"></i> الاسم (اختياري)</label>
+        <input type="text" id="regName" placeholder="أدخل اسمك">
+      </div>
+      <div class="form-group">
+        <label><i class="fas fa-lock"></i> كلمة المرور</label>
+        <input type="password" id="regPassword" placeholder="اختر كلمة مرور (6 أحرف على الأقل)" autocomplete="new-password">
+      </div>
+      <button class="btn btn-primary" id="registerBtn">
+        <i class="fas fa-user-plus"></i> إنشاء حساب
+      </button>
+    </div>
+    
+    <div class="toggle-text">
+      <span id="toggleText">ليس لديك حساب؟</span>
+      <a id="toggleLink">إنشاء حساب جديد</a>
+    </div>
+  </div>
 
-    .app-container { display: none; flex-direction: column; min-height: 100vh; }
+  <script>
+    let isLoginMode = true;
+    
+    function showError(msg) {
+      var el = document.getElementById('errorMsg');
+      el.textContent = msg;
+      el.style.display = 'block';
+      document.getElementById('successMsg').style.display = 'none';
+      setTimeout(function() { el.style.display = 'none'; }, 5000);
+    }
+
+    function showSuccess(msg) {
+      var el = document.getElementById('successMsg');
+      el.textContent = msg;
+      el.style.display = 'block';
+      document.getElementById('errorMsg').style.display = 'none';
+      setTimeout(function() { el.style.display = 'none'; }, 3000);
+    }
+
+    function toggleForm() {
+      isLoginMode = !isLoginMode;
+      document.getElementById('loginForm').style.display = isLoginMode ? 'block' : 'none';
+      document.getElementById('registerForm').style.display = isLoginMode ? 'none' : 'block';
+      document.getElementById('toggleText').textContent = isLoginMode ? 'ليس لديك حساب؟' : 'لديك حساب بالفعل؟';
+      document.getElementById('toggleLink').textContent = isLoginMode ? 'إنشاء حساب جديد' : 'تسجيل الدخول';
+      document.getElementById('errorMsg').style.display = 'none';
+      document.getElementById('successMsg').style.display = 'none';
+    }
+
+    async function handleRegister() {
+      var username = document.getElementById('regUsername').value.trim();
+      var name = document.getElementById('regName').value.trim();
+      var password = document.getElementById('regPassword').value.trim();
+
+      if (!username || !password) {
+        showError('⚠️ اسم المستخدم وكلمة المرور مطلوبين');
+        return;
+      }
+      
+      if (username.length < 3) {
+        showError('⚠️ اسم المستخدم يجب أن يكون 3 أحرف على الأقل');
+        return;
+      }
+      
+      if (password.length < 6) {
+        showError('⚠️ كلمة المرور يجب أن تكون 6 أحرف على الأقل');
+        return;
+      }
+
+      try {
+        var response = await fetch('/api/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: username, password: password, name: name })
+        });
+
+        var data = await response.json();
+
+        if (data.error) {
+          showError('❌ ' + data.error);
+        } else {
+          showSuccess('✅ تم إنشاء الحساب بنجاح!');
+          setTimeout(function() {
+            toggleForm();
+            document.getElementById('loginUsername').value = username;
+            document.getElementById('loginPassword').value = '';
+          }, 1500);
+        }
+      } catch (error) {
+        showError('❌ حدث خطأ في الاتصال بالخادم');
+      }
+    }
+
+    async function handleLogin() {
+      var username = document.getElementById('loginUsername').value.trim();
+      var password = document.getElementById('loginPassword').value.trim();
+
+      if (!username || !password) {
+        showError('⚠️ اسم المستخدم وكلمة المرور مطلوبين');
+        return;
+      }
+
+      try {
+        var response = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username: username, password: password })
+        });
+
+        var data = await response.json();
+
+        if (data.error) {
+          showError('❌ ' + data.error);
+        } else {
+          localStorage.setItem('pen_user', JSON.stringify(data));
+          window.location.href = '/app';
+        }
+      } catch (error) {
+        showError('❌ حدث خطأ في الاتصال بالخادم');
+      }
+    }
+
+    // Event Listeners
+    document.getElementById('loginBtn').addEventListener('click', handleLogin);
+    document.getElementById('registerBtn').addEventListener('click', handleRegister);
+    document.getElementById('toggleLink').addEventListener('click', toggleForm);
+
+    // Enter key
+    document.getElementById('loginPassword').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') handleLogin();
+    });
+    document.getElementById('regPassword').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') handleRegister();
+    });
+    document.getElementById('loginUsername').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') handleLogin();
+    });
+    document.getElementById('regUsername').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') handleRegister();
+    });
+
+    // Check if already logged in
+    var savedUser = localStorage.getItem('pen_user');
+    if (savedUser) {
+      try {
+        var userData = JSON.parse(savedUser);
+        if (userData.username) {
+          window.location.href = '/app';
+        }
+      } catch (e) {
+        localStorage.removeItem('pen_user');
+      }
+    }
+  </script>
+</body>
+</html>"""
+
+# =========================================
+# MAIN APP PAGE
+# =========================================
+
+@app.get("/app", response_class=HTMLResponse)
+async def main_app():
+    return """
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة Pen | لوحة التحكم</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background: #0f172a; color: #e2e8f0; display: flex; flex-direction: column; min-height: 100vh; }
     .top-bar { background: #1e293b; color: #f1f5f9; padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.5); border-bottom: 1px solid #334155; }
     .logo-area { display: flex; align-items: center; gap: 12px; }
     .logo-icon { font-size: 2.2rem; color: #fbbf24; transform: rotate(-15deg); }
@@ -1318,17 +1510,16 @@ async def serve_html():
     .main-layout { display: flex; flex: 1; margin: 0 1.5rem 1.5rem; gap: 1.5rem; flex-wrap: wrap; align-items: stretch; }
     .content-area { flex: 0.4; min-width: 220px; max-width: 300px; background: #1e293b; border-radius: 24px; padding: 1.2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.5); border: 1px solid #334155; }
     .card-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.8rem; }
-    .feature-card { background: #0f172a; border-radius: 14px; padding: 0.8rem; display: flex; align-items: center; gap: 10px; border: 1px solid #334155; cursor: pointer; }
+    .feature-card { background: #0f172a; border-radius: 14px; padding: 0.8rem; display: flex; align-items: center; gap: 10px; border: 1px solid #334155; cursor: pointer; transition: 0.2s; }
     .feature-card i { font-size: 1.3rem; color: #fbbf24; }
-    .feature-card h4 { color: #f1f5f9; font-size: 0.9rem; }
+    .feature-card h4 { color: #f1f5f9; font-size: 0.9rem; margin-bottom: 0.1rem; }
     .feature-card p { color: #94a3b8; font-size: 0.75rem; }
     .feature-card:hover { background: #1e293b; border-color: #fbbf24; }
     .chatbot-section { flex: 3; min-width: 500px; background: #1e293b; border-radius: 24px; box-shadow: 0 8px 28px rgba(0,0,0,0.6); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #334155; }
     .chat-header { background: #0f172a; color: #fbbf24; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-weight: bold; font-size: 1.3rem; border-bottom: 1px solid #334155; }
     .chat-header-left { display: flex; align-items: center; gap: 10px; }
     .chat-header-left i { font-size: 1.6rem; }
-    .status-badge { padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.7rem; font-weight: normal; }
-    .status-online { background: #10b981; color: white; }
+    .status-badge { padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.7rem; font-weight: normal; background: #10b981; color: white; }
     .header-quick-buttons { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     .header-quick-btn { background: #1e293b; color: #fbbf24; border: 1px solid #fbbf24; padding: 0.4rem 0.8rem; border-radius: 18px; font-size: 0.75rem; cursor: pointer; transition: 0.2s; white-space: nowrap; font-weight: 500; }
     .header-quick-btn:hover { background: #fbbf24; color: #0f172a; transform: scale(1.05); }
@@ -1359,262 +1550,86 @@ async def serve_html():
   </style>
 </head>
 <body>
-  <!-- Login Page -->
-  <div id="loginPage" class="login-container">
-    <div class="login-box">
-      <div class="login-header">
-        <div class="login-logo"><i class="fas fa-pen-fancy"></i></div>
-        <div class="login-title">Pen</div>
-        <p style="color:#94a3b8; margin-top:0.5rem;">منصة التعلم الذكية</p>
+  <header class="top-bar">
+    <div class="logo-area">
+      <i class="fas fa-pen-fancy logo-icon"></i>
+      <span class="logo-text">Pen</span>
+    </div>
+    <div class="user-area">
+      <span class="user-name" id="displayName"></span>
+      <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> خروج</button>
+    </div>
+  </header>
+
+  <div class="main-layout">
+    <section class="content-area">
+      <h3 style="color:#fbbf24; margin-bottom:0.8rem; font-size:1rem;"><i class="fas fa-star"></i> المحتوى</h3>
+      <div class="card-grid">
+        <div class="feature-card" id="cardExam"><i class="fas fa-book-open"></i><div><h4>الامتحانات</h4><p>أسئلة متوقعة</p></div></div>
+        <div class="feature-card" id="cardQuiz"><i class="fas fa-question-circle"></i><div><h4>تفاعلي MCQ</h4><p>امتحان مباشر</p></div></div>
+        <div class="feature-card" id="cardFocus"><i class="fas fa-chart-line"></i><div><h4>خطة التركيز</h4><p>أهم الموضوعات</p></div></div>
+        <div class="feature-card" id="cardLevel"><i class="fas fa-user-graduate"></i><div><h4>مستوايا</h4><p>تحليل الأداء</p></div></div>
       </div>
-      <div id="errorMsg" class="error-msg"></div>
-      <div id="successMsg" class="success-msg"></div>
-      
-      <!-- Login Form -->
-      <div id="loginForm">
-        <div class="form-group">
-          <label><i class="fas fa-user"></i> اسم المستخدم</label>
-          <input type="text" id="loginUsername" placeholder="أدخل اسم المستخدم">
+    </section>
+
+    <div class="chatbot-section">
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <i class="fas fa-robot"></i>
+          <span>المساعد Pen</span>
+          <span class="status-badge">متصل</span>
         </div>
-        <div class="form-group">
-          <label><i class="fas fa-lock"></i> كلمة المرور</label>
-          <input type="password" id="loginPassword" placeholder="أدخل كلمة المرور">
+        <div class="header-quick-buttons">
+          <span class="header-category-label">📝</span>
+          <button class="header-quick-btn" data-action="امتحان">أهم الأسئلة</button>
+          <button class="header-quick-btn" data-action="امتحان سهل">سهل</button>
+          <button class="header-quick-btn" data-action="امتحان متوسط">متوسط</button>
+          <button class="header-quick-btn" data-action="امتحان صعب">صعب</button>
+          <span class="header-category-label">🎯</span>
+          <button class="header-quick-btn" data-action="اختبرني">اختبرني</button>
+          <button class="header-quick-btn" data-action="اختبرني في البلاغة">البلاغة</button>
+          <span class="header-category-label">📊</span>
+          <button class="header-quick-btn" data-action="خطة التركيز">خطة التركيز</button>
+          <button class="header-quick-btn" data-action="مستوايا">مستوايا</button>
         </div>
-        <button class="btn btn-primary" onclick="handleLogin()">
-          <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
-        </button>
       </div>
-      
-      <!-- Register Form -->
-      <div id="registerForm" style="display:none;">
-        <div class="form-group">
-          <label><i class="fas fa-user"></i> اسم المستخدم</label>
-          <input type="text" id="regUsername" placeholder="اختر اسم مستخدم (3 أحرف على الأقل)">
+      <div class="chat-messages" id="chatMessages">
+        <div class="message bot-msg">
+          <div class="msg-bubble">👋 مرحباً بك في منصة Pen!<br><br>اختر من الأزرار أو اكتب سؤالك مباشرة.</div>
         </div>
-        <div class="form-group">
-          <label><i class="fas fa-id-card"></i> الاسم (اختياري)</label>
-          <input type="text" id="regName" placeholder="أدخل اسمك">
-        </div>
-        <div class="form-group">
-          <label><i class="fas fa-lock"></i> كلمة المرور</label>
-          <input type="password" id="regPassword" placeholder="اختر كلمة مرور (6 أحرف على الأقل)">
-        </div>
-        <button class="btn btn-primary" onclick="handleRegister()">
-          <i class="fas fa-user-plus"></i> إنشاء حساب
-        </button>
       </div>
-      
-      <div class="toggle-text">
-        <span id="toggleText">ليس لديك حساب؟</span>
-        <a id="toggleLink" onclick="toggleForm()">إنشاء حساب جديد</a>
+      <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="اكتب سؤالك هنا ..." />
+        <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
       </div>
     </div>
   </div>
-
-  <!-- Main App -->
-  <div id="appPage" class="app-container">
-    <header class="top-bar">
-      <div class="logo-area">
-        <i class="fas fa-pen-fancy logo-icon"></i>
-        <span class="logo-text">Pen</span>
-      </div>
-      <div class="user-area">
-        <span class="user-name" id="displayName"></span>
-        <button class="logout-btn" onclick="handleLogout()"><i class="fas fa-sign-out-alt"></i> خروج</button>
-      </div>
-    </header>
-
-    <div class="main-layout">
-      <section class="content-area">
-        <h3 style="color:#fbbf24; margin-bottom:0.8rem; font-size:1rem;"><i class="fas fa-star"></i> المحتوى</h3>
-        <div class="card-grid">
-          <div class="feature-card" onclick="sendQuickAction('امتحان')"><i class="fas fa-book-open"></i><div><h4>الامتحانات</h4><p>أسئلة متوقعة</p></div></div>
-          <div class="feature-card" onclick="sendQuickAction('اختبرني')"><i class="fas fa-question-circle"></i><div><h4>تفاعلي MCQ</h4><p>امتحان مباشر</p></div></div>
-          <div class="feature-card" onclick="sendQuickAction('خطة التركيز')"><i class="fas fa-chart-line"></i><div><h4>خطة التركيز</h4><p>أهم الموضوعات</p></div></div>
-          <div class="feature-card" onclick="sendQuickAction('مستوايا')"><i class="fas fa-user-graduate"></i><div><h4>مستوايا</h4><p>تحليل الأداء</p></div></div>
-        </div>
-      </section>
-
-      <div class="chatbot-section">
-        <div class="chat-header">
-          <div class="chat-header-left">
-            <i class="fas fa-robot"></i>
-            <span>المساعد Pen</span>
-            <span class="status-badge status-online">متصل</span>
-          </div>
-          <div class="header-quick-buttons">
-            <span class="header-category-label">📝</span>
-            <button class="header-quick-btn" onclick="sendQuickAction('امتحان')">أهم الأسئلة</button>
-            <button class="header-quick-btn" onclick="sendQuickAction('امتحان سهل')">سهل</button>
-            <button class="header-quick-btn" onclick="sendQuickAction('امتحان متوسط')">متوسط</button>
-            <button class="header-quick-btn" onclick="sendQuickAction('امتحان صعب')">صعب</button>
-            <span class="header-category-label">🎯</span>
-            <button class="header-quick-btn" onclick="sendQuickAction('اختبرني')">اختبرني</button>
-            <button class="header-quick-btn" onclick="sendQuickAction('اختبرني في البلاغة')">البلاغة</button>
-            <span class="header-category-label">📊</span>
-            <button class="header-quick-btn" onclick="sendQuickAction('خطة التركيز')">خطة التركيز</button>
-            <button class="header-quick-btn" onclick="sendQuickAction('مستوايا')">مستوايا</button>
-          </div>
-        </div>
-        <div class="chat-messages" id="chatMessages">
-          <div class="message bot-msg">
-            <div class="msg-bubble">👋 مرحباً بك في منصة Pen!<br><br>📊 <strong>489 سؤال</strong> | <strong>454 MCQ</strong> جاهزين<br><br>اختر من الأزرار أو اكتب سؤالك مباشرة.</div>
-          </div>
-        </div>
-        <div class="chat-input-area">
-          <input type="text" id="userInput" placeholder="اكتب سؤالك هنا ..." />
-          <button id="sendBtn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i></button>
-        </div>
-      </div>
-    </div>
-    <footer>© 2025 منصة Pen - حسابك الشخصي 📊</footer>
-  </div>
+  <footer>© 2025 منصة Pen - حسابك الشخصي 📊</footer>
 
   <script>
-    let currentUser = null;
-    let chatId = null;
-    let isWaitingForResponse = false;
-    let isLoginMode = true;
-
-    function showError(msg) {
-      const el = document.getElementById('errorMsg');
-      el.textContent = msg;
-      el.style.display = 'block';
-      document.getElementById('successMsg').style.display = 'none';
-      setTimeout(() => { el.style.display = 'none'; }, 5000);
+    // Check auth
+    var savedUser = localStorage.getItem('pen_user');
+    if (!savedUser) {
+      window.location.href = '/';
     }
+    
+    var currentUser = JSON.parse(savedUser);
+    var chatId = currentUser.chat_id;
+    var isWaitingForResponse = false;
 
-    function showSuccess(msg) {
-      const el = document.getElementById('successMsg');
-      el.textContent = msg;
-      el.style.display = 'block';
-      document.getElementById('errorMsg').style.display = 'none';
-      setTimeout(() => { el.style.display = 'none'; }, 3000);
-    }
+    document.getElementById('displayName').textContent = currentUser.name || currentUser.username;
 
-    function toggleForm() {
-      isLoginMode = !isLoginMode;
-      document.getElementById('loginForm').style.display = isLoginMode ? 'block' : 'none';
-      document.getElementById('registerForm').style.display = isLoginMode ? 'none' : 'block';
-      document.getElementById('toggleText').textContent = isLoginMode ? 'ليس لديك حساب؟' : 'لديك حساب بالفعل؟';
-      document.getElementById('toggleLink').textContent = isLoginMode ? 'إنشاء حساب جديد' : 'تسجيل الدخول';
-      document.getElementById('errorMsg').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'none';
-    }
-
-    async function handleRegister() {
-      const username = document.getElementById('regUsername').value.trim();
-      const name = document.getElementById('regName').value.trim();
-      const password = document.getElementById('regPassword').value.trim();
-
-      if (!username || !password) {
-        showError('⚠️ اسم المستخدم وكلمة المرور مطلوبين');
-        return;
-      }
-      
-      if (username.length < 3) {
-        showError('⚠️ اسم المستخدم يجب أن يكون 3 أحرف على الأقل');
-        return;
-      }
-      
-      if (password.length < 6) {
-        showError('⚠️ كلمة المرور يجب أن تكون 6 أحرف على الأقل');
-        return;
-      }
-
-      try {
-        const response = await fetch('/api/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password, name })
-        });
-
-        const data = await response.json();
-
-        if (data.error) {
-          showError('❌ ' + data.error);
-        } else {
-          showSuccess('✅ تم إنشاء الحساب بنجاح! يمكنك تسجيل الدخول الآن');
-          setTimeout(() => {
-            toggleForm();
-            document.getElementById('loginUsername').value = username;
-            document.getElementById('loginPassword').value = '';
-          }, 1500);
-        }
-      } catch (error) {
-        showError('❌ حدث خطأ في الاتصال بالخادم');
-      }
-    }
-
-    async function handleLogin() {
-      const username = document.getElementById('loginUsername').value.trim();
-      const password = document.getElementById('loginPassword').value.trim();
-
-      if (!username || !password) {
-        showError('⚠️ اسم المستخدم وكلمة المرور مطلوبين');
-        return;
-      }
-
-      try {
-        const response = await fetch('/api/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ username, password })
-        });
-
-        const data = await response.json();
-
-        if (data.error) {
-          showError('❌ ' + data.error);
-        } else {
-          currentUser = data;
-          chatId = data.chat_id;
-          
-          localStorage.setItem('pen_user', JSON.stringify(data));
-          showApp();
-        }
-      } catch (error) {
-        showError('❌ حدث خطأ في الاتصال بالخادم');
-      }
-    }
-
-    function handleLogout() {
-      currentUser = null;
-      chatId = null;
-      localStorage.removeItem('pen_user');
-      document.getElementById('loginPage').style.display = 'flex';
-      document.getElementById('appPage').style.display = 'none';
-      document.getElementById('loginUsername').value = '';
-      document.getElementById('loginPassword').value = '';
-      document.getElementById('errorMsg').style.display = 'none';
-      document.getElementById('successMsg').style.display = 'none';
-    }
-
-    function showApp() {
-      document.getElementById('loginPage').style.display = 'none';
-      document.getElementById('appPage').style.display = 'flex';
-      document.getElementById('displayName').textContent = currentUser.name || currentUser.username;
-      
-      const chatMessages = document.getElementById('chatMessages');
-      chatMessages.innerHTML = `
-        <div class="message bot-msg">
-          <div class="msg-bubble">👋 مرحباً <strong>${currentUser.name || currentUser.username}</strong>! أنا مساعدك الذكي في منصة Pen.<br><br>📊 <strong>489 سؤال</strong> | <strong>454 MCQ</strong> جاهزين<br><br>اختر من الأزرار أو اكتب سؤالك مباشرة.</div>
-        </div>
-      `;
-    }
+    // Update welcome message
+    var chatMessages = document.getElementById('chatMessages');
+    chatMessages.innerHTML = '<div class="message bot-msg"><div class="msg-bubble">👋 مرحباً <strong>' + (currentUser.name || currentUser.username) + '</strong>! أنا مساعدك الذكي في منصة Pen.<br><br>اختر من الأزرار أو اكتب سؤالك مباشرة.</div></div>';
 
     function formatMessage(text) {
       if (!text) return '';
-      return text
-        .replace(/\\*/g, '')
-        .replace(/\*(.*?)\*/g, '<strong>$1</strong>')
-        .replace(/\n/g, '<br>')
-        .replace(/─+/g, '─'.repeat(25));
+      return text.replace(/\\*/g, '').replace(/\*(.*?)\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>').replace(/─+/g, '─'.repeat(25));
     }
 
     function addMessage(text, isUser) {
-      const chatMessages = document.getElementById('chatMessages');
-      const msgDiv = document.createElement('div');
+      var msgDiv = document.createElement('div');
       msgDiv.className = 'message ' + (isUser ? 'user-msg' : 'bot-msg');
       msgDiv.innerHTML = '<div class="msg-bubble">' + formatMessage(text) + '</div>';
       chatMessages.appendChild(msgDiv);
@@ -1622,8 +1637,7 @@ async def serve_html():
     }
 
     function showTyping() {
-      const chatMessages = document.getElementById('chatMessages');
-      const typingDiv = document.createElement('div');
+      var typingDiv = document.createElement('div');
       typingDiv.className = 'message bot-msg';
       typingDiv.id = 'typingIndicator';
       typingDiv.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
@@ -1632,7 +1646,7 @@ async def serve_html():
     }
 
     function removeTyping() {
-      const indicator = document.getElementById('typingIndicator');
+      var indicator = document.getElementById('typingIndicator');
       if (indicator) indicator.remove();
     }
 
@@ -1644,8 +1658,8 @@ async def serve_html():
     }
 
     async function sendMessage() {
-      const userInput = document.getElementById('userInput');
-      const text = userInput.value.trim();
+      var userInput = document.getElementById('userInput');
+      var text = userInput.value.trim();
       
       if (!text || isWaitingForResponse || !currentUser) return;
       
@@ -1655,10 +1669,10 @@ async def serve_html():
       showTyping();
       
       try {
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 15000);
+        var controller = new AbortController();
+        var timeoutId = setTimeout(function() { controller.abort(); }, 15000);
         
-        const response = await fetch('/api/chat', {
+        var response = await fetch('/api/chat', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -1670,9 +1684,9 @@ async def serve_html():
         });
         
         clearTimeout(timeoutId);
-        const data = await response.json();
+        var data = await response.json();
         
-        setTimeout(() => {
+        setTimeout(function() {
           removeTyping();
           if (data.reply) {
             addMessage(data.reply, false);
@@ -1681,7 +1695,7 @@ async def serve_html():
         }, 500);
         
       } catch (error) {
-        setTimeout(() => {
+        setTimeout(function() {
           removeTyping();
           addMessage('❌ حدث خطأ في الاتصال. جرب مرة أخرى.', false);
           setInputEnabled(true);
@@ -1694,41 +1708,33 @@ async def serve_html():
       sendMessage();
     }
 
-    // Check for saved session
-    const savedUser = localStorage.getItem('pen_user');
-    if (savedUser) {
-      try {
-        const userData = JSON.parse(savedUser);
-        currentUser = userData;
-        chatId = userData.chat_id;
-        showApp();
-      } catch (e) {
-        localStorage.removeItem('pen_user');
-      }
+    function logout() {
+      localStorage.removeItem('pen_user');
+      window.location.href = '/';
     }
 
-    // Enter key handler
-    document.addEventListener('keypress', function(e) {
-      if (e.key === 'Enter' && document.getElementById('appPage').style.display === 'flex') {
-        e.preventDefault();
-        sendMessage();
-      }
-    });
+    // Event Listeners
+    document.getElementById('sendBtn').addEventListener('click', sendMessage);
+    document.getElementById('logoutBtn').addEventListener('click', logout);
     
-    // Also handle Enter on login page
-    document.getElementById('loginPassword').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        handleLogin();
-      }
+    document.getElementById('userInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') sendMessage();
     });
-    
-    document.getElementById('regPassword').addEventListener('keypress', function(e) {
-      if (e.key === 'Enter') {
-        e.preventDefault();
-        handleRegister();
-      }
+
+    // Quick buttons
+    document.querySelectorAll('.header-quick-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        sendQuickAction(this.dataset.action);
+      });
     });
+
+    // Cards
+    document.getElementById('cardExam').addEventListener('click', function() { sendQuickAction('امتحان'); });
+    document.getElementById('cardQuiz').addEventListener('click', function() { sendQuickAction('اختبرني'); });
+    document.getElementById('cardFocus').addEventListener('click', function() { sendQuickAction('خطة التركيز'); });
+    document.getElementById('cardLevel').addEventListener('click', function() { sendQuickAction('مستوايا'); });
+
+    document.getElementById('userInput').focus();
   </script>
 </body>
 </html>"""
