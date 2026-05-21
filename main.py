@@ -1,7 +1,6 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse, HTMLResponse, FileResponse
+from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.staticfiles import StaticFiles
 
 import os
 import json
@@ -51,7 +50,6 @@ class StudentService:
             import firebase_admin
             from firebase_admin import credentials
             
-            cred = None
             b64 = os.getenv("FIREBASE_CREDENTIALS_BASE64", "")
             if b64:
                 try:
@@ -62,24 +60,19 @@ class StudentService:
                     cred = credentials.Certificate(temp_path)
                     print("✅ Firebase Auth: using env var")
                     os.unlink(temp_path)
-                except Exception as e:
-                    print(f"❌ Base64 decode failed: {e}")
-            
-            if cred:
-                try:
-                    firebase_admin.get_app()
-                except ValueError:
-                    firebase_admin.initialize_app(cred, {
-                        "databaseURL": "https://forme-6167f-default-rtdb.firebaseio.com"
-                    })
-                    print("✅ Firebase initialized!")
-                
-                try:
+                    
+                    try:
+                        firebase_admin.get_app()
+                    except ValueError:
+                        firebase_admin.initialize_app(cred, {
+                            "databaseURL": "https://forme-6167f-default-rtdb.firebaseio.com"
+                        })
+                    
                     from firebase_admin import db
                     cls._rtdb = db
                     print("✅ Firebase RTDB ready!")
                 except Exception as e:
-                    print(f"⚠️ RTDB error: {e}")
+                    print(f"⚠️ Firebase error: {e}")
         except ImportError:
             print("⚠️ firebase_admin not installed")
         except Exception as e:
@@ -358,11 +351,12 @@ def load_all_data():
     seen = set()
     
     if not DATA_DIR.exists():
+        print(f"❌ DATA FOLDER NOT FOUND at {DATA_DIR}")
         DATA_DIR.mkdir(exist_ok=True)
         return
     
     files = list(DATA_DIR.glob("*.json"))
-    print(f"📚 FOUND {len(files)} FILES")
+    print(f"📚 FOUND {len(files)} FILES in {DATA_DIR}")
     
     for file in files:
         try:
@@ -382,9 +376,9 @@ def load_all_data():
                         
                         QUESTIONS_BY_DIFFICULTY[q.get("difficulty", "medium")].append(q)
                 
-                print(f"✅ Loaded: {file.name}")
+                print(f"✅ Loaded: {file.name} -> {len(questions)} questions")
         except Exception as e:
-            print(f"❌ ERROR: {file.name}: {e}")
+            print(f"❌ ERROR loading {file.name}: {e}")
     
     print(f"🔥 TOTAL: {len(ALL_QUESTIONS)} | MCQ: {len(MCQ_QUESTIONS)}")
 
@@ -739,7 +733,11 @@ async def chat(request: Request):
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy", "questions": len(ALL_QUESTIONS), "mcq": len(MCQ_QUESTIONS)}
+    return {
+        "status": "healthy",
+        "questions": len(ALL_QUESTIONS),
+        "mcq": len(MCQ_QUESTIONS)
+    }
 
 # =========================================
 # SERVE HTML FILES
@@ -749,15 +747,19 @@ async def health():
 async def auth_page():
     auth_path = BASE_DIR / "auth.html"
     if auth_path.exists():
+        print(f"✅ Serving auth.html from {auth_path}")
         return auth_path.read_text(encoding="utf-8")
-    return """<h1>auth.html not found</h1>"""
+    print(f"❌ auth.html NOT FOUND at {auth_path}")
+    return """<h1 style="color:white;text-align:center;margin-top:100px;">auth.html not found</h1>"""
 
 @app.get("/app", response_class=HTMLResponse)
 async def app_page():
     app_path = BASE_DIR / "app.html"
     if app_path.exists():
+        print(f"✅ Serving app.html from {app_path}")
         return app_path.read_text(encoding="utf-8")
-    return """<h1>app.html not found</h1>"""
+    print(f"❌ app.html NOT FOUND at {app_path}")
+    return """<h1 style="color:white;text-align:center;margin-top:100px;">app.html not found</h1>"""
 
 # =========================================
 # STARTUP
@@ -766,5 +768,9 @@ async def app_page():
 @app.on_event("startup")
 async def startup_event():
     asyncio.create_task(cleanup_expired_sessions())
-    print("🚀 Pen Platform started!")
+    print(f"🚀 Pen Platform started!")
+    print(f"📂 BASE_DIR: {BASE_DIR}")
+    print(f"📂 DATA_DIR: {DATA_DIR}")
+    print(f"📄 auth.html exists: {(BASE_DIR / 'auth.html').exists()}")
+    print(f"📄 app.html exists: {(BASE_DIR / 'app.html').exists()}")
     print(f"📊 {len(ALL_QUESTIONS)} questions loaded")
