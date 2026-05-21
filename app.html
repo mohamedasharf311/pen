@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منصة Pen | لوحة التحكم</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    body { background: #0f172a; color: #e2e8f0; display: flex; flex-direction: column; min-height: 100vh; }
+    .top-bar { background: #1e293b; color: #f1f5f9; padding: 0.7rem 2rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; box-shadow: 0 4px 16px rgba(0,0,0,0.5); border-bottom: 1px solid #334155; }
+    .logo-area { display: flex; align-items: center; gap: 12px; }
+    .logo-icon { font-size: 2.2rem; color: #fbbf24; transform: rotate(-15deg); }
+    .logo-text { font-size: 1.8rem; font-weight: bold; background: linear-gradient(135deg, #fbbf24, #f59e0b); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .user-area { display: flex; align-items: center; gap: 10px; }
+    .user-name { color: #fbbf24; font-weight: 500; }
+    .logout-btn { background: #ef4444; color: white; border: none; padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; font-size: 0.85rem; }
+    .logout-btn:hover { background: #dc2626; }
+    .main-layout { display: flex; flex: 1; margin: 0 1.5rem 1.5rem; gap: 1.5rem; flex-wrap: wrap; align-items: stretch; }
+    .content-area { flex: 0.4; min-width: 220px; max-width: 300px; background: #1e293b; border-radius: 24px; padding: 1.2rem; box-shadow: 0 8px 24px rgba(0,0,0,0.5); border: 1px solid #334155; }
+    .card-grid { display: flex; flex-direction: column; gap: 0.8rem; margin-top: 0.8rem; }
+    .feature-card { background: #0f172a; border-radius: 14px; padding: 0.8rem; display: flex; align-items: center; gap: 10px; border: 1px solid #334155; cursor: pointer; transition: 0.2s; }
+    .feature-card i { font-size: 1.3rem; color: #fbbf24; }
+    .feature-card h4 { color: #f1f5f9; font-size: 0.9rem; margin-bottom: 0.1rem; }
+    .feature-card p { color: #94a3b8; font-size: 0.75rem; }
+    .feature-card:hover { background: #1e293b; border-color: #fbbf24; }
+    .chatbot-section { flex: 3; min-width: 500px; background: #1e293b; border-radius: 24px; box-shadow: 0 8px 28px rgba(0,0,0,0.6); display: flex; flex-direction: column; overflow: hidden; border: 1px solid #334155; }
+    .chat-header { background: #0f172a; color: #fbbf24; padding: 1rem 1.5rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; font-weight: bold; font-size: 1.3rem; border-bottom: 1px solid #334155; }
+    .chat-header-left { display: flex; align-items: center; gap: 10px; }
+    .chat-header-left i { font-size: 1.6rem; }
+    .status-badge { padding: 0.2rem 0.6rem; border-radius: 10px; font-size: 0.7rem; font-weight: normal; background: #10b981; color: white; }
+    .header-quick-buttons { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .header-quick-btn { background: #1e293b; color: #fbbf24; border: 1px solid #fbbf24; padding: 0.4rem 0.8rem; border-radius: 18px; font-size: 0.75rem; cursor: pointer; transition: 0.2s; white-space: nowrap; font-weight: 500; }
+    .header-quick-btn:hover { background: #fbbf24; color: #0f172a; transform: scale(1.05); }
+    .header-category-label { color: #94a3b8; font-size: 0.7rem; font-weight: bold; margin: 0 0.2rem; }
+    .chat-messages { flex: 1; padding: 1.5rem; overflow-y: auto; display: flex; flex-direction: column; gap: 1.2rem; background: #0b1120; min-height: 400px; max-height: 70vh; }
+    .message { display: flex; gap: 10px; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .bot-msg { align-self: flex-start; }
+    .user-msg { align-self: flex-end; flex-direction: row-reverse; }
+    .msg-bubble { padding: 0.9rem 1.3rem; border-radius: 20px; max-width: 80%; background: #334155; color: #e2e8f0; font-size: 1rem; line-height: 1.8; white-space: pre-wrap; word-wrap: break-word; }
+    .user-msg .msg-bubble { background: #fbbf24; color: #0f172a; font-weight: 500; }
+    .msg-bubble strong { color: #fbbf24; }
+    .typing-indicator { display: flex; gap: 4px; padding: 0.9rem 1.3rem; align-self: flex-start; }
+    .typing-dot { width: 8px; height: 8px; background: #fbbf24; border-radius: 50%; animation: typing 1.4s infinite; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing { 0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); } 30% { opacity: 1; transform: scale(1); } }
+    .chat-input-area { display: flex; padding: 1rem; border-top: 1px solid #334155; background: #1e293b; gap: 10px; }
+    .chat-input-area input { flex: 1; padding: 0.9rem 1.2rem; border-radius: 30px; border: 1px solid #475569; background: #0f172a; color: #e2e8f0; outline: none; font-size: 1rem; }
+    .chat-input-area input::placeholder { color: #64748b; }
+    .chat-input-area button { background: #fbbf24; color: #0f172a; border: none; border-radius: 50%; width: 50px; height: 50px; cursor: pointer; font-size: 1.2rem; transition: 0.2s; display: flex; align-items: center; justify-content: center; }
+    .chat-input-area button:hover { background: #f59e0b; transform: scale(1.1); }
+    footer { text-align: center; color: #64748b; margin: 0.5rem 0 1rem; font-size: 0.8rem; }
+    @media (max-width: 900px) { .main-layout { flex-direction: column; } .content-area { max-width: 100%; } .chatbot-section { min-width: auto; } }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="logo-area">
+      <i class="fas fa-pen-fancy logo-icon"></i>
+      <span class="logo-text">Pen</span>
+    </div>
+    <div class="user-area">
+      <span class="user-name" id="displayName"></span>
+      <button class="logout-btn" id="logoutBtn"><i class="fas fa-sign-out-alt"></i> خروج</button>
+    </div>
+  </header>
+
+  <div class="main-layout">
+    <section class="content-area">
+      <h3 style="color:#fbbf24; margin-bottom:0.8rem; font-size:1rem;"><i class="fas fa-star"></i> المحتوى</h3>
+      <div class="card-grid">
+        <div class="feature-card" id="cardExam"><i class="fas fa-book-open"></i><div><h4>الامتحانات</h4><p>أسئلة متوقعة</p></div></div>
+        <div class="feature-card" id="cardQuiz"><i class="fas fa-question-circle"></i><div><h4>تفاعلي MCQ</h4><p>امتحان مباشر</p></div></div>
+        <div class="feature-card" id="cardFocus"><i class="fas fa-chart-line"></i><div><h4>خطة التركيز</h4><p>أهم الموضوعات</p></div></div>
+        <div class="feature-card" id="cardLevel"><i class="fas fa-user-graduate"></i><div><h4>مستوايا</h4><p>تحليل الأداء</p></div></div>
+      </div>
+    </section>
+
+    <div class="chatbot-section">
+      <div class="chat-header">
+        <div class="chat-header-left">
+          <i class="fas fa-robot"></i>
+          <span>المساعد Pen</span>
+          <span class="status-badge">متصل</span>
+        </div>
+        <div class="header-quick-buttons">
+          <span class="header-category-label">📝</span>
+          <button class="header-quick-btn" data-action="امتحان">أهم الأسئلة</button>
+          <button class="header-quick-btn" data-action="امتحان سهل">سهل</button>
+          <button class="header-quick-btn" data-action="امتحان متوسط">متوسط</button>
+          <button class="header-quick-btn" data-action="امتحان صعب">صعب</button>
+          <span class="header-category-label">🎯</span>
+          <button class="header-quick-btn" data-action="اختبرني">اختبرني</button>
+          <button class="header-quick-btn" data-action="اختبرني في البلاغة">البلاغة</button>
+          <span class="header-category-label">📊</span>
+          <button class="header-quick-btn" data-action="خطة التركيز">خطة التركيز</button>
+          <button class="header-quick-btn" data-action="مستوايا">مستوايا</button>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages"></div>
+      <div class="chat-input-area">
+        <input type="text" id="userInput" placeholder="اكتب سؤالك هنا ..." />
+        <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+      </div>
+    </div>
+  </div>
+  <footer>© 2025 منصة Pen</footer>
+
+  <script>
+    // Auth check
+    var savedUser = localStorage.getItem('pen_user');
+    if (!savedUser) window.location.href = '/';
+    
+    var currentUser = JSON.parse(savedUser);
+    var chatId = currentUser.chat_id;
+    var isWaiting = false;
+
+    document.getElementById('displayName').textContent = currentUser.name || currentUser.username;
+
+    // Welcome
+    var chatMessages = document.getElementById('chatMessages');
+    chatMessages.innerHTML = '<div class="message bot-msg"><div class="msg-bubble">👋 مرحباً <strong>' + (currentUser.name || currentUser.username) + '</strong>!<br><br>اختر من الأزرار أو اكتب سؤالك.</div></div>';
+
+    function formatMessage(text) {
+      if (!text) return '';
+      return text.replace(/\*(.*?)\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>').replace(/─+/g, '─'.repeat(25));
+    }
+
+    function addMessage(text, isUser) {
+      var d = document.createElement('div');
+      d.className = 'message ' + (isUser ? 'user-msg' : 'bot-msg');
+      d.innerHTML = '<div class="msg-bubble">' + formatMessage(text) + '</div>';
+      chatMessages.appendChild(d);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function showTyping() {
+      var d = document.createElement('div');
+      d.className = 'message bot-msg';
+      d.id = 'typingIndicator';
+      d.innerHTML = '<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+      chatMessages.appendChild(d);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function removeTyping() {
+      var el = document.getElementById('typingIndicator');
+      if (el) el.remove();
+    }
+
+    function setInputEnabled(on) {
+      document.getElementById('userInput').disabled = !on;
+      document.getElementById('sendBtn').disabled = !on;
+      isWaiting = !on;
+      if (on) document.getElementById('userInput').focus();
+    }
+
+    async function sendMessage() {
+      var input = document.getElementById('userInput');
+      var text = input.value.trim();
+      if (!text || isWaiting) return;
+      
+      addMessage(text, true);
+      input.value = '';
+      setInputEnabled(false);
+      showTyping();
+      
+      try {
+        var ctrl = new AbortController();
+        var t = setTimeout(function() { ctrl.abort(); }, 15000);
+        
+        var resp = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ chat_id: chatId, message: text, username: currentUser.username }),
+          signal: ctrl.signal
+        });
+        
+        clearTimeout(t);
+        var data = await resp.json();
+        
+        setTimeout(function() {
+          removeTyping();
+          if (data.reply) addMessage(data.reply, false);
+          setInputEnabled(true);
+        }, 500);
+      } catch (e) {
+        setTimeout(function() {
+          removeTyping();
+          addMessage('❌ خطأ في الاتصال', false);
+          setInputEnabled(true);
+        }, 500);
+      }
+    }
+
+    function quickAction(action) {
+      document.getElementById('userInput').value = action;
+      sendMessage();
+    }
+
+    // Events
+    document.getElementById('sendBtn').addEventListener('click', sendMessage);
+    document.getElementById('logoutBtn').addEventListener('click', function() {
+      localStorage.removeItem('pen_user');
+      window.location.href = '/';
+    });
+
+    document.getElementById('userInput').addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') sendMessage();
+    });
+
+    // Quick buttons
+    document.querySelectorAll('.header-quick-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        quickAction(this.dataset.action);
+      });
+    });
+
+    // Cards
+    document.getElementById('cardExam').addEventListener('click', function() { quickAction('امتحان'); });
+    document.getElementById('cardQuiz').addEventListener('click', function() { quickAction('اختبرني'); });
+    document.getElementById('cardFocus').addEventListener('click', function() { quickAction('خطة التركيز'); });
+    document.getElementById('cardLevel').addEventListener('click', function() { quickAction('مستوايا'); });
+
+    document.getElementById('userInput').focus();
+  </script>
+</body>
+</html>
