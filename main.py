@@ -15,12 +15,13 @@ import base64
 import tempfile
 from datetime import datetime
 import hashlib
+import httpx
 
 # =========================================
 # APP
 # =========================================
 
-app = FastAPI(title="Pen Platform - V9 Professional")
+app = FastAPI(title="Pen Platform - V10 AI")
 
 app.add_middleware(
     CORSMiddleware,
@@ -30,7 +31,140 @@ app.add_middleware(
 )
 
 # =========================================
-# COMPLETE SKILL MAPPING - ALL ARABIC
+# CONFIG
+# =========================================
+
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
+AI_ENABLED = bool(OPENROUTER_API_KEY)
+
+# =========================================
+# HTTP CLIENT
+# =========================================
+
+HTTP_CLIENT = httpx.AsyncClient(
+    timeout=httpx.Timeout(15.0),
+    limits=httpx.Limits(max_keepalive_connections=5, max_connections=10)
+)
+
+# =========================================
+# AI EXPLANATION GENERATOR
+# =========================================
+
+async def generate_ai_explanation(question_text: str, user_answer: str, correct_answer: str, explanation: str, skill: str) -> str:
+    """Generate AI explanation using OpenRouter"""
+    if not AI_ENABLED:
+        return None
+    
+    skill_arabic = get_skill_arabic(skill)
+    
+    prompt = f"""أنت مدرس لغة عربية خبير للثانوية العامة في مصر. اشرح للطالب إجابته بأسلوب واضح ومختصر (3-5 أسطر).
+
+السؤال: {question_text[:300]}
+
+إجابة الطالب: {user_answer}
+الإجابة الصحيحة: {correct_answer}
+
+المهارة: {skill_arabic}
+
+الشرح الموجود: {explanation[:200] if explanation else 'لا يوجد'}
+
+المطلوب:
+1. اشرح لماذا الإجابة خطأ (أو صح) بأسلوب بسيط
+2. أعط قاعدة سريعة أو نصيحة للطالب
+3. استخدم أسلوب مشجع (زي مدرس حقيقي)
+4. خلي الشرح باللهجة المصرية أو عربي فصحى بسيط
+5. أقصى طول 4 أسطر
+
+الشرح:"""
+
+    try:
+        response = await HTTP_CLIENT.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            json={
+                "model": "google/gemini-2.0-flash-001",
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "أنت مدرس لغة عربية خبير. اشرح بطريقة مختصرة وواضحة ومشجعة. استخدم لغة بسيطة."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                "temperature": 0.7,
+                "max_tokens": 200
+            },
+            headers={
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type": "application/json"
+            }
+        )
+        
+        data = response.json()
+        ai_text = data["choices"][0]["message"]["content"]
+        return ai_text.strip()
+        
+    except Exception as e:
+        print(f"❌ AI Error: {e}")
+        return None
+
+async def generate_ai_feedback(question_text: str, user_answer: str, correct_answer: str, is_correct: bool, skill: str, explanation: str) -> str:
+    """Generate AI feedback for the answer"""
+    if not AI_ENABLED:
+        return None
+    
+    skill_arabic = get_skill_arabic(skill)
+    result_text = "صحيحة" if is_correct else "خاطئة"
+    
+    prompt = f"""أنت مدرس لغة عربية مشجع للثانوية العامة. الطالب جاوب إجابة {result_text}.
+
+السؤال: {question_text[:250]}
+إجابة الطالب: {user_answer}
+الإجابة الصحيحة: {correct_answer}
+المهارة: {skill_arabic}
+
+المطلوب (3-4 أسطر فقط):
+{"- امدح الطالب وشجعه" if is_correct else "- اشرح بلطف لماذا الإجابة خطأ"}
+- أعط نصيحة سريعة أو قاعدة
+- استخدم أسلوب دافئ ومشجع
+- باللهجة المصرية أو عربي بسيط
+
+الرد:"""
+
+    try:
+        response = await HTTP_CLIENT.post(
+            "https://openrouter.ai/api/v1/chat/completions",
+            json={
+                "model": "google/gemini-2.0-flash-001",
+                "messages": [
+                    {
+                        "role": "system",
+                        "content": "أنت مدرس لغة عربية مشجع. ردودك مختصرة ودافئة ومفيدة."
+                    },
+                    {
+                        "role": "user",
+                        "content": prompt
+                    }
+                ],
+                "temperature": 0.8,
+                "max_tokens": 180
+            },
+            headers={
+                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                "Content-Type": "application/json"
+            }
+        )
+        
+        data = response.json()
+        return data["choices"][0]["message"]["content"].strip()
+        
+    except Exception as e:
+        print(f"❌ AI Feedback Error: {e}")
+        return None
+
+# =========================================
+# COMPLETE SKILL MAPPING
 # =========================================
 
 SKILL_ALIASES = {
@@ -47,51 +181,24 @@ SKILL_ALIASES = {
     "تعبير": ["تعبير", "كتابة", "إنشاء"],
 }
 
-# Complete Arabic-only skill mapping
 SKILL_ARABIC_MAP = {
-    # English → Arabic
-    "parsing": "الإعراب",
-    "interpretation": "استنتاج",
-    "evidence_extraction": "دليل",
-    "literary_school_identification": "أدب",
-    "text_structure_analysis": "بناء النص",
-    "topical_coherence": "ترابط الأفكار",
-    "grammar_usage": "نحو",
-    "application": "تطبيق",
-    "implicit_reasoning": "استنتاج",
-    "inference": "استدلال",
-    "deduction": "استنباط",
-    "synthesis": "تحليل",
-    "prediction": "توقع",
-    "emotional_tone_inference": "نبرة",
-    "grammar_identification": "نحو",
-    "grammar_transformation": "تحويل",
-    "grammar_rules_application": "تطبيق نحوي",
-    "morphology": "صرف",
-    "poetic_imagery_analysis": "صورة بيانية",
-    "rhetoric_analysis": "بلاغة",
-    "rhetorical_device_analysis": "محسنات",
-    "idea_identification": "فكرة",
-    "main_idea_detection": "فكرة رئيسية",
-    "vocabulary_context": "مفردات",
-    "contextual_vocabulary": "مفردات",
-    "definition_extraction": "معنى",
-    "compare_and_contrast": "مقارنة",
-    "evaluation": "تقييم",
-    "text_analysis": "تحليل نص",
-    "critical_reading": "قراءة",
-    "purpose_identification": "غرض",
-    "syntax_analysis": "إعراب",
-    "semantic_analysis": "دلالة",
-    "stylistic_analysis": "أسلوب",
-    "logical_structure": "منطق",
-    "argumentation": "حجاج",
-    "coherence": "ترابط",
-    "cohesion": "تماسك",
-    "text_typology": "أنماط",
-    "discourse_analysis": "خطاب",
+    "parsing": "الإعراب", "interpretation": "استنتاج", "evidence_extraction": "دليل",
+    "literary_school_identification": "أدب", "text_structure_analysis": "بناء النص",
+    "topical_coherence": "ترابط الأفكار", "grammar_usage": "نحو", "application": "تطبيق",
+    "implicit_reasoning": "استنتاج", "inference": "استدلال", "deduction": "استنباط",
+    "synthesis": "تحليل", "prediction": "توقع", "emotional_tone_inference": "نبرة",
+    "grammar_identification": "نحو", "grammar_transformation": "تحويل",
+    "grammar_rules_application": "تطبيق نحوي", "morphology": "صرف",
+    "poetic_imagery_analysis": "صورة بيانية", "rhetoric_analysis": "بلاغة",
+    "rhetorical_device_analysis": "محسنات", "idea_identification": "فكرة",
+    "main_idea_detection": "فكرة رئيسية", "vocabulary_context": "مفردات",
+    "contextual_vocabulary": "مفردات", "definition_extraction": "معنى",
+    "compare_and_contrast": "مقارنة", "evaluation": "تقييم", "text_analysis": "تحليل نص",
+    "critical_reading": "قراءة", "purpose_identification": "غرض",
+    "syntax_analysis": "إعراب", "semantic_analysis": "دلالة", "stylistic_analysis": "أسلوب",
+    "logical_structure": "منطق", "argumentation": "حجاج", "coherence": "ترابط",
+    "cohesion": "تماسك", "text_typology": "أنماط", "discourse_analysis": "خطاب",
     "morphology_identification": "صرف",
-    # Arabic → Arabic (normalize)
     "بلاغة": "بلاغة", "نحو": "نحو", "إعراب": "الإعراب", "صرف": "صرف",
     "أدب": "أدب", "قراءة": "قراءة", "مفردات": "مفردات", "استنتاج": "استنتاج",
     "فكرة": "فكرة", "دليل": "دليل", "غرض": "غرض", "مقارنة": "مقارنة",
@@ -121,24 +228,18 @@ SKILL_TEACHING_TIPS = {
     "بلاغة": {
         "استعارة مكنية": "اسأل: هل المشبه موجود؟ هل فيه صفات المشبه به؟",
         "استعارة تصريحية": "اسأل: هل المشبه به مذكور بوضوح؟",
-        "تشبيه": "هل فيه أداة تشبيه (كأن، مثل، يشبه)؟",
     },
     "صرف": {
         "مصدر": "كل مصدر على وزن (مفاعلة) من فعل رباعي (فاعل)",
-        "اشتقاق": "جاور ← مجاورة، شارك ← مشاركة، قاتل ← مقاتلة",
-    },
-    "نحو": {
-        "إعراب": "حدد موقع الكلمة في الجملة أولاً",
-        "ممنوع من الصرف": "العلم + العجمة + زيادة الألف والنون",
     },
 }
 
 SKILL_RECOMMENDATIONS = {
     "بلاغة": ["التشبيه", "الاستعارة المكنية", "الاستعارة التصريحية", "المجاز المرسل", "الكناية"],
     "نحو": ["المبتدأ والخبر", "الفاعل", "المفعول به", "الحال", "التمييز"],
-    "الإعراب": ["إعراب الفعل المضارع", "الأسماء الخمسة", "المثنى والجمع", "الحال وأنواعها"],
+    "الإعراب": ["إعراب الفعل المضارع", "الأسماء الخمسة", "المثنى والجمع"],
     "صرف": ["المجرد والمزيد", "المصادر", "المشتقات", "اسم الفاعل", "اسم المفعول"],
-    "أدب": ["المدرسة الكلاسيكية", "المدرسة الرومانسية", "المدرسة الواقعية", "مدرسة الديوان"],
+    "أدب": ["المدرسة الكلاسيكية", "المدرسة الرومانسية", "المدرسة الواقعية"],
     "قراءة": ["تحليل النص", "استخراج الأفكار", "نقد المحتوى"],
     "مفردات": ["المعاني في السياق", "الترادف", "التضاد"],
     "استنتاج": ["الاستنتاج", "الاستدلال", "قراءة ما بين السطور"],
@@ -170,14 +271,6 @@ def get_skill_category(skill: str) -> str:
     for category in SKILL_ALIASES.keys():
         if arabic == category: return category
     return arabic
-
-def get_teaching_tip(skill: str) -> Optional[str]:
-    """Get teaching tip for a skill"""
-    arabic = get_skill_arabic(skill)
-    tips = SKILL_TEACHING_TIPS.get(arabic)
-    if tips:
-        return random.choice(list(tips.values())) if isinstance(tips, dict) else tips
-    return None
 
 # =========================================
 # STUDENT SERVICE
@@ -277,35 +370,23 @@ class StudentService:
     
     @classmethod
     def save_exam_result(cls, username: str, result: Dict):
-        correct = result.get("correct", 0)
-        total = result.get("total", 1)
+        correct = result.get("correct", 0); total = result.get("total", 1)
         percentage = int((correct / max(total, 1)) * 100)
         wrong_questions = result.get("wrong_questions", [])
         wrong_skills = result.get("wrong_skills", [])
         all_skills = result.get("all_skills", [])
-        
         user_data = cls.get_user_data(username)
         skill_stats = user_data.get("skill_stats", {})
-        skill_counter = Counter(all_skills)
-        wrong_skill_counter = Counter(wrong_skills)
-        
+        skill_counter = Counter(all_skills); wrong_skill_counter = Counter(wrong_skills)
         for skill in set(all_skills + wrong_skills):
             if skill not in skill_stats: skill_stats[skill] = {"correct": 0, "wrong": 0, "total": 0}
             skill_stats[skill]["total"] = skill_stats[skill].get("total", 0) + skill_counter.get(skill, 0)
             skill_stats[skill]["wrong"] = skill_stats[skill].get("wrong", 0) + wrong_skill_counter.get(skill, 0)
             skill_stats[skill]["correct"] = skill_stats[skill]["total"] - skill_stats[skill]["wrong"]
-        
         recent_exams = user_data.get("recent_exams", [])
         recent_exams.append({"correct": correct, "total": total, "percentage": percentage, "wrong_skills": wrong_skills, "wrong_questions": wrong_questions, "timestamp": cls._now_ts()})
         if len(recent_exams) > 10: recent_exams = recent_exams[-10:]
-        
-        cls.update_user_data(username, {
-            "skill_stats": skill_stats, "total_exams": user_data.get("total_exams", 0) + 1,
-            "total_score": user_data.get("total_score", 0) + correct,
-            "total_questions_answered": user_data.get("total_questions_answered", 0) + total,
-            "recent_exams": recent_exams, "last_wrong_skills": list(set(wrong_skills))
-        })
-        
+        cls.update_user_data(username, {"skill_stats": skill_stats, "total_exams": user_data.get("total_exams", 0) + 1, "total_score": user_data.get("total_score", 0) + correct, "total_questions_answered": user_data.get("total_questions_answered", 0) + total, "recent_exams": recent_exams, "last_wrong_skills": list(set(wrong_skills))})
         if cls._rtdb:
             try: cls._rtdb.reference(f"students/{username}/exams").push({"score": correct, "total": total, "percentage": percentage, "wrong_questions": wrong_questions, "wrong_skills": wrong_skills, "timestamp": cls._now_ts()})
             except: pass
@@ -321,8 +402,7 @@ class StudentService:
     @classmethod
     def get_wrong_questions(cls, username: str) -> List[str]:
         wrong_qs = []
-        user_data = cls.get_user_data(username)
-        for exam in user_data.get("recent_exams", []): wrong_qs.extend(exam.get("wrong_questions", []))
+        for exam in cls.get_user_data(username).get("recent_exams", []): wrong_qs.extend(exam.get("wrong_questions", []))
         if cls._rtdb:
             try:
                 exams = cls._rtdb.reference(f"students/{username}/exams").get() or {}
@@ -331,8 +411,7 @@ class StudentService:
         return list(set(wrong_qs))
     
     @classmethod
-    def get_last_wrong_skills(cls, username: str) -> List[str]:
-        return cls.get_user_data(username).get("last_wrong_skills", [])
+    def get_last_wrong_skills(cls, username: str) -> List[str]: return cls.get_user_data(username).get("last_wrong_skills", [])
     
     @classmethod
     def get_leaderboard(cls) -> List[Dict]:
@@ -351,26 +430,21 @@ class StudentService:
     
     @classmethod
     def report_question(cls, question_id: str, username: str):
-        report = {"question_id": question_id, "reported_by": username, "timestamp": cls._now_ts()}
-        cls._local_db["reported_questions"].append(report)
+        cls._local_db["reported_questions"].append({"question_id": question_id, "reported_by": username, "timestamp": cls._now_ts()})
         if cls._rtdb:
-            try: cls._rtdb.reference(f"reported_questions/{question_id}").push(report)
+            try: cls._rtdb.reference(f"reported_questions/{question_id}").push({"question_id": question_id, "reported_by": username})
             except: pass
 
 StudentService.initialize()
 
 # =========================================
-# CONFIG
+# DATA LOADING
 # =========================================
 
 MAX_QUESTION_LENGTH = 350
 MAX_PASSAGE_PREVIEW = 150
 SESSION_TIMEOUT = 900
 RATE_LIMIT_SECONDS = 0.3
-
-# =========================================
-# DATA LOADING
-# =========================================
 
 BASE_DIR = Path(__file__).resolve().parent
 DATA_DIR = BASE_DIR / "data"
@@ -490,11 +564,6 @@ class ExamSession:
     def is_expired(self) -> bool: return time.time() - self.last_activity > SESSION_TIMEOUT
     def has_next(self) -> bool: return self.current_index < len(self.questions)
     
-    def get_streak_emoji(self) -> str:
-        if self.consecutive_correct >= 3: return "🔥"
-        elif self.consecutive_correct >= 2: return "⭐"
-        return ""
-    
     def check_answer(self, user_answer: int, username: str = None) -> Dict:
         self.last_activity = time.time()
         if not self.has_next(): return {"error": "no_more_questions"}
@@ -518,7 +587,7 @@ class ExamSession:
             choice = choices[correct_idx]
             correct_answer_text = choice.get("text", str(choice)) if isinstance(choice, dict) else str(choice)
         if username: StudentService.add_asked_question(username, question.get("question_id", ""))
-        result = {"correct": is_correct, "correct_answer": correct_answer_text, "explanation": question.get("explanation", ""), "current_score": self.score, "question_number": self.current_index + 1, "total": self.total, "section_title": question.get("section_title", ""), "skill": question.get("skill", "عام"), "question_id": question.get("question_id", ""), "user_answer_idx": user_idx, "choices": choices, "consecutive_correct": self.consecutive_correct, "streak": self.streak}
+        result = {"correct": is_correct, "correct_answer": correct_answer_text, "explanation": question.get("explanation", ""), "current_score": self.score, "question_number": self.current_index + 1, "total": self.total, "section_title": question.get("section_title", ""), "skill": question.get("skill", "عام"), "question_id": question.get("question_id", ""), "user_answer_idx": user_idx, "choices": choices, "consecutive_correct": self.consecutive_correct, "streak": self.streak, "question_text": question.get("prompt", question.get("question", ""))}
         self.current_index += 1
         if not self.has_next(): self.active = False
         return result
@@ -574,39 +643,31 @@ def get_questions_by_skills(questions: List[Dict], skills: List[str], count: int
     return matching
 
 def get_passage_preview(q: Dict) -> str:
-    """Short passage preview"""
     section = q.get("section_title", "")
     passage = q.get("passage", "")
-    if section:
-        return f"📖 *من {section[:60]}*"
+    if section: return f"📖 *من {section[:60]}*"
     if passage:
         preview = passage[:MAX_PASSAGE_PREVIEW].replace("\n", " ")
         return f"📖 *{preview}...*"
     return ""
 
 def format_professional_question(q: Dict, session: ExamSession) -> str:
-    """Professional one-question format"""
     msg = ""
-    
-    # Context preview
     preview = get_passage_preview(q)
     if preview: msg += f"{preview}\n\n"
     
-    # Header
     question_num = session.current_index + 1
     skill_display = get_skill_display(q.get("skill", "عام"))
-    streak_emoji = session.get_streak_emoji()
+    streak_emoji = "🔥" if session.consecutive_correct >= 3 else "⭐" if session.consecutive_correct >= 2 else ""
     
     msg += f"🎯 *سؤال {question_num}/{session.total}* | {skill_display}\n"
     msg += f"📊 *التقدم:* {question_num}/{session.total} | ⭐ *النقاط:* {session.score}"
     if streak_emoji: msg += f" | {streak_emoji} *سلسلة:* {session.consecutive_correct}"
     msg += "\n\n"
     
-    # Question
     question_text = str(q.get("prompt", q.get("question", "سؤال")))[:MAX_QUESTION_LENGTH]
     msg += f"*{question_text}*\n\n"
     
-    # Choices
     choices = q.get("choices", [])
     if choices:
         for idx, choice in enumerate(choices, 1):
@@ -616,13 +677,12 @@ def format_professional_question(q: Dict, session: ExamSession) -> str:
     msg += "\n✍️ *اكتب رقم الإجابة* | 📄 `النص` للعرض"
     return msg
 
-def format_teacher_feedback(result: Dict, session: ExamSession) -> str:
-    """Teacher-style feedback with analysis"""
+async def format_teacher_feedback(result: Dict, session: ExamSession) -> str:
+    """Teacher feedback with AI explanation"""
     msg = ""
     
     if result["correct"]:
-        # Varied praise
-        praises = ["🎉 *ممتاز!*", "🔥 *إجابة قوية!*", "👏 *واضح إنك فاهم!*", "💯 *أحسنت!*", "✅ *صحيح تماماً!*"]
+        praises = ["🎉 *ممتاز!*", "🔥 *إجابة قوية!*", "👏 *واضح إنك فاهم!*", "💯 *أحسنت!*"]
         msg += f"{random.choice(praises)}\n\n"
         
         if result.get("consecutive_correct", 0) >= 3:
@@ -630,7 +690,6 @@ def format_teacher_feedback(result: Dict, session: ExamSession) -> str:
     else:
         msg += "❌ *ليست الإجابة الصحيحة*\n\n"
         
-        # Show what student chose
         user_idx = result.get("user_answer_idx", -1)
         choices = result.get("choices", [])
         if 0 <= user_idx < len(choices):
@@ -638,46 +697,47 @@ def format_teacher_feedback(result: Dict, session: ExamSession) -> str:
             user_text = choice.get("text", str(choice)) if isinstance(choice, dict) else str(choice)
             msg += f"✍️ *اخترت:* {user_idx+1}️⃣ {user_text}\n\n"
         
-        # Analyze the mistake
-        skill = result.get("skill", "عام")
-        skill_arabic = get_skill_arabic(skill)
-        
-        if skill_arabic in ["صورة بيانية", "بلاغة"]:
-            msg += "💡 *حلل تفكيرك:*\n"
-            msg += "• اسأل نفسك: هل المشبه موجود في الجملة؟\n"
-            msg += "• هل فيه أداة تشبيه؟\n"
-            msg += "• هل الصفة من صفات المشبه به؟\n\n"
-        
-        elif skill_arabic in ["صرف", "نحو", "الإعراب"]:
-            msg += "💡 *راجع القاعدة:*\n"
-            msg += "• حدد موقع الكلمة في الجملة أولاً\n"
-            msg += "• شوف وزن الكلمة وفعلها الأصلي\n\n"
-        
-        # Correct answer
         msg += f"✅ *الإجابة الصحيحة:* {result['correct_answer']}\n\n"
-        
-        # Teaching tip
-        tip = get_teaching_tip(skill)
-        if tip:
-            msg += f"📌 *قاعدة سريعة:*\n{tip}\n\n"
-        
-        # Explanation
-        if result["explanation"] and len(str(result["explanation"])) > 10:
-            explanation = str(result["explanation"])[:300]
-            msg += f"📝 *الشرح:*\n{explanation}\n\n"
     
-    # Score
+    # Try AI explanation first
+    ai_explanation = None
+    if AI_ENABLED:
+        user_idx = result.get("user_answer_idx", -1)
+        choices = result.get("choices", [])
+        user_answer_text = ""
+        if 0 <= user_idx < len(choices):
+            choice = choices[user_idx]
+            user_answer_text = choice.get("text", str(choice)) if isinstance(choice, dict) else str(choice)
+        
+        ai_explanation = await generate_ai_feedback(
+            result.get("question_text", ""),
+            user_answer_text,
+            result["correct_answer"],
+            result["correct"],
+            result.get("skill", "عام"),
+            result.get("explanation", "")
+        )
+    
+    if ai_explanation:
+        msg += f"🤖 *شرح المدرس:*\n{ai_explanation}\n\n"
+    else:
+        # Fallback to built-in tips
+        skill = result.get("skill", "عام")
+        tip = SKILL_TEACHING_TIPS.get(get_skill_arabic(skill))
+        if tip:
+            msg += f"📌 *قاعدة:*\n{random.choice(list(tip.values())) if isinstance(tip, dict) else tip}\n\n"
+        
+        if result["explanation"] and len(str(result["explanation"])) > 10:
+            msg += f"📝 *الشرح:*\n{str(result['explanation'])[:300]}\n\n"
+    
     msg += f"📊 *نتيجتك:* {result['current_score']}/{result['question_number']}"
-    streak = result.get("consecutive_correct", 0)
-    if streak >= 2: msg += f" | 🔥 *سلسلة:* {streak}"
+    if result.get("consecutive_correct", 0) >= 2: msg += f" | 🔥 *سلسلة:* {result['consecutive_correct']}"
     msg += "\n"
     
     return msg
 
 def format_professional_report(session: ExamSession, username: str = None) -> str:
-    """Professional final report"""
-    final_score = session.score
-    total = session.total
+    final_score = session.score; total = session.total
     percentage = int((final_score / total) * 100) if total > 0 else 0
     
     if username:
@@ -690,13 +750,10 @@ def format_professional_report(session: ExamSession, username: str = None) -> st
     elif percentage >= 50: emoji, grade = "📚", "مقبول"
     else: emoji, grade = "💪", "ضعيف"
     
-    msg = f"🏁 *انتهى التدريب*\n\n"
-    msg += f"📊 *النتيجة:* {final_score}/{total} | 📈 *{percentage}%*\n"
-    msg += f"🏅 *التقدير:* {emoji} {grade}\n"
+    msg = f"🏁 *انتهى التدريب*\n\n📊 *النتيجة:* {final_score}/{total} | 📈 *{percentage}%*\n🏅 *التقدير:* {emoji} {grade}\n"
     if session.streak >= 2: msg += f"🔥 *أفضل سلسلة:* {session.streak}\n"
     msg += "\n"
     
-    # Skill analysis
     skill_perf = {}
     for i, skill in enumerate(session.all_skills):
         is_wrong = skill in session.wrong_skills
@@ -713,28 +770,16 @@ def format_professional_report(session: ExamSession, username: str = None) -> st
     
     if strengths or weaknesses:
         msg += "📈 *تقرير مستواك*\n\n"
-        if strengths:
-            msg += "✅ *نقاط قوتك:*\n"
-            for s, p in strengths: msg += f"   {get_skill_display(s)}\n"
-            msg += "\n"
+        if strengths: msg += "✅ *نقاط قوتك:*\n" + "\n".join([f"   {get_skill_display(s)}" for s, p in strengths]) + "\n\n"
         if weaknesses:
-            msg += "⚠️ *تحتاج تحسين:*\n"
-            for s, p in weaknesses: msg += f"   {get_skill_display(s)}\n"
-            
+            msg += "⚠️ *تحتاج تحسين:*\n" + "\n".join([f"   {get_skill_display(s)}" for s, p in weaknesses]) + "\n"
             if weaknesses:
-                weakest = weaknesses[0][0]
-                weak_arabic = get_skill_arabic(weakest)
-                current_pct = weaknesses[0][1]
-                improved_pct = min(current_pct + 25, 90)
-                msg += f"\n📚 *لو ذاكرت {weak_arabic} اليوم*\n"
-                msg += f"درجتك المتوقعة: {percentage}% ➜ {int(percentage + (improved_pct - current_pct) * 0.5)}%\n"
-            msg += "\n"
+                weak_arabic = get_skill_arabic(weaknesses[0][0])
+                msg += f"\n📚 *لو ذاكرت {weak_arabic} اليوم*\nدرجتك المتوقعة: {percentage}% ➜ {min(percentage + 15, 95)}%\n\n"
     
     msg += "🎯 *أنصحك:*\n"
-    if weaknesses:
-        msg += f"• `اختبرني في {get_skill_arabic(weaknesses[0][0])}`\n"
+    if weaknesses: msg += f"• `اختبرني في {get_skill_arabic(weaknesses[0][0])}`\n"
     msg += "• `تدريب سريع` | `علاج أخطائي` | `خطة التركيز`"
-    
     return msg
 
 def get_smart_greeting(username: str, user_data: Dict) -> str:
@@ -744,6 +789,7 @@ def get_smart_greeting(username: str, user_data: Dict) -> str:
         return f"""🤖 *Pen*: أهلاً يا {name} 👋
 
 مدرسك الشخصي في العربي 📚
+{'🧠 *مدعوم بالذكاء الاصطناعي*' if AI_ENABLED else ''}
 
 ⚡ *ابدأ:* `تدريب سريع` | `اختبرني` | `تحدي`
 📚 *مراجعة:* `بلاغة` `نحو` `أدب` `قراءة`"""
@@ -776,7 +822,6 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
     try:
         if is_rate_limited(chat_id): return ""
         
-        # Active exam
         if chat_id in user_sessions:
             session = user_sessions[chat_id]
             if session.active and not session.is_expired():
@@ -808,7 +853,7 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
                 
                 if "error" in result: del user_sessions[chat_id]; return "🔄 *انتهى*\n`تدريب سريع`"
                 
-                response = format_teacher_feedback(result, session)
+                response = await format_teacher_feedback(result, session)
                 
                 if session.active and session.has_next():
                     response += "\n➡️ " + format_professional_question(session.questions[session.current_index], session)
@@ -876,14 +921,12 @@ def start_exam(chat_id: str, level: str = "medium", skill_query: str = None, use
         if not wrong_ids: return "✅ *مافيش أخطاء!* 🎉\n⚡ `تدريب سريع`"
         filtered = [q for q in MCQ_QUESTIONS if q.get("question_id", "") in wrong_ids]
         if not filtered: return "✅ *مافيش أخطاء!*"
-        mode = "review"
     elif skill_query:
         filtered = filter_by_skills_exact(MCQ_QUESTIONS if MCQ_QUESTIONS else ALL_QUESTIONS, skill_query)
         if not filtered:
             available = set()
             for q in ALL_QUESTIONS[:30]: available.add(get_skill_display(q.get("skill", "عام")))
             return f"❌ *مفيش أسئلة*\n\n🎯 *جرب:*\n" + "\n".join([f"• {s}" for s in sorted(available)[:8]])
-        mode = "skill"
     else:
         if username and count >= 5:
             last_wrong = StudentService.get_last_wrong_skills(username)
@@ -892,9 +935,8 @@ def start_exam(chat_id: str, level: str = "medium", skill_query: str = None, use
                 if focused:
                     session = ExamSession(focused, level, "smart")
                     user_sessions[chat_id] = session
-                    return "🎯 *سأركز على أخطائك السابقة*\n\n" + format_professional_question(focused[0], session)
+                    return "🎯 *سأركز على أخطائك*\n\n" + format_professional_question(focused[0], session)
         filtered = MCQ_QUESTIONS.copy() if MCQ_QUESTIONS else ALL_QUESTIONS.copy()
-        mode = "normal"
     
     if level in ["easy", "medium", "hard"]:
         level_filtered = [q for q in filtered if q.get("difficulty") == level]
@@ -904,14 +946,9 @@ def start_exam(chat_id: str, level: str = "medium", skill_query: str = None, use
     selected = get_unasked_questions(filtered, username, count) if username and not focus_on_wrong else random.sample(filtered, min(count, len(filtered)))
     if len(selected) < 2: return "❌ *عدد غير كافي*"
     
-    session = ExamSession(selected, level, mode)
+    session = ExamSession(selected, level)
     user_sessions[chat_id] = session
-    
-    msg = ""
-    if mode == "review": msg = "📝 *مراجعة أخطائك*\n\n"
-    elif mode == "skill": msg = f"🎯 *تدريب {skill_query}*\n\n"
-    
-    return msg + format_professional_question(selected[0], session)
+    return format_professional_question(selected[0], session)
 
 def get_skill_menu() -> str:
     return """📚 *اختر مهارة:*
@@ -936,8 +973,7 @@ def generate_exam(level: str = None, count: int = 5, username: str = None) -> st
         exam += f"*{i}.* {get_skill_display(q.get('skill', 'عام'))}\n{str(q.get('prompt', 'سؤال'))[:MAX_QUESTION_LENGTH]}\n"
         if q.get("choices"):
             for idx, choice in enumerate(q.get("choices", []), 1):
-                choice_text = choice.get("text", str(choice)) if isinstance(choice, dict) else str(choice)
-                exam += f"   {idx}️⃣ {choice_text}\n"
+                exam += f"   {idx}️⃣ {choice.get('text', str(choice)) if isinstance(choice, dict) else str(choice)}\n"
             exam += "\n"
     exam += f"{'─' * 20}\n💪 *ربنا معاك*"
     return exam
@@ -957,8 +993,6 @@ def generate_focus_plan(username: str = None) -> str:
                 for skill, count in wrong_counter.most_common(5):
                     pct = int((count / max(total_recent, 1)) * 100)
                     msg += f"   {get_skill_display(skill)}: {pct}%\n"
-                    recs = SKILL_RECOMMENDATIONS.get(get_skill_category(skill), [])
-                    if recs: msg += f"      📚 {' - '.join(recs[:2])}\n"
                 msg += f"\n⚡ `علاج أخطائي`\n"
             else: msg += "✅ *كل إجاباتك صحيحة!*\n⚡ `تحدي`\n\n"
         else: msg += "📝 *لسه مفيش بيانات*\n⚡ `تدريب سريع`\n\n"
@@ -992,7 +1026,8 @@ def get_leaderboard_text() -> str:
     return msg
 
 def get_default_greeting() -> str:
-    return """🤖 *Pen*: أهلاً بك 👋
+    return f"""🤖 *Pen*: أهلاً بك 👋
+{'🧠 *مدعوم بالذكاء الاصطناعي*' if AI_ENABLED else ''}
 
 ⚡ `تدريب سريع` | `اختبرني` | `تحدي`
 📚 `بلاغة` `نحو` `أدب` `قراءة`"""
@@ -1005,9 +1040,7 @@ def get_default_greeting() -> str:
 async def register(request: Request):
     try:
         data = await request.json()
-        username = data.get("username", "").strip()
-        password = data.get("password", "").strip()
-        name = data.get("name", "").strip()
+        username = data.get("username", "").strip(); password = data.get("password", "").strip(); name = data.get("name", "").strip()
         if not username or not password: return JSONResponse({"error": "مطلوب"}, 400)
         if len(username) < 3: return JSONResponse({"error": "3 أحرف"}, 400)
         if len(password) < 6: return JSONResponse({"error": "6 أحرف"}, 400)
@@ -1020,8 +1053,7 @@ async def register(request: Request):
 async def login(request: Request):
     try:
         data = await request.json()
-        username = data.get("username", "").strip()
-        password = data.get("password", "").strip()
+        username = data.get("username", "").strip(); password = data.get("password", "").strip()
         if not username or not password: return JSONResponse({"error": "مطلوب"}, 400)
         result = StudentService.login_user(username, password)
         if "error" in result: return JSONResponse(result, 401)
@@ -1033,9 +1065,7 @@ async def login(request: Request):
 async def chat(request: Request):
     try:
         data = await request.json()
-        chat_id = data.get("chat_id", "")
-        message = data.get("message", "").strip()
-        username = data.get("username", "")
+        chat_id = data.get("chat_id", ""); message = data.get("message", "").strip(); username = data.get("username", "")
         if not message: return JSONResponse({"reply": ""})
         ACTIVE_USERS[chat_id] = username
         reply = await process_message(chat_id, message, username)
@@ -1046,7 +1076,7 @@ async def chat(request: Request):
 async def leaderboard(): return JSONResponse(StudentService.get_leaderboard())
 
 @app.get("/health")
-async def health(): return {"status": "healthy", "version": "v9-pro", "questions": len(ALL_QUESTIONS), "mcq": len(MCQ_QUESTIONS)}
+async def health(): return {"status": "healthy", "version": "v10-ai", "questions": len(ALL_QUESTIONS), "mcq": len(MCQ_QUESTIONS), "ai_enabled": AI_ENABLED}
 
 @app.get("/", response_class=HTMLResponse)
 async def auth_page():
@@ -1061,4 +1091,8 @@ async def app_page():
 @app.on_event("startup")
 async def startup_event():
     asyncio.create_task(cleanup_expired_sessions())
-    print(f"🚀 Pen V9 Professional | {len(ALL_QUESTIONS)} questions")
+    print(f"🚀 Pen V10 AI | {len(ALL_QUESTIONS)} questions | AI: {AI_ENABLED}")
+
+@app.on_event("shutdown")
+async def shutdown_event():
+    await HTTP_CLIENT.aclose()
