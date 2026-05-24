@@ -20,7 +20,7 @@ import hashlib
 # APP
 # =========================================
 
-app = FastAPI(title="Pen Platform - V7 UX")
+app = FastAPI(title="Pen Platform - V7 UX Fixed")
 
 app.add_middleware(
     CORSMiddleware,
@@ -30,70 +30,111 @@ app.add_middleware(
 )
 
 # =========================================
-# SKILL MAPPING (Arabic display only)
+# SKILL MAPPING - COMPLETE ARABIC DISPLAY
 # =========================================
 
-SKILL_EMOJI = {
-    "استنتاج": "🧠",
-    "نحو": "📝",
-    "إعراب": "📝",
-    "صرف": "📝",
-    "بلاغة": "✨",
-    "أدب": "📚",
-    "قراءة": "📖",
-    "مفردات": "📖",
-    "تعبير": "✍️",
-    "فكرة": "💡",
-    "دليل": "🔍",
-    "غرض": "🎯",
-    "مقارنة": "⚖️",
-    "تفسير": "💭",
-    "صورة": "🎨",
-    "مدارس": "🏛️",
-}
-
 SKILL_ALIASES = {
-    "بلاغة": ["بلاغة", "صورة بيانية", "محسنات بديعية", "تصوير", "لغة مجازية", "تشبيه", "استعارة", "كناية", "مجاز", "جناس", "طباق", "مقابلة", "سجع", "تورية", "أساليب"],
-    "نحو": ["نحو", "إعراب", "صرف", "تطبيقات نحوية", "تركيب", "تحليل نحوي", "بنية جملة", "اشتقاق", "مشتقات", "مصادر", "اسم فاعل", "اسم مفعول", "صيغ مبالغة", "مبتدأ", "خبر", "فاعل", "مفعول", "حال", "تمييز", "مضاف"],
-    "أدب": ["أدب", "مدارس أدبية", "تاريخ أدب", "حركات أدبية", "كلاسيكية", "رومانسية", "واقعية", "ديوان", "أبولو"],
-    "قراءة": ["قراءة", "قراءة نقدية", "فهم قرائي", "تحليل نص", "تحديد فكرة"],
-    "مفردات": ["مفردات", "معاني", "ترادف", "تضاد", "معنى", "كلمات"],
-    "استنتاج": ["استنتاج", "استدلال", "استنباط", "تحليل", "تركيب"],
-    "فكرة": ["فكرة", "فكرة رئيسية", "مغزى", "أفكار"],
-    "دليل": ["دليل", "أدلة", "شاهد", "قرينة", "برهان"],
-    "غرض": ["غرض", "هدف", "رسالة"],
-    "مقارنة": ["مقارنة", "موازنة", "شبه", "اختلاف"],
-    "تفسير": ["تفسير", "شرح", "توضيح"],
-    "صورة": ["صورة", "تصوير", "تشبيه", "استعارة", "كناية"],
-    "مدارس": ["مدارس", "مدرسة"],
+    "بلاغة": [
+        "بلاغة", "صورة بيانية", "محسنات بديعية", "تصوير", "لغة مجازية",
+        "تشبيه", "استعارة", "كناية", "مجاز", "جناس", "طباق", "مقابلة", "سجع", "تورية", "أساليب",
+        "poetic_imagery_analysis", "rhetoric_analysis", "rhetorical_device_analysis",
+        "imagery", "rhetoric", "figurative_language"
+    ],
+    "نحو": [
+        "نحو", "إعراب", "صرف", "تطبيقات نحوية", "تركيب", "تحليل نحوي",
+        "بنية جملة", "اشتقاق", "مشتقات", "مصادر", "اسم فاعل", "اسم مفعول",
+        "صيغ مبالغة", "مبتدأ", "خبر", "فاعل", "مفعول", "حال", "تمييز", "مضاف",
+        "grammar", "parsing", "morphology", "syntax", "grammar_identification",
+        "grammar_transformation", "grammar_rules_application"
+    ],
+    "أدب": [
+        "أدب", "مدارس أدبية", "تاريخ أدب", "حركات أدبية",
+        "كلاسيكية", "رومانسية", "واقعية", "ديوان", "أبولو",
+        "literary_school_identification", "literature", "literary_history"
+    ],
+    "قراءة": [
+        "قراءة", "قراءة نقدية", "فهم قرائي", "تحليل نص", "تحديد فكرة",
+        "reading", "critical_reading", "reading_comprehension", "text_analysis",
+        "idea_identification", "main_idea_detection"
+    ],
+    "مفردات": [
+        "مفردات", "معاني", "ترادف", "تضاد", "معنى", "كلمات",
+        "vocabulary", "vocabulary_context", "definition_extraction", "word_meaning",
+        "contextual_vocabulary"
+    ],
+    "استنتاج": [
+        "استنتاج", "استدلال", "استنباط", "تحليل", "تركيب",
+        "implicit_reasoning", "inference", "deduction", "synthesis", "prediction",
+        "emotional_tone_inference"
+    ],
+    "فكرة": ["فكرة", "فكرة رئيسية", "مغزى", "أفكار", "main_idea", "central_idea"],
+    "دليل": ["دليل", "أدلة", "شاهد", "قرينة", "برهان", "evidence_extraction", "textual_evidence"],
+    "غرض": ["غرض", "هدف", "رسالة", "purpose_identification", "author_purpose"],
+    "مقارنة": ["مقارنة", "موازنة", "شبه", "اختلاف", "compare_and_contrast", "comparison"],
+    "تفسير": ["تفسير", "شرح", "توضيح", "interpretation", "explanation"],
+    "تعبير": ["تعبير", "كتابة", "إنشاء", "expression", "writing", "composition"],
 }
 
-def resolve_skills(query: str) -> List[str]:
-    query_lower = query.lower().strip()
-    for arabic_name, skills in SKILL_ALIASES.items():
-        if arabic_name in query_lower:
-            return skills
-    return []
+SKILL_ARABIC_MAP = {
+    "implicit_reasoning": "استنتاج",
+    "inference": "استدلال", 
+    "deduction": "استنباط",
+    "synthesis": "تحليل وتركيب",
+    "prediction": "توقع",
+    "emotional_tone_inference": "استنتاج النبرة",
+    "parsing": "إعراب",
+    "grammar_identification": "تحديد القاعدة",
+    "grammar_transformation": "تحويل نحوي",
+    "grammar_rules_application": "تطبيق نحوي",
+    "morphology": "صرف",
+    "poetic_imagery_analysis": "صورة بيانية",
+    "rhetoric_analysis": "بلاغة",
+    "rhetorical_device_analysis": "محسنات بديعية",
+    "literary_school_identification": "مدارس أدبية",
+    "evidence_extraction": "استخراج دليل",
+    "idea_identification": "تحديد فكرة",
+    "main_idea_detection": "فكرة رئيسية",
+    "vocabulary_context": "مفردات",
+    "contextual_vocabulary": "مفردات سياقية",
+    "definition_extraction": "استخراج معنى",
+    "compare_and_contrast": "مقارنة",
+    "interpretation": "تفسير",
+    "evaluation": "تقييم",
+    "application": "تطبيق",
+    "text_analysis": "تحليل نص",
+    "critical_reading": "قراءة نقدية",
+    "purpose_identification": "تحديد غرض",
+    "بلاغة": "بلاغة",
+    "نحو": "نحو",
+    "إعراب": "إعراب",
+    "صرف": "صرف",
+    "أدب": "أدب",
+    "قراءة": "قراءة",
+    "مفردات": "مفردات",
+    "استنتاج": "استنتاج",
+    "فكرة": "فكرة",
+    "دليل": "دليل",
+    "غرض": "غرض",
+    "مقارنة": "مقارنة",
+    "تفسير": "تفسير",
+    "تعبير": "تعبير",
+}
 
-def get_skill_display(skill: str) -> str:
-    """Get Arabic display name with emoji"""
-    if not skill or skill == "عام":
-        return "📖 عام"
-    
-    # Try to find matching category
-    for category, skills in SKILL_ALIASES.items():
-        if skill in skills:
-            emoji = SKILL_EMOJI.get(category, "📖")
-            return f"{emoji} {skill}"
-    
-    return f"📖 {skill}"
-
-def get_skill_category(skill: str) -> str:
-    """Get the parent category of a skill"""
-    for category, skills in SKILL_ALIASES.items():
-        if skill in skills:
-            return category
-    return skill
+SKILL_EMOJI = {
+    "استنتاج": "🧠", "نحو": "📝", "إعراب": "📝", "صرف": "📝",
+    "بلاغة": "✨", "أدب": "📚", "قراءة": "📖", "مفردات": "📖",
+    "تعبير": "✍️", "فكرة": "💡", "دليل": "🔍", "غرض": "🎯",
+    "مقارنة": "⚖️", "تفسير": "💭", "صورة": "🎨", "مدارس": "🏛️",
+    "تطبيق": "🔧", "تقييم": "📊", "توقع": "🔮",
+    "تحليل وتركيب": "🧩", "استدلال": "🔎", "استنباط": "💡",
+    "تحديد القاعدة": "📋", "تحويل نحوي": "🔄", "تطبيق نحوي": "✅",
+    "صورة بيانية": "🎨", "محسنات بديعية": "✨",
+    "مدارس أدبية": "🏛️", "استخراج دليل": "🔍",
+    "تحديد فكرة": "💡", "فكرة رئيسية": "⭐",
+    "مفردات سياقية": "📖", "استخراج معنى": "📝",
+    "قراءة نقدية": "📖", "تحديد غرض": "🎯",
+    "استنتاج النبرة": "🎭", "توقع": "🔮",
+}
 
 SKILL_RECOMMENDATIONS = {
     "بلاغة": ["التشبيه", "الاستعارة المكنية", "الاستعارة التصريحية", "المجاز المرسل", "الكناية"],
@@ -108,8 +149,47 @@ SKILL_RECOMMENDATIONS = {
     "دليل": ["الشاهد من النص", "الدليل", "القرينة"],
 }
 
+def resolve_skills(query: str) -> List[str]:
+    query_lower = query.lower().strip()
+    for arabic_name, skills in SKILL_ALIASES.items():
+        if arabic_name in query_lower:
+            return skills
+    for eng, ar in SKILL_ARABIC_MAP.items():
+        if ar in query_lower:
+            return [eng]
+    for eng, ar in SKILL_ARABIC_MAP.items():
+        if eng.lower() in query_lower:
+            return [eng]
+    return []
+
+def get_skill_arabic(skill: str) -> str:
+    if not skill or skill == "عام":
+        return "عام"
+    if skill in SKILL_ARABIC_MAP:
+        return SKILL_ARABIC_MAP[skill]
+    skill_lower = skill.lower()
+    for key, value in SKILL_ARABIC_MAP.items():
+        if key.lower() == skill_lower:
+            return value
+    for arabic_name in SKILL_ALIASES.keys():
+        if arabic_name in skill or skill in arabic_name:
+            return arabic_name
+    return skill
+
+def get_skill_display(skill: str) -> str:
+    arabic = get_skill_arabic(skill)
+    emoji = SKILL_EMOJI.get(arabic, "📖")
+    return f"{emoji} {arabic}"
+
+def get_skill_category(skill: str) -> str:
+    arabic = get_skill_arabic(skill)
+    for category in SKILL_ALIASES.keys():
+        if arabic == category:
+            return category
+    return arabic
+
 # =========================================
-# STUDENT SERVICE
+# STUDENT SERVICE (FIXED)
 # =========================================
 
 class StudentService:
@@ -240,24 +320,22 @@ class StudentService:
         wrong_skill_counter = Counter(wrong_skills)
         
         for skill in set(all_skills + wrong_skills):
-            if skill not in skill_stats: skill_stats[skill] = {"correct": 0, "wrong": 0, "total": 0}
-            skill_stats[skill]["total"] += skill_counter.get(skill, 0)
-            skill_stats[skill]["wrong"] += wrong_skill_counter.get(skill, 0)
+            if skill not in skill_stats:
+                skill_stats[skill] = {"correct": 0, "wrong": 0, "total": 0}
+            skill_stats[skill]["total"] = skill_stats[skill].get("total", 0) + skill_counter.get(skill, 0)
+            skill_stats[skill]["wrong"] = skill_stats[skill].get("wrong", 0) + wrong_skill_counter.get(skill, 0)
             skill_stats[skill]["correct"] = skill_stats[skill]["total"] - skill_stats[skill]["wrong"]
         
         recent_exams = user_data.get("recent_exams", [])
         recent_exams.append({"correct": correct, "total": total, "percentage": percentage, "wrong_skills": wrong_skills, "wrong_questions": wrong_questions, "timestamp": cls._now_ts()})
         if len(recent_exams) > 10: recent_exams = recent_exams[-10:]
         
-        questions_since = user_data.get("questions_since_analysis", 0)
-        
         cls.update_user_data(username, {
             "skill_stats": skill_stats,
             "total_exams": user_data.get("total_exams", 0) + 1,
             "total_score": user_data.get("total_score", 0) + correct,
             "total_questions_answered": user_data.get("total_questions_answered", 0) + total,
-            "recent_exams": recent_exams,
-            "questions_since_analysis": questions_since
+            "recent_exams": recent_exams
         })
         
         if cls._rtdb:
@@ -322,7 +400,6 @@ MAX_QUESTION_LENGTH = 350
 MAX_PASSAGE_LENGTH = 400
 SESSION_TIMEOUT = 900
 RATE_LIMIT_SECONDS = 0.3
-QUESTIONS_BEFORE_ANALYSIS = 20
 
 # =========================================
 # DATA LOADING
@@ -420,9 +497,8 @@ def load_all_data():
                         is_valid, reason = validate_question(q)
                         if is_valid:
                             q["question_type"] = detect_question_type(q)
-                            # Normalize skill
-                            skill = q.get("skill", "عام")
-                            q["skill"] = get_skill_category(skill)
+                            raw_skill = q.get("skill", "عام")
+                            q["skill"] = get_skill_category(raw_skill)
                             ALL_QUESTIONS.append(q)
                             if q["question_type"] == "mcq": MCQ_QUESTIONS.append(q)
                             QUESTIONS_BY_DIFFICULTY[q.get("difficulty", "medium")].append(q)
@@ -460,7 +536,6 @@ class ExamSession:
         return self.current_index < len(self.questions)
     
     def get_progress_bar(self) -> str:
-        """Generate progress bar"""
         filled = int((self.current_index / max(self.total, 1)) * 10)
         bar = "█" * filled + "░" * (10 - filled)
         pct = int((self.current_index / max(self.total, 1)) * 100)
@@ -543,14 +618,19 @@ def get_unasked_questions(questions: List[Dict], username: str, count: int) -> L
     return random.sample(questions, min(count, len(questions)))
 
 def filter_by_skills_exact(questions: List[Dict], skill_query: str) -> List[Dict]:
-    resolved_skills = resolve_skills(skill_query)
-    if not resolved_skills: return []
-    resolved_lower = set(s.lower() for s in resolved_skills)
+    resolved = resolve_skills(skill_query)
+    if not resolved: return []
+    resolved_normalized = set()
+    for s in resolved:
+        resolved_normalized.add(s.lower())
+        arabic = get_skill_arabic(s)
+        resolved_normalized.add(arabic.lower())
     filtered = []
     for q in questions:
         q_skill = q.get("skill", "عام").lower()
-        for rs in resolved_lower:
-            if rs in q_skill or q_skill in rs:
+        q_skill_arabic = get_skill_arabic(q_skill).lower()
+        for rs in resolved_normalized:
+            if rs in q_skill or q_skill in rs or rs in q_skill_arabic or q_skill_arabic in rs:
                 filtered.append(q)
                 break
     return filtered
@@ -582,31 +662,23 @@ def format_context(q: Dict) -> str:
     return "\n".join(parts) if parts else ""
 
 def format_single_question(q: Dict, session: ExamSession) -> str:
-    """Format ONE question at a time - teacher style"""
     msg = ""
-    
-    # Context
     context = format_context(q)
-    if context:
-        msg += f"{context}\n\n"
+    if context: msg += f"{context}\n\n"
     
-    # Header with progress
     progress = session.get_progress_bar()
     question_num = session.current_index + 1
-    total = session.total
     skill_display = get_skill_display(q.get("skill", "عام"))
     difficulty = q.get("difficulty", "medium")
     diff_emoji = {"easy": "🟢", "medium": "🟡", "hard": "🔴"}.get(difficulty, "")
     
-    msg += f"🧠 *سؤال {question_num} من {total}* {diff_emoji}\n"
+    msg += f"🧠 *سؤال {question_num} من {session.total}* {diff_emoji}\n"
     msg += f"🎯 {skill_display}\n"
     msg += f"📊 {progress}\n\n"
     
-    # Question
     question_text = str(q.get("prompt", q.get("question", "سؤال")))[:MAX_QUESTION_LENGTH]
     msg += f"*{question_text}*\n\n"
     
-    # Choices
     choices = q.get("choices", [])
     if choices:
         for idx, choice in enumerate(choices, 1):
@@ -614,17 +686,13 @@ def format_single_question(q: Dict, session: ExamSession) -> str:
             msg += f"{idx}️⃣ {choice_text}\n"
     
     msg += "\n✍️ *جاوب برقم الإجابة*"
-    
     return msg
 
 def format_feedback(result: Dict, session: ExamSession) -> str:
-    """Teacher-style feedback"""
     msg = ""
-    
     if result["correct"]:
         msg += "✅ *صحيح! ممتاز* 🎉\n\n"
     else:
-        # Wrong answer - teacher style
         user_answer_idx = result.get("user_answer_idx", -1)
         choices = result.get("choices", [])
         user_answer_text = ""
@@ -636,31 +704,29 @@ def format_feedback(result: Dict, session: ExamSession) -> str:
         msg += f"✍️ *إجابتك:* {user_answer_text}\n"
         msg += f"✅ *الصحيح:* {result['correct_answer']}\n\n"
         
-        # Explanation with teaching
         if result["explanation"] and len(str(result["explanation"])) > 10:
             explanation = str(result["explanation"])[:300]
             msg += f"💡 *تذكّر:*\n{explanation}\n\n"
     
-    # Score update
-    msg += f"📊 *نتيجتك الآن:* {result['current_score']} / {result['question_number']}\n"
-    
+    msg += f"📊 *نتيجتك:* {result['current_score']} / {result['question_number']}\n"
     return msg
 
 def format_final_report(session: ExamSession, username: str = None) -> str:
-    """Beautiful final report"""
     final_score = session.score
     total = session.total
     percentage = int((final_score / total) * 100) if total > 0 else 0
     
     if username:
-        StudentService.save_exam_result(username, {
-            "correct": final_score, "total": total,
-            "wrong_questions": session.wrong_questions,
-            "wrong_skills": list(set(session.wrong_skills)),
-            "all_skills": session.all_skills
-        })
+        try:
+            StudentService.save_exam_result(username, {
+                "correct": final_score, "total": total,
+                "wrong_questions": session.wrong_questions,
+                "wrong_skills": list(set(session.wrong_skills)),
+                "all_skills": session.all_skills
+            })
+        except Exception as e:
+            print(f"❌ Save exam error: {e}")
     
-    # Grade
     if percentage >= 90: emoji, grade = "🏆", "ممتاز"
     elif percentage >= 80: emoji, grade = "🌟", "جيد جداً"
     elif percentage >= 65: emoji, grade = "👍", "جيد"
@@ -672,7 +738,6 @@ def format_final_report(session: ExamSession, username: str = None) -> str:
     msg += f"📈 *النسبة:* {percentage}%\n"
     msg += f"🏅 *التقدير:* {emoji} {grade}\n\n"
     
-    # Strengths & weaknesses
     correct_skills = Counter()
     wrong_skills_counter = Counter(session.wrong_skills)
     
@@ -683,47 +748,34 @@ def format_final_report(session: ExamSession, username: str = None) -> str:
     if correct_skills:
         msg += "✅ *نقاط القوة:*\n"
         for skill, count in correct_skills.most_common(3):
-            skill_display = get_skill_display(skill)
-            msg += f"   {skill_display}\n"
+            msg += f"   {get_skill_display(skill)}\n"
         msg += "\n"
     
     if session.wrong_skills:
         msg += "⚠️ *تحتاج مراجعة:*\n"
         for skill, count in wrong_skills_counter.most_common(3):
-            skill_display = get_skill_display(skill)
-            msg += f"   {skill_display} ({count} خطأ)\n"
-            
-            # Recommendations
+            msg += f"   {get_skill_display(skill)} ({count} خطأ)\n"
             recs = SKILL_RECOMMENDATIONS.get(get_skill_category(skill), [])
-            if recs:
-                msg += f"      📚 {' - '.join(recs[:2])}\n"
+            if recs: msg += f"      📚 {' - '.join(recs[:2])}\n"
         msg += "\n"
     
-    # Suggestions
-    msg += "🎯 *أنصحك الآن:*\n"
+    msg += "🎯 *أنصحك:*\n"
     if session.wrong_skills:
         weakest = wrong_skills_counter.most_common(1)[0][0]
-        msg += f"• `اختبرني في {weakest}`\n"
+        weakest_ar = get_skill_arabic(weakest)
+        msg += f"• `اختبرني في {weakest_ar}`\n"
     if session.wrong_questions:
         msg += "• `امتحنني في أخطائي`\n"
-    msg += "• `خطة التركيز`\n"
-    msg += "• `مستوايا`\n"
-    
-    # Check if should show overall analysis
-    if username and StudentService.should_show_analysis(username):
-        msg += f"\n📈 *عندك {StudentService.get_user_data(username).get('questions_since_analysis', 0)} سؤال*\n"
-        msg += "تحب تشوف `تحليل شامل` لمستواك؟"
+    msg += "• `خطة التركيز` - خطتك\n"
     
     return msg
 
 def get_smart_greeting(username: str, user_data: Dict) -> str:
-    """Smart greeting - full only first time, brief after"""
     name = user_data.get("name", username)
     greeted = user_data.get("greeted", False)
     total_exams = user_data.get("total_exams", 0)
     
     if not greeted:
-        # First time - full greeting
         StudentService.mark_greeted(username)
         return f"""🤖 *Pen*: أهلاً يا {name} 👋
 
@@ -745,7 +797,6 @@ def get_smart_greeting(username: str, user_data: Dict) -> str:
         return f"👋 *أهلاً {name}*\n\nجاهز تبدا؟ جرب:\n• `اختبرني`\n• `امتحان`\n• `خطة التركيز`"
     
     else:
-        # Returning student - brief
         total_q = user_data.get("total_questions_answered", 0)
         recent_exams = user_data.get("recent_exams", [])
         last_avg = 0
@@ -757,15 +808,25 @@ def get_smart_greeting(username: str, user_data: Dict) -> str:
         msg += f"📊 *آخر نتيجة:* {last_avg}%\n"
         msg += f"📝 *أسئلة:* {total_q}\n\n"
         
-        if last_avg < 60:
-            msg += "💪 *جاهز تحسن مستواك؟*\n"
-        elif last_avg < 80:
-            msg += "👍 *مستواك بيتحسن*\n"
-        else:
-            msg += "🌟 *ما شاء الله مستواك عالي*\n"
+        if last_avg < 60: msg += "💪 *جاهز تحسن مستواك؟*\n"
+        elif last_avg < 80: msg += "👍 *مستواك بيتحسن*\n"
+        else: msg += "🌟 *ما شاء الله مستواك عالي*\n"
         
         msg += "\n• `اختبرني`\n• `خطة التركيز`\n• `مستوايا`"
         return msg
+
+def get_default_greeting() -> str:
+    return """🤖 *Pen*: أهلاً بك 👋
+
+📝 *ابدأ بـ:*
+• `اختبرني` - امتحان تفاعلي
+• `امتحان` - أسئلة متوقعة
+• `خطة التركيز` - خطة مخصصة
+
+🎯 *مهارات:*
+`اختبرني في البلاغة`
+`اختبرني في النحو`
+`اختبرني في الأدب`"""
 
 # =========================================
 # MAIN PROCESSOR
@@ -781,24 +842,21 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
     try:
         if is_rate_limited(chat_id): return ""
         
-        # Active exam session - ONE question at a time
         if chat_id in user_sessions:
             session = user_sessions[chat_id]
             if session.active and not session.is_expired():
-                # Process answer
                 if "تقرير" in body or "بلغ" in body:
-                    current_q = session.questions[min(session.current_index, len(session.questions)-1)]
+                    idx = min(session.current_index, len(session.questions)-1)
+                    current_q = session.questions[idx]
                     qid = current_q.get("question_id", "")
-                    if username and qid:
-                        StudentService.report_question(qid, username)
+                    if username and qid: StudentService.report_question(qid, username)
                     if session.has_next():
                         return "✅ *شكراً للتقرير*\n\n" + format_single_question(session.questions[session.current_index], session)
                     return "✅ *تم الإبلاغ*"
                 
                 try:
                     numbers = re.findall(r'\d+', body)
-                    if not numbers:
-                        return "❌ *ابعت رقم الإجابة*\n🚨 `تقرير` للإبلاغ عن خطأ"
+                    if not numbers: return "❌ *ابعت رقم الإجابة*\n🚨 `تقرير` للإبلاغ عن خطأ"
                     answer_num = int(numbers[0])
                 except:
                     return "❌ *رقم الإجابة فقط*"
@@ -813,16 +871,14 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
                 except Exception as e:
                     print(f"❌ Check error: {e}")
                     del user_sessions[chat_id]
-                    return f"❌ *حصل خطأ*\n🔄 `اختبرني`"
+                    return "❌ *حصل خطأ*\n🔄 `اختبرني`"
                 
                 if "error" in result:
                     del user_sessions[chat_id]
                     return "🔄 *انتهى الامتحان*\n`اختبرني`"
                 
-                # Show feedback
                 response = format_feedback(result, session)
                 
-                # Next question or final report
                 if session.active and session.has_next():
                     response += "\n" + format_single_question(session.questions[session.current_index], session)
                 else:
@@ -835,9 +891,7 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
         
         body_lower = body.lower().strip()
         
-        # Handle commands
-        if body_lower in ["الترتيب", "ترتيب", "المتصدرين"]:
-            return get_leaderboard_text()
+        if body_lower in ["الترتيب", "ترتيب", "المتصدرين"]: return get_leaderboard_text()
         
         if any(x in body_lower for x in ["راجع أخطائي", "اخر اخطائي"]):
             if username: return get_last_wrong_summary(username)
@@ -861,6 +915,12 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
             level = None
             for l in ["سهل", "متوسط", "صعب"]:
                 if l in body_lower: level = {"سهل": "easy", "متوسط": "medium", "صعب": "hard"}[l]
+            skill_query = None
+            for word in body_lower.split():
+                if word in ["في", "على", "عن"]: continue
+                if resolve_skills(word): skill_query = word; break
+            if skill_query:
+                return start_interactive_exam(chat_id, level, skill_query, username)
             return generate_exam(level=level, username=username)
         
         if body_lower in ["مستوايا", "مستوى", "تحليل"]:
@@ -871,8 +931,7 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
             if username: return get_comprehensive_analysis(username)
             return "📊 *سجل دخول*"
         
-        if any(x in body_lower for x in ["خطة", "تركيز"]):
-            return generate_focus_plan(username)
+        if any(x in body_lower for x in ["خطة", "تركيز"]): return generate_focus_plan(username)
         
         if any(x in body_lower for x in ["اهلا", "مرحبا", "سلام", "هاي", "مساعدة"]):
             if username:
@@ -880,12 +939,9 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
                 return get_smart_greeting(username, user_data)
             return get_default_greeting()
         
-        # Try skill query
         resolved = resolve_skills(body_lower)
-        if resolved:
-            return start_interactive_exam(chat_id, "medium", body_lower, username)
+        if resolved: return start_interactive_exam(chat_id, "medium", body_lower, username)
         
-        # Default
         if username:
             user_data = StudentService.get_user_data(username)
             return get_smart_greeting(username, user_data)
@@ -899,19 +955,6 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
 # =========================================
 # RESPONSE GENERATORS
 # =========================================
-
-def get_default_greeting() -> str:
-    return """🤖 *Pen*: أهلاً بك 👋
-
-📝 *ابدأ بـ:*
-• `اختبرني` - امتحان تفاعلي
-• `امتحان` - أسئلة متوقعة
-• `خطة التركيز` - خطة مخصصة
-
-🎯 *مهارات:*
-`اختبرني في البلاغة`
-`اختبرني في النحو`
-`اختبرني في الأدب`"""
 
 def generate_exam(level: str = None, count: int = 5, username: str = None) -> str:
     if not ALL_QUESTIONS: return "❌ مفيش أسئلة"
@@ -927,8 +970,7 @@ def generate_exam(level: str = None, count: int = 5, username: str = None) -> st
         if context: exam += f"{context}\n\n"
         q_text = str(q.get("prompt", "سؤال"))[:MAX_QUESTION_LENGTH]
         q_type = q.get("question_type", "")
-        skill_display = get_skill_display(q.get("skill", "عام"))
-        exam += f"*{i}.* {skill_display} | {q_text}\n"
+        exam += f"*{i}.* {get_skill_display(q.get('skill', 'عام'))} | {q_text}\n"
         if q_type == "mcq" and q.get("choices"):
             for idx, choice in enumerate(q.get("choices", []), 1):
                 choice_text = choice.get("text", str(choice)) if isinstance(choice, dict) else str(choice)
@@ -947,7 +989,7 @@ def start_interactive_exam(chat_id: str, level: str = "medium", skill_query: str
         filtered = filter_by_skills_exact(MCQ_QUESTIONS if MCQ_QUESTIONS else ALL_QUESTIONS, skill_query)
         if not filtered:
             available = set()
-            for q in ALL_QUESTIONS[:30]: available.add(q.get("skill", "عام"))
+            for q in ALL_QUESTIONS[:30]: available.add(get_skill_display(q.get("skill", "عام")))
             return f"❌ *مفيش أسئلة لـ '{skill_query}'*\n\n🎯 *جرب:*\n" + "\n".join([f"• {s}" for s in sorted(available)[:8]])
     else:
         filtered = MCQ_QUESTIONS.copy() if MCQ_QUESTIONS else ALL_QUESTIONS.copy()
@@ -960,10 +1002,8 @@ def start_interactive_exam(chat_id: str, level: str = "medium", skill_query: str
     selected = get_unasked_questions(filtered, username, 5) if username and not review_wrong else random.sample(filtered, min(5, len(filtered)))
     if len(selected) < 2: return "❌ *عدد غير كافي*"
     
-    session = ExamSession(selected, level, "review" if review_wrong else "skill" if skill_query else "normal")
+    session = ExamSession(selected, level)
     user_sessions[chat_id] = session
-    
-    # Send first question only
     return format_single_question(selected[0], session)
 
 def get_last_wrong_summary(username: str) -> str:
@@ -980,8 +1020,7 @@ def get_last_wrong_summary(username: str) -> str:
     msg = f"📝 *آخر أخطائك* ({last_exam.get('correct', 0)}/{last_exam.get('total', 0)})\n{'─' * 20}\n\n"
     skill_counts = Counter(wrong_skills)
     for i, (skill, count) in enumerate(skill_counts.most_common(5), 1):
-        skill_display = get_skill_display(skill)
-        msg += f"{i}. {skill_display} ({count} خطأ)\n"
+        msg += f"{i}. {get_skill_display(skill)} ({count} خطأ)\n"
     
     msg += f"\n📚 *راجعهم:* `امتحنني في أخطائي`"
     return msg
@@ -1000,16 +1039,21 @@ def generate_focus_plan(username: str = None) -> str:
                 total_recent += exam.get("total", 0)
                 all_wrong.extend(exam.get("wrong_skills", []))
             
+            msg += f"📊 *آخر {total_recent} سؤال*\n\n"
+            
             if all_wrong:
                 wrong_counter = Counter(all_wrong)
                 msg += "🔧 *أضعف نقاطك:*\n"
                 for skill, count in wrong_counter.most_common(5):
-                    skill_display = get_skill_display(skill)
                     pct = int((count / max(total_recent, 1)) * 100)
-                    msg += f"   ⚠️ {skill_display}: {pct}%\n"
+                    msg += f"   ⚠️ {get_skill_display(skill)}: {pct}%\n"
                     recs = SKILL_RECOMMENDATIONS.get(get_skill_category(skill), [])
                     if recs: msg += f"      📚 {' - '.join(recs[:2])}\n"
                 msg += "\n"
+            else:
+                msg += "✅ *كل إجاباتك الأخيرة صحيحة!* 🎉\n\n"
+        else:
+            msg += "📝 *لسه مفيش بيانات*\n🎯 جرب: `اختبرني`\n\n"
     
     msg += "💪 *ابدأ بأضعف نقطة عندك*"
     return msg
@@ -1036,15 +1080,13 @@ def get_level_analytics(username: str) -> str:
         wrong_counter = Counter(all_wrong)
         msg += "🔧 *يحتاج تحسين:*\n"
         for skill, count in wrong_counter.most_common(4):
-            skill_display = get_skill_display(skill)
             pct = int((count / max(recent_total, 1)) * 100)
-            msg += f"   ⚠️ {skill_display}: {pct}%\n"
+            msg += f"   ⚠️ {get_skill_display(skill)}: {pct}%\n"
     
     msg += f"\n💡 *جرب:* `خطة التركيز`"
     return msg
 
 def get_comprehensive_analysis(username: str) -> str:
-    """Full analysis after 20+ questions"""
     user_data = StudentService.get_user_data(username)
     skill_stats = user_data.get("skill_stats", {})
     total_questions = user_data.get("total_questions_answered", 0)
@@ -1056,7 +1098,6 @@ def get_comprehensive_analysis(username: str) -> str:
     msg = f"📈 *تحليل شامل*\n{'─' * 20}\n\n"
     msg += f"📝 *{total_questions} سؤال*\n\n"
     
-    # Sort skills by performance
     skill_scores = {}
     for skill, stats in skill_stats.items():
         total = stats.get("total", 0)
@@ -1069,19 +1110,14 @@ def get_comprehensive_analysis(username: str) -> str:
     
     if sorted_skills:
         msg += "🔧 *أضعف نقطة:*\n"
-        weakest = sorted_skills[0]
-        msg += f"   {get_skill_display(weakest[0])}: {weakest[1]}%\n\n"
+        msg += f"   {get_skill_display(sorted_skills[0][0])}: {sorted_skills[0][1]}%\n\n"
         
         msg += "💪 *نقاط القوة:*\n"
         for skill, pct in sorted_skills[-3:]:
-            if pct >= 70:
-                msg += f"   ✅ {get_skill_display(skill)}: {pct}%\n"
+            if pct >= 70: msg += f"   ✅ {get_skill_display(skill)}: {pct}%\n"
         msg += "\n"
     
-    msg += "🎯 *هل تريد خطة مراجعة سريعة؟*\n"
-    msg += "• `خطة التركيز`\n"
-    msg += "• `اختبرني`"
-    
+    msg += "🎯 *هل تريد خطة مراجعة سريعة؟*\n• `خطة التركيز`\n• `اختبرني`"
     return msg
 
 def get_leaderboard_text() -> str:
@@ -1144,7 +1180,7 @@ async def leaderboard(): return JSONResponse(StudentService.get_leaderboard())
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy", "version": "v7", "questions": len(ALL_QUESTIONS), "mcq": len(MCQ_QUESTIONS)}
+    return {"status": "healthy", "version": "v7-fixed", "questions": len(ALL_QUESTIONS), "mcq": len(MCQ_QUESTIONS)}
 
 @app.get("/", response_class=HTMLResponse)
 async def auth_page():
@@ -1159,4 +1195,4 @@ async def app_page():
 @app.on_event("startup")
 async def startup_event():
     asyncio.create_task(cleanup_expired_sessions())
-    print(f"🚀 Pen V7 UX | {len(ALL_QUESTIONS)} questions | Teacher-style UX")
+    print(f"🚀 Pen V7 Fixed | {len(ALL_QUESTIONS)} questions | Teacher-style UX")
