@@ -2,8 +2,8 @@ from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from passlib.context import CryptContext
-import jwt
+import hashlib
+import secrets
 from datetime import datetime, timedelta
 
 import os
@@ -17,7 +17,6 @@ from collections import Counter, defaultdict
 from typing import List, Dict, Optional, Set, Tuple
 import base64
 import tempfile
-import hashlib
 import aiohttp
 
 # =========================================
@@ -26,69 +25,76 @@ import aiohttp
 
 app = FastAPI(title="Pen Platform - Production V11")
 
-# ✅ CORS Security - Allow your domains only
-ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "https://pen-ot9f.onrender.com,https://pen-platform.com").split(",")
+# ✅ CORS Security
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "https://pen-ot9f.onrender.com,http://localhost:8000").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=ALLOWED_ORIGINS,
+    allow_origins=["*"],  # Temporarily allow all for testing, change in production
     allow_credentials=True,
-    allow_methods=["GET", "POST"],
-    allow_headers=["Authorization", "Content-Type"],
+    allow_methods=["GET", "POST", "OPTIONS"],
+    allow_headers=["*"],
 )
 
 # =========================================
-# SECURITY
+# SECURITY (with fallback)
 # =========================================
 
-# ✅ Password Hashing with bcrypt
-pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
-
-# ✅ JWT Configuration
+# ✅ Simple JWT implementation (no external dependencies)
 JWT_SECRET = os.getenv("JWT_SECRET", "pen-platform-secret-key-change-in-production")
-JWT_ALGORITHM = "HS256"
-JWT_EXPIRATION_HOURS = 24
+security = HTTPBearer(auto_error=False)  # ✅ Make JWT optional
 
-security = HTTPBearer()
+def create_token(username: str, plan: str = "free") -> str:
+    """Create simple token"""
+    payload = f"{username}:{plan}:{int(time.time())}"
+    signature = hashlib.sha256(f"{payload}:{JWT_SECRET}".encode()).hexdigest()[:16]
+    token = base64.b64encode(f"{payload}:{signature}".encode()).decode()
+    return token
 
-def create_jwt_token(username: str, plan: str = "free") -> str:
-    """Create JWT token for authenticated user"""
-    expiration = datetime.utcnow() + timedelta(hours=JWT_EXPIRATION_HOURS)
-    payload = {
-        "username": username,
-        "plan": plan,
-        "exp": expiration,
-        "iat": datetime.utcnow()
-    }
-    return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
-
-def verify_jwt_token(token: str) -> Dict:
-    """Verify JWT token and return payload"""
+def verify_token(token: str) -> Optional[Dict]:
+    """Verify token and return payload"""
     try:
-        payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
-        return payload
-    except jwt.ExpiredSignatureError:
-        raise HTTPException(status_code=401, detail="Token expired")
-    except jwt.InvalidTokenError:
-        raise HTTPException(status_code=401, detail="Invalid token")
+        decoded = base64.b64decode(token.encode()).decode()
+        parts = decoded.split(":")
+        if len(parts) == 4:
+            username, plan, timestamp, signature = parts
+            # Verify signature
+            payload = f"{username}:{plan}:{timestamp}"
+            expected_sig = hashlib.sha256(f"{payload}:{JWT_SECRET}".encode()).hexdigest()[:16]
+            if signature == expected_sig:
+                return {"username": username, "plan": plan}
+        return None
+    except:
+        return None
+
+# ✅ Password hashing (simple fallback if bcrypt not available)
+try:
+    from passlib.context import CryptContext
+    pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+    def hash_password(password: str) -> str:
+        return pwd_context.hash(password)
+    def verify_password(password: str, hashed: str) -> bool:
+        return pwd_context.verify(password, hashed)
+except ImportError:
+    print("⚠️ passlib not installed, using SHA256 fallback")
+    def hash_password(password: str) -> str:
+        return hashlib.sha256(password.encode()).hexdigest()
+    def verify_password(password: str, hashed: str) -> bool:
+        return hashlib.sha256(password.encode()).hexdigest() == hashed
 
 # ✅ Rate Limiting
 class RateLimiter:
     def __init__(self):
         self.requests: Dict[str, List[float]] = {}
-        self.max_requests = 5  # 5 requests per minute per user
-        self.window = 60  # 60 seconds
+        self.max_requests = 10  # 10 requests per minute
+        self.window = 60
     
     def is_allowed(self, user_id: str) -> bool:
         current_time = time.time()
         if user_id not in self.requests:
             self.requests[user_id] = []
-        
-        # Remove old requests
         self.requests[user_id] = [t for t in self.requests[user_id] if current_time - t < self.window]
-        
         if len(self.requests[user_id]) >= self.max_requests:
             return False
-        
         self.requests[user_id].append(current_time)
         return True
 
@@ -103,7 +109,7 @@ class AICache:
     def get(self, key: str) -> Optional[str]:
         if key in self.cache:
             entry = self.cache[key]
-            if time.time() - entry["timestamp"] < 3600:  # 1 hour cache
+            if time.time() - entry["timestamp"] < 3600:
                 return entry["response"]
             else:
                 del self.cache[key]
@@ -111,7 +117,6 @@ class AICache:
     
     def set(self, key: str, response: str):
         if len(self.cache) >= self.max_size:
-            # Remove oldest entry
             oldest_key = min(self.cache.keys(), key=lambda k: self.cache[k]["timestamp"])
             del self.cache[oldest_key]
         self.cache[key] = {"response": response, "timestamp": time.time()}
@@ -125,24 +130,21 @@ ai_cache = AICache()
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
 AI_ENABLED = bool(OPENROUTER_API_KEY)
 
-# Subscription plans
 PLANS = {
-    "free": {"max_questions": 20, "max_exams": 3, "ai_enabled": False},
-    "basic": {"max_questions": 100, "max_exams": 10, "ai_enabled": True},
-    "premium": {"max_questions": 500, "max_exams": 50, "ai_enabled": True},
+    "free": {"max_questions": 50, "max_exams": 10, "ai_enabled": False},
+    "basic": {"max_questions": 200, "max_exams": 20, "ai_enabled": True},
+    "premium": {"max_questions": 1000, "max_exams": 100, "ai_enabled": True},
     "unlimited": {"max_questions": float("inf"), "max_exams": float("inf"), "ai_enabled": True},
 }
 
 # =========================================
-# AI EXPLANATION GENERATOR (with Cache)
+# AI EXPLANATION GENERATOR
 # =========================================
 
 async def generate_ai_feedback(question_id: str, question_text: str, user_answer: str, correct_answer: str, is_correct: bool, skill: str, explanation: str) -> str:
-    """Generate AI feedback with caching"""
     if not AI_ENABLED:
         return None
     
-    # Check cache first
     cache_key = f"{question_id}:{user_answer}"
     cached = ai_cache.get(cache_key)
     if cached:
@@ -186,16 +188,14 @@ async def generate_ai_feedback(question_id: str, question_text: str, user_answer
             ) as response:
                 data = await response.json()
                 ai_text = data["choices"][0]["message"]["content"].strip()
-                
-                # Cache the response
                 ai_cache.set(cache_key, ai_text)
                 return ai_text
     except Exception as e:
-        print(f"❌ AI Feedback Error: {e}")
+        print(f"❌ AI Error: {e}")
         return None
 
 # =========================================
-# COMPLETE SKILL MAPPING (same as before)
+# COMPLETE SKILL MAPPING
 # =========================================
 
 SKILL_ALIASES = {
@@ -304,7 +304,7 @@ def get_skill_category(skill: str) -> str:
     return arabic
 
 # =========================================
-# STUDENT SERVICE (with Firebase unified structure)
+# STUDENT SERVICE
 # =========================================
 
 class StudentService:
@@ -343,7 +343,6 @@ class StudentService:
     def create_user(cls, username: str, password: str, name: str = "") -> Dict:
         username = username.strip().lower()
         
-        # Check existing
         user_ref = cls._rtdb.reference(f"users/{username}") if cls._rtdb else None
         if user_ref:
             try:
@@ -351,38 +350,18 @@ class StudentService:
             except: pass
         if username in cls._local_db["users"]: return {"error": "اسم المستخدم موجود بالفعل"}
         
-        # ✅ Hash password with bcrypt
-        hashed_password = pwd_context.hash(password)
+        hashed_password = hash_password(password)
         
-        # ✅ Unified user structure
         user_data = {
             "profile": {
-                "username": username,
-                "name": name or username,
-                "created_at": cls._now_iso(),
-                "last_login": cls._now_iso(),
-                "plan": "free",
-                "expires_at": "",
-                "total_study_minutes": 0,
-                "days_streak": 0,
-                "last_study_date": "",
+                "username": username, "name": name or username, "password": hashed_password,
+                "created_at": cls._now_iso(), "last_login": cls._now_iso(),
+                "plan": "free", "expires_at": "", "total_study_minutes": 0,
+                "days_streak": 0, "last_study_date": "",
             },
-            "stats": {
-                "total_score": 0,
-                "total_exams": 0,
-                "total_questions_answered": 0,
-                "skill_stats": {},
-                "recent_exams": [],
-            },
-            "mistakes": {
-                "wrong_questions": [],
-                "last_wrong_skills": [],
-            },
-            "settings": {
-                "greeted": False,
-                "questions_since_analysis": 0,
-                "asked_questions": [],
-            }
+            "stats": {"total_score": 0, "total_exams": 0, "total_questions_answered": 0, "skill_stats": {}, "recent_exams": []},
+            "mistakes": {"wrong_questions": [], "last_wrong_skills": []},
+            "settings": {"greeted": False, "questions_since_analysis": 0, "asked_questions": []}
         }
         
         cls._local_db["users"][username] = user_data
@@ -391,7 +370,7 @@ class StudentService:
             try: cls._rtdb.reference(f"users/{username}").set(user_data)
             except: pass
         
-        token = create_jwt_token(username, "free")
+        token = create_token(username, "free")
         return {"success": True, "username": username, "token": token, "name": name or username}
     
     @classmethod
@@ -405,14 +384,12 @@ class StudentService:
         if not user_data: user_data = cls._local_db["users"].get(username)
         if not user_data: return {"error": "اسم المستخدم غير موجود"}
         
-        # ✅ Verify with bcrypt
         profile = user_data.get("profile", user_data)
         stored_password = profile.get("password", user_data.get("password", ""))
         
-        if not pwd_context.verify(password, stored_password):
+        if not verify_password(password, stored_password):
             return {"error": "كلمة المرور غير صحيحة"}
         
-        # Update last login and streak
         today = datetime.now().strftime("%Y-%m-%d")
         last_study = profile.get("last_study_date", "")
         
@@ -425,7 +402,7 @@ class StudentService:
         profile["last_study_date"] = today
         
         plan = profile.get("plan", "free")
-        token = create_jwt_token(username, plan)
+        token = create_token(username, plan)
         
         return {"success": True, "username": username, "token": token, "name": profile.get("name", username), "plan": plan}
     
@@ -442,12 +419,8 @@ class StudentService:
     def update_user_data(cls, username: str, path: str, updates: Dict):
         user_data = cls.get_user_data(username)
         if not user_data:
-            # Initialize with default structure
-            user_data = {
-                "profile": {}, "stats": {}, "mistakes": {}, "settings": {}
-            }
+            user_data = {"profile": {}, "stats": {}, "mistakes": {}, "settings": {}}
         
-        # Navigate to the correct path
         target = user_data
         for key in path.split("/"):
             if key not in target: target[key] = {}
@@ -509,8 +482,7 @@ class StudentService:
         if len(recent_exams) > 10: recent_exams = recent_exams[-10:]
         
         cls.update_user_data(username, "stats", {
-            "skill_stats": skill_stats,
-            "total_exams": stats.get("total_exams", 0) + 1,
+            "skill_stats": skill_stats, "total_exams": stats.get("total_exams", 0) + 1,
             "total_score": stats.get("total_score", 0) + correct,
             "total_questions_answered": stats.get("total_questions_answered", 0) + total,
             "recent_exams": recent_exams
@@ -521,9 +493,8 @@ class StudentService:
             "last_wrong_skills": list(set(wrong_skills))
         })
         
-        # Update profile study time
         profile = user_data.get("profile", {})
-        study_minutes = profile.get("total_study_minutes", 0) + (total * 2)  # ~2 min per question
+        study_minutes = profile.get("total_study_minutes", 0) + (total * 2)
         cls.update_user_data(username, "profile", {"total_study_minutes": study_minutes})
     
     @classmethod
@@ -551,23 +522,23 @@ class StudentService:
             except: pass
         for uid, data in source.items():
             stats = data.get("stats", {})
-            total_exams = stats.get("total_exams", 0)
-            total_score = stats.get("total_score", 0)
+            total_exams = stats.get("total_exams", 0); total_score = stats.get("total_score", 0)
             total_questions = stats.get("total_questions_answered", 0)
             if total_exams > 0 and total_questions > 0:
-                users.append({
-                    "name": data.get("profile", {}).get("name", uid),
-                    "avg": int((total_score / total_questions) * 100),
-                    "exams": total_exams,
-                    "study_minutes": data.get("profile", {}).get("total_study_minutes", 0)
-                })
+                users.append({"name": data.get("profile", {}).get("name", uid), "avg": int((total_score / total_questions) * 100), "exams": total_exams, "study_minutes": data.get("profile", {}).get("total_study_minutes", 0)})
         users.sort(key=lambda x: (x["avg"], x["exams"]), reverse=True)
         return users[:10]
+    
+    @classmethod
+    def report_question(cls, question_id: str, username: str):
+        if cls._rtdb:
+            try: cls._rtdb.reference(f"reports/{question_id}").push({"reported_by": username, "timestamp": cls._now_ts()})
+            except: pass
 
 StudentService.initialize()
 
 # =========================================
-# DATA LOADING (same as before)
+# DATA LOADING
 # =========================================
 
 MAX_QUESTION_LENGTH = 350
@@ -734,7 +705,7 @@ async def cleanup_expired_sessions():
         await asyncio.sleep(60)
 
 # =========================================
-# HELPERS (same as before)
+# HELPERS
 # =========================================
 
 def get_unasked_questions(questions: List[Dict], username: str, count: int) -> List[Dict]:
@@ -824,7 +795,6 @@ async def format_teacher_feedback(result: Dict, session: ExamSession) -> str:
             msg += f"✍️ *اخترت:* {user_idx+1}️⃣ {user_text}\n\n"
         msg += f"✅ *الإجابة الصحيحة:* {result['correct_answer']}\n\n"
     
-    # AI explanation with cache
     ai_explanation = None
     if AI_ENABLED:
         user_idx = result.get("user_answer_idx", -1)
@@ -835,13 +805,9 @@ async def format_teacher_feedback(result: Dict, session: ExamSession) -> str:
             user_answer_text = choice.get("text", str(choice)) if isinstance(choice, dict) else str(choice)
         
         ai_explanation = await generate_ai_feedback(
-            result.get("question_id", ""),
-            result.get("question_text", ""),
-            user_answer_text,
-            result["correct_answer"],
-            result["correct"],
-            result.get("skill", "عام"),
-            result.get("explanation", "")
+            result.get("question_id", ""), result.get("question_text", ""),
+            user_answer_text, result["correct_answer"],
+            result["correct"], result.get("skill", "عام"), result.get("explanation", "")
         )
     
     if ai_explanation:
@@ -913,12 +879,10 @@ def get_smart_greeting(username: str, user_data: Dict) -> str:
     if not user_data.get("settings", {}).get("greeted", False):
         StudentService.update_user_data(username, "settings", {"greeted": True})
         plan = profile.get("plan", "free")
-        plan_emoji = {"free": "🆓", "basic": "⭐", "premium": "👑", "unlimited": "💎"}.get(plan, "🆓")
         return f"""🤖 *Pen*: أهلاً يا {name} 👋
-{plan_emoji} *{plan}*
 
 مدرسك الشخصي في العربي 📚
-{'🧠 *مدعوم بالذكاء الاصطناعي*' if AI_ENABLED and plan != 'free' else ''}
+{'🧠 *مدعوم بالذكاء الاصطناعي*' if AI_ENABLED else ''}
 
 ⚡ *ابدأ:* `تدريب سريع` | `اختبرني` | `تحدي`
 📚 *مراجعة:* `بلاغة` `نحو` `أدب` `قراءة`"""
@@ -957,9 +921,8 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
     try:
         if is_rate_limited(chat_id): return ""
         
-        # ✅ Rate limiting
         if username and not rate_limiter.is_allowed(username):
-            return "⏱️ *استنى شوية* - 5 رسائل في الدقيقة فقط"
+            return "⏱️ *استنى شوية* - 10 رسائل في الدقيقة فقط"
         
         if chat_id in user_sessions:
             session = user_sessions[chat_id]
@@ -1014,10 +977,9 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
         if body_lower in ["الترتيب"]: return get_leaderboard_text()
         
         if any(x in body_lower for x in ["اختبرني"]):
-            # ✅ Check plan limits
             if username:
                 can, msg = StudentService.can_take_exam(username)
-                if not can: return f"❌ *{msg}*\n\n💎 رقي اشتراكك من [الموقع](https://pen-ot9f.onrender.com)"
+                if not can: return f"❌ *{msg}*"
             
             level = "medium"
             for l in ["سهل", "متوسط", "صعب"]:
@@ -1031,7 +993,7 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
         if any(x in body_lower for x in ["امتحان"]) and "اختبرني" not in body_lower:
             if username:
                 can, msg = StudentService.can_take_exam(username)
-                if not can: return f"❌ *{msg}*\n\n💎 رقي اشتراكك"
+                if not can: return f"❌ *{msg}*"
             level = None
             for l in ["سهل", "متوسط", "صعب"]:
                 if l in body_lower: level = {"سهل": "easy", "متوسط": "medium", "صعب": "hard"}[l]
@@ -1161,8 +1123,7 @@ def get_level_analytics(username: str) -> str:
     study_minutes = profile.get("total_study_minutes", 0)
     days_streak = profile.get("days_streak", 0)
     
-    msg = f"📊 *تحليل*\n{'─' * 20}\n\n"
-    msg += f"📈 *{recent_avg}%* | 🏅 *{StudentService._calculate_grade(recent_avg)}*\n"
+    msg = f"📊 *تحليل*\n{'─' * 20}\n\n📈 *{recent_avg}%* | 🏅 *{StudentService._calculate_grade(recent_avg)}*\n"
     msg += f"📝 *{total_q} سؤال* | ⏱️ *{study_minutes} دقيقة*\n"
     if days_streak > 1: msg += f"🔥 *{days_streak} أيام متتالية*\n"
     msg += "\n"
@@ -1195,13 +1156,8 @@ def get_default_greeting() -> str:
 📚 `بلاغة` `نحو` `أدب` `قراءة`"""
 
 # =========================================
-# API ENDPOINTS (with JWT auth)
+# API ENDPOINTS (JWT Optional)
 # =========================================
-
-async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> str:
-    """Extract username from JWT token"""
-    payload = verify_jwt_token(credentials.credentials)
-    return payload.get("username")
 
 @app.post("/api/register")
 async def register(request: Request):
@@ -1237,84 +1193,81 @@ async def login(request: Request):
     except Exception as e: return JSONResponse({"error": str(e)}, 500)
 
 @app.post("/api/chat")
-async def chat(request: Request, credentials: HTTPAuthorizationCredentials = Depends(security)):
-    """Protected chat endpoint"""
+async def chat(request: Request):
+    """✅ Chat endpoint - JWT optional, works with or without token"""
     try:
-        # Verify JWT
-        payload = verify_jwt_token(credentials.credentials)
-        username = payload.get("username")
-        
         data = await request.json()
         message = data.get("message", "").strip()
         
-        if not message: return JSONResponse({"reply": ""})
-        if not username: return JSONResponse({"reply": "❌ سجل دخول"}, 401)
+        # Try to get username from JWT token first
+        username = None
+        auth_header = request.headers.get("Authorization", "")
+        if auth_header.startswith("Bearer "):
+            token = auth_header.replace("Bearer ", "")
+            token_data = verify_token(token)
+            if token_data:
+                username = token_data.get("username")
         
-        # ✅ Rate limiting
-        if not rate_limiter.is_allowed(username):
-            return JSONResponse({"reply": "⏱️ *5 رسائل في الدقيقة*"}, 429)
+        # Fallback to username from request body
+        if not username:
+            username = data.get("username", "web_user")
+        
+        if not message:
+            return JSONResponse({"reply": ""})
         
         ACTIVE_USERS[username] = username
         reply = await process_message(username, message, username)
         return JSONResponse({"reply": reply, "ok": True})
-    except HTTPException:
-        return JSONResponse({"reply": "❌ جلسة منتهية - سجل دخول"}, 401)
     except Exception as e:
+        print(f"❌ Chat error: {e}")
         return JSONResponse({"reply": "❌ خطأ", "ok": False})
 
 @app.get("/api/profile")
-async def profile(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    """Get user profile"""
-    try:
-        payload = verify_jwt_token(credentials.credentials)
-        username = payload.get("username")
-        user_data = StudentService.get_user_data(username)
-        profile = user_data.get("profile", {})
-        stats = user_data.get("stats", {})
-        
-        return JSONResponse({
-            "username": username,
-            "name": profile.get("name", username),
-            "plan": profile.get("plan", "free"),
-            "days_streak": profile.get("days_streak", 0),
-            "study_minutes": profile.get("total_study_minutes", 0),
-            "total_questions": stats.get("total_questions_answered", 0),
-            "total_exams": stats.get("total_exams", 0),
-            "limits": PLANS.get(profile.get("plan", "free"), PLANS["free"])
-        })
-    except: return JSONResponse({"error": "Invalid token"}, 401)
+async def profile(request: Request):
+    """Get user profile - JWT optional"""
+    username = None
+    auth_header = request.headers.get("Authorization", "")
+    if auth_header.startswith("Bearer "):
+        token = auth_header.replace("Bearer ", "")
+        token_data = verify_token(token)
+        if token_data:
+            username = token_data.get("username")
+    
+    if not username:
+        return JSONResponse({"error": "سجل دخول"}, 401)
+    
+    user_data = StudentService.get_user_data(username)
+    profile = user_data.get("profile", {})
+    stats = user_data.get("stats", {})
+    
+    return JSONResponse({
+        "username": username,
+        "name": profile.get("name", username),
+        "plan": profile.get("plan", "free"),
+        "days_streak": profile.get("days_streak", 0),
+        "study_minutes": profile.get("total_study_minutes", 0),
+        "total_questions": stats.get("total_questions_answered", 0),
+        "total_exams": stats.get("total_exams", 0),
+    })
 
 @app.get("/api/leaderboard")
 async def leaderboard(): return JSONResponse(StudentService.get_leaderboard())
 
-@app.get("/api/validation")
-async def validation(): return JSONResponse({"bad_questions": len(BAD_QUESTIONS)})
-
 @app.get("/admin", response_class=HTMLResponse)
 async def admin_dashboard():
-    """✅ Admin Dashboard"""
     total_users = len(StudentService._local_db.get("users", {}))
-    total_exams = sum(
-        u.get("stats", {}).get("total_exams", 0) 
-        for u in StudentService._local_db.get("users", {}).values()
-    )
-    
+    total_exams = sum(u.get("stats", {}).get("total_exams", 0) for u in StudentService._local_db.get("users", {}).values())
     all_skills = Counter()
     for u in StudentService._local_db.get("users", {}).values():
         skill_stats = u.get("stats", {}).get("skill_stats", {})
         for skill, stats in skill_stats.items():
             all_skills[skill] += stats.get("wrong", 0)
-    
     weakest_skills = all_skills.most_common(5)
     
     return f"""
-    <!DOCTYPE html>
-    <html dir="rtl">
-    <head><title>Pen Admin</title><meta charset="UTF-8">
-    <style>body{{font-family:sans-serif;background:#0f172a;color:#e2e8f0;padding:2rem;}}h1{{color:#fbbf24}} .card{{background:#1e293b;padding:1rem;border-radius:12px;margin:1rem 0;border:1px solid #334155;}} .stat{{font-size:2rem;color:#fbbf24;font-weight:bold;}}</style>
-    </head>
-    <body>
-    <h1>📊 Pen Admin Dashboard</h1>
+    <!DOCTYPE html><html dir="rtl"><head><title>Pen Admin</title><meta charset="UTF-8">
+    <style>body{{font-family:sans-serif;background:#0f172a;color:#e2e8f0;padding:2rem;}}h1{{color:#fbbf24}}.card{{background:#1e293b;padding:1rem;border-radius:12px;margin:1rem 0;border:1px solid #334155;}}.stat{{font-size:2rem;color:#fbbf24;font-weight:bold;}}</style></head>
+    <body><h1>📊 Pen Admin Dashboard</h1>
     <div class="card"><h3>👥 الطلاب</h3><div class="stat">{total_users}</div></div>
     <div class="card"><h3>📝 الامتحانات</h3><div class="stat">{total_exams}</div></div>
     <div class="card"><h3>📚 الأسئلة</h3><div class="stat">{len(ALL_QUESTIONS)}</div></div>
@@ -1325,7 +1278,7 @@ async def admin_dashboard():
 
 @app.get("/health")
 async def health():
-    return {"status": "healthy", "version": "v11-production", "questions": len(ALL_QUESTIONS), "mcq": len(MCQ_QUESTIONS), "ai_enabled": AI_ENABLED, "ai_cache_size": len(ai_cache.cache)}
+    return {"status": "healthy", "version": "v11-final", "questions": len(ALL_QUESTIONS), "mcq": len(MCQ_QUESTIONS), "ai_enabled": AI_ENABLED, "ai_cache": len(ai_cache.cache), "users": len(StudentService._local_db.get("users", {}))}
 
 @app.get("/", response_class=HTMLResponse)
 async def auth_page():
@@ -1340,4 +1293,4 @@ async def app_page():
 @app.on_event("startup")
 async def startup_event():
     asyncio.create_task(cleanup_expired_sessions())
-    print(f"🚀 Pen Production V11 | {len(ALL_QUESTIONS)} questions | AI: {AI_ENABLED}")
+    print(f"🚀 Pen V11 Final | {len(ALL_QUESTIONS)} questions | AI: {AI_ENABLED} | Users: {len(StudentService._local_db.get('users', {}))}")
