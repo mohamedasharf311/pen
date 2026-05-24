@@ -15,7 +15,7 @@ import base64
 import tempfile
 from datetime import datetime
 import hashlib
-import httpx
+import aiohttp
 
 # =========================================
 # APP
@@ -36,15 +36,6 @@ app.add_middleware(
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
 AI_ENABLED = bool(OPENROUTER_API_KEY)
-
-# =========================================
-# HTTP CLIENT
-# =========================================
-
-HTTP_CLIENT = httpx.AsyncClient(
-    timeout=httpx.Timeout(15.0),
-    limits=httpx.Limits(max_keepalive_connections=5, max_connections=10)
-)
 
 # =========================================
 # AI EXPLANATION GENERATOR
@@ -78,33 +69,26 @@ async def generate_ai_explanation(question_text: str, user_answer: str, correct_
 الشرح:"""
 
     try:
-        response = await HTTP_CLIENT.post(
-            "https://openrouter.ai/api/v1/chat/completions",
-            json={
-                "model": "google/gemini-2.0-flash-001",
-                "messages": [
-                    {
-                        "role": "system",
-                        "content": "أنت مدرس لغة عربية خبير. اشرح بطريقة مختصرة وواضحة ومشجعة. استخدم لغة بسيطة."
-                    },
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ],
-                "temperature": 0.7,
-                "max_tokens": 200
-            },
-            headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json"
-            }
-        )
-        
-        data = response.json()
-        ai_text = data["choices"][0]["message"]["content"]
-        return ai_text.strip()
-        
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                json={
+                    "model": "google/gemini-2.0-flash-001",
+                    "messages": [
+                        {"role": "system", "content": "أنت مدرس لغة عربية خبير. اشرح بطريقة مختصرة وواضحة ومشجعة. استخدم لغة بسيطة."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    "temperature": 0.7,
+                    "max_tokens": 200
+                },
+                headers={
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "Content-Type": "application/json"
+                }
+            ) as response:
+                data = await response.json()
+                ai_text = data["choices"][0]["message"]["content"]
+                return ai_text.strip()
     except Exception as e:
         print(f"❌ AI Error: {e}")
         return None
@@ -133,32 +117,25 @@ async def generate_ai_feedback(question_text: str, user_answer: str, correct_ans
 الرد:"""
 
     try:
-        response = await HTTP_CLIENT.post(
-            "https://openrouter.ai/api/v1/chat/completions",
-            json={
-                "model": "google/gemini-2.0-flash-001",
-                "messages": [
-                    {
-                        "role": "system",
-                        "content": "أنت مدرس لغة عربية مشجع. ردودك مختصرة ودافئة ومفيدة."
-                    },
-                    {
-                        "role": "user",
-                        "content": prompt
-                    }
-                ],
-                "temperature": 0.8,
-                "max_tokens": 180
-            },
-            headers={
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                "Content-Type": "application/json"
-            }
-        )
-        
-        data = response.json()
-        return data["choices"][0]["message"]["content"].strip()
-        
+        async with aiohttp.ClientSession() as session:
+            async with session.post(
+                "https://openrouter.ai/api/v1/chat/completions",
+                json={
+                    "model": "google/gemini-2.0-flash-001",
+                    "messages": [
+                        {"role": "system", "content": "أنت مدرس لغة عربية مشجع. ردودك مختصرة ودافئة ومفيدة."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    "temperature": 0.8,
+                    "max_tokens": 180
+                },
+                headers={
+                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
+                    "Content-Type": "application/json"
+                }
+            ) as response:
+                data = await response.json()
+                return data["choices"][0]["message"]["content"].strip()
     except Exception as e:
         print(f"❌ AI Feedback Error: {e}")
         return None
@@ -1092,7 +1069,3 @@ async def app_page():
 async def startup_event():
     asyncio.create_task(cleanup_expired_sessions())
     print(f"🚀 Pen V10 AI | {len(ALL_QUESTIONS)} questions | AI: {AI_ENABLED}")
-
-@app.on_event("shutdown")
-async def shutdown_event():
-    await HTTP_CLIENT.aclose()
