@@ -1,6 +1,10 @@
-from fastapi import FastAPI, Request
+from fastapi import FastAPI, Request, HTTPException, Depends
 from fastapi.responses import JSONResponse, HTMLResponse
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
+from passlib.context import CryptContext
+import jwt
+from datetime import datetime, timedelta
 
 import os
 import json
@@ -13,7 +17,6 @@ from collections import Counter, defaultdict
 from typing import List, Dict, Optional, Set, Tuple
 import base64
 import tempfile
-from datetime import datetime
 import hashlib
 import aiohttp
 
@@ -21,14 +24,99 @@ import aiohttp
 # APP
 # =========================================
 
-app = FastAPI(title="Pen Platform - V10 AI")
+app = FastAPI(title="Pen Platform - Production V11")
 
+# ✅ CORS Security - Allow your domains only
+ALLOWED_ORIGINS = os.getenv("ALLOWED_ORIGINS", "https://pen-ot9f.onrender.com,https://pen-platform.com").split(",")
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_origins=ALLOWED_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["GET", "POST"],
+    allow_headers=["Authorization", "Content-Type"],
 )
+
+# =========================================
+# SECURITY
+# =========================================
+
+# ✅ Password Hashing with bcrypt
+pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+# ✅ JWT Configuration
+JWT_SECRET = os.getenv("JWT_SECRET", "pen-platform-secret-key-change-in-production")
+JWT_ALGORITHM = "HS256"
+JWT_EXPIRATION_HOURS = 24
+
+security = HTTPBearer()
+
+def create_jwt_token(username: str, plan: str = "free") -> str:
+    """Create JWT token for authenticated user"""
+    expiration = datetime.utcnow() + timedelta(hours=JWT_EXPIRATION_HOURS)
+    payload = {
+        "username": username,
+        "plan": plan,
+        "exp": expiration,
+        "iat": datetime.utcnow()
+    }
+    return jwt.encode(payload, JWT_SECRET, algorithm=JWT_ALGORITHM)
+
+def verify_jwt_token(token: str) -> Dict:
+    """Verify JWT token and return payload"""
+    try:
+        payload = jwt.decode(token, JWT_SECRET, algorithms=[JWT_ALGORITHM])
+        return payload
+    except jwt.ExpiredSignatureError:
+        raise HTTPException(status_code=401, detail="Token expired")
+    except jwt.InvalidTokenError:
+        raise HTTPException(status_code=401, detail="Invalid token")
+
+# ✅ Rate Limiting
+class RateLimiter:
+    def __init__(self):
+        self.requests: Dict[str, List[float]] = {}
+        self.max_requests = 5  # 5 requests per minute per user
+        self.window = 60  # 60 seconds
+    
+    def is_allowed(self, user_id: str) -> bool:
+        current_time = time.time()
+        if user_id not in self.requests:
+            self.requests[user_id] = []
+        
+        # Remove old requests
+        self.requests[user_id] = [t for t in self.requests[user_id] if current_time - t < self.window]
+        
+        if len(self.requests[user_id]) >= self.max_requests:
+            return False
+        
+        self.requests[user_id].append(current_time)
+        return True
+
+rate_limiter = RateLimiter()
+
+# ✅ AI Cache
+class AICache:
+    def __init__(self):
+        self.cache: Dict[str, Dict] = {}
+        self.max_size = 1000
+    
+    def get(self, key: str) -> Optional[str]:
+        if key in self.cache:
+            entry = self.cache[key]
+            if time.time() - entry["timestamp"] < 3600:  # 1 hour cache
+                return entry["response"]
+            else:
+                del self.cache[key]
+        return None
+    
+    def set(self, key: str, response: str):
+        if len(self.cache) >= self.max_size:
+            # Remove oldest entry
+            oldest_key = min(self.cache.keys(), key=lambda k: self.cache[k]["timestamp"])
+            del self.cache[oldest_key]
+        self.cache[key] = {"response": response, "timestamp": time.time()}
+
+ai_cache = AICache()
 
 # =========================================
 # CONFIG
@@ -37,66 +125,28 @@ app.add_middleware(
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY", "").strip()
 AI_ENABLED = bool(OPENROUTER_API_KEY)
 
+# Subscription plans
+PLANS = {
+    "free": {"max_questions": 20, "max_exams": 3, "ai_enabled": False},
+    "basic": {"max_questions": 100, "max_exams": 10, "ai_enabled": True},
+    "premium": {"max_questions": 500, "max_exams": 50, "ai_enabled": True},
+    "unlimited": {"max_questions": float("inf"), "max_exams": float("inf"), "ai_enabled": True},
+}
+
 # =========================================
-# AI EXPLANATION GENERATOR
+# AI EXPLANATION GENERATOR (with Cache)
 # =========================================
 
-async def generate_ai_explanation(question_text: str, user_answer: str, correct_answer: str, explanation: str, skill: str) -> str:
-    """Generate AI explanation using OpenRouter"""
+async def generate_ai_feedback(question_id: str, question_text: str, user_answer: str, correct_answer: str, is_correct: bool, skill: str, explanation: str) -> str:
+    """Generate AI feedback with caching"""
     if not AI_ENABLED:
         return None
     
-    skill_arabic = get_skill_arabic(skill)
-    
-    prompt = f"""أنت مدرس لغة عربية خبير للثانوية العامة في مصر. اشرح للطالب إجابته بأسلوب واضح ومختصر (3-5 أسطر).
-
-السؤال: {question_text[:300]}
-
-إجابة الطالب: {user_answer}
-الإجابة الصحيحة: {correct_answer}
-
-المهارة: {skill_arabic}
-
-الشرح الموجود: {explanation[:200] if explanation else 'لا يوجد'}
-
-المطلوب:
-1. اشرح لماذا الإجابة خطأ (أو صح) بأسلوب بسيط
-2. أعط قاعدة سريعة أو نصيحة للطالب
-3. استخدم أسلوب مشجع (زي مدرس حقيقي)
-4. خلي الشرح باللهجة المصرية أو عربي فصحى بسيط
-5. أقصى طول 4 أسطر
-
-الشرح:"""
-
-    try:
-        async with aiohttp.ClientSession() as session:
-            async with session.post(
-                "https://openrouter.ai/api/v1/chat/completions",
-                json={
-                    "model": "google/gemini-2.0-flash-001",
-                    "messages": [
-                        {"role": "system", "content": "أنت مدرس لغة عربية خبير. اشرح بطريقة مختصرة وواضحة ومشجعة. استخدم لغة بسيطة."},
-                        {"role": "user", "content": prompt}
-                    ],
-                    "temperature": 0.7,
-                    "max_tokens": 200
-                },
-                headers={
-                    "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-                    "Content-Type": "application/json"
-                }
-            ) as response:
-                data = await response.json()
-                ai_text = data["choices"][0]["message"]["content"]
-                return ai_text.strip()
-    except Exception as e:
-        print(f"❌ AI Error: {e}")
-        return None
-
-async def generate_ai_feedback(question_text: str, user_answer: str, correct_answer: str, is_correct: bool, skill: str, explanation: str) -> str:
-    """Generate AI feedback for the answer"""
-    if not AI_ENABLED:
-        return None
+    # Check cache first
+    cache_key = f"{question_id}:{user_answer}"
+    cached = ai_cache.get(cache_key)
+    if cached:
+        return cached
     
     skill_arabic = get_skill_arabic(skill)
     result_text = "صحيحة" if is_correct else "خاطئة"
@@ -135,13 +185,17 @@ async def generate_ai_feedback(question_text: str, user_answer: str, correct_ans
                 }
             ) as response:
                 data = await response.json()
-                return data["choices"][0]["message"]["content"].strip()
+                ai_text = data["choices"][0]["message"]["content"].strip()
+                
+                # Cache the response
+                ai_cache.set(cache_key, ai_text)
+                return ai_text
     except Exception as e:
         print(f"❌ AI Feedback Error: {e}")
         return None
 
 # =========================================
-# COMPLETE SKILL MAPPING
+# COMPLETE SKILL MAPPING (same as before)
 # =========================================
 
 SKILL_ALIASES = {
@@ -250,12 +304,12 @@ def get_skill_category(skill: str) -> str:
     return arabic
 
 # =========================================
-# STUDENT SERVICE
+# STUDENT SERVICE (with Firebase unified structure)
 # =========================================
 
 class StudentService:
     _rtdb = None
-    _local_db: Dict = {"users": {}, "reported_questions": []}
+    _local_db: Dict = {"users": {}}
     _initialized = False
     
     @classmethod
@@ -288,31 +342,92 @@ class StudentService:
     @classmethod
     def create_user(cls, username: str, password: str, name: str = "") -> Dict:
         username = username.strip().lower()
-        if cls._rtdb:
+        
+        # Check existing
+        user_ref = cls._rtdb.reference(f"users/{username}") if cls._rtdb else None
+        if user_ref:
             try:
-                if cls._rtdb.reference(f"users/{username}").get(): return {"error": "اسم المستخدم موجود بالفعل"}
+                if user_ref.get(): return {"error": "اسم المستخدم موجود بالفعل"}
             except: pass
         if username in cls._local_db["users"]: return {"error": "اسم المستخدم موجود بالفعل"}
-        hashed_password = hashlib.sha256(password.encode()).hexdigest()
-        user_data = {"username": username, "password": hashed_password, "name": name or username, "created_at": cls._now_iso(), "chat_id": f"user_{username}", "asked_questions": [], "total_score": 0, "total_exams": 0, "total_questions_answered": 0, "skill_stats": {}, "recent_exams": [], "greeted": False, "questions_since_analysis": 0, "last_wrong_skills": []}
+        
+        # ✅ Hash password with bcrypt
+        hashed_password = pwd_context.hash(password)
+        
+        # ✅ Unified user structure
+        user_data = {
+            "profile": {
+                "username": username,
+                "name": name or username,
+                "created_at": cls._now_iso(),
+                "last_login": cls._now_iso(),
+                "plan": "free",
+                "expires_at": "",
+                "total_study_minutes": 0,
+                "days_streak": 0,
+                "last_study_date": "",
+            },
+            "stats": {
+                "total_score": 0,
+                "total_exams": 0,
+                "total_questions_answered": 0,
+                "skill_stats": {},
+                "recent_exams": [],
+            },
+            "mistakes": {
+                "wrong_questions": [],
+                "last_wrong_skills": [],
+            },
+            "settings": {
+                "greeted": False,
+                "questions_since_analysis": 0,
+                "asked_questions": [],
+            }
+        }
+        
         cls._local_db["users"][username] = user_data
+        
         if cls._rtdb:
             try: cls._rtdb.reference(f"users/{username}").set(user_data)
             except: pass
-        return {"success": True, "username": username, "chat_id": f"user_{username}"}
+        
+        token = create_jwt_token(username, "free")
+        return {"success": True, "username": username, "token": token, "name": name or username}
     
     @classmethod
     def login_user(cls, username: str, password: str) -> Dict:
         username = username.strip().lower()
-        hashed_password = hashlib.sha256(password.encode()).hexdigest()
+        
         user_data = None
         if cls._rtdb:
             try: user_data = cls._rtdb.reference(f"users/{username}").get()
             except: pass
         if not user_data: user_data = cls._local_db["users"].get(username)
         if not user_data: return {"error": "اسم المستخدم غير موجود"}
-        if user_data.get("password") != hashed_password: return {"error": "كلمة المرور غير صحيحة"}
-        return {"success": True, "username": username, "name": user_data.get("name", username), "chat_id": f"user_{username}"}
+        
+        # ✅ Verify with bcrypt
+        profile = user_data.get("profile", user_data)
+        stored_password = profile.get("password", user_data.get("password", ""))
+        
+        if not pwd_context.verify(password, stored_password):
+            return {"error": "كلمة المرور غير صحيحة"}
+        
+        # Update last login and streak
+        today = datetime.now().strftime("%Y-%m-%d")
+        last_study = profile.get("last_study_date", "")
+        
+        if last_study == (datetime.now() - timedelta(days=1)).strftime("%Y-%m-%d"):
+            profile["days_streak"] = profile.get("days_streak", 0) + 1
+        elif last_study != today:
+            profile["days_streak"] = 1
+        
+        profile["last_login"] = cls._now_iso()
+        profile["last_study_date"] = today
+        
+        plan = profile.get("plan", "free")
+        token = create_jwt_token(username, plan)
+        
+        return {"success": True, "username": username, "token": token, "name": profile.get("name", username), "plan": plan}
     
     @classmethod
     def get_user_data(cls, username: str) -> Dict:
@@ -324,26 +439,51 @@ class StudentService:
         return cls._local_db["users"].get(username, {})
     
     @classmethod
-    def update_user_data(cls, username: str, updates: Dict):
+    def update_user_data(cls, username: str, path: str, updates: Dict):
         user_data = cls.get_user_data(username)
-        user_data.update(updates)
+        if not user_data:
+            # Initialize with default structure
+            user_data = {
+                "profile": {}, "stats": {}, "mistakes": {}, "settings": {}
+            }
+        
+        # Navigate to the correct path
+        target = user_data
+        for key in path.split("/"):
+            if key not in target: target[key] = {}
+            target = target[key]
+        target.update(updates)
+        
         cls._local_db["users"][username] = user_data
         if cls._rtdb:
-            try: cls._rtdb.reference(f"users/{username}").update(updates)
+            try: cls._rtdb.reference(f"users/{username}").update(user_data)
             except: pass
     
     @classmethod
-    def mark_greeted(cls, username: str): cls.update_user_data(username, {"greeted": True})
+    def get_plan_limits(cls, username: str) -> Dict:
+        user_data = cls.get_user_data(username)
+        plan = user_data.get("profile", {}).get("plan", "free")
+        return PLANS.get(plan, PLANS["free"])
+    
+    @classmethod
+    def can_take_exam(cls, username: str) -> Tuple[bool, str]:
+        limits = cls.get_plan_limits(username)
+        user_data = cls.get_user_data(username)
+        total_questions = user_data.get("stats", {}).get("total_questions_answered", 0)
+        
+        if total_questions >= limits["max_questions"]:
+            return False, f"لقد وصلت للحد الأقصى ({limits['max_questions']} سؤال). رقي اشتراكك للمزيد."
+        return True, ""
     
     @classmethod
     def add_asked_question(cls, username: str, question_id: str):
         user_data = cls.get_user_data(username)
-        asked = user_data.get("asked_questions", [])
+        asked = user_data.get("settings", {}).get("asked_questions", [])
         if question_id not in asked:
             asked.append(question_id)
             if len(asked) > 500: asked = asked[-500:]
-        questions_since = user_data.get("questions_since_analysis", 0) + 1
-        cls.update_user_data(username, {"asked_questions": asked, "questions_since_analysis": questions_since})
+        questions_since = user_data.get("settings", {}).get("questions_since_analysis", 0) + 1
+        cls.update_user_data(username, "settings", {"asked_questions": asked, "questions_since_analysis": questions_since})
     
     @classmethod
     def save_exam_result(cls, username: str, result: Dict):
@@ -352,21 +492,39 @@ class StudentService:
         wrong_questions = result.get("wrong_questions", [])
         wrong_skills = result.get("wrong_skills", [])
         all_skills = result.get("all_skills", [])
+        
         user_data = cls.get_user_data(username)
-        skill_stats = user_data.get("skill_stats", {})
+        stats = user_data.get("stats", {})
+        skill_stats = stats.get("skill_stats", {})
+        
         skill_counter = Counter(all_skills); wrong_skill_counter = Counter(wrong_skills)
         for skill in set(all_skills + wrong_skills):
             if skill not in skill_stats: skill_stats[skill] = {"correct": 0, "wrong": 0, "total": 0}
             skill_stats[skill]["total"] = skill_stats[skill].get("total", 0) + skill_counter.get(skill, 0)
             skill_stats[skill]["wrong"] = skill_stats[skill].get("wrong", 0) + wrong_skill_counter.get(skill, 0)
             skill_stats[skill]["correct"] = skill_stats[skill]["total"] - skill_stats[skill]["wrong"]
-        recent_exams = user_data.get("recent_exams", [])
-        recent_exams.append({"correct": correct, "total": total, "percentage": percentage, "wrong_skills": wrong_skills, "wrong_questions": wrong_questions, "timestamp": cls._now_ts()})
+        
+        recent_exams = stats.get("recent_exams", [])
+        recent_exams.append({"correct": correct, "total": total, "percentage": percentage, "wrong_skills": wrong_skills, "timestamp": cls._now_ts()})
         if len(recent_exams) > 10: recent_exams = recent_exams[-10:]
-        cls.update_user_data(username, {"skill_stats": skill_stats, "total_exams": user_data.get("total_exams", 0) + 1, "total_score": user_data.get("total_score", 0) + correct, "total_questions_answered": user_data.get("total_questions_answered", 0) + total, "recent_exams": recent_exams, "last_wrong_skills": list(set(wrong_skills))})
-        if cls._rtdb:
-            try: cls._rtdb.reference(f"students/{username}/exams").push({"score": correct, "total": total, "percentage": percentage, "wrong_questions": wrong_questions, "wrong_skills": wrong_skills, "timestamp": cls._now_ts()})
-            except: pass
+        
+        cls.update_user_data(username, "stats", {
+            "skill_stats": skill_stats,
+            "total_exams": stats.get("total_exams", 0) + 1,
+            "total_score": stats.get("total_score", 0) + correct,
+            "total_questions_answered": stats.get("total_questions_answered", 0) + total,
+            "recent_exams": recent_exams
+        })
+        
+        cls.update_user_data(username, "mistakes", {
+            "wrong_questions": list(set(wrong_questions)),
+            "last_wrong_skills": list(set(wrong_skills))
+        })
+        
+        # Update profile study time
+        profile = user_data.get("profile", {})
+        study_minutes = profile.get("total_study_minutes", 0) + (total * 2)  # ~2 min per question
+        cls.update_user_data(username, "profile", {"total_study_minutes": study_minutes})
     
     @classmethod
     def _calculate_grade(cls, percentage: int) -> str:
@@ -378,17 +536,11 @@ class StudentService:
     
     @classmethod
     def get_wrong_questions(cls, username: str) -> List[str]:
-        wrong_qs = []
-        for exam in cls.get_user_data(username).get("recent_exams", []): wrong_qs.extend(exam.get("wrong_questions", []))
-        if cls._rtdb:
-            try:
-                exams = cls._rtdb.reference(f"students/{username}/exams").get() or {}
-                for exam in exams.values(): wrong_qs.extend(exam.get("wrong_questions", []))
-            except: pass
-        return list(set(wrong_qs))
+        return cls.get_user_data(username).get("mistakes", {}).get("wrong_questions", [])
     
     @classmethod
-    def get_last_wrong_skills(cls, username: str) -> List[str]: return cls.get_user_data(username).get("last_wrong_skills", [])
+    def get_last_wrong_skills(cls, username: str) -> List[str]:
+        return cls.get_user_data(username).get("mistakes", {}).get("last_wrong_skills", [])
     
     @classmethod
     def get_leaderboard(cls) -> List[Dict]:
@@ -398,24 +550,24 @@ class StudentService:
             try: source = cls._rtdb.reference("users").get() or {}
             except: pass
         for uid, data in source.items():
-            if "password" in data:
-                total_exams = data.get("total_exams", 0); total_score = data.get("total_score", 0)
-                total_questions = data.get("total_questions_answered", 0)
-                if total_exams > 0 and total_questions > 0: users.append({"name": data.get("name", uid), "avg": int((total_score / total_questions) * 100), "exams": total_exams})
+            stats = data.get("stats", {})
+            total_exams = stats.get("total_exams", 0)
+            total_score = stats.get("total_score", 0)
+            total_questions = stats.get("total_questions_answered", 0)
+            if total_exams > 0 and total_questions > 0:
+                users.append({
+                    "name": data.get("profile", {}).get("name", uid),
+                    "avg": int((total_score / total_questions) * 100),
+                    "exams": total_exams,
+                    "study_minutes": data.get("profile", {}).get("total_study_minutes", 0)
+                })
         users.sort(key=lambda x: (x["avg"], x["exams"]), reverse=True)
         return users[:10]
-    
-    @classmethod
-    def report_question(cls, question_id: str, username: str):
-        cls._local_db["reported_questions"].append({"question_id": question_id, "reported_by": username, "timestamp": cls._now_ts()})
-        if cls._rtdb:
-            try: cls._rtdb.reference(f"reported_questions/{question_id}").push({"question_id": question_id, "reported_by": username})
-            except: pass
 
 StudentService.initialize()
 
 # =========================================
-# DATA LOADING
+# DATA LOADING (same as before)
 # =========================================
 
 MAX_QUESTION_LENGTH = 350
@@ -582,12 +734,12 @@ async def cleanup_expired_sessions():
         await asyncio.sleep(60)
 
 # =========================================
-# HELPERS
+# HELPERS (same as before)
 # =========================================
 
 def get_unasked_questions(questions: List[Dict], username: str, count: int) -> List[Dict]:
     user_data = StudentService.get_user_data(username)
-    asked = set(user_data.get("asked_questions", []))
+    asked = set(user_data.get("settings", {}).get("asked_questions", []))
     unasked = [q for q in questions if q.get("question_id", "") not in asked]
     if len(unasked) >= count: return random.sample(unasked, count)
     elif unasked: return unasked[:count]
@@ -655,28 +807,24 @@ def format_professional_question(q: Dict, session: ExamSession) -> str:
     return msg
 
 async def format_teacher_feedback(result: Dict, session: ExamSession) -> str:
-    """Teacher feedback with AI explanation"""
     msg = ""
     
     if result["correct"]:
         praises = ["🎉 *ممتاز!*", "🔥 *إجابة قوية!*", "👏 *واضح إنك فاهم!*", "💯 *أحسنت!*"]
         msg += f"{random.choice(praises)}\n\n"
-        
         if result.get("consecutive_correct", 0) >= 3:
             msg += f"🔥 *سلسلة رائعة!* {result['consecutive_correct']} إجابات صحيحة متتالية!\n\n"
     else:
         msg += "❌ *ليست الإجابة الصحيحة*\n\n"
-        
         user_idx = result.get("user_answer_idx", -1)
         choices = result.get("choices", [])
         if 0 <= user_idx < len(choices):
             choice = choices[user_idx]
             user_text = choice.get("text", str(choice)) if isinstance(choice, dict) else str(choice)
             msg += f"✍️ *اخترت:* {user_idx+1}️⃣ {user_text}\n\n"
-        
         msg += f"✅ *الإجابة الصحيحة:* {result['correct_answer']}\n\n"
     
-    # Try AI explanation first
+    # AI explanation with cache
     ai_explanation = None
     if AI_ENABLED:
         user_idx = result.get("user_answer_idx", -1)
@@ -687,6 +835,7 @@ async def format_teacher_feedback(result: Dict, session: ExamSession) -> str:
             user_answer_text = choice.get("text", str(choice)) if isinstance(choice, dict) else str(choice)
         
         ai_explanation = await generate_ai_feedback(
+            result.get("question_id", ""),
             result.get("question_text", ""),
             user_answer_text,
             result["correct_answer"],
@@ -698,19 +847,16 @@ async def format_teacher_feedback(result: Dict, session: ExamSession) -> str:
     if ai_explanation:
         msg += f"🤖 *شرح المدرس:*\n{ai_explanation}\n\n"
     else:
-        # Fallback to built-in tips
         skill = result.get("skill", "عام")
         tip = SKILL_TEACHING_TIPS.get(get_skill_arabic(skill))
         if tip:
             msg += f"📌 *قاعدة:*\n{random.choice(list(tip.values())) if isinstance(tip, dict) else tip}\n\n"
-        
         if result["explanation"] and len(str(result["explanation"])) > 10:
             msg += f"📝 *الشرح:*\n{str(result['explanation'])[:300]}\n\n"
     
     msg += f"📊 *نتيجتك:* {result['current_score']}/{result['question_number']}"
     if result.get("consecutive_correct", 0) >= 2: msg += f" | 🔥 *سلسلة:* {result['consecutive_correct']}"
     msg += "\n"
-    
     return msg
 
 def format_professional_report(session: ExamSession, username: str = None) -> str:
@@ -760,26 +906,38 @@ def format_professional_report(session: ExamSession, username: str = None) -> st
     return msg
 
 def get_smart_greeting(username: str, user_data: Dict) -> str:
-    name = user_data.get("name", username)
-    if not user_data.get("greeted", False):
-        StudentService.mark_greeted(username)
+    profile = user_data.get("profile", {})
+    stats = user_data.get("stats", {})
+    name = profile.get("name", username)
+    
+    if not user_data.get("settings", {}).get("greeted", False):
+        StudentService.update_user_data(username, "settings", {"greeted": True})
+        plan = profile.get("plan", "free")
+        plan_emoji = {"free": "🆓", "basic": "⭐", "premium": "👑", "unlimited": "💎"}.get(plan, "🆓")
         return f"""🤖 *Pen*: أهلاً يا {name} 👋
+{plan_emoji} *{plan}*
 
 مدرسك الشخصي في العربي 📚
-{'🧠 *مدعوم بالذكاء الاصطناعي*' if AI_ENABLED else ''}
+{'🧠 *مدعوم بالذكاء الاصطناعي*' if AI_ENABLED and plan != 'free' else ''}
 
 ⚡ *ابدأ:* `تدريب سريع` | `اختبرني` | `تحدي`
 📚 *مراجعة:* `بلاغة` `نحو` `أدب` `قراءة`"""
     
-    total_exams = user_data.get("total_exams", 0)
+    total_exams = stats.get("total_exams", 0)
     if total_exams == 0: return f"👋 *{name}*\n⚡ جاهز؟ `تدريب سريع`"
     
-    total_q = user_data.get("total_questions_answered", 0)
-    recent_exams = user_data.get("recent_exams", [])
+    total_q = stats.get("total_questions_answered", 0)
+    recent_exams = stats.get("recent_exams", [])
     last_avg = 0
     if recent_exams: last_avg = int((recent_exams[-1].get("correct", 0) / max(recent_exams[-1].get("total", 1), 1)) * 100)
     
-    msg = f"👋 *{name}* | 📊 *{last_avg}%* | 📝 *{total_q} سؤال*\n\n"
+    days_streak = profile.get("days_streak", 0)
+    study_minutes = profile.get("total_study_minutes", 0)
+    
+    msg = f"👋 *{name}* | 📊 *{last_avg}%* | 📝 *{total_q} سؤال*\n"
+    if days_streak > 1: msg += f"🔥 *{days_streak} أيام متتالية!* | ⏱️ *{study_minutes} دقيقة*\n"
+    msg += "\n"
+    
     last_wrong = StudentService.get_last_wrong_skills(username)
     if last_wrong and last_avg < 70: msg += "💡 *ركز على:* `علاج أخطائي`\n"
     else: msg += "⚡ `تدريب سريع` | `تحدي`\n"
@@ -798,6 +956,10 @@ def is_rate_limited(chat_id: str) -> bool:
 async def process_message(chat_id: str, body: str, username: str = None) -> str:
     try:
         if is_rate_limited(chat_id): return ""
+        
+        # ✅ Rate limiting
+        if username and not rate_limiter.is_allowed(username):
+            return "⏱️ *استنى شوية* - 5 رسائل في الدقيقة فقط"
         
         if chat_id in user_sessions:
             session = user_sessions[chat_id]
@@ -852,6 +1014,11 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
         if body_lower in ["الترتيب"]: return get_leaderboard_text()
         
         if any(x in body_lower for x in ["اختبرني"]):
+            # ✅ Check plan limits
+            if username:
+                can, msg = StudentService.can_take_exam(username)
+                if not can: return f"❌ *{msg}*\n\n💎 رقي اشتراكك من [الموقع](https://pen-ot9f.onrender.com)"
+            
             level = "medium"
             for l in ["سهل", "متوسط", "صعب"]:
                 if l in body_lower: level = {"سهل": "easy", "متوسط": "medium", "صعب": "hard"}[l]
@@ -862,6 +1029,9 @@ async def process_message(chat_id: str, body: str, username: str = None) -> str:
             return start_exam(chat_id, level=level, skill_query=skill_query, username=username)
         
         if any(x in body_lower for x in ["امتحان"]) and "اختبرني" not in body_lower:
+            if username:
+                can, msg = StudentService.can_take_exam(username)
+                if not can: return f"❌ *{msg}*\n\n💎 رقي اشتراكك"
             level = None
             for l in ["سهل", "متوسط", "صعب"]:
                 if l in body_lower: level = {"سهل": "easy", "متوسط": "medium", "صعب": "hard"}[l]
@@ -959,7 +1129,7 @@ def generate_focus_plan(username: str = None) -> str:
     msg = "🎯 *خطة التركيز*\n" + "─" * 20 + "\n\n"
     if username:
         user_data = StudentService.get_user_data(username)
-        recent_exams = user_data.get("recent_exams", [])
+        recent_exams = user_data.get("stats", {}).get("recent_exams", [])
         if recent_exams:
             all_wrong = []; total_recent = 0
             for exam in recent_exams: total_recent += exam.get("total", 0); all_wrong.extend(exam.get("wrong_skills", []))
@@ -977,12 +1147,26 @@ def generate_focus_plan(username: str = None) -> str:
 
 def get_level_analytics(username: str) -> str:
     user_data = StudentService.get_user_data(username)
-    recent_exams = user_data.get("recent_exams", [])
+    stats = user_data.get("stats", {})
+    recent_exams = stats.get("recent_exams", [])
+    profile = user_data.get("profile", {})
+    
     if not recent_exams: return "📊 *لسه مفيش بيانات*\n⚡ `تدريب سريع`"
+    
     recent_correct = sum(e.get("correct", 0) for e in recent_exams)
     recent_total = sum(e.get("total", 0) for e in recent_exams)
     recent_avg = int((recent_correct / max(recent_total, 1)) * 100)
-    msg = f"📊 *تحليل*\n{'─' * 20}\n\n📈 *{recent_avg}%* | 🏅 *{StudentService._calculate_grade(recent_avg)}*\n\n"
+    
+    total_q = stats.get("total_questions_answered", 0)
+    study_minutes = profile.get("total_study_minutes", 0)
+    days_streak = profile.get("days_streak", 0)
+    
+    msg = f"📊 *تحليل*\n{'─' * 20}\n\n"
+    msg += f"📈 *{recent_avg}%* | 🏅 *{StudentService._calculate_grade(recent_avg)}*\n"
+    msg += f"📝 *{total_q} سؤال* | ⏱️ *{study_minutes} دقيقة*\n"
+    if days_streak > 1: msg += f"🔥 *{days_streak} أيام متتالية*\n"
+    msg += "\n"
+    
     all_wrong = []
     for e in recent_exams: all_wrong.extend(e.get("wrong_skills", []))
     if all_wrong:
@@ -999,7 +1183,8 @@ def get_leaderboard_text() -> str:
     medals = ["🥇", "🥈", "🥉"]
     for i, user in enumerate(leaders):
         medal = medals[i] if i < 3 else f"{i+1}."
-        msg += f"{medal} {user['name']} - {user['avg']}%\n"
+        study = f" | ⏱️{user.get('study_minutes', 0)}د" if user.get('study_minutes') else ""
+        msg += f"{medal} {user['name']} - {user['avg']}%{study}\n"
     return msg
 
 def get_default_greeting() -> str:
@@ -1010,17 +1195,26 @@ def get_default_greeting() -> str:
 📚 `بلاغة` `نحو` `أدب` `قراءة`"""
 
 # =========================================
-# API ENDPOINTS
+# API ENDPOINTS (with JWT auth)
 # =========================================
+
+async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)) -> str:
+    """Extract username from JWT token"""
+    payload = verify_jwt_token(credentials.credentials)
+    return payload.get("username")
 
 @app.post("/api/register")
 async def register(request: Request):
     try:
         data = await request.json()
-        username = data.get("username", "").strip(); password = data.get("password", "").strip(); name = data.get("name", "").strip()
+        username = data.get("username", "").strip()
+        password = data.get("password", "").strip()
+        name = data.get("name", "").strip()
+        
         if not username or not password: return JSONResponse({"error": "مطلوب"}, 400)
         if len(username) < 3: return JSONResponse({"error": "3 أحرف"}, 400)
         if len(password) < 6: return JSONResponse({"error": "6 أحرف"}, 400)
+        
         result = StudentService.create_user(username, password, name)
         if "error" in result: return JSONResponse(result, 400)
         return JSONResponse(result)
@@ -1030,30 +1224,108 @@ async def register(request: Request):
 async def login(request: Request):
     try:
         data = await request.json()
-        username = data.get("username", "").strip(); password = data.get("password", "").strip()
+        username = data.get("username", "").strip()
+        password = data.get("password", "").strip()
+        
         if not username or not password: return JSONResponse({"error": "مطلوب"}, 400)
+        
         result = StudentService.login_user(username, password)
         if "error" in result: return JSONResponse(result, 401)
-        ACTIVE_USERS[result["chat_id"]] = username
+        
+        ACTIVE_USERS[username] = username
         return JSONResponse(result)
     except Exception as e: return JSONResponse({"error": str(e)}, 500)
 
 @app.post("/api/chat")
-async def chat(request: Request):
+async def chat(request: Request, credentials: HTTPAuthorizationCredentials = Depends(security)):
+    """Protected chat endpoint"""
     try:
+        # Verify JWT
+        payload = verify_jwt_token(credentials.credentials)
+        username = payload.get("username")
+        
         data = await request.json()
-        chat_id = data.get("chat_id", ""); message = data.get("message", "").strip(); username = data.get("username", "")
+        message = data.get("message", "").strip()
+        
         if not message: return JSONResponse({"reply": ""})
-        ACTIVE_USERS[chat_id] = username
-        reply = await process_message(chat_id, message, username)
+        if not username: return JSONResponse({"reply": "❌ سجل دخول"}, 401)
+        
+        # ✅ Rate limiting
+        if not rate_limiter.is_allowed(username):
+            return JSONResponse({"reply": "⏱️ *5 رسائل في الدقيقة*"}, 429)
+        
+        ACTIVE_USERS[username] = username
+        reply = await process_message(username, message, username)
         return JSONResponse({"reply": reply, "ok": True})
-    except Exception as e: return JSONResponse({"reply": "❌ خطأ", "ok": False})
+    except HTTPException:
+        return JSONResponse({"reply": "❌ جلسة منتهية - سجل دخول"}, 401)
+    except Exception as e:
+        return JSONResponse({"reply": "❌ خطأ", "ok": False})
+
+@app.get("/api/profile")
+async def profile(credentials: HTTPAuthorizationCredentials = Depends(security)):
+    """Get user profile"""
+    try:
+        payload = verify_jwt_token(credentials.credentials)
+        username = payload.get("username")
+        user_data = StudentService.get_user_data(username)
+        profile = user_data.get("profile", {})
+        stats = user_data.get("stats", {})
+        
+        return JSONResponse({
+            "username": username,
+            "name": profile.get("name", username),
+            "plan": profile.get("plan", "free"),
+            "days_streak": profile.get("days_streak", 0),
+            "study_minutes": profile.get("total_study_minutes", 0),
+            "total_questions": stats.get("total_questions_answered", 0),
+            "total_exams": stats.get("total_exams", 0),
+            "limits": PLANS.get(profile.get("plan", "free"), PLANS["free"])
+        })
+    except: return JSONResponse({"error": "Invalid token"}, 401)
 
 @app.get("/api/leaderboard")
 async def leaderboard(): return JSONResponse(StudentService.get_leaderboard())
 
+@app.get("/api/validation")
+async def validation(): return JSONResponse({"bad_questions": len(BAD_QUESTIONS)})
+
+@app.get("/admin", response_class=HTMLResponse)
+async def admin_dashboard():
+    """✅ Admin Dashboard"""
+    total_users = len(StudentService._local_db.get("users", {}))
+    total_exams = sum(
+        u.get("stats", {}).get("total_exams", 0) 
+        for u in StudentService._local_db.get("users", {}).values()
+    )
+    
+    all_skills = Counter()
+    for u in StudentService._local_db.get("users", {}).values():
+        skill_stats = u.get("stats", {}).get("skill_stats", {})
+        for skill, stats in skill_stats.items():
+            all_skills[skill] += stats.get("wrong", 0)
+    
+    weakest_skills = all_skills.most_common(5)
+    
+    return f"""
+    <!DOCTYPE html>
+    <html dir="rtl">
+    <head><title>Pen Admin</title><meta charset="UTF-8">
+    <style>body{{font-family:sans-serif;background:#0f172a;color:#e2e8f0;padding:2rem;}}h1{{color:#fbbf24}} .card{{background:#1e293b;padding:1rem;border-radius:12px;margin:1rem 0;border:1px solid #334155;}} .stat{{font-size:2rem;color:#fbbf24;font-weight:bold;}}</style>
+    </head>
+    <body>
+    <h1>📊 Pen Admin Dashboard</h1>
+    <div class="card"><h3>👥 الطلاب</h3><div class="stat">{total_users}</div></div>
+    <div class="card"><h3>📝 الامتحانات</h3><div class="stat">{total_exams}</div></div>
+    <div class="card"><h3>📚 الأسئلة</h3><div class="stat">{len(ALL_QUESTIONS)}</div></div>
+    <div class="card"><h3>🤖 AI</h3><div class="stat">{'مفعل' if AI_ENABLED else 'غير مفعل'}</div></div>
+    <div class="card"><h3>🔴 أكثر المهارات ضعفاً</h3>{"<br>".join([f'{get_skill_display(s)}: {c} خطأ' for s,c in weakest_skills])}</div>
+    <div class="card"><h3>❌ أسئلة غير صالحة</h3><div class="stat">{len(BAD_QUESTIONS)}</div></div>
+    </body></html>"""
+
 @app.get("/health")
-async def health(): return {"status": "healthy", "version": "v10-ai", "questions": len(ALL_QUESTIONS), "mcq": len(MCQ_QUESTIONS), "ai_enabled": AI_ENABLED}
+async def health():
+    return {"status": "healthy", "version": "v11-production", "questions": len(ALL_QUESTIONS), "mcq": len(MCQ_QUESTIONS), "ai_enabled": AI_ENABLED, "ai_cache_size": len(ai_cache.cache)}
 
 @app.get("/", response_class=HTMLResponse)
 async def auth_page():
@@ -1068,4 +1340,4 @@ async def app_page():
 @app.on_event("startup")
 async def startup_event():
     asyncio.create_task(cleanup_expired_sessions())
-    print(f"🚀 Pen V10 AI | {len(ALL_QUESTIONS)} questions | AI: {AI_ENABLED}")
+    print(f"🚀 Pen Production V11 | {len(ALL_QUESTIONS)} questions | AI: {AI_ENABLED}")
